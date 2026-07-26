@@ -1,0 +1,657 @@
+[
+  {
+    "slug": "robot-hero-selector",
+    "category": "web",
+    "title": {
+      "zh": "科幻机器人英雄选择页",
+      "en": "Sci-Fi Robot Hero Selector"
+    },
+    "summary": {
+      "zh": "可交互英雄选择页：中央真实 3D 机器人可拖动旋转，切换攻/防/辅三个英雄并联动属性、技能、主题色与皮肤换色，右下角部署确认弹窗。",
+      "en": "An interactive hero-selection page: a real 3D robot you can drag to rotate at center, switching attack / defense / support heroes with synced stats, skills, theme colour and skins, plus a deploy confirmation dialog."
+    },
+    "promptOriginal": "请实现一个可交互的科幻机器人英雄选择页面。\n\n页面包含 3 个不同的 3D 机器人英雄，分别偏向攻击、防御和支援。每个机器人具有独特的造型、配色、名称、属性和技能。\n\n布局要求：\n- 中央展示当前选中的大型 3D 机器人\n- 右侧显示 3 个机器人头像，用于切换英雄\n- 左侧显示当前英雄的名称、定位、等级、属性和技能\n- 底部提供皮肤颜色选择器\n- 右下角放置醒目的“部署”按钮\n\n交互要求：\n- 点击头像可以切换机器人\n- 切换后，3D 模型、资料、属性、技能和界面主题色同步更新\n- 机器人支持鼠标拖动旋转和缓慢待机动画\n- 皮肤选择器可以实时改变机器人配色\n- 部署按钮显示所选机器人确认弹窗\n\n视觉风格：\n明亮的未来科幻游戏 UI，象牙白背景，青绿、橙色和黄色点缀；使用磨砂玻璃卡片、圆角、柔和阴影和精致的工业机器人设计。\n\n请沿用当前项目技术栈，采用数据驱动和组件化实现，确保页面可以实际运行和交互，而不是静态效果图。",
+    "prompt": {
+      "zh": "请实现一个可交互的科幻机器人英雄选择页面。\n\n页面包含 3 个不同的 3D 机器人英雄，分别偏向攻击、防御和支援。每个机器人具有独特的造型、配色、名称、属性和技能。\n\n布局要求：\n- 中央展示当前选中的大型 3D 机器人\n- 右侧显示 3 个机器人头像，用于切换英雄\n- 左侧显示当前英雄的名称、定位、等级、属性和技能\n- 底部提供皮肤颜色选择器\n- 右下角放置醒目的“部署”按钮\n\n交互要求：\n- 点击头像可以切换机器人\n- 切换后，3D 模型、资料、属性、技能和界面主题色同步更新\n- 机器人支持鼠标拖动旋转和缓慢待机动画\n- 皮肤选择器可以实时改变机器人配色\n- 部署按钮显示所选机器人确认弹窗\n\n视觉风格：\n明亮的未来科幻游戏 UI，象牙白背景，青绿、橙色和黄色点缀；使用磨砂玻璃卡片、圆角、柔和阴影和精致的工业机器人设计。\n\n请沿用当前项目技术栈，采用数据驱动和组件化实现，确保页面可以实际运行和交互，而不是静态效果图。",
+      "en": "Build an interactive sci-fi robot hero-selection page with three 3D hero robots (attack, defense, support), each with unique design, colours, name, stats and skills. Center the large selected robot, hero avatars on the right, current hero's name/role/level/stats/skills on the left, a skin colour picker at the bottom, and a prominent “Deploy” button bottom-right. Clicking an avatar switches the robot and syncs the model, data, stats, skills and theme colour; the robot supports drag-to-rotate and a slow idle animation; the skin picker recolours it live; Deploy shows a confirmation dialog. Bright futuristic game UI on an ivory background with teal, orange and yellow accents, frosted-glass cards and refined industrial robot design. Data-driven, component-based, and actually runnable — not a static mockup."
+    },
+    "coverAspect": "landscape",
+    "featured": false,
+    "tags": [
+      "Web",
+      "Interactive 3D",
+      "WebGL"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "v2",
+        "producer": "GenClaw-Next · V2",
+        "kind": "html",
+        "model": "Gemini · configured backend",
+        "parameters": {
+          "stack": "React + Three.js",
+          "assets": "3 × Tripo3D GLB",
+          "gate": "视觉 96 · 硬门 100"
+        },
+        "note": {
+          "zh": "真实 3D 资产集成：三英雄切换、拖动旋转、皮肤换色、部署弹窗；后置确定性硬门 100、最终视觉质量门 96 通过。可在下方直接拖动交互。",
+          "en": "Real 3D-asset integration: hero switching, drag-rotate, skin recolour and a deploy dialog; passed the deterministic hard gate (100) and final visual-quality gate (96). Drag to interact below."
+        },
+        "artifact": "/cases/robot-hero-selector/v2/index.html",
+        "preview": "/cases/robot-hero-selector/cover.png"
+      }
+    ],
+    "cover": "/cases/robot-hero-selector/cover.png"
+  },
+  {
+    "slug": "animation-studio-loop",
+    "category": "web",
+    "title": {
+      "zh": "动画工作室循环视频首页",
+      "en": "Animation Studio Loop"
+    },
+    "summary": {
+      "zh": "吉卜力风格动画工作室首页：Hero 区为真实 Seedance T2V 生成的 10 秒循环背景视频，叠加简洁导航、标题与行动号召按钮。",
+      "en": "A Ghibli-inspired studio homepage whose hero uses a real Seedance text-to-video 10s looping background, overlaid with a clean nav, headline and call-to-action."
+    },
+    "promptOriginal": "Design a homepage for an animation studio inspired by the whimsical style of Studio Ghibli. The hero section features a seamless looping background video of a peaceful landscape. The video includes gently swaying flowers, a rotating windmill, flowing water, and drifting clouds. Overlay a clean, minimal UI with a headline, navigation, and a call-to-action button over the video.",
+    "prompt": {
+      "zh": "为一家动画工作室设计首页，风格参考吉卜力的奇幻气质。Hero 区是一段无缝循环的宁静风景背景视频，画面包含轻轻摇曳的花朵、旋转的风车、流动的水和飘动的云。在视频之上叠加简洁、克制的 UI：标题、导航和一个行动号召按钮。",
+      "en": "Design a homepage for an animation studio inspired by the whimsical style of Studio Ghibli. The hero section features a seamless looping background video of a peaceful landscape. The video includes gently swaying flowers, a rotating windmill, flowing water, and drifting clouds. Overlay a clean, minimal UI with a headline, navigation, and a call-to-action button over the video."
+    },
+    "coverAspect": "landscape",
+    "featured": true,
+    "tags": [
+      "Web",
+      "Video",
+      "Seedance T2V"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "v2",
+        "producer": "GenClaw-Next · V2",
+        "kind": "html",
+        "model": "Gemini · configured backend",
+        "parameters": {
+          "stack": "React + Vite",
+          "asset": "Seedance T2V · 10s · 720p · 16:9",
+          "gate": "90（attempt 2 通过）"
+        },
+        "note": {
+          "zh": "真实调用 generate_video 得到 4.5MB Seedance T2V MP4，以 <video loop> 集成为循环背景；attempt 2 达 90 分并通过。下方为该通过候选，视频会自动循环播放。",
+          "en": "A real generate_video call produced a 4.5 MB Seedance T2V MP4, integrated as a <video loop> background; attempt 2 scored 90 and passed. The passing candidate is embedded below and loops automatically."
+        },
+        "artifact": "/cases/animation-studio-loop/v2/index.html",
+        "preview": "/cases/animation-studio-loop/cover.png"
+      }
+    ],
+    "cover": "/cases/animation-studio-loop/cover.png"
+  },
+  {
+    "slug": "microscopic-life-atlas",
+    "category": "web",
+    "title": {
+      "zh": "微观生命 3D 图鉴",
+      "en": "Microscopic Life 3D Atlas"
+    },
+    "summary": {
+      "zh": "交互式生物图鉴：植物细胞、动物细胞、细菌、病毒四个真实生成的 GLB 可切换、拖动旋转与缩放，右侧联动结构名称与说明。",
+      "en": "An interactive biology atlas: four generated GLB models — plant cell, animal cell, bacterium, virus — you can switch, drag-rotate and zoom, with a linked structure-and-description panel."
+    },
+    "promptOriginal": "请实现一个可交互的“微观生命 3D 图鉴”学习页面，参考高级自然科学图鉴与现代教育软件的视觉风格。\n\n页面包含植物细胞、动物细胞、细菌和病毒四个可切换的 3D 对象。植物细胞展示细胞壁、液泡和叶绿体；动物细胞展示细胞核、线粒体和高尔基体；细菌展示细胞壁、鞭毛和遗传物质；病毒展示包膜、蛋白刺突和内部遗传物质。\n\n页面中央展示当前选中的大型 3D 模型，左侧列出四种对象，右侧显示当前结构的名称、功能和简短知识说明，底部提供少量显微镜参考图和类型对比。\n\n用户可以拖动旋转、缩放模型；点击模型结构或结构名称后，对应部位高亮，并更新右侧说明。切换对象时使用平滑的淡入与镜头过渡，不要加入复杂编辑、导出或大量控制按钮。\n\n采用温暖象牙白背景，搭配鼠尾草绿、淡紫、珊瑚粉和湖蓝色，使用柔和圆角卡片、轻微纸张纹理和手绘感标题字体。整体应像一本精致、易读的互动生物学图鉴。使用真实可交互的 3D 模型，并沿用当前项目技术栈实现。",
+    "prompt": {
+      "zh": "请实现一个可交互的“微观生命 3D 图鉴”学习页面，参考高级自然科学图鉴与现代教育软件的视觉风格。\n\n页面包含植物细胞、动物细胞、细菌和病毒四个可切换的 3D 对象。植物细胞展示细胞壁、液泡和叶绿体；动物细胞展示细胞核、线粒体和高尔基体；细菌展示细胞壁、鞭毛和遗传物质；病毒展示包膜、蛋白刺突和内部遗传物质。\n\n页面中央展示当前选中的大型 3D 模型，左侧列出四种对象，右侧显示当前结构的名称、功能和简短知识说明，底部提供少量显微镜参考图和类型对比。\n\n用户可以拖动旋转、缩放模型；点击模型结构或结构名称后，对应部位高亮，并更新右侧说明。切换对象时使用平滑的淡入与镜头过渡，不要加入复杂编辑、导出或大量控制按钮。\n\n采用温暖象牙白背景，搭配鼠尾草绿、淡紫、珊瑚粉和湖蓝色，使用柔和圆角卡片、轻微纸张纹理和手绘感标题字体。整体应像一本精致、易读的互动生物学图鉴。使用真实可交互的 3D 模型，并沿用当前项目技术栈实现。",
+      "en": "Build an interactive “Microscopic Life 3D Atlas” learning page in the style of a high-end science guide and modern education software. It has four switchable 3D objects — plant cell, animal cell, bacterium and virus — each highlighting its key structures. Center the large selected model, list the four objects on the left, show the current structure's name, function and a short note on the right, and place a few microscope reference images and a type comparison at the bottom. Users can drag-rotate and zoom; clicking a structure or its name highlights the part and updates the note; switching objects uses smooth fades and camera transitions, without heavy editing/export controls. Warm ivory background with sage green, lavender, coral pink and lake blue, soft rounded cards, a subtle paper texture and a hand-drawn title face — like a refined, readable interactive biology guide, using real interactive 3D models."
+    },
+    "coverAspect": "landscape",
+    "featured": false,
+    "tags": [
+      "Web",
+      "Interactive 3D",
+      "Education"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "v2",
+        "producer": "GenClaw-Next · V2",
+        "kind": "html",
+        "model": "Gemini · configured backend",
+        "parameters": {
+          "stack": "React + Three.js",
+          "assets": "4 × generated GLB",
+          "gate": "96（通过）"
+        },
+        "note": {
+          "zh": "调用 generate_3d_asset 生成植物细胞、动物细胞、细菌、病毒四个真实 GLB，页面支持对象切换、拖动旋转与滚轮缩放；96 分并通过。下方可直接交互。",
+          "en": "generate_3d_asset produced four real GLBs (plant cell, animal cell, bacterium, virus); the page supports object switching, drag-rotate and wheel-zoom; scored 96 and passed. Interact directly below."
+        },
+        "artifact": "/cases/microscopic-life-atlas/v2/index.html",
+        "preview": "/cases/microscopic-life-atlas/cover.png"
+      }
+    ],
+    "cover": "/cases/microscopic-life-atlas/cover.png"
+  },
+  {
+    "slug": "nvidia-fy2025-growth",
+    "category": "poster",
+    "title": {
+      "zh": "NVIDIA FY2025 增长图解",
+      "en": "NVIDIA FY2025 Growth"
+    },
+    "summary": {
+      "zh": "同一核心数据的两种代码排版结果，比较信息密度、主次层级与 88.3% 贡献关系的表达。",
+      "en": "Two code-rendered interpretations of the same core data, compared through density, hierarchy, and the 88.3% contribution story."
+    },
+    "promptOriginal": "制作一页中文数据视觉，现代科技公司财报风格，深色背景与 NVIDIA 绿色点缀。主视觉表现总营收 $130.5B、数据中心营收 $115.2B，以及数据中心占总营收 88.3%；所有文字和数字必须清晰可读。",
+    "prompt": {
+      "zh": "制作一页中文数据视觉，现代科技公司财报风格，深色背景与 NVIDIA 绿色点缀。主视觉表现总营收 $130.5B、数据中心营收 $115.2B，以及数据中心占总营收 88.3%；所有文字和数字必须清晰可读。",
+      "en": "Create a Chinese financial data visual with a dark technology aesthetic and NVIDIA-green accents. Show total revenue of $130.5B, data-center revenue of $115.2B, and its 88.3% contribution with fully legible text."
+    },
+    "coverAspect": "landscape",
+    "featured": true,
+    "tags": [
+      "Data Poster",
+      "Typography",
+      "Comparison"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "layout-a",
+        "producer": "GenClaw-Next · Layout A",
+        "kind": "image",
+        "model": "Gemini · configured backend",
+        "parameters": {
+          "render": "Pure code",
+          "canvas": "2432 × 1856"
+        },
+        "note": {
+          "zh": "纵向信息密度更高，指标卡与贡献图并列。",
+          "en": "A denser vertical composition with parallel metric cards and contribution chart."
+        },
+        "artifact": "/cases/nvidia-fy2025-growth/layout-a.png",
+        "preview": "/cases/nvidia-fy2025-growth/layout-a.png"
+      },
+      {
+        "id": "layout-b",
+        "producer": "GenClaw-Next · Layout B",
+        "kind": "image",
+        "model": "Gemini · configured backend",
+        "parameters": {
+          "render": "Pure code",
+          "canvas": "2432 × 1344"
+        },
+        "note": {
+          "zh": "更接近 16:9 汇报页，保留单一主图与结论卡。",
+          "en": "A presentation-oriented 16:9 composition with one primary chart and an insight card."
+        },
+        "artifact": "/cases/nvidia-fy2025-growth/layout-b.png",
+        "preview": "/cases/nvidia-fy2025-growth/layout-b.png"
+      }
+    ],
+    "cover": "/cases/nvidia-fy2025-growth/cover.png"
+  },
+  {
+    "slug": "nvidia-fy2025-growth-b",
+    "category": "poster",
+    "title": {
+      "zh": "NVIDIA FY2025 增长图解 · 02",
+      "en": "NVIDIA FY2025 Growth · 02"
+    },
+    "summary": {
+      "zh": "同一财报数据视觉的另一份冻结记录，用于演示同类结果的横向滑动浏览。",
+      "en": "Another frozen record of the same financial visual, used to demonstrate sliding across same-category results."
+    },
+    "promptOriginal": "制作一页中文数据视觉，现代科技公司财报风格，深色背景与 NVIDIA 绿色点缀。主视觉表现总营收 $130.5B、数据中心营收 $115.2B，以及数据中心占总营收 88.3%；所有文字和数字必须清晰可读。",
+    "prompt": {
+      "zh": "制作一页中文数据视觉，现代科技公司财报风格，深色背景与 NVIDIA 绿色点缀。主视觉表现总营收 $130.5B、数据中心营收 $115.2B，以及数据中心占总营收 88.3%；所有文字和数字必须清晰可读。",
+      "en": "Create a Chinese financial data visual with a dark technology aesthetic and NVIDIA-green accents. Show total revenue of $130.5B, data-center revenue of $115.2B, and its 88.3% contribution with fully legible text."
+    },
+    "coverAspect": "landscape",
+    "featured": false,
+    "tags": [
+      "Data Poster",
+      "Typography",
+      "Comparison"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "layout-a",
+        "producer": "GenClaw-Next · Layout A",
+        "kind": "image",
+        "model": "Gemini · configured backend",
+        "parameters": {
+          "render": "Pure code",
+          "canvas": "2432 × 1856"
+        },
+        "note": {
+          "zh": "复用同一素材的示例条目。",
+          "en": "A sample entry reusing the same material."
+        },
+        "artifact": "/cases/nvidia-fy2025-growth-b/layout-a.png",
+        "preview": "/cases/nvidia-fy2025-growth-b/layout-a.png"
+      }
+    ],
+    "cover": "/cases/nvidia-fy2025-growth-b/cover.png"
+  },
+  {
+    "slug": "nvidia-fy2025-growth-c",
+    "category": "poster",
+    "title": {
+      "zh": "NVIDIA FY2025 增长图解 · 03",
+      "en": "NVIDIA FY2025 Growth · 03"
+    },
+    "summary": {
+      "zh": "同一财报数据视觉的第三份记录，用于填充类别轮播。",
+      "en": "A third record of the same financial visual, used to populate the category carousel."
+    },
+    "promptOriginal": "制作一页中文数据视觉，现代科技公司财报风格，深色背景与 NVIDIA 绿色点缀。主视觉表现总营收 $130.5B、数据中心营收 $115.2B，以及数据中心占总营收 88.3%；所有文字和数字必须清晰可读。",
+    "prompt": {
+      "zh": "制作一页中文数据视觉，现代科技公司财报风格，深色背景与 NVIDIA 绿色点缀。主视觉表现总营收 $130.5B、数据中心营收 $115.2B，以及数据中心占总营收 88.3%；所有文字和数字必须清晰可读。",
+      "en": "Create a Chinese financial data visual with a dark technology aesthetic and NVIDIA-green accents. Show total revenue of $130.5B, data-center revenue of $115.2B, and its 88.3% contribution with fully legible text."
+    },
+    "coverAspect": "landscape",
+    "featured": false,
+    "tags": [
+      "Data Poster",
+      "Typography",
+      "Comparison"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "layout-b",
+        "producer": "GenClaw-Next · Layout B",
+        "kind": "image",
+        "model": "Gemini · configured backend",
+        "parameters": {
+          "render": "Pure code",
+          "canvas": "2432 × 1344"
+        },
+        "note": {
+          "zh": "复用同一素材的示例条目。",
+          "en": "A sample entry reusing the same material."
+        },
+        "artifact": "/cases/nvidia-fy2025-growth-c/layout-b.png",
+        "preview": "/cases/nvidia-fy2025-growth-c/layout-b.png"
+      }
+    ],
+    "cover": "/cases/nvidia-fy2025-growth-c/cover.png"
+  },
+  {
+    "slug": "tesla-vs-byd-slide",
+    "category": "slide",
+    "title": {
+      "zh": "特斯拉 vs 比亚迪",
+      "en": "Tesla vs BYD"
+    },
+    "summary": {
+      "zh": "一页 16:9 商业结论页，将销量与市值拆成双列 scorecard，并明确提醒口径差异。",
+      "en": "A 16:9 conclusion slide comparing sales and market value in two scorecards while surfacing methodology differences."
+    },
+    "promptOriginal": "制作一页 16:9 商业结论 slide，深色极简科技风背景。中部两列 scorecard：左列为“全年销量”，右列为“市值”；分别列出 Tesla 与 BYD 的数值、口径、日期，并用醒目的胜者徽章标出该维度胜者。",
+    "prompt": {
+      "zh": "制作一页 16:9 商业结论 slide，深色极简科技风背景。中部两列 scorecard：左列为“全年销量”，右列为“市值”；分别列出 Tesla 与 BYD 的数值、口径、日期，并用醒目的胜者徽章标出该维度胜者。",
+      "en": "Create a dark, minimal 16:9 business conclusion slide. Use two scorecard columns for annual sales and market value, listing Tesla and BYD values, methodology, dates, and a clear winner badge."
+    },
+    "coverAspect": "landscape",
+    "featured": true,
+    "tags": [
+      "Slide",
+      "Scorecard",
+      "16:9"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "html-slide",
+        "producer": "GenClaw-Next · HTML",
+        "kind": "html",
+        "model": "Gemini · configured backend",
+        "parameters": {
+          "render": "Pure code",
+          "canvas": "4096 × 2304"
+        },
+        "note": {
+          "zh": "原始 HTML 文字层保持可选中，并可在预览器中检查细节。",
+          "en": "The original HTML keeps its text layer selectable and can be inspected directly in the viewer."
+        },
+        "artifact": "/cases/tesla-vs-byd-slide/html-slide.html",
+        "preview": "/cases/tesla-vs-byd-slide/html-slide-preview.png"
+      }
+    ],
+    "cover": "/cases/tesla-vs-byd-slide/cover.png"
+  },
+  {
+    "slug": "tesla-vs-byd-slide-b",
+    "category": "slide",
+    "title": {
+      "zh": "特斯拉 vs 比亚迪 · 02",
+      "en": "Tesla vs BYD · 02"
+    },
+    "summary": {
+      "zh": "同一结论页的另一份冻结记录，用于演示同类结果的横向滑动浏览。",
+      "en": "Another frozen record of the same slide, used to demonstrate sliding across same-category results."
+    },
+    "promptOriginal": "制作一页 16:9 商业结论 slide，深色极简科技风背景。中部两列 scorecard：左列为“全年销量”，右列为“市值”；分别列出 Tesla 与 BYD 的数值、口径、日期，并用醒目的胜者徽章标出该维度胜者。",
+    "prompt": {
+      "zh": "制作一页 16:9 商业结论 slide，深色极简科技风背景。中部两列 scorecard：左列为“全年销量”，右列为“市值”；分别列出 Tesla 与 BYD 的数值、口径、日期，并用醒目的胜者徽章标出该维度胜者。",
+      "en": "Create a dark, minimal 16:9 business conclusion slide. Use two scorecard columns for annual sales and market value, listing Tesla and BYD values, methodology, dates, and a clear winner badge."
+    },
+    "coverAspect": "landscape",
+    "featured": false,
+    "tags": [
+      "Slide",
+      "Scorecard",
+      "16:9"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "html-slide",
+        "producer": "GenClaw-Next · HTML",
+        "kind": "html",
+        "model": "Gemini · configured backend",
+        "parameters": {
+          "render": "Pure code",
+          "canvas": "4096 × 2304"
+        },
+        "note": {
+          "zh": "复用同一素材的示例条目。",
+          "en": "A sample entry reusing the same material."
+        },
+        "artifact": "/cases/tesla-vs-byd-slide-b/html-slide.html",
+        "preview": "/cases/tesla-vs-byd-slide-b/html-slide-preview.png"
+      }
+    ],
+    "cover": "/cases/tesla-vs-byd-slide-b/cover.png"
+  },
+  {
+    "slug": "tesla-vs-byd-slide-c",
+    "category": "slide",
+    "title": {
+      "zh": "特斯拉 vs 比亚迪 · 03",
+      "en": "Tesla vs BYD · 03"
+    },
+    "summary": {
+      "zh": "同一结论页的第三份记录，用于填充类别轮播。",
+      "en": "A third record of the same slide, used to populate the category carousel."
+    },
+    "promptOriginal": "制作一页 16:9 商业结论 slide，深色极简科技风背景。中部两列 scorecard：左列为“全年销量”，右列为“市值”；分别列出 Tesla 与 BYD 的数值、口径、日期，并用醒目的胜者徽章标出该维度胜者。",
+    "prompt": {
+      "zh": "制作一页 16:9 商业结论 slide，深色极简科技风背景。中部两列 scorecard：左列为“全年销量”，右列为“市值”；分别列出 Tesla 与 BYD 的数值、口径、日期，并用醒目的胜者徽章标出该维度胜者。",
+      "en": "Create a dark, minimal 16:9 business conclusion slide. Use two scorecard columns for annual sales and market value, listing Tesla and BYD values, methodology, dates, and a clear winner badge."
+    },
+    "coverAspect": "landscape",
+    "featured": false,
+    "tags": [
+      "Slide",
+      "Scorecard",
+      "16:9"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "html-slide",
+        "producer": "GenClaw-Next · HTML",
+        "kind": "html",
+        "model": "Gemini · configured backend",
+        "parameters": {
+          "render": "Pure code",
+          "canvas": "4096 × 2304"
+        },
+        "note": {
+          "zh": "复用同一素材的示例条目。",
+          "en": "A sample entry reusing the same material."
+        },
+        "artifact": "/cases/tesla-vs-byd-slide-c/html-slide.html",
+        "preview": "/cases/tesla-vs-byd-slide-c/html-slide-preview.png"
+      }
+    ],
+    "cover": "/cases/tesla-vs-byd-slide-c/cover.png"
+  },
+  {
+    "slug": "qinghua-porcelain-atlas",
+    "category": "infographic",
+    "title": {
+      "zh": "景德镇青花瓷釉色纹饰图谱",
+      "en": "Jingdezhen Porcelain Atlas"
+    },
+    "summary": {
+      "zh": "纵向博物馆图鉴：中央高清瓷瓶，左侧四处编号注释以 SVG 细线连接，右侧圆形局部放大，中式回纹边框。",
+      "en": "A vertical museum-catalogue atlas: a hi-res vase at center, four SVG-linked numbered annotations on the left, circular detail insets on the right, and a Chinese fret border."
+    },
+    "promptOriginal": "请实现一个“景德镇青花瓷瓶釉色与纹饰图谱”信息图网页，采用纵向博物馆图鉴布局。\n顶部居中显示中文主标题和传统装饰分隔线，中央展示完整的青花瓷瓶高清抠图。左侧设置四个编号注释，介绍钴蓝釉色、缠枝莲纹、龙纹和底款，并通过 SVG 细线与圆点连接到瓷瓶对应位置。右侧排列四个圆形局部放大图，展示相关纹饰和釉色细节；底部使用传统边框呈现文物总结。\n视觉采用象牙白宣纸背景、深青花蓝配色、中式回纹边框和典雅宋体，呈现高端博物馆展览图录的清晰与文化感。不添加复杂交互或动画。",
+    "prompt": {
+      "zh": "请实现一个“景德镇青花瓷瓶釉色与纹饰图谱”信息图网页，采用纵向博物馆图鉴布局。\n顶部居中显示中文主标题和传统装饰分隔线，中央展示完整的青花瓷瓶高清抠图。左侧设置四个编号注释，介绍钴蓝釉色、缠枝莲纹、龙纹和底款，并通过 SVG 细线与圆点连接到瓷瓶对应位置。右侧排列四个圆形局部放大图，展示相关纹饰和釉色细节；底部使用传统边框呈现文物总结。\n视觉采用象牙白宣纸背景、深青花蓝配色、中式回纹边框和典雅宋体，呈现高端博物馆展览图录的清晰与文化感。不添加复杂交互或动画。",
+      "en": "Build a vertical, museum-catalogue infographic of a Jingdezhen blue-and-white porcelain vase: a centered hi-res vase, four numbered annotations on the left (cobalt glaze, interlocking lotus scroll, dragon motif, base mark) linked by thin SVG lines and dots, and four circular detail insets on the right, with a summary framed by a Chinese fret border. Use an ivory paper background, deep porcelain-blue palette, and elegant serif type; no complex interaction or animation."
+    },
+    "coverAspect": "portrait",
+    "featured": true,
+    "tags": [
+      "Infographic",
+      "Museum",
+      "Annotation"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "v2",
+        "producer": "GenClaw-Next · V2",
+        "kind": "image",
+        "model": "Gemini · configured backend",
+        "parameters": {
+          "render": "Pure code + Visual Imaginer",
+          "score": 100
+        },
+        "note": {
+          "zh": "当前推荐版本：文字 DOM 预检修复后布局合同越界为 0，评分 100。",
+          "en": "Current recommended run: 0 layout-contract violations after text preflight, score 100."
+        },
+        "artifact": "/cases/qinghua-porcelain-atlas/v2.png",
+        "preview": "/cases/qinghua-porcelain-atlas/v2.png"
+      }
+    ],
+    "baseline": {
+      "id": "t0",
+      "producer": "历史基线 T0",
+      "kind": "image",
+      "model": "Gemini · configured backend",
+      "parameters": {
+        "render": "Pure code",
+        "score": 90
+      },
+      "note": {
+        "zh": "历史无 Visual Imaginer 基线，评分 90，用于与当前 V2 做视觉对比。",
+        "en": "Historical baseline without Visual Imaginer, score 90, shown for visual comparison with the current V2."
+      },
+      "artifact": "/cases/qinghua-porcelain-atlas/baseline.png",
+      "preview": "/cases/qinghua-porcelain-atlas/baseline.png"
+    },
+    "cover": "/cases/qinghua-porcelain-atlas/cover.png"
+  },
+  {
+    "slug": "snow-leopard-field-guide",
+    "category": "infographic",
+    "title": {
+      "zh": "雪豹 · 高山之巅的隐士",
+      "en": "Snow Leopard · Alpine Hermit"
+    },
+    "summary": {
+      "zh": "横向自然科学图鉴：中央雪豹抠图，SVG 连线标注短耳、宽鼻、厚毛、长尾与四肢，底部四列说明。",
+      "en": "A horizontal nature-guide layout: a snow leopard at center with SVG callouts for ears, nose, fur, tail and limbs, plus a four-column footer."
+    },
+    "promptOriginal": "请实现一个“雪豹——高山之巅的隐士”野生动物科普信息图网页，采用横向自然科学图鉴布局。\n页面中央展示完整的雪豹侧面高清抠图；左上角显示中文标题、英文名称和栖息地介绍。通过简洁的 SVG 连线和定位圆点，标注雪豹的短圆耳朵、宽大鼻腔、厚密皮毛、长尾和粗壮四肢，并用一句话说明这些特征如何帮助它适应高原环境。页面底部使用四列内容，补充介绍皮毛、鼻腔、尾巴和四肢的作用。\n采用纯白或暖灰背景、黑灰文字和大量留白，呈现冷静、专业的自然纪录片与科学杂志风格。",
+    "prompt": {
+      "zh": "请实现一个“雪豹——高山之巅的隐士”野生动物科普信息图网页，采用横向自然科学图鉴布局。\n页面中央展示完整的雪豹侧面高清抠图；左上角显示中文标题、英文名称和栖息地介绍。通过简洁的 SVG 连线和定位圆点，标注雪豹的短圆耳朵、宽大鼻腔、厚密皮毛、长尾和粗壮四肢，并用一句话说明这些特征如何帮助它适应高原环境。页面底部使用四列内容，补充介绍皮毛、鼻腔、尾巴和四肢的作用。\n采用纯白或暖灰背景、黑灰文字和大量留白，呈现冷静、专业的自然纪录片与科学杂志风格。",
+      "en": "Build a horizontal nature-guide infographic of a snow leopard: a centered side-profile cutout, a Chinese title, English name and habitat note at the upper left, SVG callouts for its short round ears, wide nasal cavity, thick fur, long tail and sturdy limbs explaining how each adapts it to the plateau, and a four-column footer. Use a white or warm-grey background, black-grey text and generous whitespace for a calm, science-magazine tone."
+    },
+    "coverAspect": "landscape",
+    "featured": false,
+    "tags": [
+      "Infographic",
+      "Wildlife",
+      "Annotation"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "v2",
+        "producer": "GenClaw-Next · V2",
+        "kind": "image",
+        "model": "Gemini · configured backend",
+        "parameters": {
+          "render": "Pure code + Visual Imaginer",
+          "score": 98
+        },
+        "note": {
+          "zh": "当前推荐版本：标题合同越界由 1 修复为 0，评分 98。",
+          "en": "Current recommended run: title contract violations fixed from 1 to 0, score 98."
+        },
+        "artifact": "/cases/snow-leopard-field-guide/v2.png",
+        "preview": "/cases/snow-leopard-field-guide/v2.png"
+      }
+    ],
+    "baseline": {
+      "id": "t0",
+      "producer": "历史基线 T0",
+      "kind": "image",
+      "model": "Gemini · configured backend",
+      "parameters": {
+        "render": "Pure code",
+        "score": 98
+      },
+      "note": {
+        "zh": "历史无 Visual Imaginer 基线，评分 98，用于与当前 V2 做视觉对比。",
+        "en": "Historical baseline without Visual Imaginer, score 98, shown for visual comparison with the current V2."
+      },
+      "artifact": "/cases/snow-leopard-field-guide/baseline.png",
+      "preview": "/cases/snow-leopard-field-guide/baseline.png"
+    },
+    "cover": "/cases/snow-leopard-field-guide/cover.png"
+  },
+  {
+    "slug": "akari-character-sheet",
+    "category": "infographic",
+    "title": {
+      "zh": "AKARI 角色设定图",
+      "en": "AKARI Character Sheet"
+    },
+    "summary": {
+      "zh": "3:4 日系角色设定：中央全身角色，左侧性格与表情，右上 PROFILE 卡，底部三组服装拆解。",
+      "en": "A 3:4 anime character sheet: a full-body figure centered, traits and expressions at left, a PROFILE card upper-right, and a three-item outfit breakdown."
+    },
+    "promptOriginal": "Create a compact 3:4 vertical Japanese anime character sheet with a white background and coral-pink and deep-navy palette. Keep one full-body girl in the center; retain “AKARI”, “あかり”, the subtitle, four personality traits and two “EXPRESSIONS” portraits on the left. Fill the upper-right with a “PROFILE” card containing “AGE 17 · STUDENT” and a short three-line character introduction, followed by the “ABOUT AKARI” and “PERSONALITY” cards below. At the bottom, show only three grouped items under “OUTFIT BREAKDOWN”: “signature jacket”, “school uniform” and “shoes & backpack”. Keep the layout information-rich, compact and readable; do not include DETAILS, COLOR PALETTE, extra accessories, duplicate characters, gibberish text or watermarks.",
+    "prompt": {
+      "zh": "制作一张紧凑的 3:4 竖版日系动漫角色设定图，白色背景配珊瑚粉与深藏青。中央保留一个全身女孩；左侧保留“AKARI”“あかり”、副标题、四个性格特征和两张“EXPRESSIONS”表情图。右上角为“PROFILE”卡片，含“AGE 17 · STUDENT”和三行角色简介，下方接“ABOUT AKARI”和“PERSONALITY”卡片。底部“OUTFIT BREAKDOWN”只列三组：签名夹克、校服、鞋与背包。版面信息丰富、紧凑、可读；不要 DETAILS、COLOR PALETTE、多余配饰、重复角色、乱码或水印。",
+      "en": "Create a compact 3:4 vertical Japanese anime character sheet with a white background and coral-pink and deep-navy palette. Keep one full-body girl in the center; retain “AKARI”, “あかり”, the subtitle, four personality traits and two “EXPRESSIONS” portraits on the left. Fill the upper-right with a “PROFILE” card containing “AGE 17 · STUDENT” and a short three-line character introduction, followed by the “ABOUT AKARI” and “PERSONALITY” cards below. At the bottom, show only three grouped items under “OUTFIT BREAKDOWN”: “signature jacket”, “school uniform” and “shoes & backpack”. Keep the layout information-rich, compact and readable; do not include DETAILS, COLOR PALETTE, extra accessories, duplicate characters, gibberish text or watermarks."
+    },
+    "coverAspect": "portrait",
+    "featured": false,
+    "tags": [
+      "Character Sheet",
+      "Anime",
+      "3:4"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "v2",
+        "producer": "GenClaw-Next · V2",
+        "kind": "image",
+        "model": "Gemini · configured backend",
+        "parameters": {
+          "render": "Pure code + Visual Imaginer",
+          "score": 94
+        },
+        "note": {
+          "zh": "当前推荐版本：两轮文字预检把问题数从 3 降到 0，评分 94。",
+          "en": "Current recommended run: two text-preflight passes reduced issues from 3 to 0, score 94."
+        },
+        "artifact": "/cases/akari-character-sheet/v2.png",
+        "preview": "/cases/akari-character-sheet/v2.png"
+      }
+    ],
+    "baseline": {
+      "id": "t0",
+      "producer": "历史基线 T0",
+      "kind": "image",
+      "model": "Gemini · configured backend",
+      "parameters": {
+        "render": "Pure code",
+        "score": 86
+      },
+      "note": {
+        "zh": "历史无 Visual Imaginer 基线，评分 86，用于与当前 V2 做视觉对比。",
+        "en": "Historical baseline without Visual Imaginer, score 86, shown for visual comparison with the current V2."
+      },
+      "artifact": "/cases/akari-character-sheet/baseline.png",
+      "preview": "/cases/akari-character-sheet/baseline.png"
+    },
+    "cover": "/cases/akari-character-sheet/cover.png"
+  },
+  {
+    "slug": "iceberg-model-card",
+    "category": "infographic",
+    "title": {
+      "zh": "冰山模型知识卡",
+      "en": "Iceberg Model Knowledge Card"
+    },
+    "summary": {
+      "zh": "系统思考冰山模型：事件、模式与趋势、结构、心智模式四层由浅入深嵌套。",
+      "en": "The systems-thinking Iceberg Model: Events, Patterns & Trends, Structure, and Mental Models nested from surface to depth."
+    },
+    "promptOriginal": "Create a visual knowledge card illustrating the four layers of the Iceberg Model in systems thinking: Events, Patterns & Trends, Structure, and Mental Models. Present them as nested layers moving from the surface to the deepest level, with Events containing Patterns & Trends, Patterns & Trends containing Structure, and Structure containing Mental Models.",
+    "prompt": {
+      "zh": "制作一张“系统思考·冰山模型”知识卡，展示四个层级：事件（Events）、模式与趋势（Patterns & Trends）、结构（Structure）、心智模式（Mental Models）。以由浅入深的嵌套层级呈现：事件包含模式与趋势，模式与趋势包含结构，结构包含心智模式。",
+      "en": "Create a visual knowledge card illustrating the four layers of the Iceberg Model in systems thinking: Events, Patterns & Trends, Structure, and Mental Models. Present them as nested layers moving from the surface to the deepest level, with Events containing Patterns & Trends, Patterns & Trends containing Structure, and Structure containing Mental Models."
+    },
+    "coverAspect": "square",
+    "featured": false,
+    "tags": [
+      "Infographic",
+      "Systems",
+      "Concept"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "v2",
+        "producer": "GenClaw-Next · V2",
+        "kind": "image",
+        "model": "Gemini · configured backend",
+        "parameters": {
+          "render": "Concept asset + HTML labels",
+          "score": 98
+        },
+        "note": {
+          "zh": "当前推荐版本：以 conceptual_diagram 生成无字冰山底稿，再由 HTML 覆盖精确标签，评分 98。",
+          "en": "Current recommended run: a text-free iceberg base generated as a conceptual_diagram asset, with exact labels overlaid in HTML, score 98."
+        },
+        "artifact": "/cases/iceberg-model-card/v2.png",
+        "preview": "/cases/iceberg-model-card/v2.png"
+      }
+    ],
+    "baseline": {
+      "id": "t0",
+      "producer": "历史基线 T0",
+      "kind": "image",
+      "model": "Gemini · configured backend",
+      "parameters": {
+        "render": "Pure code",
+        "score": 98
+      },
+      "note": {
+        "zh": "历史无 Visual Imaginer 基线，评分 98，用于与当前 V2 做视觉对比。",
+        "en": "Historical baseline without Visual Imaginer, score 98, shown for visual comparison with the current V2."
+      },
+      "artifact": "/cases/iceberg-model-card/baseline.png",
+      "preview": "/cases/iceberg-model-card/baseline.png"
+    },
+    "cover": "/cases/iceberg-model-card/cover.png"
+  }
+]
