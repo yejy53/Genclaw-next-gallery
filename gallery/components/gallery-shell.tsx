@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import {
   assetUrl,
   categoryIds,
+  codeRepoUrl,
   copy,
   galleryCases,
   localize,
@@ -11,7 +12,9 @@ import {
   type Locale,
 } from "@/lib/gallery";
 import {
+  ArrowUpRightIcon,
   GalleryIcon,
+  GithubIcon,
   HomeIcon,
   MenuIcon,
   SearchIcon,
@@ -53,6 +56,16 @@ function NavContent({
           <GalleryIcon size={15} />
           <span>{t.gallery}</span>
         </Link>
+        <a
+          className="nav-link nav-link-external"
+          href={codeRepoUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <GithubIcon size={15} />
+          <span>{t.code}</span>
+          <ArrowUpRightIcon size={12} />
+        </a>
       </nav>
 
       <div className="nav-label">{t.archive}</div>

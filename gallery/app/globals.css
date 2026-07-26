@@ -181,6 +181,16 @@ summary {
   color: var(--ink);
 }
 
+/* Trailing arrow marks the link as leaving the archive. */
+.nav-link-external > svg:last-child {
+  color: var(--faint);
+  margin-left: auto;
+}
+
+.nav-link-external:hover > svg:last-child {
+  color: var(--muted);
+}
+
 .nav-dot {
   border-radius: 50%;
   display: inline-block;

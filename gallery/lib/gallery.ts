@@ -1,5 +1,8 @@
 import casesJson from "@/generated/cases.json";
 
+// The agent that produces the work shown here.
+export const codeRepoUrl = "https://github.com/yejy53/GenClaw";
+
 export const locales = ["zh", "en"] as const;
 export type Locale = (typeof locales)[number];
 
@@ -48,6 +51,7 @@ export const copy = {
   zh: {
     home: "首页",
     gallery: "作品集",
+    code: "代码",
     archive: "视觉档案",
     casesLabel: "案例",
     heroBadge: "生成式视觉档案 · 2026",
@@ -110,6 +114,7 @@ export const copy = {
   en: {
     home: "Home",
     gallery: "Gallery",
+    code: "Code",
     archive: "Visual Archive",
     casesLabel: "Cases",
     heroBadge: "Generative Visual Archive · 2026",
