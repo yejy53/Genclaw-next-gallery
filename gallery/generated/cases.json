@@ -742,5 +742,47 @@
       "en": "Generate an SVG illustration of a Switch 2 handheld console, front view, with detachable controllers on either side of the landscape body."
     },
     "cover": "/cases/svg-switch2/cover.svg"
+  },
+  {
+    "slug": "svg-folding-fan",
+    "category": "svg",
+    "title": {
+      "zh": "山水折扇",
+      "en": "Landscape Folding Fan"
+    },
+    "summary": {
+      "zh": "矢量折扇：展开的扇面绘远山、红日与松枝，分层纸面配深色扇骨与金色边缘。",
+      "en": "A vector folding fan: the open leaf carries distant mountains, a red sun and pine boughs across layered panels, with dark ribs and a gold rim."
+    },
+    "promptOriginal": "生成一张折扇的 SVG 插画，扇面展开，绘远山、红日与松枝的山水画，深色扇骨配金色边缘。",
+    "prompt": {
+      "zh": "生成一张折扇的 SVG 插画，扇面展开，绘远山、红日与松枝的山水画，深色扇骨配金色边缘。",
+      "en": "Generate an SVG illustration of an open folding fan, its leaf painted with distant mountains, a red sun and pine boughs, with dark ribs and a gold rim."
+    },
+    "coverAspect": "landscape",
+    "featured": false,
+    "tags": [
+      "SVG",
+      "Object",
+      "Traditional"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "ours",
+        "producer": "GenClaw-Next",
+        "kind": "svg",
+        "artifact": "/cases/svg-folding-fan/ours.svg",
+        "preview": "/cases/svg-folding-fan/ours.svg"
+      }
+    ],
+    "baseline": {
+      "id": "theirs",
+      "producer": "对照案例",
+      "kind": "svg",
+      "artifact": "/cases/svg-folding-fan/baseline.svg",
+      "preview": "/cases/svg-folding-fan/baseline.svg"
+    },
+    "cover": "/cases/svg-folding-fan/cover.svg"
   }
 ]

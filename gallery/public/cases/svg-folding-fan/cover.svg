@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 448" role="img" aria-labelledby="fan-title fan-desc">
+  <title id="fan-title">水墨山水中国折扇</title>
+  <desc id="fan-desc">一把完全展开的传统折扇，米白宣纸扇面绘有层叠水墨山峦与朱红旭日，深棕竹骨由金色轴钉向两侧舒展。</desc>
+
+  <defs>
+    <radialGradient id="backdrop" cx=".5" cy=".38" r=".78">
+      <stop offset="0" stop-color="#fffdf7"/>
+      <stop offset="1" stop-color="#f2eadc"/>
+    </radialGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffaf0"/>
+      <stop offset=".58" stop-color="#f5ead5"/>
+      <stop offset="1" stop-color="#e8d6b8"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b1712"/>
+      <stop offset=".42" stop-color="#6b3b26"/>
+      <stop offset=".7" stop-color="#3d2118"/>
+      <stop offset="1" stop-color="#1f110e"/>
+    </linearGradient>
+    <linearGradient id="guardWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7a482d"/>
+      <stop offset=".45" stop-color="#3c2118"/>
+      <stop offset="1" stop-color="#1c0f0d"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".35" cy=".3" r=".72">
+      <stop offset="0" stop-color="#e85c3d"/>
+      <stop offset=".72" stop-color="#bd3027"/>
+      <stop offset="1" stop-color="#8c211f"/>
+    </radialGradient>
+    <radialGradient id="pin" cx=".35" cy=".3" r=".75">
+      <stop offset="0" stop-color="#fff1a2"/>
+      <stop offset=".42" stop-color="#d5a83d"/>
+      <stop offset="1" stop-color="#6f4818"/>
+    </radialGradient>
+    <clipPath id="leafClip">
+      <path d="M90 318 Q146 132 330 66 Q512 0 694 66 Q878 132 934 318 L714 330 Q681 250 612 215 Q512 169 412 215 Q343 250 310 330 Z"/>
+    </clipPath>
+    <filter id="softShadow" x="-15%" y="-20%" width="130%" height="150%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <rect width="1024" height="448" fill="url(#backdrop)"/>
+
+  <!-- quiet grounding shadow -->
+  <ellipse cx="512" cy="412" rx="392" ry="18" fill="#442b1d" opacity=".13" filter="url(#softShadow)"/>
+
+  <!-- bamboo ribs -->
+  <g fill="url(#wood)" stroke="#23120f" stroke-width="1.2" stroke-linejoin="round">
+    <path d="M499 399 L96 320 L91 333 L495 410 Z"/>
+    <path d="M501 399 L142 257 L138 268 L497 409 Z"/>
+    <path d="M503 398 L188 205 L183 216 L499 409 Z"/>
+    <path d="M505 397 L238 158 L231 168 L501 408 Z"/>
+    <path d="M507 396 L290 118 L282 126 L503 407 Z"/>
+    <path d="M509 396 L348 83 L338 90 L505 406 Z"/>
+    <path d="M511 395 L408 54 L397 59 L507 405 Z"/>
+    <path d="M513 395 L470 38 L458 41 L509 405 Z"/>
+    <path d="M515 395 L532 36 L520 36 L511 405 Z"/>
+    <path d="M517 396 L594 50 L582 47 L513 405 Z"/>
+    <path d="M519 396 L654 77 L643 72 L515 406 Z"/>
+    <path d="M521 397 L712 111 L702 104 L517 407 Z"/>
+    <path d="M523 398 L765 151 L756 142 L519 408 Z"/>
+    <path d="M525 399 L814 198 L807 188 L521 409 Z"/>
+    <path d="M527 399 L858 251 L853 240 L523 410 Z"/>
+    <path d="M529 400 L928 319 L933 332 L527 411 Z"/>
+  </g>
+
+  <!-- paper leaf -->
+  <g clip-path="url(#leafClip)">
+    <rect x="74" y="18" width="876" height="326" fill="url(#paper)"/>
+
+    <!-- alternating folded paper planes -->
+    <g opacity=".48">
+      <path d="M512 402 L90 318 Q107 259 145 203 Z" fill="#d8c5a3"/>
+      <path d="M512 402 L188 205 Q210 179 238 158 Z" fill="#fffdf5"/>
+      <path d="M512 402 L290 118 Q318 96 348 83 Z" fill="#d9c6a5"/>
+      <path d="M512 402 L408 54 Q439 43 470 38 Z" fill="#fffdf5"/>
+      <path d="M512 402 L532 36 Q564 40 594 50 Z" fill="#d7c3a1"/>
+      <path d="M512 402 L654 77 Q685 92 712 111 Z" fill="#fffdf5"/>
+      <path d="M512 402 L765 151 Q792 172 814 198 Z" fill="#d7c3a1"/>
+      <path d="M512 402 L858 251 Q884 283 934 318 Z" fill="#fffdf5"/>
+    </g>
+
+    <!-- pleat seams -->
+    <g fill="none" stroke="#a58a63" stroke-width="1.25" opacity=".36">
+      <path d="M512 402 L90 318"/>
+      <path d="M512 402 L142 257"/>
+      <path d="M512 402 L188 205"/>
+      <path d="M512 402 L238 158"/>
+      <path d="M512 402 L290 118"/>
+      <path d="M512 402 L348 83"/>
+      <path d="M512 402 L408 54"/>
+      <path d="M512 402 L470 38"/>
+      <path d="M512 402 L532 36"/>
+      <path d="M512 402 L594 50"/>
+      <path d="M512 402 L654 77"/>
+      <path d="M512 402 L712 111"/>
+      <path d="M512 402 L765 151"/>
+      <path d="M512 402 L814 198"/>
+      <path d="M512 402 L858 251"/>
+      <path d="M512 402 L934 318"/>
+    </g>
+
+    <!-- distant mist and mountain ranges -->
+    <path d="M84 278 C130 254 163 259 204 236 C242 215 265 223 305 198 C346 172 367 184 404 210 C438 234 467 230 500 208 C537 183 567 196 599 224 C631 250 663 247 700 214 C736 181 759 184 797 218 C833 251 868 249 948 271 L948 348 L84 348 Z"
+          fill="#78807a" opacity=".16"/>
+    <path d="M75 310 C122 291 151 275 188 245 L223 209 L252 260 L284 225 L326 276 L362 242 L402 290 C454 264 485 271 525 298 C566 266 602 257 640 280 L689 234 L722 265 L758 211 L792 261 L827 236 L863 282 C897 271 919 279 954 296 L954 352 L75 352 Z"
+          fill="#4d5550" opacity=".26"/>
+
+    <!-- primary mountains, left -->
+    <path d="M77 333 L126 290 L157 232 L181 259 L211 176 L235 214 L258 151 L283 197 L304 170 L331 233 L358 198 L391 270 L420 246 L449 316 Z"
+          fill="#303a37" opacity=".78"/>
+    <path d="M116 319 L157 232 L170 279 L211 176 L211 262 L258 151 L253 259 L304 170 L288 276 L358 198 L328 286 L391 270 L357 316 Z"
+          fill="#e7dfce" opacity=".42"/>
+    <g fill="none" stroke="#1f2927" stroke-linecap="round" opacity=".72">
+      <path d="M138 297 Q167 271 184 245 M154 284 Q170 265 176 247" stroke-width="4"/>
+      <path d="M214 269 Q233 233 250 206 M225 264 Q241 248 254 226" stroke-width="5"/>
+      <path d="M264 249 Q278 214 297 192 M276 260 Q293 239 310 225" stroke-width="4"/>
+      <path d="M315 285 Q336 252 354 223" stroke-width="4"/>
+    </g>
+
+    <!-- primary mountains, right -->
+    <path d="M581 326 L626 277 L655 295 L693 239 L720 264 L754 178 L782 226 L806 203 L839 265 L872 230 L907 287 L950 314 L950 344 Z"
+          fill="#35403d" opacity=".67"/>
+    <path d="M626 315 L693 239 L687 297 L754 178 L750 286 L806 203 L790 294 L872 230 L842 310 Z"
+          fill="#ede5d4" opacity=".4"/>
+    <g fill="none" stroke="#202b28" stroke-linecap="round" opacity=".62">
+      <path d="M698 288 Q724 245 744 214" stroke-width="4"/>
+      <path d="M758 271 Q777 241 797 220" stroke-width="4"/>
+      <path d="M810 295 Q828 270 846 252" stroke-width="3.5"/>
+    </g>
+
+    <!-- mist ribbons -->
+    <g fill="none" stroke="#f8f2e5" stroke-linecap="round" opacity=".7">
+      <path d="M116 289 C190 272 249 285 327 273 C394 263 439 270 498 282" stroke-width="18"/>
+      <path d="M405 240 C465 229 512 240 567 249 C628 260 676 252 732 241" stroke-width="14"/>
+      <path d="M590 301 C653 286 719 298 785 291 C833 286 872 290 918 302" stroke-width="16"/>
+    </g>
+
+    <!-- stylized ink pines -->
+    <g fill="#202725" opacity=".84">
+      <path d="M175 299 L180 214 L185 299 Z"/>
+      <path d="M181 226 C160 219 151 224 143 235 C159 229 170 232 182 235 Z"/>
+      <path d="M181 244 C201 234 218 240 229 250 C211 245 198 250 181 254 Z"/>
+      <path d="M181 261 C163 253 149 260 140 270 C156 265 168 268 183 274 Z"/>
+      <path d="M339 310 L344 248 L349 310 Z"/>
+      <path d="M345 259 C326 251 312 258 304 269 C320 263 333 266 346 271 Z"/>
+      <path d="M345 276 C365 266 380 272 390 282 C373 277 359 281 345 288 Z"/>
+    </g>
+
+    <!-- cinnabar sun and gold cloud strokes -->
+    <circle cx="704" cy="119" r="31" fill="url(#sun)"/>
+    <g fill="none" stroke="#c69a53" stroke-linecap="round" opacity=".62">
+      <path d="M650 144 C673 136 688 143 703 146 C722 150 737 145 753 139 C771 133 787 138 802 142" stroke-width="5"/>
+      <path d="M734 165 C756 157 773 161 790 164 C806 167 821 163 837 157" stroke-width="3"/>
+    </g>
+
+    <!-- sparse paper fibres -->
+    <g stroke="#b58b50" stroke-width="1" opacity=".18">
+      <path d="M214 115 l12 5 M374 96 l9 -3 M444 145 l15 4 M565 88 l11 5 M633 186 l14 -2 M846 182 l10 4 M526 286 l13 3 M294 301 l9 -4"/>
+    </g>
+  </g>
+
+  <!-- leaf edging -->
+  <path d="M90 318 Q146 132 330 66 Q512 0 694 66 Q878 132 934 318"
+        fill="none" stroke="#9c713b" stroke-width="7" stroke-linecap="round"/>
+  <path d="M90 318 Q146 132 330 66 Q512 0 694 66 Q878 132 934 318"
+        fill="none" stroke="#d3a85c" stroke-width="2" stroke-linecap="round"/>
+  <path d="M310 330 Q343 250 412 215 Q512 169 612 215 Q681 250 714 330"
+        fill="none" stroke="#b08b55" stroke-width="3" opacity=".8"/>
+
+  <!-- heavy outer guard sticks -->
+  <path d="M512 402 L84 326 L91 305 L515 390 Z" fill="url(#guardWood)" stroke="#26130f" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M512 402 L940 326 L933 305 L509 390 Z" fill="url(#guardWood)" stroke="#26130f" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M101 317 L481 391" fill="none" stroke="#c28a3a" stroke-width="2" opacity=".75"/>
+  <path d="M923 317 L543 391" fill="none" stroke="#c28a3a" stroke-width="2" opacity=".75"/>
+
+  <!-- pivot fan-tail and pin -->
+  <g fill="url(#wood)" stroke="#24120e" stroke-width="1.5">
+    <path d="M512 395 L480 431 Q491 440 512 414 Z"/>
+    <path d="M512 395 L492 439 Q503 444 514 414 Z"/>
+    <path d="M512 395 L508 442 Q519 443 518 413 Z"/>
+    <path d="M512 395 L524 439 Q536 435 521 411 Z"/>
+    <path d="M512 395 L539 430 Q547 422 522 407 Z"/>
+  </g>
+  <circle cx="512" cy="400" r="14" fill="#2a1712" stroke="#130b09" stroke-width="2"/>
+  <circle cx="512" cy="400" r="9" fill="url(#pin)" stroke="#7d541b" stroke-width="2"/>
+  <circle cx="509" cy="397" r="2.5" fill="#fff6bd" opacity=".9"/>
+</svg>

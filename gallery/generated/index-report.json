@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-26T16:11:24.339567+00:00",
-  "caseCount": 19,
-  "resultCount": 22,
+  "generatedAt": "2026-07-26T17:13:10.998141+00:00",
+  "caseCount": 20,
+  "resultCount": 23,
   "preservedCases": [],
   "copiedSources": [
     {
@@ -259,6 +259,21 @@
       "case": "svg-switch2",
       "role": "baseline",
       "source": "gallery/content/sources/svg/svg-switch2/theirs.svg"
+    },
+    {
+      "case": "svg-folding-fan",
+      "role": "cover",
+      "source": "gallery/content/sources/svg/svg-folding-fan/ours.svg"
+    },
+    {
+      "case": "svg-folding-fan",
+      "role": "result:ours",
+      "source": "gallery/content/sources/svg/svg-folding-fan/ours.svg"
+    },
+    {
+      "case": "svg-folding-fan",
+      "role": "baseline",
+      "source": "gallery/content/sources/svg/svg-folding-fan/theirs.svg"
     }
   ],
   "notes": [
