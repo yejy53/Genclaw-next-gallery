@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Apple Watch 风格矢量插画</title>
+  <desc id="desc">深色运动表带、钛金属表壳与彩色活动圆环表盘的智能手表。</desc>
+
+  <defs>
+    <linearGradient id="background" x1="120" y1="40" x2="710" y2="960" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F8FA"/>
+      <stop offset="1" stop-color="#E2E6EB"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientTransform="translate(400 500) rotate(90) scale(390)">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="strap" x1="327" y1="74" x2="483" y2="926" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#30343A"/>
+      <stop offset=".48" stop-color="#17191D"/>
+      <stop offset="1" stop-color="#2B2E33"/>
+    </linearGradient>
+    <linearGradient id="case" x1="205" y1="315" x2="612" y2="692" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F3F4F5"/>
+      <stop offset=".18" stop-color="#A9AFB5"/>
+      <stop offset=".48" stop-color="#F1F2F3"/>
+      <stop offset=".78" stop-color="#7C838B"/>
+      <stop offset="1" stop-color="#D7DADD"/>
+    </linearGradient>
+    <linearGradient id="bezel" x1="249" y1="348" x2="562" y2="658" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B3F44"/>
+      <stop offset=".5" stop-color="#101216"/>
+      <stop offset="1" stop-color="#292D32"/>
+    </linearGradient>
+    <radialGradient id="screen" cx="0" cy="0" r="1" gradientTransform="translate(351 428) rotate(49) scale(326)">
+      <stop stop-color="#1A2028"/>
+      <stop offset=".5" stop-color="#07090C"/>
+      <stop offset="1"/>
+    </radialGradient>
+    <linearGradient id="glass" x1="267" y1="365" x2="509" y2="626" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity=".18"/>
+      <stop offset=".38" stop-color="#FFFFFF" stop-opacity=".02"/>
+      <stop offset="1" stop-color="#70B7FF" stop-opacity=".06"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-25%" width="170%" height="175%">
+      <feDropShadow dx="0" dy="28" stdDeviation="30" flood-color="#20242A" flood-opacity=".28"/>
+    </filter>
+    <filter id="softShadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity=".35"/>
+    </filter>
+    <clipPath id="displayClip">
+      <rect x="251" y="354" width="298" height="298" rx="72"/>
+    </clipPath>
+  </defs>
+
+  <rect width="800" height="1000" rx="48" fill="url(#background)"/>
+  <rect width="800" height="1000" rx="48" fill="url(#halo)"/>
+  <ellipse cx="400" cy="882" rx="210" ry="38" fill="#626A73" opacity=".14"/>
+
+  <!-- Fluoroelastomer-style strap -->
+  <g filter="url(#softShadow)">
+    <path d="M323 95C323 66 346 42 375 42H425C454 42 477 66 477 95L465 351H335L323 95Z" fill="url(#strap)"/>
+    <path d="M335 649H465L479 904C481 934 457 958 427 958H373C343 958 319 934 321 904L335 649Z" fill="url(#strap)"/>
+    <path d="M348 92C348 78 359 67 373 67H427C441 67 452 78 452 92L443 319H357L348 92Z" fill="#0D0F12" opacity=".34"/>
+    <path d="M357 681H443L453 900C454 918 440 933 422 933H378C360 933 346 918 347 900L357 681Z" fill="#0D0F12" opacity=".3"/>
+    <circle cx="400" cy="785" r="12" fill="#07090B"/>
+    <circle cx="400" cy="830" r="12" fill="#07090B"/>
+    <circle cx="400" cy="875" r="12" fill="#07090B"/>
+  </g>
+
+  <!-- Side button and digital crown -->
+  <g filter="url(#softShadow)">
+    <rect x="588" y="424" width="25" height="90" rx="12.5" fill="#70777E"/>
+    <circle cx="608" cy="385" r="37" fill="url(#case)"/>
+    <circle cx="608" cy="385" r="29" fill="none" stroke="#666D74" stroke-width="2"/>
+    <path d="M594 367L622 403M590 377L614 408M603 361L628 391M589 389L603 407M615 363L629 379" stroke="#696F75" stroke-width="2" opacity=".7"/>
+  </g>
+
+  <!-- Watch case -->
+  <g filter="url(#shadow)">
+    <rect x="192" y="290" width="416" height="416" rx="108" fill="url(#case)"/>
+    <rect x="208" y="306" width="384" height="384" rx="96" fill="url(#bezel)"/>
+    <rect x="227" y="325" width="346" height="346" rx="84" fill="url(#screen)"/>
+    <rect x="228" y="326" width="344" height="344" rx="83" fill="none" stroke="#FFFFFF" stroke-opacity=".12" stroke-width="2"/>
+  </g>
+
+  <!-- Display -->
+  <g clip-path="url(#displayClip)">
+    <rect x="251" y="354" width="298" height="298" rx="72" fill="#030405"/>
+
+    <text x="400" y="402" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="26" font-weight="700" text-anchor="middle" letter-spacing="1">10:09</text>
+    <text x="400" y="429" fill="#8A939D" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" font-weight="600" text-anchor="middle" letter-spacing="2">FRI 25</text>
+
+    <!-- Activity rings -->
+    <g transform="rotate(-90 400 525)" fill="none" stroke-linecap="round">
+      <circle cx="400" cy="525" r="76" stroke="#2E111C" stroke-width="18"/>
+      <circle cx="400" cy="525" r="76" stroke="#FF2D55" stroke-width="18" stroke-dasharray="415 478"/>
+      <circle cx="400" cy="525" r="52" stroke="#142D23" stroke-width="16"/>
+      <circle cx="400" cy="525" r="52" stroke="#B9F600" stroke-width="16" stroke-dasharray="264 327"/>
+      <circle cx="400" cy="525" r="30" stroke="#10262E" stroke-width="14"/>
+      <circle cx="400" cy="525" r="30" stroke="#00D8FF" stroke-width="14" stroke-dasharray="133 189"/>
+    </g>
+    <circle cx="400" cy="525" r="14" fill="#11151A"/>
+    <path d="M394 526L399 531L408 519" fill="none" stroke="#F8FAFC" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Complications -->
+    <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+      <g transform="translate(288 582)">
+        <circle cx="0" cy="0" r="25" fill="#11161C" stroke="#28303A"/>
+        <path d="M-7 7C-15-3-7-13 0-13C7-13 15-3 7 7L0 16L-7 7Z" fill="#FF3B30"/>
+        <circle cx="0" cy="-3" r="4" fill="#11161C"/>
+      </g>
+      <text x="288" y="624" fill="#8D969F" font-size="10" font-weight="700" text-anchor="middle">SHANGHAI</text>
+
+      <g transform="translate(512 582)">
+        <circle cx="0" cy="0" r="25" fill="#11161C" stroke="#28303A"/>
+        <path d="M-11 3A12 12 0 1 1 10 7" fill="none" stroke="#FFD60A" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="0" cy="1" r="4" fill="#FFD60A"/>
+      </g>
+      <text x="512" y="624" fill="#8D969F" font-size="10" font-weight="700" text-anchor="middle">28°</text>
+    </g>
+
+    <path d="M251 354H549V652H251Z" fill="url(#glass)" opacity=".8"/>
+    <path d="M260 369C309 347 366 348 418 360C369 389 328 431 294 484C272 518 260 541 251 555V402C251 388 254 376 260 369Z" fill="#FFFFFF" opacity=".035"/>
+  </g>
+
+  <!-- Case highlights -->
+  <path d="M236 355C250 326 275 311 309 304" fill="none" stroke="#FFFFFF" stroke-opacity=".65" stroke-width="5" stroke-linecap="round"/>
+  <path d="M558 642C545 666 524 681 496 690" fill="none" stroke="#272B30" stroke-opacity=".35" stroke-width="5" stroke-linecap="round"/>
+</svg>

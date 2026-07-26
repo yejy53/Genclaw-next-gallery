@@ -3,7 +3,13 @@ import casesJson from "@/generated/cases.json";
 export const locales = ["zh", "en"] as const;
 export type Locale = (typeof locales)[number];
 
-export const categoryIds = ["web", "poster", "slide", "infographic"] as const;
+export const categoryIds = [
+  "web",
+  "poster",
+  "slide",
+  "infographic",
+  "svg",
+] as const;
 export type CategoryId = (typeof categoryIds)[number];
 
 export type LocalizedText = {
@@ -54,7 +60,6 @@ export const copy = {
     introTitle: "把提示词，转化为可交互的视觉结果。",
     introBody:
       "收录 Web、海报、演示页与信息图案例。每个案例都保留原始提示词、生成方式与冻结结果，便于审阅与横向比较。",
-    heroSubtitle: "生成式视觉实验档案。\n每个案例都可复现、可交互、可对比。",
     enterArchive: "进入档案",
     featuredEyebrow: "精选作品",
     selected: "精选案例",
@@ -72,6 +77,7 @@ export const copy = {
     ourResult: "当前结果",
     codingAgent: "对比基线",
     noBaseline: "该案例暂未收录对比基线结果。",
+    noPrompt: "该案例暂未收录原始 Prompt。",
     model: "模型",
     parameters: "参数",
     noCases: "该分类暂时没有公开案例。",
@@ -91,12 +97,14 @@ export const copy = {
       poster: "海报",
       slide: "PPT / Slide",
       infographic: "信息图",
+      svg: "SVG",
     },
     categoryDescriptions: {
       web: "可直接交互、拖动与改变视口的网页作品。",
       poster: "强调版式、文字准确度与视觉冲击力的平面实验。",
       slide: "面向汇报场景的 16:9 单页演示与数据叙事。",
       infographic: "将结构、流程与数据压缩成清晰的视觉信息。",
+      svg: "以矢量输出的图形与图标系统，可无损缩放。",
     },
   },
   en: {
@@ -114,8 +122,6 @@ export const copy = {
     introTitle: "Turning prompts into interactive visual outcomes.",
     introBody:
       "A curated archive of web, poster, slide, and infographic experiments. Each case preserves its original prompt, production method, and frozen outputs for review and comparison.",
-    heroSubtitle:
-      "An archive of generative visual studies.\nEvery case is reproducible, interactive, and comparable.",
     enterArchive: "Enter the archive",
     featuredEyebrow: "Featured Work",
     selected: "Selected Cases",
@@ -133,6 +139,7 @@ export const copy = {
     ourResult: "Current Result",
     codingAgent: "Baseline",
     noBaseline: "No comparison baseline has been captured for this case yet.",
+    noPrompt: "No original prompt has been recorded for this case yet.",
     model: "Model",
     parameters: "Parameters",
     noCases: "No public cases are available in this category yet.",
@@ -152,12 +159,14 @@ export const copy = {
       poster: "Poster",
       slide: "PPT / Slide",
       infographic: "Infographic",
+      svg: "SVG",
     },
     categoryDescriptions: {
       web: "Interactive web pieces with draggable content and responsive viewport previews.",
       poster: "Graphic experiments focused on typography, hierarchy, and visual impact.",
       slide: "16:9 presentation pages designed for concise data storytelling.",
       infographic: "Clear visual systems for structures, processes, and data.",
+      svg: "Vector graphics and icon systems that scale losslessly.",
     },
   },
 } as const;

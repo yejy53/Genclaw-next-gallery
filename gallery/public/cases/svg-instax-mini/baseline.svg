@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" role="img" aria-labelledby="title desc">
+  <title id="title">Instax Mini instant camera</title>
+  <desc id="desc">A clean vector illustration of a white Instax Mini style instant camera with a large lens, flash, viewfinder, and emerging photo.</desc>
+
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#fffef9"/>
+      <stop offset="0.58" stop-color="#f4f2eb"/>
+      <stop offset="1" stop-color="#d8d6cf"/>
+    </linearGradient>
+    <linearGradient id="side" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#cac8c1"/>
+      <stop offset="1" stop-color="#eeeae1"/>
+    </linearGradient>
+    <linearGradient id="photo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#e7e5df"/>
+    </linearGradient>
+    <radialGradient id="lensGlass" cx="42%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#7aa9b4"/>
+      <stop offset="0.24" stop-color="#294d58"/>
+      <stop offset="0.55" stop-color="#15242b"/>
+      <stop offset="1" stop-color="#05090b"/>
+    </radialGradient>
+    <radialGradient id="lensHighlight" cx="40%" cy="28%" r="62%">
+      <stop offset="0" stop-color="#d8fbff" stop-opacity=".85"/>
+      <stop offset=".2" stop-color="#86dce9" stop-opacity=".23"/>
+      <stop offset=".62" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#17222a" flood-opacity=".22"/>
+    </filter>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#17222a" flood-opacity=".23"/>
+    </filter>
+    <clipPath id="photoWindow">
+      <rect x="340" y="567" width="220" height="70" rx="3"/>
+    </clipPath>
+  </defs>
+
+  <!-- emerging instant print -->
+  <g filter="url(#softShadow)" transform="rotate(-2 450 610)">
+    <rect x="316" y="515" width="268" height="205" rx="6" fill="url(#photo)" stroke="#c9c7c0" stroke-width="3"/>
+    <rect x="337" y="538" width="226" height="137" rx="2" fill="#8bc6c8"/>
+    <path d="M337 638 389 591l34 29 46-55 94 82v28H337Z" fill="#3c7d76"/>
+    <path d="M337 620c27-17 55-21 83-11 22 8 42 7 60-5 28-19 56-17 83 4v67H337Z" fill="#f3b66d" opacity=".84"/>
+    <circle cx="511" cy="575" r="18" fill="#ffe8a1"/>
+  </g>
+
+  <!-- camera -->
+  <g filter="url(#shadow)">
+    <!-- slim side depth -->
+    <path d="M186 224 162 250v333c0 48 30 84 73 89l27-24V267Z" fill="url(#side)" stroke="#b7b5ae" stroke-width="4"/>
+
+    <!-- main body silhouette -->
+    <path d="M239 182
+             C279 151 338 134 404 132
+             L510 132
+             C576 134 635 151 675 182
+             C706 206 724 243 724 284
+             L724 566
+             C724 620 681 664 627 664
+             L277 664
+             C223 664 180 620 180 566
+             L180 284
+             C180 243 198 206 239 182Z"
+          fill="url(#body)" stroke="#bdbbb3" stroke-width="5"/>
+
+    <!-- shoulder contours -->
+    <path d="M205 235c55-43 121-62 199-62h104c78 0 144 19 198 62" fill="none" stroke="#fff" stroke-width="8" opacity=".72"/>
+    <path d="M183 472c43 18 85 27 128 27h288c43 0 85-9 124-27" fill="none" stroke="#cbc9c1" stroke-width="4" opacity=".76"/>
+
+    <!-- film slot -->
+    <rect x="302" y="615" width="300" height="30" rx="15" fill="#b9b7b0"/>
+    <rect x="317" y="621" width="270" height="14" rx="7" fill="#34383a"/>
+
+    <!-- flash -->
+    <g>
+      <rect x="274" y="205" width="135" height="91" rx="24" fill="#d9d7cf" stroke="#aaa8a1" stroke-width="4"/>
+      <rect x="291" y="220" width="101" height="57" rx="12" fill="#e9eee9" stroke="#9ba19e" stroke-width="3"/>
+      <path d="M302 229h79M302 241h79M302 253h79M302 265h79" stroke="#fff" stroke-width="5" opacity=".75"/>
+      <path d="M315 222v53M340 222v53M366 222v53" stroke="#c9d0cc" stroke-width="3" opacity=".7"/>
+    </g>
+
+    <!-- viewfinder -->
+    <g>
+      <rect x="516" y="201" width="112" height="84" rx="25" fill="#d6d3ca" stroke="#aaa8a0" stroke-width="4"/>
+      <rect x="538" y="220" width="68" height="47" rx="14" fill="#1d282d"/>
+      <rect x="546" y="227" width="52" height="33" rx="10" fill="#66878d"/>
+      <path d="M553 231h29c-6 5-12 9-23 15-6 3-10-8-6-15Z" fill="#d8ffff" opacity=".5"/>
+    </g>
+
+    <!-- exposure sensor -->
+    <circle cx="650" cy="321" r="19" fill="#c5c2b9" stroke="#999790" stroke-width="4"/>
+    <circle cx="650" cy="321" r="10" fill="#31383a"/>
+
+    <!-- shutter -->
+    <g>
+      <circle cx="236" cy="331" r="38" fill="#d8d5cc" stroke="#a5a39c" stroke-width="4"/>
+      <circle cx="236" cy="331" r="26" fill="#faf8f1" stroke="#c2c0b8" stroke-width="3"/>
+      <path d="M222 327c5-9 15-13 25-8" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+    </g>
+
+    <!-- lens mounting plate -->
+    <circle cx="454" cy="405" r="178" fill="#e4e1d8" stroke="#b4b1aa" stroke-width="5"/>
+    <circle cx="454" cy="405" r="158" fill="#f8f6ee" stroke="#c6c3bb" stroke-width="5"/>
+    <circle cx="454" cy="405" r="139" fill="#23282a" stroke="#0e1112" stroke-width="7"/>
+    <circle cx="454" cy="405" r="115" fill="#4a5051" stroke="#7b7f7e" stroke-width="5"/>
+    <circle cx="454" cy="405" r="91" fill="url(#lensGlass)" stroke="#111719" stroke-width="7"/>
+    <circle cx="454" cy="405" r="75" fill="url(#lensHighlight)"/>
+    <ellipse cx="422" cy="371" rx="24" ry="13" transform="rotate(-26 422 371)" fill="#e6ffff" opacity=".45"/>
+    <circle cx="454" cy="405" r="129" fill="none" stroke="#ecebe6" stroke-width="3" stroke-dasharray="2 9"/>
+
+    <!-- lens labels -->
+    <path id="topArc" d="M356 405a98 98 0 0 1 196 0" fill="none"/>
+    <text fill="#f3f1e9" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="3">
+      <textPath href="#topArc" startOffset="50%" text-anchor="middle">INSTAX LENS</textPath>
+    </text>
+    <text x="454" y="532" text-anchor="middle" fill="#686965" font-family="Arial, Helvetica, sans-serif" font-size="15" letter-spacing="2">60mm FOCUS RANGE</text>
+
+    <!-- logo -->
+    <g transform="translate(611 418) rotate(90)">
+      <text x="0" y="0" text-anchor="middle" fill="#4f95aa" font-family="Arial Rounded MT Bold, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="1">instax</text>
+      <text x="0" y="22" text-anchor="middle" fill="#77756f" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" letter-spacing="3">mini</text>
+    </g>
+
+    <!-- small indicator -->
+    <circle cx="270" cy="459" r="9" fill="#74aa9b" stroke="#aaa79e" stroke-width="3"/>
+    <path d="M244 489h54" stroke="#aaa79e" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- lower face highlights -->
+    <path d="M215 553c20 53 45 69 90 73" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity=".7"/>
+    <path d="M690 548c-10 42-34 68-70 79" fill="none" stroke="#c2c0b8" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+  </g>
+</svg>

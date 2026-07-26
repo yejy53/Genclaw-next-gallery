@@ -77,7 +77,13 @@ def validate_case(item: dict[str, Any]) -> None:
     slug = item.get("slug")
     if not isinstance(slug, str) or not SAFE_SLUG.fullmatch(slug):
         raise ValueError(f"Invalid case slug: {slug!r}")
-    if item.get("category") not in {"web", "poster", "slide", "infographic"}:
+    if item.get("category") not in {
+        "web",
+        "poster",
+        "slide",
+        "infographic",
+        "svg",
+    }:
         raise ValueError(f"Invalid category for {slug}")
     if not item.get("results"):
         raise ValueError(f"Case must contain at least one result: {slug}")

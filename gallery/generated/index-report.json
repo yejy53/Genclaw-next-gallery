@@ -1,16 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-24T17:15:30.327041+00:00",
-  "caseCount": 13,
-  "resultCount": 14,
-  "preservedCases": [
-    "nvidia-fy2025-growth",
-    "nvidia-fy2025-growth-b",
-    "nvidia-fy2025-growth-c",
-    "tesla-vs-byd-slide",
-    "tesla-vs-byd-slide-b",
-    "tesla-vs-byd-slide-c"
-  ],
+  "generatedAt": "2026-07-26T15:42:30.389148+00:00",
+  "caseCount": 19,
+  "resultCount": 22,
+  "preservedCases": [],
   "copiedSources": [
     {
       "case": "robot-hero-selector",
@@ -41,6 +34,126 @@
       "case": "microscopic-life-atlas",
       "role": "result:v2",
       "source": "gallery/content/sources/web/microscopic-life-atlas/app"
+    },
+    {
+      "case": "spotify-music-interface",
+      "role": "cover",
+      "source": "gallery/content/sources/web/spotify-music-interface/cover.png"
+    },
+    {
+      "case": "spotify-music-interface",
+      "role": "result:v1",
+      "source": "gallery/content/sources/web/spotify-music-interface/app"
+    },
+    {
+      "case": "minecraft-encyclopedia",
+      "role": "cover",
+      "source": "gallery/content/sources/web/minecraft-encyclopedia/cover.png"
+    },
+    {
+      "case": "minecraft-encyclopedia",
+      "role": "result:v1",
+      "source": "gallery/content/sources/web/minecraft-encyclopedia/app"
+    },
+    {
+      "case": "pizza-restaurant-site",
+      "role": "cover",
+      "source": "gallery/content/sources/web/pizza-restaurant-site/cover.png"
+    },
+    {
+      "case": "pizza-restaurant-site",
+      "role": "result:v1",
+      "source": "gallery/content/sources/web/pizza-restaurant-site/app"
+    },
+    {
+      "case": "poster-shanchuan-tea-launch",
+      "role": "cover",
+      "source": "gallery/content/sources/poster/poster-shanchuan-tea-launch/v2.png"
+    },
+    {
+      "case": "poster-shanchuan-tea-launch",
+      "role": "result:v2",
+      "source": "gallery/content/sources/poster/poster-shanchuan-tea-launch/v2.png"
+    },
+    {
+      "case": "poster-shanchuan-tea-launch",
+      "role": "result:imaginer",
+      "source": "gallery/content/sources/poster/poster-shanchuan-tea-launch/imaginer.png"
+    },
+    {
+      "case": "poster-shanchuan-tea-launch",
+      "role": "baseline",
+      "source": "gallery/content/sources/poster/poster-shanchuan-tea-launch/t0.png"
+    },
+    {
+      "case": "poster-vogue-quiet-power",
+      "role": "cover",
+      "source": "gallery/content/sources/poster/poster-vogue-quiet-power/v2.png"
+    },
+    {
+      "case": "poster-vogue-quiet-power",
+      "role": "result:v2",
+      "source": "gallery/content/sources/poster/poster-vogue-quiet-power/v2.png"
+    },
+    {
+      "case": "poster-vogue-quiet-power",
+      "role": "result:imaginer",
+      "source": "gallery/content/sources/poster/poster-vogue-quiet-power/imaginer.png"
+    },
+    {
+      "case": "poster-vogue-quiet-power",
+      "role": "baseline",
+      "source": "gallery/content/sources/poster/poster-vogue-quiet-power/t0.png"
+    },
+    {
+      "case": "poster-chongqing-rain-night",
+      "role": "cover",
+      "source": "gallery/content/sources/poster/poster-chongqing-rain-night/v2.png"
+    },
+    {
+      "case": "poster-chongqing-rain-night",
+      "role": "result:v2",
+      "source": "gallery/content/sources/poster/poster-chongqing-rain-night/v2.png"
+    },
+    {
+      "case": "poster-chongqing-rain-night",
+      "role": "result:imaginer",
+      "source": "gallery/content/sources/poster/poster-chongqing-rain-night/imaginer.png"
+    },
+    {
+      "case": "poster-chongqing-rain-night",
+      "role": "baseline",
+      "source": "gallery/content/sources/poster/poster-chongqing-rain-night/t0.png"
+    },
+    {
+      "case": "oneiro-agent-architecture",
+      "role": "cover",
+      "source": "gallery/content/sources/slide/oneiro-agent-architecture/figure.png"
+    },
+    {
+      "case": "oneiro-agent-architecture",
+      "role": "result:figure",
+      "source": "gallery/content/sources/slide/oneiro-agent-architecture/figure.png"
+    },
+    {
+      "case": "urban-mobility-keynote",
+      "role": "cover",
+      "source": "gallery/content/sources/slide/urban-mobility-keynote/figure.png"
+    },
+    {
+      "case": "urban-mobility-keynote",
+      "role": "result:figure",
+      "source": "gallery/content/sources/slide/urban-mobility-keynote/figure.png"
+    },
+    {
+      "case": "salt-lake-restoration",
+      "role": "cover",
+      "source": "gallery/content/sources/slide/salt-lake-restoration/figure.png"
+    },
+    {
+      "case": "salt-lake-restoration",
+      "role": "result:figure",
+      "source": "gallery/content/sources/slide/salt-lake-restoration/figure.png"
     },
     {
       "case": "qinghua-porcelain-atlas",
@@ -101,6 +214,51 @@
       "case": "iceberg-model-card",
       "role": "baseline",
       "source": "gallery/content/sources/infographic/iceberg-model-card/baseline.png"
+    },
+    {
+      "case": "svg-apple-watch",
+      "role": "cover",
+      "source": "gallery/content/sources/svg/svg-apple-watch/ours.svg"
+    },
+    {
+      "case": "svg-apple-watch",
+      "role": "result:ours",
+      "source": "gallery/content/sources/svg/svg-apple-watch/ours.svg"
+    },
+    {
+      "case": "svg-apple-watch",
+      "role": "baseline",
+      "source": "gallery/content/sources/svg/svg-apple-watch/theirs.svg"
+    },
+    {
+      "case": "svg-instax-mini",
+      "role": "cover",
+      "source": "gallery/content/sources/svg/svg-instax-mini/ours.svg"
+    },
+    {
+      "case": "svg-instax-mini",
+      "role": "result:ours",
+      "source": "gallery/content/sources/svg/svg-instax-mini/ours.svg"
+    },
+    {
+      "case": "svg-instax-mini",
+      "role": "baseline",
+      "source": "gallery/content/sources/svg/svg-instax-mini/theirs.svg"
+    },
+    {
+      "case": "svg-switch2",
+      "role": "cover",
+      "source": "gallery/content/sources/svg/svg-switch2/ours.svg"
+    },
+    {
+      "case": "svg-switch2",
+      "role": "result:ours",
+      "source": "gallery/content/sources/svg/svg-switch2/ours.svg"
+    },
+    {
+      "case": "svg-switch2",
+      "role": "baseline",
+      "source": "gallery/content/sources/svg/svg-switch2/theirs.svg"
     }
   ],
   "notes": [

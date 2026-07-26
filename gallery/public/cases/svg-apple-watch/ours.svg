@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Midnight smart watch product illustration</title>
+  <desc id="desc">An original rounded-square smart watch with a graphite metal case, dark sport band, colorful progress arcs, digital time, weather detail, and a cyan heartbeat graph.</desc>
+
+  <defs>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#171a1f"/>
+      <stop offset=".45" stop-color="#33383f"/>
+      <stop offset="1" stop-color="#111419"/>
+    </linearGradient>
+    <linearGradient id="bandShine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#ffffff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="case" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#899098"/>
+      <stop offset=".18" stop-color="#333940"/>
+      <stop offset=".52" stop-color="#101318"/>
+      <stop offset=".82" stop-color="#4c535b"/>
+      <stop offset="1" stop-color="#20252b"/>
+    </linearGradient>
+    <linearGradient id="bezel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#525861"/>
+      <stop offset=".16" stop-color="#1c2026"/>
+      <stop offset=".8" stop-color="#07090c"/>
+      <stop offset="1" stop-color="#30363d"/>
+    </linearGradient>
+    <radialGradient id="glass" cx=".28" cy=".13" r=".95">
+      <stop offset="0" stop-color="#202b35"/>
+      <stop offset=".32" stop-color="#090c10"/>
+      <stop offset="1" stop-color="#020305"/>
+    </radialGradient>
+    <linearGradient id="glassGlint" x1="0" y1="0" x2=".75" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".17"/>
+      <stop offset=".42" stop-color="#ffffff" stop-opacity=".025"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="coral" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff4d68"/>
+      <stop offset="1" stop-color="#ff8a5c"/>
+    </linearGradient>
+    <linearGradient id="lime" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#98e63b"/>
+      <stop offset="1" stop-color="#d7f64a"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4ae5f2"/>
+      <stop offset=".7" stop-color="#5dc7ff"/>
+      <stop offset="1" stop-color="#9a82ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-25%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="13" stdDeviation="14" flood-color="#05070a" flood-opacity=".42"/>
+    </filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="screenClip">
+      <rect x="126" y="132" width="260" height="272" rx="57"/>
+    </clipPath>
+  </defs>
+
+  <!-- Continuous sport band -->
+  <g aria-label="Charcoal sport band">
+    <path d="M183 25c0-10 8-17 18-17h110c10 0 18 7 18 17l-7 113H190Z" fill="url(#band)"/>
+    <path d="M198 20h116l-5 97H203Z" fill="url(#bandShine)" opacity=".55"/>
+    <path d="M185 390h142l9 86c2 17-11 28-28 28H204c-17 0-30-11-28-28Z" fill="url(#band)"/>
+    <path d="M203 402h106l8 82H195Z" fill="url(#bandShine)" opacity=".38"/>
+    <g fill="#090b0e" opacity=".75">
+      <ellipse cx="256" cy="448" rx="12" ry="4.6"/>
+      <ellipse cx="256" cy="474" rx="12" ry="4.6"/>
+      <ellipse cx="256" cy="496" rx="12" ry="4.6"/>
+    </g>
+  </g>
+
+  <!-- Side controls behind the main body -->
+  <g aria-label="Digital crown and side button" filter="url(#shadow)">
+    <rect x="398" y="205" width="22" height="70" rx="11" fill="#171b20" stroke="#59616a" stroke-width="2"/>
+    <rect x="405" y="297" width="15" height="54" rx="7.5" fill="url(#case)" stroke="#717983" stroke-width="1.5"/>
+    <rect x="400" y="209" width="28" height="62" rx="14" fill="url(#case)" stroke="#12151a" stroke-width="2"/>
+    <g stroke="#9ba2a9" stroke-width="1" opacity=".6">
+      <path d="M404 217h20M402 223h24M401 229h26M400 235h28M400 241h28M400 247h28M401 253h26M402 259h24M404 265h20"/>
+    </g>
+    <circle cx="414" cy="240" r="8.5" fill="#30363d" stroke="#89919a" stroke-width="1.2"/>
+  </g>
+
+  <!-- Watch case -->
+  <g filter="url(#shadow)">
+    <rect x="96" y="104" width="312" height="326" rx="78" fill="url(#case)"/>
+    <rect x="99" y="107" width="306" height="320" rx="75" fill="none" stroke="#b9c0c6" stroke-opacity=".42" stroke-width="1.5"/>
+    <rect x="108" y="116" width="288" height="300" rx="68" fill="url(#bezel)"/>
+    <rect x="119" y="125" width="274" height="286" rx="62" fill="#010204"/>
+    <rect x="126" y="132" width="260" height="272" rx="57" fill="url(#glass)"/>
+  </g>
+
+  <!-- Original watch face -->
+  <g clip-path="url(#screenClip)">
+    <path d="M138 143h224c-53 11-93 31-123 64-31 34-52 80-60 142h-41Z" fill="url(#glassGlint)"/>
+
+    <!-- top markers and original weather glyph -->
+    <g fill="#84909a">
+      <circle cx="180" cy="167" r="2.5"/>
+      <circle cx="201" cy="157" r="2.5" fill="#53d8e8"/>
+      <circle cx="224" cy="151" r="2.5"/>
+      <circle cx="247" cy="148" r="2.5"/>
+      <circle cx="270" cy="148" r="2.5"/>
+      <circle cx="293" cy="152" r="2.5"/>
+      <circle cx="316" cy="160" r="2.5" fill="#53d8e8"/>
+      <circle cx="336" cy="171" r="2.5"/>
+    </g>
+    <g transform="translate(249 165)">
+      <circle cx="0" cy="0" r="8" fill="#ffd659"/>
+      <g stroke="#ffd659" stroke-width="2.5" stroke-linecap="round">
+        <path d="M0-14v-5M0 14v5M-14 0h-5M14 0h5M-10-10l-4-4M10-10l4-4"/>
+      </g>
+      <path d="M-5 17c0-6 5-11 11-11 5 0 9 3 10 7 5 0 9 4 9 9s-4 9-9 9H-7c-5 0-9-4-9-9 0-4 3-8 7-9 1-3 2-5 4-6Z" fill="#f4f7fa"/>
+    </g>
+
+    <!-- time -->
+    <text x="256" y="247" fill="#f4f6f8" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-size="57" font-weight="300" letter-spacing="-2.5">10:09</text>
+    <text x="256" y="269" fill="#81909c" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-size="8.5" font-weight="600" letter-spacing="2.2">SUNDAY · JUL 26</text>
+
+    <!-- progress arcs -->
+    <g fill="none" stroke-linecap="round">
+      <path d="M156 337A39 39 0 1 1 219 344" stroke="#252c32" stroke-width="10"/>
+      <path d="M156 337A39 39 0 1 1 217 346" stroke="url(#coral)" stroke-width="10"/>
+      <circle cx="217" cy="346" r="4.5" fill="#ff795d" stroke="none"/>
+
+      <path d="M217 344A39 39 0 1 1 280 339" stroke="#252c32" stroke-width="10"/>
+      <path d="M217 344A39 39 0 1 1 279 342" stroke="url(#lime)" stroke-width="10"/>
+      <circle cx="279" cy="342" r="4.5" fill="#c7f247" stroke="none"/>
+
+      <path d="M279 342A39 39 0 1 1 347 332" stroke="#252c32" stroke-width="10"/>
+      <path d="M279 342A39 39 0 1 1 346 337" stroke="url(#cyan)" stroke-width="10"/>
+      <circle cx="346" cy="337" r="4.5" fill="#8d8dfb" stroke="none"/>
+    </g>
+
+    <!-- compact complication symbols -->
+    <path d="M184 318c-3-5-11-3-11 3 0 6 11 12 11 12s11-6 11-12c0-6-8-8-11-3Z" fill="#ff6770"/>
+    <g stroke="#c7f247" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <circle cx="249" cy="314" r="3" fill="#c7f247" stroke="none"/>
+      <path d="M247 319l-5 8 7 4 3 8M247 320l8 3 4-5M242 327l-5 9"/>
+    </g>
+    <path d="M320 315c-8 4-11 14-5 21 5 7 15 8 22 2-8 1-15-5-15-13 0-4 1-7 4-10-2-1-4-1-6 0Z" fill="#9b8bff"/>
+
+    <!-- heartbeat trace -->
+    <g filter="url(#softGlow)">
+      <path d="M154 375h18l6-6 7 10 8-4 7 0 6-16 9 33 10-25 8 8h8l7-12 8 17 7-5h8l7 0 7-7 7 14 8-7 8 0h19" fill="none" stroke="#55ddea" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- footer -->
+    <g transform="translate(222 393)" fill="#6a737b">
+      <circle cx="0" cy="0" r="3"/>
+      <circle cx="17" cy="0" r="3"/>
+      <circle cx="34" cy="0" r="3" fill="#53d8e8"/>
+      <circle cx="51" cy="0" r="3"/>
+      <circle cx="68" cy="0" r="3"/>
+    </g>
+  </g>
+
+  <!-- glass and case highlights -->
+  <rect x="127" y="133" width="258" height="270" rx="56" fill="none" stroke="#9aa5ae" stroke-opacity=".18" stroke-width="1.5"/>
+  <path d="M154 121c-22 4-39 20-47 42" fill="none" stroke="#f2f6f8" stroke-opacity=".42" stroke-width="2" stroke-linecap="round"/>
+  <path d="M364 390c15-12 24-29 28-49" fill="none" stroke="#88919a" stroke-opacity=".4" stroke-width="2" stroke-linecap="round"/>
+</svg>

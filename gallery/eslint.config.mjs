@@ -12,10 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
-    // Imported, pre-built interactive case bundles. These contain minified
-    // vendor JS and binary GLB/MP4 assets, not gallery source code.
-    "content/sources/web/*/app/**",
-    "public/cases/**/v2/**",
+    // Curated case material and its published copies: imported pre-built
+    // bundles of minified vendor JS plus binary assets, not gallery source.
+    "content/sources/**",
+    "public/cases/**",
   ]),
 ]);
 

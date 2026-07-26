@@ -84,9 +84,15 @@ export default async function CasePage({
                 <h2>{t.prompt}</h2>
               </div>
               <div className="wb-prompt-body">
-                <p className="wb-prompt-text">{item.promptOriginal}</p>
-                {showTranslation && (
-                  <p className="wb-prompt-translation">{translation}</p>
+                {item.promptOriginal.trim() ? (
+                  <>
+                    <p className="wb-prompt-text">{item.promptOriginal}</p>
+                    {showTranslation && (
+                      <p className="wb-prompt-translation">{translation}</p>
+                    )}
+                  </>
+                ) : (
+                  <p className="wb-prompt-empty">{t.noPrompt}</p>
                 )}
                 <div className="tag-list tag-list-left">
                   {item.tags.map((tag) => (

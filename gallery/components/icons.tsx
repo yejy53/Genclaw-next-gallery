@@ -123,8 +123,39 @@ export function InfographicIcon({ size = 16, className }: IconProps) {
   );
 }
 
+export function VectorIcon({ size = 16, className }: IconProps) {
+  return (
+    <svg {...base(size, className)}>
+      <path
+        d="M6 18c0-6 12-6 12-12"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="1.4"
+      />
+      <rect
+        height="4"
+        rx="0.8"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        width="4"
+        x="3"
+        y="17"
+      />
+      <rect
+        height="4"
+        rx="0.8"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        width="4"
+        x="17"
+        y="3"
+      />
+    </svg>
+  );
+}
+
 export function categoryIcon(
-  id: "web" | "poster" | "slide" | "infographic",
+  id: "web" | "poster" | "slide" | "infographic" | "svg",
   size = 15
 ) {
   switch (id) {
@@ -136,6 +167,8 @@ export function categoryIcon(
       return <SlideIcon size={size} />;
     case "infographic":
       return <InfographicIcon size={size} />;
+    case "svg":
+      return <VectorIcon size={size} />;
   }
 }
 

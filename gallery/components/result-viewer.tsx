@@ -102,7 +102,13 @@ function HtmlResult({
   );
 }
 
-function ImageResult({ result, locale }: { result: GalleryResult; locale: Locale }) {
+function ImageResult({
+  result,
+  locale,
+}: {
+  result: GalleryResult;
+  locale: Locale;
+}) {
   const t = copy[locale];
   return (
     <>
@@ -158,25 +164,27 @@ export function ResultStage({
         ) : (
           <ImageResult result={current} locale={locale} />
         )}
-        <div className="result-metadata">
-          {current.model && (
-            <div>
-              <span>{t.model}</span>
-              <strong>{current.model}</strong>
-            </div>
-          )}
-          {current.parameters && (
-            <div>
-              <span>{t.parameters}</span>
-              <strong>
-                {Object.entries(current.parameters)
-                  .map(([key, value]) => `${key}: ${value}`)
-                  .join(" · ")}
-              </strong>
-            </div>
-          )}
-          {current.note && <p>{localize(current.note, locale)}</p>}
-        </div>
+        {(current.model || current.parameters || current.note) && (
+          <div className="result-metadata">
+            {current.model && (
+              <div>
+                <span>{t.model}</span>
+                <strong>{current.model}</strong>
+              </div>
+            )}
+            {current.parameters && (
+              <div>
+                <span>{t.parameters}</span>
+                <strong>
+                  {Object.entries(current.parameters)
+                    .map(([key, value]) => `${key}: ${value}`)
+                    .join(" · ")}
+                </strong>
+              </div>
+            )}
+            {current.note && <p>{localize(current.note, locale)}</p>}
+          </div>
+        )}
       </div>
     </div>
   );

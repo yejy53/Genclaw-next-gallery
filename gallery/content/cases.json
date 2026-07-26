@@ -2,7 +2,10 @@
   {
     "slug": "robot-hero-selector",
     "category": "web",
-    "title": { "zh": "科幻机器人英雄选择页", "en": "Sci-Fi Robot Hero Selector" },
+    "title": {
+      "zh": "科幻机器人英雄选择页",
+      "en": "Sci-Fi Robot Hero Selector"
+    },
     "summary": {
       "zh": "可交互英雄选择页：中央真实 3D 机器人可拖动旋转，切换攻/防/辅三个英雄并联动属性、技能、主题色与皮肤换色，右下角部署确认弹窗。",
       "en": "An interactive hero-selection page: a real 3D robot you can drag to rotate at center, switching attack / defense / support heroes with synced stats, skills, theme colour and skins, plus a deploy confirmation dialog."
@@ -14,32 +17,35 @@
     },
     "coverAspect": "landscape",
     "featured": false,
-    "tags": ["Web", "Interactive 3D", "WebGL"],
+    "tags": [
+      "Web",
+      "Interactive 3D",
+      "WebGL"
+    ],
     "year": "2026",
     "results": [
       {
         "id": "v2",
         "producer": "GenClaw-Next · V2",
-        "kind": "html",
-        "model": "Gemini · configured backend",
-        "parameters": { "stack": "React + Three.js", "assets": "3 × Tripo3D GLB", "gate": "视觉 96 · 硬门 100" },
-        "note": {
-          "zh": "真实 3D 资产集成：三英雄切换、拖动旋转、皮肤换色、部署弹窗；后置确定性硬门 100、最终视觉质量门 96 通过。可在下方直接拖动交互。",
-          "en": "Real 3D-asset integration: hero switching, drag-rotate, skin recolour and a deploy dialog; passed the deterministic hard gate (100) and final visual-quality gate (96). Drag to interact below."
-        }
+        "kind": "html"
       }
     ],
     "sources": {
       "cover": "gallery/content/sources/web/robot-hero-selector/cover.png",
       "results": {
-        "v2": { "bundle": "gallery/content/sources/web/robot-hero-selector/app" }
+        "v2": {
+          "bundle": "gallery/content/sources/web/robot-hero-selector/app"
+        }
       }
     }
   },
   {
     "slug": "animation-studio-loop",
     "category": "web",
-    "title": { "zh": "动画工作室循环视频首页", "en": "Animation Studio Loop" },
+    "title": {
+      "zh": "动画工作室循环视频首页",
+      "en": "Animation Studio Loop"
+    },
     "summary": {
       "zh": "吉卜力风格动画工作室首页：Hero 区为真实 Seedance T2V 生成的 10 秒循环背景视频，叠加简洁导航、标题与行动号召按钮。",
       "en": "A Ghibli-inspired studio homepage whose hero uses a real Seedance text-to-video 10s looping background, overlaid with a clean nav, headline and call-to-action."
@@ -51,32 +57,35 @@
     },
     "coverAspect": "landscape",
     "featured": true,
-    "tags": ["Web", "Video", "Seedance T2V"],
+    "tags": [
+      "Web",
+      "Video",
+      "Seedance T2V"
+    ],
     "year": "2026",
     "results": [
       {
         "id": "v2",
         "producer": "GenClaw-Next · V2",
-        "kind": "html",
-        "model": "Gemini · configured backend",
-        "parameters": { "stack": "React + Vite", "asset": "Seedance T2V · 10s · 720p · 16:9", "gate": "90（attempt 2 通过）" },
-        "note": {
-          "zh": "真实调用 generate_video 得到 4.5MB Seedance T2V MP4，以 <video loop> 集成为循环背景；attempt 2 达 90 分并通过。下方为该通过候选，视频会自动循环播放。",
-          "en": "A real generate_video call produced a 4.5 MB Seedance T2V MP4, integrated as a <video loop> background; attempt 2 scored 90 and passed. The passing candidate is embedded below and loops automatically."
-        }
+        "kind": "html"
       }
     ],
     "sources": {
       "cover": "gallery/content/sources/web/animation-studio-loop/cover.png",
       "results": {
-        "v2": { "bundle": "gallery/content/sources/web/animation-studio-loop/app" }
+        "v2": {
+          "bundle": "gallery/content/sources/web/animation-studio-loop/app"
+        }
       }
     }
   },
   {
     "slug": "microscopic-life-atlas",
     "category": "web",
-    "title": { "zh": "微观生命 3D 图鉴", "en": "Microscopic Life 3D Atlas" },
+    "title": {
+      "zh": "微观生命 3D 图鉴",
+      "en": "Microscopic Life 3D Atlas"
+    },
     "summary": {
       "zh": "交互式生物图鉴：植物细胞、动物细胞、细菌、病毒四个真实生成的 GLB 可切换、拖动旋转与缩放，右侧联动结构名称与说明。",
       "en": "An interactive biology atlas: four generated GLB models — plant cell, animal cell, bacterium, virus — you can switch, drag-rotate and zoom, with a linked structure-and-description panel."
@@ -88,267 +97,420 @@
     },
     "coverAspect": "landscape",
     "featured": false,
-    "tags": ["Web", "Interactive 3D", "Education"],
+    "tags": [
+      "Web",
+      "Interactive 3D",
+      "Education"
+    ],
     "year": "2026",
     "results": [
       {
         "id": "v2",
         "producer": "GenClaw-Next · V2",
-        "kind": "html",
-        "model": "Gemini · configured backend",
-        "parameters": { "stack": "React + Three.js", "assets": "4 × generated GLB", "gate": "96（通过）" },
-        "note": {
-          "zh": "调用 generate_3d_asset 生成植物细胞、动物细胞、细菌、病毒四个真实 GLB，页面支持对象切换、拖动旋转与滚轮缩放；96 分并通过。下方可直接交互。",
-          "en": "generate_3d_asset produced four real GLBs (plant cell, animal cell, bacterium, virus); the page supports object switching, drag-rotate and wheel-zoom; scored 96 and passed. Interact directly below."
-        }
+        "kind": "html"
       }
     ],
     "sources": {
       "cover": "gallery/content/sources/web/microscopic-life-atlas/cover.png",
       "results": {
-        "v2": { "bundle": "gallery/content/sources/web/microscopic-life-atlas/app" }
+        "v2": {
+          "bundle": "gallery/content/sources/web/microscopic-life-atlas/app"
+        }
       }
     }
   },
   {
-    "slug": "nvidia-fy2025-growth",
-    "category": "poster",
-    "title": { "zh": "NVIDIA FY2025 增长图解", "en": "NVIDIA FY2025 Growth" },
-    "summary": {
-      "zh": "同一核心数据的两种代码排版结果，比较信息密度、主次层级与 88.3% 贡献关系的表达。",
-      "en": "Two code-rendered interpretations of the same core data, compared through density, hierarchy, and the 88.3% contribution story."
+    "slug": "spotify-music-interface",
+    "category": "web",
+    "title": {
+      "zh": "Spotify 风格音乐界面",
+      "en": "Spotify-style Music Interface"
     },
-    "promptOriginal": "制作一页中文数据视觉，现代科技公司财报风格，深色背景与 NVIDIA 绿色点缀。主视觉表现总营收 $130.5B、数据中心营收 $115.2B，以及数据中心占总营收 88.3%；所有文字和数字必须清晰可读。",
+    "summary": {
+      "zh": "音乐导航与歌单创建界面：8 张生成的专辑封面贯穿页面，共 26 张图、0 破图。",
+      "en": "A music navigation and playlist-creation interface; eight generated album covers run through the page, 26 images in total with no broken references."
+    },
+    "promptOriginal": "Create a user interface that resembles Spotify, focusing on music navigation and playlist creation.",
     "prompt": {
-      "zh": "制作一页中文数据视觉，现代科技公司财报风格，深色背景与 NVIDIA 绿色点缀。主视觉表现总营收 $130.5B、数据中心营收 $115.2B，以及数据中心占总营收 88.3%；所有文字和数字必须清晰可读。",
-      "en": "Create a Chinese financial data visual with a dark technology aesthetic and NVIDIA-green accents. Show total revenue of $130.5B, data-center revenue of $115.2B, and its 88.3% contribution with fully legible text."
+      "zh": "创建一个类似 Spotify 的用户界面，聚焦音乐导航与歌单创建。",
+      "en": "Create a user interface that resembles Spotify, focusing on music navigation and playlist creation."
     },
     "coverAspect": "landscape",
-    "featured": true,
-    "tags": ["Data Poster", "Typography", "Comparison"],
+    "featured": false,
+    "tags": [
+      "Web",
+      "Product UI",
+      "Asset Batch"
+    ],
     "year": "2026",
     "results": [
       {
-        "id": "layout-a",
-        "producer": "GenClaw-Next · Layout A",
-        "kind": "image",
-        "model": "Gemini · configured backend",
-        "parameters": { "render": "Pure code", "canvas": "2432 × 1856" },
-        "note": {
-          "zh": "纵向信息密度更高，指标卡与贡献图并列。",
-          "en": "A denser vertical composition with parallel metric cards and contribution chart."
+        "id": "v1",
+        "producer": "GenClaw-Next · Web Agent",
+        "kind": "html"
+      }
+    ],
+    "sources": {
+      "cover": "gallery/content/sources/web/spotify-music-interface/cover.png",
+      "results": {
+        "v1": {
+          "bundle": "gallery/content/sources/web/spotify-music-interface/app"
         }
+      }
+    }
+  },
+  {
+    "slug": "minecraft-encyclopedia",
+    "category": "web",
+    "title": {
+      "zh": "Minecraft 儿童百科",
+      "en": "Minecraft Kid-friendly Encyclopedia"
+    },
+    "summary": {
+      "zh": "21 个条目的像素风百科：分类侧栏、搜索、排序、收藏与详情面板，全部图形由 CSS 与内联 SVG 实现，未使用任何位图。",
+      "en": "A pixel-styled encyclopedia of 21 entries with a category sidebar, search, sorting, favourites and a detail panel — every graphic is CSS and inline SVG, with no bitmaps at all."
+    },
+    "promptOriginal": "A kid-friendly encyclopedia about Minecraft.",
+    "prompt": {
+      "zh": "一个面向儿童的 Minecraft 百科。",
+      "en": "A kid-friendly encyclopedia about Minecraft."
+    },
+    "coverAspect": "landscape",
+    "featured": false,
+    "tags": [
+      "Web",
+      "Product UI",
+      "CSS / SVG"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "v1",
+        "producer": "GenClaw-Next · Web Agent",
+        "kind": "html"
+      }
+    ],
+    "sources": {
+      "cover": "gallery/content/sources/web/minecraft-encyclopedia/cover.png",
+      "results": {
+        "v1": {
+          "bundle": "gallery/content/sources/web/minecraft-encyclopedia/app"
+        }
+      }
+    }
+  },
+  {
+    "slug": "pizza-restaurant-site",
+    "category": "web",
+    "title": {
+      "zh": "手工披萨餐厅营销页",
+      "en": "Wood-fired Pizza Marketing Site"
+    },
+    "summary": {
+      "zh": "Hero、口味、工序、故事与页脚俱全的营销页，12 张生成图全部真实引用、0 破图。",
+      "en": "A complete marketing page — hero, flavours, process, story and footer — whose 12 generated images are all genuinely referenced with none broken."
+    },
+    "promptOriginal": "Enjoy a slice of delicious pizza at our website, where you can explore a variety of flavors and learn about our cooking process.",
+    "prompt": {
+      "zh": "在我们的网站享用一块美味披萨：可以浏览多种口味，并了解我们的烹饪工序。",
+      "en": "Enjoy a slice of delicious pizza at our website, where you can explore a variety of flavors and learn about our cooking process."
+    },
+    "coverAspect": "landscape",
+    "featured": false,
+    "tags": [
+      "Web",
+      "Marketing",
+      "Asset Batch"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "v1",
+        "producer": "GenClaw-Next · Web Agent",
+        "kind": "html"
+      }
+    ],
+    "sources": {
+      "cover": "gallery/content/sources/web/pizza-restaurant-site/cover.png",
+      "results": {
+        "v1": {
+          "bundle": "gallery/content/sources/web/pizza-restaurant-site/app"
+        }
+      }
+    }
+  },
+  {
+    "slug": "poster-shanchuan-tea-launch",
+    "category": "poster",
+    "title": {
+      "zh": "山川茶事 · 山柚观音上市海报",
+      "en": "Shanchuan Tea · Product Launch Poster"
+    },
+    "summary": {
+      "zh": "新中式茶饮上市海报：深绿配米白与金箔，冷泡产品主图，价格、门店活动与推荐风味模块层级清晰，小字与数字均准确呈现。",
+      "en": "A New Chinese tea-launch poster in dark green, off-white and gold: a cold-brew hero above clearly tiered pricing, in-store offer and flavour modules, with accurate small text and numbers."
+    },
+    "promptOriginal": "Design a 3:4 vertical New Chinese light-luxury tea-launch poster in dark green, off-white, and gold, with rice-paper texture, restrained negative space, landscape accents, and modern layout. Hero: an appealing cold-brew tea with leaves, citrus, ice, and gold foil. Display exactly: \"山川茶事\" / \"山柚观音\" / \"冷泡系列\" / \"新品上市\"; \"一口清醒，半城入夏\" / \"限定尝鲜价\"; \"中杯 16 元\" / \"大杯 19 元\"; \"门店活动\" / \"第二杯半价\" / \"加 3 元升级轻乳版\" / \"每日前 100 名赠限定杯套\"; \"推荐风味\" / \"观音茶底 / 西柚果香 / 轻乳云顶 / 冰感回甘\"; \"活动时间 4月20日 至 5月10日\" / \"扫码点单\" / \"SHANCHUAN TEA\". Fine print: \"图片仅供参考，请以门店实际售卖为准\". Use clear promotional hierarchy, refined Chinese typography, and accurate small text, numbers, prices, and modules; avoid cheap e-commerce styling.",
+    "prompt": {
+      "zh": "设计一张 3:4 竖版新中式轻奢茶饮上市海报，配色为深绿、米白与金色，带宣纸质感、克制留白、山水点缀与现代版式。主图为一杯诱人的冷泡茶，含茶叶、柑橘、冰块与金箔。需准确呈现「山川茶事」「山柚观音」「冷泡系列」「新品上市」「一口清醒，半城入夏」「限定尝鲜价」「中杯 16 元」「大杯 19 元」「门店活动」「第二杯半价」「加 3 元升级轻乳版」「每日前 100 名赠限定杯套」「推荐风味」「观音茶底 / 西柚果香 / 轻乳云顶 / 冰感回甘」「活动时间 4月20日 至 5月10日」「扫码点单」「SHANCHUAN TEA」，以及小字「图片仅供参考，请以门店实际售卖为准」。要求促销层级清晰、中文排版精致，小字、数字、价格与模块均准确，避免廉价电商风。",
+      "en": "Design a 3:4 vertical New Chinese light-luxury tea-launch poster in dark green, off-white, and gold, with rice-paper texture, restrained negative space, landscape accents, and modern layout. Hero: an appealing cold-brew tea with leaves, citrus, ice, and gold foil. Display exactly: \"山川茶事\" / \"山柚观音\" / \"冷泡系列\" / \"新品上市\"; \"一口清醒，半城入夏\" / \"限定尝鲜价\"; \"中杯 16 元\" / \"大杯 19 元\"; \"门店活动\" / \"第二杯半价\" / \"加 3 元升级轻乳版\" / \"每日前 100 名赠限定杯套\"; \"推荐风味\" / \"观音茶底 / 西柚果香 / 轻乳云顶 / 冰感回甘\"; \"活动时间 4月20日 至 5月10日\" / \"扫码点单\" / \"SHANCHUAN TEA\". Fine print: \"图片仅供参考，请以门店实际售卖为准\". Use clear promotional hierarchy, refined Chinese typography, and accurate small text, numbers, prices, and modules; avoid cheap e-commerce styling."
+    },
+    "coverAspect": "portrait",
+    "featured": false,
+    "tags": [
+      "Poster",
+      "3:4",
+      "Chinese Typography"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "v2",
+        "producer": "GenClaw-Next · V2",
+        "kind": "image"
       },
       {
-        "id": "layout-b",
-        "producer": "GenClaw-Next · Layout B",
-        "kind": "image",
-        "model": "Gemini · configured backend",
-        "parameters": { "render": "Pure code", "canvas": "2432 × 1344" },
-        "note": {
-          "zh": "更接近 16:9 汇报页，保留单一主图与结论卡。",
-          "en": "A presentation-oriented 16:9 composition with one primary chart and an insight card."
-        }
+        "id": "imaginer",
+        "producer": "Imaginer 参考 · 非交付",
+        "kind": "image"
       }
     ],
+    "baseline": {
+      "id": "t0",
+      "producer": "对照臂 T0",
+      "kind": "image"
+    },
     "sources": {
-      "cover": "runs/20260721-032238-292363/code_text_draft/turn-032335-5dbf/final.png",
+      "cover": "gallery/content/sources/poster/poster-shanchuan-tea-launch/v2.png",
       "results": {
-        "layout-a": { "artifact": "runs/20260721-031304-0527d9/code_text_draft/turn-031406-5b9b/final.png" },
-        "layout-b": { "artifact": "runs/20260721-032238-292363/code_text_draft/turn-032335-5dbf/final.png" }
+        "v2": {
+          "artifact": "gallery/content/sources/poster/poster-shanchuan-tea-launch/v2.png"
+        },
+        "imaginer": {
+          "artifact": "gallery/content/sources/poster/poster-shanchuan-tea-launch/imaginer.png"
+        }
+      },
+      "baseline": {
+        "artifact": "gallery/content/sources/poster/poster-shanchuan-tea-launch/t0.png"
       }
     }
   },
   {
-    "slug": "nvidia-fy2025-growth-b",
+    "slug": "poster-vogue-quiet-power",
     "category": "poster",
-    "title": { "zh": "NVIDIA FY2025 增长图解 · 02", "en": "NVIDIA FY2025 Growth · 02" },
+    "title": {
+      "zh": "VOGUE Quiet Power 封面",
+      "en": "VOGUE Quiet Power Cover"
+    },
     "summary": {
-      "zh": "同一财报数据视觉的另一份冻结记录，用于演示同类结果的横向滑动浏览。",
-      "en": "Another frozen record of the same financial visual, used to demonstrate sliding across same-category results."
+      "zh": "高级时装封面：巨大白色衬线 masthead 压过人物肩线，右侧四条栏目依次排布，左下条码与刊期信息完整。",
+      "en": "A high-fashion cover: an oversized white serif masthead crosses behind the subject, four cover lines stack at the right, and the barcode and issue line sit complete at lower left."
     },
-    "promptOriginal": "制作一页中文数据视觉，现代科技公司财报风格，深色背景与 NVIDIA 绿色点缀。主视觉表现总营收 $130.5B、数据中心营收 $115.2B，以及数据中心占总营收 88.3%；所有文字和数字必须清晰可读。",
+    "promptOriginal": "Create a 3:4 high-fashion Vogue Paris/British Vogue cover. A tall medium-dark-skinned woman in her mid-thirties stands three-quarter to camera with a piercing gaze, wearing a sculptural high-collared ivory wool coat over a deep-aubergine silk slip, silver spiral earrings, sleek low chignon with one loose strand, matte warm-bronze makeup, and glossy plum lip. Muted concrete-gray seamless backdrop, cool daylight shaft from upper left, shallow depth of field; soft single-source key, subtle fill, deep cheek shadow, fine film grain. Exact crisp text: huge white serif \"VOGUE\"; top-left tiny caps \"NOVEMBER 2026 · PARIS EDITION · €9.00\"; centered bold sans \"THE QUIET POWER ISSUE\"; right stack \"THE NEW MINIMALISTS — a 40-page portfolio\", \"HOW AI TOOLS ARE REWRITING THE ATELIER\", \"MARTIN MARGIELA'S UNREVEALED ARCHIVE\", \"SKIN · INVESTMENT · WHERE THE MONEY GOES NEXT\"; bottom-left barcode code \"VG1126\".",
     "prompt": {
-      "zh": "制作一页中文数据视觉，现代科技公司财报风格，深色背景与 NVIDIA 绿色点缀。主视觉表现总营收 $130.5B、数据中心营收 $115.2B，以及数据中心占总营收 88.3%；所有文字和数字必须清晰可读。",
-      "en": "Create a Chinese financial data visual with a dark technology aesthetic and NVIDIA-green accents. Show total revenue of $130.5B, data-center revenue of $115.2B, and its 88.3% contribution with fully legible text."
+      "zh": "制作一张 3:4 高级时装封面，风格参考 Vogue Paris / British Vogue。一位三十五岁左右、中深肤色的高个女性四分之三侧身面向镜头，目光锐利，身穿雕塑感高领象牙白羊毛外套，内搭深茄色丝质吊带，佩戴银色螺旋耳环，低盘发留一缕散发，哑光暖铜色妆面配亮泽李子色唇。灰混凝土无缝背景，左上方冷调日光，浅景深；单光源柔光主光、轻微补光、深颊阴影与细腻胶片颗粒。文字须清晰准确：巨大白色衬线「VOGUE」；左上小号大写「NOVEMBER 2026 · PARIS EDITION · €9.00」；居中粗体无衬线「THE QUIET POWER ISSUE」；右侧依次为「THE NEW MINIMALISTS — a 40-page portfolio」「HOW AI TOOLS ARE REWRITING THE ATELIER」「MARTIN MARGIELA'S UNREVEALED ARCHIVE」「SKIN · INVESTMENT · WHERE THE MONEY GOES NEXT」；左下条码编号「VG1126」。",
+      "en": "Create a 3:4 high-fashion Vogue Paris/British Vogue cover. A tall medium-dark-skinned woman in her mid-thirties stands three-quarter to camera with a piercing gaze, wearing a sculptural high-collared ivory wool coat over a deep-aubergine silk slip, silver spiral earrings, sleek low chignon with one loose strand, matte warm-bronze makeup, and glossy plum lip. Muted concrete-gray seamless backdrop, cool daylight shaft from upper left, shallow depth of field; soft single-source key, subtle fill, deep cheek shadow, fine film grain. Exact crisp text: huge white serif \"VOGUE\"; top-left tiny caps \"NOVEMBER 2026 · PARIS EDITION · €9.00\"; centered bold sans \"THE QUIET POWER ISSUE\"; right stack \"THE NEW MINIMALISTS — a 40-page portfolio\", \"HOW AI TOOLS ARE REWRITING THE ATELIER\", \"MARTIN MARGIELA'S UNREVEALED ARCHIVE\", \"SKIN · INVESTMENT · WHERE THE MONEY GOES NEXT\"; bottom-left barcode code \"VG1126\"."
     },
-    "coverAspect": "landscape",
-    "featured": false,
-    "tags": ["Data Poster", "Typography", "Comparison"],
+    "coverAspect": "portrait",
+    "featured": true,
+    "tags": [
+      "Poster",
+      "3:4",
+      "Fashion Cover"
+    ],
     "year": "2026",
     "results": [
       {
-        "id": "layout-a",
-        "producer": "GenClaw-Next · Layout A",
-        "kind": "image",
-        "model": "Gemini · configured backend",
-        "parameters": { "render": "Pure code", "canvas": "2432 × 1856" },
-        "note": {
-          "zh": "复用同一素材的示例条目。",
-          "en": "A sample entry reusing the same material."
-        }
+        "id": "v2",
+        "producer": "GenClaw-Next · V2",
+        "kind": "image"
+      },
+      {
+        "id": "imaginer",
+        "producer": "Imaginer 参考 · 非交付",
+        "kind": "image"
       }
     ],
+    "baseline": {
+      "id": "t0",
+      "producer": "对照臂 T0",
+      "kind": "image"
+    },
     "sources": {
-      "cover": "runs/20260721-031304-0527d9/code_text_draft/turn-031406-5b9b/final.png",
+      "cover": "gallery/content/sources/poster/poster-vogue-quiet-power/v2.png",
       "results": {
-        "layout-a": { "artifact": "runs/20260721-031304-0527d9/code_text_draft/turn-031406-5b9b/final.png" }
+        "v2": {
+          "artifact": "gallery/content/sources/poster/poster-vogue-quiet-power/v2.png"
+        },
+        "imaginer": {
+          "artifact": "gallery/content/sources/poster/poster-vogue-quiet-power/imaginer.png"
+        }
+      },
+      "baseline": {
+        "artifact": "gallery/content/sources/poster/poster-vogue-quiet-power/t0.png"
       }
     }
   },
   {
-    "slug": "nvidia-fy2025-growth-c",
+    "slug": "poster-chongqing-rain-night",
     "category": "poster",
-    "title": { "zh": "NVIDIA FY2025 增长图解 · 03", "en": "NVIDIA FY2025 Growth · 03" },
+    "title": {
+      "zh": "山城雨夜 · 重庆文旅海报",
+      "en": "Chongqing Rain Night · City Campaign Poster"
+    },
     "summary": {
-      "zh": "同一财报数据视觉的第三份记录，用于填充类别轮播。",
-      "en": "A third record of the same financial visual, used to populate the category carousel."
+      "zh": "城市文旅 campaign 海报：层叠山城建筑、轻轨穿楼与雨夜霓虹倒影，左侧纵向中文标题配竖排 CHONGQING。",
+      "en": "A city-tourism campaign poster: stacked hillside blocks, a monorail threading a building, and neon reflected in the rain, with a vertical Chinese title beside a vertical CHONGQING."
     },
-    "promptOriginal": "制作一页中文数据视觉，现代科技公司财报风格，深色背景与 NVIDIA 绿色点缀。主视觉表现总营收 $130.5B、数据中心营收 $115.2B，以及数据中心占总营收 88.3%；所有文字和数字必须清晰可读。",
+    "promptOriginal": "做一张 3:4 高端城市文旅 campaign 海报，主题“山城雨夜·重庆”。中心呈现层叠山城建筑、轻轨穿楼、湿润街道、霓虹倒影、江雾和夜色坡道。现代中文排版，准确加入：“山城雨夜” / “CHONGQING” / “8D 城市 / 江雾 / 火锅 / 轻轨 / 夜景”。信息适中、留白克制，以深蓝、暖橙、湿润霓虹红为主，呈现设计年鉴级城市品牌感，避免廉价旅行社风。",
     "prompt": {
-      "zh": "制作一页中文数据视觉，现代科技公司财报风格，深色背景与 NVIDIA 绿色点缀。主视觉表现总营收 $130.5B、数据中心营收 $115.2B，以及数据中心占总营收 88.3%；所有文字和数字必须清晰可读。",
-      "en": "Create a Chinese financial data visual with a dark technology aesthetic and NVIDIA-green accents. Show total revenue of $130.5B, data-center revenue of $115.2B, and its 88.3% contribution with fully legible text."
+      "zh": "做一张 3:4 高端城市文旅 campaign 海报，主题“山城雨夜·重庆”。中心呈现层叠山城建筑、轻轨穿楼、湿润街道、霓虹倒影、江雾和夜色坡道。现代中文排版，准确加入：“山城雨夜” / “CHONGQING” / “8D 城市 / 江雾 / 火锅 / 轻轨 / 夜景”。信息适中、留白克制，以深蓝、暖橙、湿润霓虹红为主，呈现设计年鉴级城市品牌感，避免廉价旅行社风。",
+      "en": "Create a 3:4 premium city-tourism campaign poster on the theme “Chongqing, a mountain city on a rainy night”. The centre shows stacked hillside architecture, a monorail threading through a building, wet streets, neon reflections, river mist and night-time slopes. Use modern Chinese typography and include exactly: “山城雨夜” / “CHONGQING” / “8D 城市 / 江雾 / 火锅 / 轻轨 / 夜景”. Keep the information load moderate and the negative space restrained, dominated by deep blue, warm orange and damp neon red, for a design-annual-grade city brand feel; avoid a cheap travel-agency look."
     },
-    "coverAspect": "landscape",
+    "coverAspect": "portrait",
     "featured": false,
-    "tags": ["Data Poster", "Typography", "Comparison"],
+    "tags": [
+      "Poster",
+      "3:4",
+      "City Campaign"
+    ],
     "year": "2026",
     "results": [
       {
-        "id": "layout-b",
-        "producer": "GenClaw-Next · Layout B",
-        "kind": "image",
-        "model": "Gemini · configured backend",
-        "parameters": { "render": "Pure code", "canvas": "2432 × 1344" },
-        "note": {
-          "zh": "复用同一素材的示例条目。",
-          "en": "A sample entry reusing the same material."
-        }
+        "id": "v2",
+        "producer": "GenClaw-Next · V2",
+        "kind": "image"
+      },
+      {
+        "id": "imaginer",
+        "producer": "Imaginer 参考 · 非交付",
+        "kind": "image"
       }
     ],
+    "baseline": {
+      "id": "t0",
+      "producer": "对照臂 T0",
+      "kind": "image"
+    },
     "sources": {
-      "cover": "runs/20260721-032238-292363/code_text_draft/turn-032335-5dbf/final.png",
+      "cover": "gallery/content/sources/poster/poster-chongqing-rain-night/v2.png",
       "results": {
-        "layout-b": { "artifact": "runs/20260721-032238-292363/code_text_draft/turn-032335-5dbf/final.png" }
+        "v2": {
+          "artifact": "gallery/content/sources/poster/poster-chongqing-rain-night/v2.png"
+        },
+        "imaginer": {
+          "artifact": "gallery/content/sources/poster/poster-chongqing-rain-night/imaginer.png"
+        }
+      },
+      "baseline": {
+        "artifact": "gallery/content/sources/poster/poster-chongqing-rain-night/t0.png"
       }
     }
   },
   {
-    "slug": "tesla-vs-byd-slide",
+    "slug": "oneiro-agent-architecture",
     "category": "slide",
-    "title": { "zh": "特斯拉 vs 比亚迪", "en": "Tesla vs BYD" },
+    "title": {
+      "zh": "OneiroAgent 架构图",
+      "en": "OneiroAgent Architecture"
+    },
     "summary": {
-      "zh": "一页 16:9 商业结论页，将销量与市值拆成双列 scorecard，并明确提醒口径差异。",
-      "en": "A 16:9 conclusion slide comparing sales and market value in two scorecards while surfacing methodology differences."
+      "zh": "认知智能体架构示意：感知输入、记忆库、想象/做梦模块、规划、行动五段流程，中央以一帧预测画面强调想象力驱动决策。",
+      "en": "A cognitive-agent architecture diagram: perception, memory, an imagination / dreaming module, planning and action, with a predicted frame at the centre foregrounding imagination-driven decisions."
     },
-    "promptOriginal": "制作一页 16:9 商业结论 slide，深色极简科技风背景。中部两列 scorecard：左列为“全年销量”，右列为“市值”；分别列出 Tesla 与 BYD 的数值、口径、日期，并用醒目的胜者徽章标出该维度胜者。",
-    "prompt": {
-      "zh": "制作一页 16:9 商业结论 slide，深色极简科技风背景。中部两列 scorecard：左列为“全年销量”，右列为“市值”；分别列出 Tesla 与 BYD 的数值、口径、日期，并用醒目的胜者徽章标出该维度胜者。",
-      "en": "Create a dark, minimal 16:9 business conclusion slide. Use two scorecard columns for annual sales and market value, listing Tesla and BYD values, methodology, dates, and a clear winner badge."
+    "promptOriginal": "",
+    "coverAspect": "landscape",
+    "featured": false,
+    "tags": [
+      "Slide",
+      "Architecture",
+      "16:9"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "figure",
+        "producer": "GenClaw-Next · Figure",
+        "kind": "image"
+      }
+    ],
+    "sources": {
+      "cover": "gallery/content/sources/slide/oneiro-agent-architecture/figure.png",
+      "results": {
+        "figure": {
+          "artifact": "gallery/content/sources/slide/oneiro-agent-architecture/figure.png"
+        }
+      }
+    }
+  },
+  {
+    "slug": "urban-mobility-keynote",
+    "category": "slide",
+    "title": {
+      "zh": "重新想象城市出行 · 主题页",
+      "en": "Reimagining Urban Mobility · Keynote"
     },
+    "summary": {
+      "zh": "Keynote 封面页：夜景城市与轨道交通实景铺底，左侧为中英双标题、2035 展望与演讲者信息。",
+      "en": "A keynote opening slide: a night-time city and transit scene fills the frame, with a bilingual title, a 2035 outlook line and speaker credit on the left."
+    },
+    "promptOriginal": "",
     "coverAspect": "landscape",
     "featured": true,
-    "tags": ["Slide", "Scorecard", "16:9"],
+    "tags": [
+      "Slide",
+      "Keynote",
+      "16:9"
+    ],
     "year": "2026",
     "results": [
       {
-        "id": "html-slide",
-        "producer": "GenClaw-Next · HTML",
-        "kind": "html",
-        "model": "Gemini · configured backend",
-        "parameters": { "render": "Pure code", "canvas": "4096 × 2304" },
-        "note": {
-          "zh": "原始 HTML 文字层保持可选中，并可在预览器中检查细节。",
-          "en": "The original HTML keeps its text layer selectable and can be inspected directly in the viewer."
-        }
+        "id": "figure",
+        "producer": "GenClaw-Next · Figure",
+        "kind": "image"
       }
     ],
     "sources": {
-      "cover": "runs/20260721-033711-9c43bc/code_text_draft/turn-033855-0afd/final.png",
+      "cover": "gallery/content/sources/slide/urban-mobility-keynote/figure.png",
       "results": {
-        "html-slide": {
-          "artifact": "runs/20260721-033711-9c43bc/code_text_draft/turn-033855-0afd/code.html",
-          "preview": "runs/20260721-033711-9c43bc/code_text_draft/turn-033855-0afd/final.png"
+        "figure": {
+          "artifact": "gallery/content/sources/slide/urban-mobility-keynote/figure.png"
         }
       }
     }
   },
   {
-    "slug": "tesla-vs-byd-slide-b",
+    "slug": "salt-lake-restoration",
     "category": "slide",
-    "title": { "zh": "特斯拉 vs 比亚迪 · 02", "en": "Tesla vs BYD · 02" },
+    "title": {
+      "zh": "盐湖生态修复成效对比",
+      "en": "Salt Lake Restoration · Before & After"
+    },
     "summary": {
-      "zh": "同一结论页的另一份冻结记录，用于演示同类结果的横向滑动浏览。",
-      "en": "Another frozen record of the same slide, used to demonstrate sliding across same-category results."
+      "zh": "左右对照的修复前后页：同一视角由干裂盐碱地转为湿地飞鸟，四角数据卡标注水面、盐度、鸟类与周期；数据为示意性指标。",
+      "en": "A before-and-after split slide: the same vantage point shifts from cracked saline flats to a bird-filled wetland, with corner cards for water area, salinity, bird species and duration. The figures are illustrative."
     },
-    "promptOriginal": "制作一页 16:9 商业结论 slide，深色极简科技风背景。中部两列 scorecard：左列为“全年销量”，右列为“市值”；分别列出 Tesla 与 BYD 的数值、口径、日期，并用醒目的胜者徽章标出该维度胜者。",
-    "prompt": {
-      "zh": "制作一页 16:9 商业结论 slide，深色极简科技风背景。中部两列 scorecard：左列为“全年销量”，右列为“市值”；分别列出 Tesla 与 BYD 的数值、口径、日期，并用醒目的胜者徽章标出该维度胜者。",
-      "en": "Create a dark, minimal 16:9 business conclusion slide. Use two scorecard columns for annual sales and market value, listing Tesla and BYD values, methodology, dates, and a clear winner badge."
-    },
+    "promptOriginal": "",
     "coverAspect": "landscape",
     "featured": false,
-    "tags": ["Slide", "Scorecard", "16:9"],
+    "tags": [
+      "Slide",
+      "Before / After",
+      "16:9"
+    ],
     "year": "2026",
     "results": [
       {
-        "id": "html-slide",
-        "producer": "GenClaw-Next · HTML",
-        "kind": "html",
-        "model": "Gemini · configured backend",
-        "parameters": { "render": "Pure code", "canvas": "4096 × 2304" },
-        "note": {
-          "zh": "复用同一素材的示例条目。",
-          "en": "A sample entry reusing the same material."
-        }
+        "id": "figure",
+        "producer": "GenClaw-Next · Figure",
+        "kind": "image"
       }
     ],
     "sources": {
-      "cover": "runs/20260721-033711-9c43bc/code_text_draft/turn-033855-0afd/final.png",
+      "cover": "gallery/content/sources/slide/salt-lake-restoration/figure.png",
       "results": {
-        "html-slide": {
-          "artifact": "runs/20260721-033711-9c43bc/code_text_draft/turn-033855-0afd/code.html",
-          "preview": "runs/20260721-033711-9c43bc/code_text_draft/turn-033855-0afd/final.png"
-        }
-      }
-    }
-  },
-  {
-    "slug": "tesla-vs-byd-slide-c",
-    "category": "slide",
-    "title": { "zh": "特斯拉 vs 比亚迪 · 03", "en": "Tesla vs BYD · 03" },
-    "summary": {
-      "zh": "同一结论页的第三份记录，用于填充类别轮播。",
-      "en": "A third record of the same slide, used to populate the category carousel."
-    },
-    "promptOriginal": "制作一页 16:9 商业结论 slide，深色极简科技风背景。中部两列 scorecard：左列为“全年销量”，右列为“市值”；分别列出 Tesla 与 BYD 的数值、口径、日期，并用醒目的胜者徽章标出该维度胜者。",
-    "prompt": {
-      "zh": "制作一页 16:9 商业结论 slide，深色极简科技风背景。中部两列 scorecard：左列为“全年销量”，右列为“市值”；分别列出 Tesla 与 BYD 的数值、口径、日期，并用醒目的胜者徽章标出该维度胜者。",
-      "en": "Create a dark, minimal 16:9 business conclusion slide. Use two scorecard columns for annual sales and market value, listing Tesla and BYD values, methodology, dates, and a clear winner badge."
-    },
-    "coverAspect": "landscape",
-    "featured": false,
-    "tags": ["Slide", "Scorecard", "16:9"],
-    "year": "2026",
-    "results": [
-      {
-        "id": "html-slide",
-        "producer": "GenClaw-Next · HTML",
-        "kind": "html",
-        "model": "Gemini · configured backend",
-        "parameters": { "render": "Pure code", "canvas": "4096 × 2304" },
-        "note": {
-          "zh": "复用同一素材的示例条目。",
-          "en": "A sample entry reusing the same material."
-        }
-      }
-    ],
-    "sources": {
-      "cover": "runs/20260721-033711-9c43bc/code_text_draft/turn-033855-0afd/final.png",
-      "results": {
-        "html-slide": {
-          "artifact": "runs/20260721-033711-9c43bc/code_text_draft/turn-033855-0afd/code.html",
-          "preview": "runs/20260721-033711-9c43bc/code_text_draft/turn-033855-0afd/final.png"
+        "figure": {
+          "artifact": "gallery/content/sources/slide/salt-lake-restoration/figure.png"
         }
       }
     }
@@ -356,7 +518,10 @@
   {
     "slug": "qinghua-porcelain-atlas",
     "category": "infographic",
-    "title": { "zh": "景德镇青花瓷釉色纹饰图谱", "en": "Jingdezhen Porcelain Atlas" },
+    "title": {
+      "zh": "景德镇青花瓷釉色纹饰图谱",
+      "en": "Jingdezhen Porcelain Atlas"
+    },
     "summary": {
       "zh": "纵向博物馆图鉴：中央高清瓷瓶，左侧四处编号注释以 SVG 细线连接，右侧圆形局部放大，中式回纹边框。",
       "en": "A vertical museum-catalogue atlas: a hi-res vase at center, four SVG-linked numbered annotations on the left, circular detail insets on the right, and a Chinese fret border."
@@ -367,45 +532,44 @@
       "en": "Build a vertical, museum-catalogue infographic of a Jingdezhen blue-and-white porcelain vase: a centered hi-res vase, four numbered annotations on the left (cobalt glaze, interlocking lotus scroll, dragon motif, base mark) linked by thin SVG lines and dots, and four circular detail insets on the right, with a summary framed by a Chinese fret border. Use an ivory paper background, deep porcelain-blue palette, and elegant serif type; no complex interaction or animation."
     },
     "coverAspect": "portrait",
-    "featured": true,
-    "tags": ["Infographic", "Museum", "Annotation"],
+    "featured": false,
+    "tags": [
+      "Infographic",
+      "Museum",
+      "Annotation"
+    ],
     "year": "2026",
     "results": [
       {
         "id": "v2",
         "producer": "GenClaw-Next · V2",
-        "kind": "image",
-        "model": "Gemini · configured backend",
-        "parameters": { "render": "Pure code + Visual Imaginer", "score": 100 },
-        "note": {
-          "zh": "当前推荐版本：文字 DOM 预检修复后布局合同越界为 0，评分 100。",
-          "en": "Current recommended run: 0 layout-contract violations after text preflight, score 100."
-        }
+        "kind": "image"
       }
     ],
     "baseline": {
       "id": "t0",
       "producer": "历史基线 T0",
-      "kind": "image",
-      "model": "Gemini · configured backend",
-      "parameters": { "render": "Pure code", "score": 90 },
-      "note": {
-        "zh": "历史无 Visual Imaginer 基线，评分 90，用于与当前 V2 做视觉对比。",
-        "en": "Historical baseline without Visual Imaginer, score 90, shown for visual comparison with the current V2."
-      }
+      "kind": "image"
     },
     "sources": {
       "cover": "gallery/content/sources/infographic/qinghua-porcelain-atlas/our.png",
       "results": {
-        "v2": { "artifact": "gallery/content/sources/infographic/qinghua-porcelain-atlas/our.png" }
+        "v2": {
+          "artifact": "gallery/content/sources/infographic/qinghua-porcelain-atlas/our.png"
+        }
       },
-      "baseline": { "artifact": "gallery/content/sources/infographic/qinghua-porcelain-atlas/baseline.png" }
+      "baseline": {
+        "artifact": "gallery/content/sources/infographic/qinghua-porcelain-atlas/baseline.png"
+      }
     }
   },
   {
     "slug": "snow-leopard-field-guide",
     "category": "infographic",
-    "title": { "zh": "雪豹 · 高山之巅的隐士", "en": "Snow Leopard · Alpine Hermit" },
+    "title": {
+      "zh": "雪豹 · 高山之巅的隐士",
+      "en": "Snow Leopard · Alpine Hermit"
+    },
     "summary": {
       "zh": "横向自然科学图鉴：中央雪豹抠图，SVG 连线标注短耳、宽鼻、厚毛、长尾与四肢，底部四列说明。",
       "en": "A horizontal nature-guide layout: a snow leopard at center with SVG callouts for ears, nose, fur, tail and limbs, plus a four-column footer."
@@ -417,44 +581,43 @@
     },
     "coverAspect": "landscape",
     "featured": false,
-    "tags": ["Infographic", "Wildlife", "Annotation"],
+    "tags": [
+      "Infographic",
+      "Wildlife",
+      "Annotation"
+    ],
     "year": "2026",
     "results": [
       {
         "id": "v2",
         "producer": "GenClaw-Next · V2",
-        "kind": "image",
-        "model": "Gemini · configured backend",
-        "parameters": { "render": "Pure code + Visual Imaginer", "score": 98 },
-        "note": {
-          "zh": "当前推荐版本：标题合同越界由 1 修复为 0，评分 98。",
-          "en": "Current recommended run: title contract violations fixed from 1 to 0, score 98."
-        }
+        "kind": "image"
       }
     ],
     "baseline": {
       "id": "t0",
       "producer": "历史基线 T0",
-      "kind": "image",
-      "model": "Gemini · configured backend",
-      "parameters": { "render": "Pure code", "score": 98 },
-      "note": {
-        "zh": "历史无 Visual Imaginer 基线，评分 98，用于与当前 V2 做视觉对比。",
-        "en": "Historical baseline without Visual Imaginer, score 98, shown for visual comparison with the current V2."
-      }
+      "kind": "image"
     },
     "sources": {
       "cover": "gallery/content/sources/infographic/snow-leopard-field-guide/our.png",
       "results": {
-        "v2": { "artifact": "gallery/content/sources/infographic/snow-leopard-field-guide/our.png" }
+        "v2": {
+          "artifact": "gallery/content/sources/infographic/snow-leopard-field-guide/our.png"
+        }
       },
-      "baseline": { "artifact": "gallery/content/sources/infographic/snow-leopard-field-guide/baseline.png" }
+      "baseline": {
+        "artifact": "gallery/content/sources/infographic/snow-leopard-field-guide/baseline.png"
+      }
     }
   },
   {
     "slug": "akari-character-sheet",
     "category": "infographic",
-    "title": { "zh": "AKARI 角色设定图", "en": "AKARI Character Sheet" },
+    "title": {
+      "zh": "AKARI 角色设定图",
+      "en": "AKARI Character Sheet"
+    },
     "summary": {
       "zh": "3:4 日系角色设定：中央全身角色，左侧性格与表情，右上 PROFILE 卡，底部三组服装拆解。",
       "en": "A 3:4 anime character sheet: a full-body figure centered, traits and expressions at left, a PROFILE card upper-right, and a three-item outfit breakdown."
@@ -465,45 +628,44 @@
       "en": "Create a compact 3:4 vertical Japanese anime character sheet with a white background and coral-pink and deep-navy palette. Keep one full-body girl in the center; retain “AKARI”, “あかり”, the subtitle, four personality traits and two “EXPRESSIONS” portraits on the left. Fill the upper-right with a “PROFILE” card containing “AGE 17 · STUDENT” and a short three-line character introduction, followed by the “ABOUT AKARI” and “PERSONALITY” cards below. At the bottom, show only three grouped items under “OUTFIT BREAKDOWN”: “signature jacket”, “school uniform” and “shoes & backpack”. Keep the layout information-rich, compact and readable; do not include DETAILS, COLOR PALETTE, extra accessories, duplicate characters, gibberish text or watermarks."
     },
     "coverAspect": "portrait",
-    "featured": false,
-    "tags": ["Character Sheet", "Anime", "3:4"],
+    "featured": true,
+    "tags": [
+      "Character Sheet",
+      "Anime",
+      "3:4"
+    ],
     "year": "2026",
     "results": [
       {
         "id": "v2",
         "producer": "GenClaw-Next · V2",
-        "kind": "image",
-        "model": "Gemini · configured backend",
-        "parameters": { "render": "Pure code + Visual Imaginer", "score": 94 },
-        "note": {
-          "zh": "当前推荐版本：两轮文字预检把问题数从 3 降到 0，评分 94。",
-          "en": "Current recommended run: two text-preflight passes reduced issues from 3 to 0, score 94."
-        }
+        "kind": "image"
       }
     ],
     "baseline": {
       "id": "t0",
       "producer": "历史基线 T0",
-      "kind": "image",
-      "model": "Gemini · configured backend",
-      "parameters": { "render": "Pure code", "score": 86 },
-      "note": {
-        "zh": "历史无 Visual Imaginer 基线，评分 86，用于与当前 V2 做视觉对比。",
-        "en": "Historical baseline without Visual Imaginer, score 86, shown for visual comparison with the current V2."
-      }
+      "kind": "image"
     },
     "sources": {
       "cover": "gallery/content/sources/infographic/akari-character-sheet/our.png",
       "results": {
-        "v2": { "artifact": "gallery/content/sources/infographic/akari-character-sheet/our.png" }
+        "v2": {
+          "artifact": "gallery/content/sources/infographic/akari-character-sheet/our.png"
+        }
       },
-      "baseline": { "artifact": "gallery/content/sources/infographic/akari-character-sheet/baseline.png" }
+      "baseline": {
+        "artifact": "gallery/content/sources/infographic/akari-character-sheet/baseline.png"
+      }
     }
   },
   {
     "slug": "iceberg-model-card",
     "category": "infographic",
-    "title": { "zh": "冰山模型知识卡", "en": "Iceberg Model Knowledge Card" },
+    "title": {
+      "zh": "冰山模型知识卡",
+      "en": "Iceberg Model Knowledge Card"
+    },
     "summary": {
       "zh": "系统思考冰山模型：事件、模式与趋势、结构、心智模式四层由浅入深嵌套。",
       "en": "The systems-thinking Iceberg Model: Events, Patterns & Trends, Structure, and Mental Models nested from surface to depth."
@@ -515,38 +677,166 @@
     },
     "coverAspect": "square",
     "featured": false,
-    "tags": ["Infographic", "Systems", "Concept"],
+    "tags": [
+      "Infographic",
+      "Systems",
+      "Concept"
+    ],
     "year": "2026",
     "results": [
       {
         "id": "v2",
         "producer": "GenClaw-Next · V2",
-        "kind": "image",
-        "model": "Gemini · configured backend",
-        "parameters": { "render": "Concept asset + HTML labels", "score": 98 },
-        "note": {
-          "zh": "当前推荐版本：以 conceptual_diagram 生成无字冰山底稿，再由 HTML 覆盖精确标签，评分 98。",
-          "en": "Current recommended run: a text-free iceberg base generated as a conceptual_diagram asset, with exact labels overlaid in HTML, score 98."
-        }
+        "kind": "image"
       }
     ],
     "baseline": {
       "id": "t0",
       "producer": "历史基线 T0",
-      "kind": "image",
-      "model": "Gemini · configured backend",
-      "parameters": { "render": "Pure code", "score": 98 },
-      "note": {
-        "zh": "历史无 Visual Imaginer 基线，评分 98，用于与当前 V2 做视觉对比。",
-        "en": "Historical baseline without Visual Imaginer, score 98, shown for visual comparison with the current V2."
-      }
+      "kind": "image"
     },
     "sources": {
       "cover": "gallery/content/sources/infographic/iceberg-model-card/our.png",
       "results": {
-        "v2": { "artifact": "gallery/content/sources/infographic/iceberg-model-card/our.png" }
+        "v2": {
+          "artifact": "gallery/content/sources/infographic/iceberg-model-card/our.png"
+        }
       },
-      "baseline": { "artifact": "gallery/content/sources/infographic/iceberg-model-card/baseline.png" }
+      "baseline": {
+        "artifact": "gallery/content/sources/infographic/iceberg-model-card/baseline.png"
+      }
+    }
+  },
+  {
+    "slug": "svg-apple-watch",
+    "category": "svg",
+    "title": {
+      "zh": "Apple Watch 智能手表",
+      "en": "Apple Watch"
+    },
+    "summary": {
+      "zh": "矢量智能手表：深色表体与侧边旋钮，表盘上有时间、日期、天气、三环活动进度与心率波形。",
+      "en": "A vector smartwatch: a dark case with a side crown, its face carrying the time, date, weather, three activity rings and a heart-rate trace."
+    },
+    "promptOriginal": "",
+    "coverAspect": "square",
+    "featured": false,
+    "tags": [
+      "SVG",
+      "Product",
+      "Device"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "ours",
+        "producer": "GenClaw-Next",
+        "kind": "svg"
+      }
+    ],
+    "baseline": {
+      "id": "theirs",
+      "producer": "对照案例",
+      "kind": "svg"
+    },
+    "sources": {
+      "cover": "gallery/content/sources/svg/svg-apple-watch/ours.svg",
+      "results": {
+        "ours": {
+          "artifact": "gallery/content/sources/svg/svg-apple-watch/ours.svg"
+        }
+      },
+      "baseline": {
+        "artifact": "gallery/content/sources/svg/svg-apple-watch/theirs.svg"
+      }
+    }
+  },
+  {
+    "slug": "svg-instax-mini",
+    "category": "svg",
+    "title": {
+      "zh": "instax mini 12 拍立得",
+      "en": "Instax Mini 12 Camera"
+    },
+    "summary": {
+      "zh": "矢量拍立得相机：浅蓝机身配同心圆镜筒，取景窗、闪光灯与快门齐备，镜圈标注焦段与对焦范围。",
+      "en": "A vector instant camera: a pale-blue body with a concentric lens barrel, viewfinder, flash and shutter, the lens ring labelled with focal length and focus range."
+    },
+    "promptOriginal": "",
+    "coverAspect": "square",
+    "featured": true,
+    "tags": [
+      "SVG",
+      "Product",
+      "Camera"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "ours",
+        "producer": "GenClaw-Next",
+        "kind": "svg"
+      }
+    ],
+    "baseline": {
+      "id": "theirs",
+      "producer": "对照案例",
+      "kind": "svg"
+    },
+    "sources": {
+      "cover": "gallery/content/sources/svg/svg-instax-mini/ours.svg",
+      "results": {
+        "ours": {
+          "artifact": "gallery/content/sources/svg/svg-instax-mini/ours.svg"
+        }
+      },
+      "baseline": {
+        "artifact": "gallery/content/sources/svg/svg-instax-mini/theirs.svg"
+      }
+    }
+  },
+  {
+    "slug": "svg-switch2",
+    "category": "svg",
+    "title": {
+      "zh": "Switch 2 掌上游戏机",
+      "en": "Switch 2 Handheld"
+    },
+    "summary": {
+      "zh": "矢量掌上游戏机：横向机身两侧为可拆手柄，摇杆、按键与肩键完整，屏幕与外壳以高光表现材质。",
+      "en": "A vector handheld console: detachable controllers flank the landscape body, with complete sticks, buttons and shoulder keys, and highlights giving the screen and shell their material."
+    },
+    "promptOriginal": "",
+    "coverAspect": "landscape",
+    "featured": false,
+    "tags": [
+      "SVG",
+      "Product",
+      "Console"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "ours",
+        "producer": "GenClaw-Next",
+        "kind": "svg"
+      }
+    ],
+    "baseline": {
+      "id": "theirs",
+      "producer": "对照案例",
+      "kind": "svg"
+    },
+    "sources": {
+      "cover": "gallery/content/sources/svg/svg-switch2/ours.svg",
+      "results": {
+        "ours": {
+          "artifact": "gallery/content/sources/svg/svg-switch2/ours.svg"
+        }
+      },
+      "baseline": {
+        "artifact": "gallery/content/sources/svg/svg-switch2/theirs.svg"
+      }
     }
   }
 ]

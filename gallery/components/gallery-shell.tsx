@@ -72,7 +72,12 @@ function NavContent({
       <div className="nav-label">{t.casesLabel}</div>
       <nav aria-label={t.casesLabel} className="sidebar-nav">
         {categoryIds
-          .map((id) => galleryCases.find((item) => item.category === id))
+          .map(
+            (id) =>
+              galleryCases.find(
+                (item) => item.category === id && item.featured
+              ) ?? galleryCases.find((item) => item.category === id)
+          )
           .filter((item): item is (typeof galleryCases)[number] => Boolean(item))
           .map((item) => (
             <Link
