@@ -18,7 +18,9 @@ type HeroProps = {
 };
 
 // Right-anchored fan: leftmost card sits furthest back and most rotated,
-// the rightmost card is upright and on top.
+// the rightmost card is upright and on top. Poses are handed out in reverse
+// so the first featured case lands in the front slot rather than behind the
+// stack.
 const FAN = [
   { x: -300, y: 46, rot: -15, scale: 0.9, z: 1 },
   { x: -150, y: 16, rot: -8, scale: 0.95, z: 2 },
@@ -64,7 +66,8 @@ export function Hero({ locale, cases }: HeroProps) {
 
       <div className="hero-fan" role="list">
         {fanCases.map((item, index) => {
-          const pose = FAN[index] ?? FAN[FAN.length - 1];
+          const pose =
+            FAN[FAN.length - 1 - index] ?? FAN[0];
           return (
             <Link
               key={item.slug}
@@ -86,7 +89,7 @@ export function Hero({ locale, cases }: HeroProps) {
                 <Image
                   alt={localize(item.title, locale)}
                   fill
-                  priority={index >= 2}
+                  priority={index <= 1}
                   sizes="320px"
                   src={assetUrl(item.cover)}
                 />
