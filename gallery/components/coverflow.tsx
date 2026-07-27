@@ -177,11 +177,21 @@ export function Coverflow({ locale, cases }: CoverflowProps) {
                 aria-hidden={!isActive}
               >
                 {isLiveWeb ? (
+                  // The live frame keeps its own pointer events so the page
+                  // stays draggable, which leaves no room for a link over the
+                  // card. An explicit button opens the case instead.
                   <div className="coverflow-card-inner">
                     <LiveFirstScreen
                       src={assetUrl(item.results[0].artifact)}
                       title={localize(item.title, locale)}
                     />
+                    <Link
+                      className="coverflow-live-open"
+                      href={`/${locale}/cases/${item.slug}`}
+                    >
+                      {t.viewCase}
+                      <ArrowUpRightIcon size={12} />
+                    </Link>
                   </div>
                 ) : isActive ? (
                   <Link

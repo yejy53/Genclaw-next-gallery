@@ -812,6 +812,33 @@ summary {
   inset: 0;
 }
 
+.coverflow-live-open {
+  align-items: center;
+  backdrop-filter: blur(12px);
+  background: rgba(10, 11, 13, 0.74);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: var(--ink);
+  display: inline-flex;
+  font-size: 9.5px;
+  font-weight: 650;
+  gap: 6px;
+  letter-spacing: 0.08em;
+  padding: 8px 13px;
+  position: absolute;
+  right: 12px;
+  text-transform: uppercase;
+  top: 12px;
+  transition: background 180ms ease, color 180ms ease;
+  z-index: 6;
+}
+
+.coverflow-live-open:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
 .coverflow-live iframe {
   background: #fff;
   border: 0;
