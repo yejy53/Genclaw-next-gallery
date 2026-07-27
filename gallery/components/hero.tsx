@@ -49,7 +49,10 @@ export function Hero({ locale, cases }: HeroProps) {
         <h1 className="hero-name reveal-item" style={{ transitionDelay: "120ms" }}>
           {t.heroName}
         </h1>
-        <div className="hero-actions reveal-item" style={{ transitionDelay: "220ms" }}>
+        <p className="hero-tagline reveal-item" style={{ transitionDelay: "200ms" }}>
+          <span>{t.tagline}</span>
+        </p>
+        <div className="hero-actions reveal-item" style={{ transitionDelay: "290ms" }}>
           <Link className="btn btn-primary" href={`/${locale}#cat-web`}>
             {t.viewGallery}
           </Link>

@@ -469,11 +469,41 @@ summary {
   margin: 22px 0 0;
 }
 
+/* Hairlines fade outward from the tagline so it reads as a set line
+   rather than a second heading competing with the wordmark. */
+.hero-tagline {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-family: var(--font-serif);
+  font-size: clamp(15px, 1.55vw, 22px);
+  gap: clamp(12px, 1.6vw, 20px);
+  justify-content: center;
+  letter-spacing: 0.015em;
+  margin: 20px 0 0;
+}
+
+.hero-tagline::before,
+.hero-tagline::after {
+  content: "";
+  flex-shrink: 0;
+  height: 1px;
+  width: clamp(24px, 5vw, 60px);
+}
+
+.hero-tagline::before {
+  background: linear-gradient(90deg, transparent, var(--line-strong));
+}
+
+.hero-tagline::after {
+  background: linear-gradient(90deg, var(--line-strong), transparent);
+}
+
 .hero-actions {
   display: flex;
   gap: 12px;
   justify-content: center;
-  margin-top: 38px;
+  margin-top: 32px;
 }
 
 .btn {
@@ -1971,6 +2001,15 @@ summary {
 
   .hero-name {
     font-size: clamp(48px, 16vw, 76px);
+  }
+
+  .hero-tagline {
+    font-size: 14px;
+  }
+
+  .hero-tagline::before,
+  .hero-tagline::after {
+    display: none;
   }
 
   .hero-fan {
