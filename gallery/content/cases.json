@@ -718,7 +718,7 @@
       "zh": "矢量智能手表：深色表体与侧边旋钮，表盘上有时间、日期、天气、三环活动进度与心率波形。",
       "en": "A vector smartwatch: a dark case with a side crown, its face carrying the time, date, weather, three activity rings and a heart-rate trace."
     },
-    "promptOriginal": "生成一张 Apple Watch 智能手表的 SVG 插画，正视图。表盘显示时间、日期、天气、三环活动进度与心率曲线。",
+    "promptOriginal": "生成一张 Apple Watch 智能手表的 SVG 插画。",
     "coverAspect": "square",
     "featured": false,
     "tags": [
@@ -751,8 +751,8 @@
       }
     },
     "prompt": {
-      "zh": "生成一张 Apple Watch 智能手表的 SVG 插画，正视图。表盘显示时间、日期、天气、三环活动进度与心率曲线。",
-      "en": "Generate an SVG illustration of an Apple Watch, front view. The face shows the time, date, weather, three activity rings and a heart-rate trace."
+      "zh": "生成一张 Apple Watch 智能手表的 SVG 插画。",
+      "en": "Generate an SVG illustration of an Apple Watch."
     }
   },
   {
@@ -766,7 +766,7 @@
       "zh": "矢量拍立得相机：浅蓝机身配同心圆镜筒，取景窗、闪光灯与快门齐备，镜圈标注焦段与对焦范围。",
       "en": "A vector instant camera: a pale-blue body with a concentric lens barrel, viewfinder, flash and shutter, the lens ring labelled with focal length and focus range."
     },
-    "promptOriginal": "生成一张 instax mini 12 拍立得相机的 SVG 插画，正视图，浅蓝配色，包含镜筒、取景窗、闪光灯与快门。",
+    "promptOriginal": "生成一张 instax mini 12 拍立得相机的 SVG 插画。",
     "coverAspect": "square",
     "featured": true,
     "tags": [
@@ -799,8 +799,8 @@
       }
     },
     "prompt": {
-      "zh": "生成一张 instax mini 12 拍立得相机的 SVG 插画，正视图，浅蓝配色，包含镜筒、取景窗、闪光灯与快门。",
-      "en": "Generate an SVG illustration of an instax mini 12 instant camera, front view, in pale blue, with the lens barrel, viewfinder, flash and shutter."
+      "zh": "生成一张 instax mini 12 拍立得相机的 SVG 插画。",
+      "en": "Generate an SVG illustration of an instax mini 12 instant camera."
     }
   },
   {
@@ -814,7 +814,7 @@
       "zh": "矢量掌上游戏机：横向机身两侧为可拆手柄，摇杆、按键与肩键完整，屏幕与外壳以高光表现材质。",
       "en": "A vector handheld console: detachable controllers flank the landscape body, with complete sticks, buttons and shoulder keys, and highlights giving the screen and shell their material."
     },
-    "promptOriginal": "生成一张 Switch 2 掌上游戏机的 SVG 插画，正视图，横向机身两侧带可拆卸手柄。",
+    "promptOriginal": "生成一张 Switch 2 掌上游戏机的 SVG 插画。",
     "coverAspect": "landscape",
     "featured": false,
     "tags": [
@@ -847,8 +847,8 @@
       }
     },
     "prompt": {
-      "zh": "生成一张 Switch 2 掌上游戏机的 SVG 插画，正视图，横向机身两侧带可拆卸手柄。",
-      "en": "Generate an SVG illustration of a Switch 2 handheld console, front view, with detachable controllers on either side of the landscape body."
+      "zh": "生成一张 Switch 2 掌上游戏机的 SVG 插画。",
+      "en": "Generate an SVG illustration of a Switch 2 handheld console."
     }
   },
   {
@@ -862,10 +862,10 @@
       "zh": "矢量折扇：展开的扇面绘远山、红日与松枝，分层纸面配深色扇骨与金色边缘。",
       "en": "A vector folding fan: the open leaf carries distant mountains, a red sun and pine boughs across layered panels, with dark ribs and a gold rim."
     },
-    "promptOriginal": "生成一张折扇的 SVG 插画，扇面展开，绘远山、红日与松枝的山水画，深色扇骨配金色边缘。",
+    "promptOriginal": "生成一张折扇的 SVG 插画。",
     "prompt": {
-      "zh": "生成一张折扇的 SVG 插画，扇面展开，绘远山、红日与松枝的山水画，深色扇骨配金色边缘。",
-      "en": "Generate an SVG illustration of an open folding fan, its leaf painted with distant mountains, a red sun and pine boughs, with dark ribs and a gold rim."
+      "zh": "生成一张折扇的 SVG 插画。",
+      "en": "Generate an SVG illustration of a folding fan."
     },
     "coverAspect": "landscape",
     "featured": false,
