@@ -12,7 +12,7 @@ export function ThemeToggle({ locale }: { locale: Locale }) {
   const t = copy[locale];
   // The inline script in the document head has already picked a theme; read it
   // back after mount so the markup stays identical between server and client.
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
     const id = requestAnimationFrame(() =>
