@@ -19,13 +19,26 @@ export const metadata: Metadata = {
     "A curated archive of web, poster, slide, and infographic experiments.",
 };
 
+// Runs before first paint so a stored light choice never flashes dark first.
+// Dark stays the default when nothing has been chosen; swap the fallback for a
+// prefers-color-scheme check to follow the operating system instead.
+const themeScript = `(function(){try{var t=localStorage.getItem("genclaw-theme");if(t!=="light"&&t!=="dark")t="dark";document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="dark"}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className={playfair.variable}>
+    <html
+      lang="zh-CN"
+      className={playfair.variable}
+      data-theme="dark"
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>{children}</body>
     </html>
   );

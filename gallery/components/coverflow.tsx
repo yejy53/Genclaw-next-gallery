@@ -63,43 +63,22 @@ function LiveFirstScreen({ src, title }: { src: string; title: string }) {
   );
 }
 
+// Position stays inline because it is continuous; how a card recedes is a
+// theme decision (dark pushes cards into shadow, light fades them out), so
+// the blur and dimming live in CSS keyed on data-depth.
 function pose(offset: number) {
   const abs = Math.abs(offset);
   if (abs === 0) {
-    return { x: 0, scale: 1, rotate: 0, blur: 0, brightness: 1, z: 40, opacity: 1 };
+    return { x: 0, scale: 1, rotate: 0, z: 40, opacity: 1 };
   }
   const dir = offset > 0 ? 1 : -1;
   if (abs === 1) {
-    return {
-      x: dir * 60,
-      scale: 0.82,
-      rotate: dir * -9,
-      blur: 3,
-      brightness: 0.48,
-      z: 30,
-      opacity: 1,
-    };
+    return { x: dir * 60, scale: 0.82, rotate: dir * -9, z: 30, opacity: 1 };
   }
   if (abs === 2) {
-    return {
-      x: dir * 104,
-      scale: 0.66,
-      rotate: dir * -13,
-      blur: 6,
-      brightness: 0.3,
-      z: 20,
-      opacity: 1,
-    };
+    return { x: dir * 104, scale: 0.66, rotate: dir * -13, z: 20, opacity: 1 };
   }
-  return {
-    x: dir * 140,
-    scale: 0.55,
-    rotate: dir * -16,
-    blur: 8,
-    brightness: 0.2,
-    z: 10,
-    opacity: 0,
-  };
+  return { x: dir * 140, scale: 0.55, rotate: dir * -16, z: 10, opacity: 0 };
 }
 
 export function Coverflow({ locale, cases }: CoverflowProps) {
@@ -161,13 +140,13 @@ export function Coverflow({ locale, cases }: CoverflowProps) {
                 className={`coverflow-card${isActive ? " is-active" : ""}${
                   isLiveWeb ? " is-live" : ""
                 }`}
+                data-depth={Math.min(Math.abs(offset), 3)}
                 style={
                   {
                     zIndex: p.z,
                     opacity: p.opacity,
                     pointerEvents: p.opacity === 0 ? "none" : "auto",
                     transform: `translate(-50%, -50%) translateX(${p.x}%) scale(${p.scale}) rotateY(${p.rotate}deg)`,
-                    filter: `blur(${p.blur}px) brightness(${p.brightness})`,
                   } as React.CSSProperties
                 }
                 onClick={() => {

@@ -21,6 +21,7 @@ import {
   categoryIcon,
 } from "@/components/icons";
 import { LanguageSwitch } from "@/components/language-switch";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 type GalleryShellProps = {
   locale: Locale;
@@ -142,7 +143,10 @@ export function GalleryShell({
           <NavContent locale={locale} active={active} activeSlug={activeSlug} />
         </div>
         <div className="sidebar-foot">
-          <LanguageSwitch locale={locale} />
+          <div className="sidebar-foot-row">
+            <LanguageSwitch locale={locale} />
+            <ThemeToggle locale={locale} />
+          </div>
         </div>
       </aside>
 
@@ -158,7 +162,10 @@ export function GalleryShell({
           <div className="mobile-menu-panel">
             <NavContent locale={locale} active={active} activeSlug={activeSlug} />
             <div className="sidebar-foot">
-              <LanguageSwitch locale={locale} />
+              <div className="sidebar-foot-row">
+                <LanguageSwitch locale={locale} />
+                <ThemeToggle locale={locale} />
+              </div>
             </div>
           </div>
         </details>
