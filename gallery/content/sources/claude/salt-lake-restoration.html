@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>盐湖生态修复 · 前后对比</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 100%; height: 100%;
+    background: #0c1016;
+    font-family: "PingFang SC", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  /* 16:9 舞台，自适应缩放 */
+  .stage {
+    position: relative;
+    width: 100vw; height: 56.25vw;      /* 16:9 */
+    max-height: 100vh; max-width: 177.78vh;
+    background: #0c1016;
+    box-shadow: 0 0 80px rgba(0,0,0,.6);
+    overflow: hidden;
+  }
+  .slide { position: absolute; inset: 0; }
+
+  /* 标题条 */
+  .title {
+    position: absolute; top: 4.2%; left: 0; right: 0;
+    text-align: center; z-index: 30; pointer-events: none;
+  }
+  .title h1 {
+    color: #eef4f2; font-size: 2.5vw; font-weight: 700; letter-spacing: .06em;
+    text-shadow: 0 2px 12px rgba(0,0,0,.55);
+  }
+  .title .sub {
+    margin-top: .4vw; color: #7fd6c4; font-size: 1.05vw; letter-spacing: .28em;
+    text-transform: uppercase; font-weight: 600;
+  }
+
+  /* 两幅场景 SVG 铺满左右各半 */
+  .scene { position: absolute; top: 0; bottom: 0; width: 50%; }
+  .scene.left  { left: 0; }
+  .scene.right { right: 0; }
+  .scene svg { width: 100%; height: 100%; display: block; }
+
+  /* 中间分割线 */
+  .divider {
+    position: absolute; top: 8%; bottom: 8%; left: 50%;
+    width: 2px; transform: translateX(-1px); z-index: 20;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,.7) 20%, rgba(255,255,255,.7) 80%, transparent);
+  }
+  .divider::before {
+    content: ""; position: absolute; top: -14%; left: 50%; transform: translateX(-50%);
+    width: 3vw; height: 3vw; border-radius: 50%;
+    background: #0c1016; border: 2px solid rgba(255,255,255,.55);
+  }
+  .divider .arrow {
+    position: absolute; top: -14%; left: 50%; transform: translate(-50%, 6%);
+    color: #7fd6c4; font-size: 1.5vw; font-weight: 700; line-height: 3vw;
+  }
+
+  /* 前 / 后 角标 */
+  .tag {
+    position: absolute; top: 15%; z-index: 25;
+    padding: .35vw 1.1vw; border-radius: 2vw;
+    font-size: 1vw; font-weight: 700; letter-spacing: .15em;
+    color: #fff; backdrop-filter: blur(2px);
+  }
+  .tag.before { left: 3%; background: rgba(150,90,55,.85); }
+  .tag.after  { right: 3%; background: rgba(30,140,120,.85); }
+
+  /* 四角指标卡 */
+  .metric {
+    position: absolute; z-index: 25;
+    background: rgba(14,20,26,.62);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: .7vw;
+    padding: 1vw 1.3vw;
+    backdrop-filter: blur(4px);
+    min-width: 12vw;
+  }
+  .metric .label {
+    color: #a9bcc0; font-size: .95vw; letter-spacing: .08em; margin-bottom: .35vw;
+  }
+  .metric .value {
+    font-size: 2.1vw; font-weight: 800; line-height: 1;
+    display: flex; align-items: baseline; gap: .3vw;
+  }
+  .metric .value .unit { font-size: 1vw; font-weight: 600; opacity: .8; }
+  .metric.tl { top: 10%; left: 2.2%; }
+  .metric.bl { bottom: 6%; left: 2.2%; }
+  .metric.tr { top: 10%; right: 2.2%; text-align: right; }
+  .metric.tr .value { justify-content: flex-end; }
+  .metric.br { bottom: 6%; right: 2.2%; text-align: right; }
+  .metric.br .value { justify-content: flex-end; }
+  .val-up   { color: #57e0a0; }
+  .val-down { color: #4fb8ff; }
+  .val-bird { color: #ffd25e; }
+  .val-time { color: #c9a7ff; }
+
+  /* 底部说明 */
+  .footer {
+    position: absolute; bottom: 2.2%; left: 0; right: 0; text-align: center;
+    color: #5f7378; font-size: .85vw; letter-spacing: .2em; z-index: 25;
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+
+    <!-- ===== 左：干裂盐壳荒地 ===== -->
+    <div class="scene left">
+      <svg viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="skyDry" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0"   stop-color="#d8c39a"/>
+            <stop offset="0.5" stop-color="#e8d3a6"/>
+            <stop offset="1"   stop-color="#efe0bd"/>
+          </linearGradient>
+          <linearGradient id="crust" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0"   stop-color="#e9dcc0"/>
+            <stop offset="1"   stop-color="#c9b48a"/>
+          </linearGradient>
+          <radialGradient id="hazeSun" cx="0.72" cy="0.28" r="0.4">
+            <stop offset="0" stop-color="#fff7e0" stop-opacity="0.9"/>
+            <stop offset="1" stop-color="#fff7e0" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- 天空 -->
+        <rect width="800" height="470" fill="url(#skyDry)"/>
+        <!-- 灼热的太阳雾光 -->
+        <circle cx="576" cy="252" r="220" fill="url(#hazeSun)"/>
+        <circle cx="576" cy="252" r="52" fill="#fbeec0" opacity="0.9"/>
+        <!-- 远山 -->
+        <path d="M0 470 L120 400 L240 450 L380 385 L520 445 L660 400 L800 452 L800 470 Z" fill="#b6a179" opacity="0.7"/>
+        <!-- 枯木 -->
+        <g stroke="#6e5c3e" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.85">
+          <path d="M120 470 L118 380"/>
+          <path d="M118 405 L96 378"/>
+          <path d="M118 420 L142 398"/>
+          <path d="M118 392 L100 372"/>
+        </g>
+
+        <!-- 干裂盐壳地面 -->
+        <rect y="460" width="800" height="440" fill="url(#crust)"/>
+        <!-- 龟裂纹理（多边形网格） -->
+        <g stroke="#a48f66" stroke-width="2.2" fill="none" opacity="0.75">
+          <path d="M0 520 L110 505 L210 540 L150 600 L40 585 Z"/>
+          <path d="M210 540 L330 515 L400 560 L320 620 L150 600 Z"/>
+          <path d="M400 560 L520 520 L620 555 L560 630 L320 620 Z"/>
+          <path d="M620 555 L740 525 L800 570 L800 650 L560 630 Z"/>
+          <path d="M40 585 L150 600 L120 700 L0 690 Z"/>
+          <path d="M150 600 L320 620 L300 720 L120 700 Z"/>
+          <path d="M320 620 L560 630 L540 740 L300 720 Z"/>
+          <path d="M560 630 L800 650 L800 760 L540 740 Z"/>
+          <path d="M0 690 L120 700 L90 820 L0 810 Z"/>
+          <path d="M120 700 L300 720 L280 840 L90 820 Z"/>
+          <path d="M300 720 L540 740 L520 860 L280 840 Z"/>
+          <path d="M540 740 L800 760 L800 880 L520 860 Z"/>
+        </g>
+        <!-- 盐结晶白斑 -->
+        <g fill="#f6efdb" opacity="0.85">
+          <ellipse cx="180" cy="640" rx="46" ry="14"/>
+          <ellipse cx="470" cy="690" rx="60" ry="17"/>
+          <ellipse cx="330" cy="800" rx="52" ry="15"/>
+          <ellipse cx="660" cy="720" rx="44" ry="13"/>
+        </g>
+        <!-- 干裂细节高光 -->
+        <g stroke="#fff8e6" stroke-width="1" opacity="0.4" fill="none">
+          <path d="M210 540 L150 600"/>
+          <path d="M400 560 L320 620"/>
+          <path d="M120 700 L90 820"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- ===== 右：水位恢复后的浅滩鸟群 ===== -->
+    <div class="scene right">
+      <svg viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="skyWet" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0"   stop-color="#8fd0e8"/>
+            <stop offset="0.55" stop-color="#c8ecf2"/>
+            <stop offset="1"   stop-color="#eafaf6"/>
+          </linearGradient>
+          <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0"   stop-color="#bfeaf0"/>
+            <stop offset="0.4" stop-color="#7fc9d6"/>
+            <stop offset="1"   stop-color="#4fa6b8"/>
+          </linearGradient>
+          <radialGradient id="softSun" cx="0.28" cy="0.24" r="0.4">
+            <stop offset="0" stop-color="#fffdf2" stop-opacity="0.95"/>
+            <stop offset="1" stop-color="#fffdf2" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- 天空 -->
+        <rect width="800" height="470" fill="url(#skyWet)"/>
+        <circle cx="224" cy="216" r="200" fill="url(#softSun)"/>
+        <circle cx="224" cy="216" r="46" fill="#fffbe8" opacity="0.95"/>
+        <!-- 云 -->
+        <g fill="#ffffff" opacity="0.85">
+          <ellipse cx="520" cy="150" rx="70" ry="22"/>
+          <ellipse cx="580" cy="140" rx="50" ry="18"/>
+          <ellipse cx="470" cy="160" rx="45" ry="16"/>
+          <ellipse cx="660" cy="230" rx="55" ry="18"/>
+        </g>
+        <!-- 远山（青绿，湿润） -->
+        <path d="M0 470 L130 405 L260 452 L400 390 L540 448 L680 405 L800 455 L800 470 Z" fill="#7fae9a" opacity="0.75"/>
+
+        <!-- 飞行的鸟群（天空） -->
+        <g stroke="#3a4d55" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.85">
+          <path d="M300 120 q10 -10 20 0 q10 -10 20 0"/>
+          <path d="M360 100 q9 -9 18 0 q9 -9 18 0"/>
+          <path d="M420 135 q8 -8 16 0 q8 -8 16 0"/>
+          <path d="M340 165 q8 -8 16 0 q8 -8 16 0"/>
+          <path d="M250 175 q7 -7 14 0 q7 -7 14 0"/>
+        </g>
+
+        <!-- 浅滩水面 -->
+        <rect y="460" width="800" height="440" fill="url(#water)"/>
+        <!-- 水面反光波纹 -->
+        <g stroke="#ffffff" stroke-width="2" opacity="0.45" fill="none">
+          <path d="M60 540 q40 8 80 0 t80 0"/>
+          <path d="M420 560 q40 8 80 0 t80 0"/>
+          <path d="M120 620 q50 10 100 0 t100 0"/>
+          <path d="M480 660 q50 10 100 0 t100 0"/>
+          <path d="M40 720 q60 12 120 0 t120 0"/>
+        </g>
+        <!-- 太阳在水面倒影 -->
+        <g fill="#fffbe8" opacity="0.5">
+          <rect x="200" y="500" width="48" height="6" rx="3"/>
+          <rect x="196" y="530" width="56" height="6" rx="3"/>
+          <rect x="204" y="562" width="40" height="6" rx="3"/>
+        </g>
+
+        <!-- 芦苇丛 -->
+        <g stroke="#5a8f5f" stroke-width="4" stroke-linecap="round">
+          <path d="M60 900 L58 720" fill="none"/>
+          <path d="M74 900 L78 735" fill="none"/>
+          <path d="M90 900 L86 745" fill="none"/>
+        </g>
+        <g fill="#8a6d3a">
+          <ellipse cx="58" cy="716" rx="6" ry="16"/>
+          <ellipse cx="78" cy="731" rx="6" ry="16"/>
+        </g>
+
+        <!-- 浅滩涉水鸟群（火烈鸟风格 + 白鹭） -->
+        <!-- 火烈鸟1 -->
+        <g>
+          <path d="M300 720 q0 40 -8 90" stroke="#e88aa0" stroke-width="4" fill="none"/>
+          <path d="M300 720 q30 -10 40 -46 q4 -20 -12 -22 q-14 -2 -14 14" fill="#f7a9bd"/>
+          <circle cx="316" cy="668" r="8" fill="#f7a9bd"/>
+          <path d="M320 668 l14 6 l-12 4 z" fill="#3a3a3a"/>
+        </g>
+        <!-- 火烈鸟2 -->
+        <g>
+          <path d="M370 740 q4 36 0 84" stroke="#e88aa0" stroke-width="4" fill="none"/>
+          <path d="M366 742 q-28 -8 -40 -42 q-6 -20 10 -24 q14 -3 16 13" fill="#f7a9bd"/>
+          <circle cx="322" cy="694" r="8" fill="#f7a9bd"/>
+          <path d="M318 694 l-14 6 l12 4 z" fill="#3a3a3a"/>
+        </g>
+        <!-- 白鹭群 -->
+        <g>
+          <g transform="translate(520 700)">
+            <path d="M0 0 q4 30 0 66" stroke="#c9d2d0" stroke-width="3" fill="none"/>
+            <ellipse cx="-2" cy="-8" rx="20" ry="11" fill="#f5f8f7"/>
+            <circle cx="-20" cy="-18" r="6" fill="#f5f8f7"/>
+            <path d="M-26 -18 l-12 3 l10 3 z" fill="#f4b93a"/>
+          </g>
+          <g transform="translate(600 730) scale(0.85)">
+            <path d="M0 0 q4 30 0 66" stroke="#c9d2d0" stroke-width="3" fill="none"/>
+            <ellipse cx="-2" cy="-8" rx="20" ry="11" fill="#f5f8f7"/>
+            <circle cx="-20" cy="-18" r="6" fill="#f5f8f7"/>
+            <path d="M-26 -18 l-12 3 l10 3 z" fill="#f4b93a"/>
+          </g>
+        </g>
+        <!-- 水中倒影小笔触 -->
+        <g fill="#f7a9bd" opacity="0.3">
+          <rect x="308" y="812" width="6" height="26" rx="3"/>
+          <rect x="368" y="826" width="6" height="24" rx="3"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 中央分割线 -->
+    <div class="divider"><span class="arrow">→</span></div>
+
+    <!-- 前 / 后 角标 -->
+    <div class="tag before">修复前 · BEFORE</div>
+    <div class="tag after">修复后 · AFTER</div>
+
+    <!-- 标题 -->
+    <div class="title">
+      <h1>虚构盐湖生态修复工程</h1>
+      <div class="sub">Salt Lake Restoration · 6-Year Outcome</div>
+    </div>
+
+    <!-- 四角指标 -->
+    <div class="metric tl">
+      <div class="label">水面面积</div>
+      <div class="value val-up">+38<span class="unit">%</span></div>
+    </div>
+    <div class="metric bl">
+      <div class="label">湖水盐度</div>
+      <div class="value val-down">−21<span class="unit">%</span></div>
+    </div>
+    <div class="metric tr">
+      <div class="label">鸟类物种</div>
+      <div class="value val-bird">12<span class="unit">→</span>94<span class="unit">种</span></div>
+    </div>
+    <div class="metric br">
+      <div class="label">修复周期</div>
+      <div class="value val-time">6<span class="unit">年</span></div>
+    </div>
+
+    <div class="footer">数据为虚构示例 · FICTIONAL DATA FOR ILLUSTRATION</div>
+
+  </div>
+</body>
+</html>

@@ -29,10 +29,17 @@
         "producer": "GenClaw-Next · V2",
         "kind": "html",
         "artifact": "/cases/robot-hero-selector/v2/index.html",
-        "preview": "/cases/robot-hero-selector/cover.png"
+        "preview": "/cases/robot-hero-selector/cover.webp"
       }
     ],
-    "cover": "/cases/robot-hero-selector/cover.png"
+    "baseline": {
+      "id": "claude",
+      "producer": "Claude",
+      "kind": "image",
+      "artifact": "/cases/robot-hero-selector/baseline.png",
+      "preview": "/cases/robot-hero-selector/baseline.png"
+    },
+    "cover": "/cases/robot-hero-selector/cover.webp"
   },
   {
     "slug": "animation-studio-loop",
@@ -64,10 +71,17 @@
         "producer": "GenClaw-Next · V2",
         "kind": "html",
         "artifact": "/cases/animation-studio-loop/v2/index.html",
-        "preview": "/cases/animation-studio-loop/cover.png"
+        "preview": "/cases/animation-studio-loop/cover.webp"
       }
     ],
-    "cover": "/cases/animation-studio-loop/cover.png"
+    "baseline": {
+      "id": "claude",
+      "producer": "Claude",
+      "kind": "image",
+      "artifact": "/cases/animation-studio-loop/baseline.png",
+      "preview": "/cases/animation-studio-loop/baseline.png"
+    },
+    "cover": "/cases/animation-studio-loop/cover.webp"
   },
   {
     "slug": "microscopic-life-atlas",
@@ -99,10 +113,17 @@
         "producer": "GenClaw-Next · V2",
         "kind": "html",
         "artifact": "/cases/microscopic-life-atlas/v2/index.html",
-        "preview": "/cases/microscopic-life-atlas/cover.png"
+        "preview": "/cases/microscopic-life-atlas/cover.webp"
       }
     ],
-    "cover": "/cases/microscopic-life-atlas/cover.png"
+    "baseline": {
+      "id": "claude",
+      "producer": "Claude",
+      "kind": "image",
+      "artifact": "/cases/microscopic-life-atlas/baseline.png",
+      "preview": "/cases/microscopic-life-atlas/baseline.png"
+    },
+    "cover": "/cases/microscopic-life-atlas/cover.webp"
   },
   {
     "slug": "spotify-music-interface",
@@ -134,10 +155,17 @@
         "producer": "GenClaw-Next · Web Agent",
         "kind": "html",
         "artifact": "/cases/spotify-music-interface/v1/index.html",
-        "preview": "/cases/spotify-music-interface/cover.png"
+        "preview": "/cases/spotify-music-interface/cover.webp"
       }
     ],
-    "cover": "/cases/spotify-music-interface/cover.png"
+    "baseline": {
+      "id": "claude",
+      "producer": "Claude",
+      "kind": "image",
+      "artifact": "/cases/spotify-music-interface/baseline.png",
+      "preview": "/cases/spotify-music-interface/baseline.png"
+    },
+    "cover": "/cases/spotify-music-interface/cover.webp"
   },
   {
     "slug": "minecraft-encyclopedia",
@@ -169,10 +197,17 @@
         "producer": "GenClaw-Next · Web Agent",
         "kind": "html",
         "artifact": "/cases/minecraft-encyclopedia/v1/index.html",
-        "preview": "/cases/minecraft-encyclopedia/cover.png"
+        "preview": "/cases/minecraft-encyclopedia/cover.webp"
       }
     ],
-    "cover": "/cases/minecraft-encyclopedia/cover.png"
+    "baseline": {
+      "id": "claude",
+      "producer": "Claude",
+      "kind": "image",
+      "artifact": "/cases/minecraft-encyclopedia/baseline.png",
+      "preview": "/cases/minecraft-encyclopedia/baseline.png"
+    },
+    "cover": "/cases/minecraft-encyclopedia/cover.webp"
   },
   {
     "slug": "pizza-restaurant-site",
@@ -204,10 +239,17 @@
         "producer": "GenClaw-Next · Web Agent",
         "kind": "html",
         "artifact": "/cases/pizza-restaurant-site/v1/index.html",
-        "preview": "/cases/pizza-restaurant-site/cover.png"
+        "preview": "/cases/pizza-restaurant-site/cover.webp"
       }
     ],
-    "cover": "/cases/pizza-restaurant-site/cover.png"
+    "baseline": {
+      "id": "claude",
+      "producer": "Claude",
+      "kind": "image",
+      "artifact": "/cases/pizza-restaurant-site/baseline.png",
+      "preview": "/cases/pizza-restaurant-site/baseline.png"
+    },
+    "cover": "/cases/pizza-restaurant-site/cover.webp"
   },
   {
     "slug": "poster-shanchuan-tea-launch",
@@ -250,13 +292,13 @@
       }
     ],
     "baseline": {
-      "id": "t0",
-      "producer": "对照臂 T0",
+      "id": "claude",
+      "producer": "Claude",
       "kind": "image",
       "artifact": "/cases/poster-shanchuan-tea-launch/baseline.png",
       "preview": "/cases/poster-shanchuan-tea-launch/baseline.png"
     },
-    "cover": "/cases/poster-shanchuan-tea-launch/cover.png"
+    "cover": "/cases/poster-shanchuan-tea-launch/cover.webp"
   },
   {
     "slug": "poster-vogue-quiet-power",
@@ -299,13 +341,13 @@
       }
     ],
     "baseline": {
-      "id": "t0",
-      "producer": "对照臂 T0",
+      "id": "claude",
+      "producer": "Claude",
       "kind": "image",
       "artifact": "/cases/poster-vogue-quiet-power/baseline.png",
       "preview": "/cases/poster-vogue-quiet-power/baseline.png"
     },
-    "cover": "/cases/poster-vogue-quiet-power/cover.png"
+    "cover": "/cases/poster-vogue-quiet-power/cover.webp"
   },
   {
     "slug": "poster-chongqing-rain-night",
@@ -348,13 +390,13 @@
       }
     ],
     "baseline": {
-      "id": "t0",
-      "producer": "对照臂 T0",
+      "id": "claude",
+      "producer": "Claude",
       "kind": "image",
       "artifact": "/cases/poster-chongqing-rain-night/baseline.png",
       "preview": "/cases/poster-chongqing-rain-night/baseline.png"
     },
-    "cover": "/cases/poster-chongqing-rain-night/cover.png"
+    "cover": "/cases/poster-chongqing-rain-night/cover.webp"
   },
   {
     "slug": "oneiro-agent-architecture",
@@ -385,7 +427,14 @@
         "preview": "/cases/oneiro-agent-architecture/figure.png"
       }
     ],
-    "cover": "/cases/oneiro-agent-architecture/cover.png"
+    "baseline": {
+      "id": "claude",
+      "producer": "Claude",
+      "kind": "image",
+      "artifact": "/cases/oneiro-agent-architecture/baseline.png",
+      "preview": "/cases/oneiro-agent-architecture/baseline.png"
+    },
+    "cover": "/cases/oneiro-agent-architecture/cover.webp"
   },
   {
     "slug": "urban-mobility-keynote",
@@ -416,7 +465,14 @@
         "preview": "/cases/urban-mobility-keynote/figure.png"
       }
     ],
-    "cover": "/cases/urban-mobility-keynote/cover.png"
+    "baseline": {
+      "id": "claude",
+      "producer": "Claude",
+      "kind": "image",
+      "artifact": "/cases/urban-mobility-keynote/baseline.png",
+      "preview": "/cases/urban-mobility-keynote/baseline.png"
+    },
+    "cover": "/cases/urban-mobility-keynote/cover.webp"
   },
   {
     "slug": "salt-lake-restoration",
@@ -447,7 +503,14 @@
         "preview": "/cases/salt-lake-restoration/figure.png"
       }
     ],
-    "cover": "/cases/salt-lake-restoration/cover.png"
+    "baseline": {
+      "id": "claude",
+      "producer": "Claude",
+      "kind": "image",
+      "artifact": "/cases/salt-lake-restoration/baseline.png",
+      "preview": "/cases/salt-lake-restoration/baseline.png"
+    },
+    "cover": "/cases/salt-lake-restoration/cover.webp"
   },
   {
     "slug": "qinghua-porcelain-atlas",
@@ -483,13 +546,13 @@
       }
     ],
     "baseline": {
-      "id": "t0",
-      "producer": "历史基线 T0",
+      "id": "claude",
+      "producer": "Claude",
       "kind": "image",
       "artifact": "/cases/qinghua-porcelain-atlas/baseline.png",
       "preview": "/cases/qinghua-porcelain-atlas/baseline.png"
     },
-    "cover": "/cases/qinghua-porcelain-atlas/cover.png"
+    "cover": "/cases/qinghua-porcelain-atlas/cover.webp"
   },
   {
     "slug": "snow-leopard-field-guide",
@@ -525,13 +588,13 @@
       }
     ],
     "baseline": {
-      "id": "t0",
-      "producer": "历史基线 T0",
+      "id": "claude",
+      "producer": "Claude",
       "kind": "image",
       "artifact": "/cases/snow-leopard-field-guide/baseline.png",
       "preview": "/cases/snow-leopard-field-guide/baseline.png"
     },
-    "cover": "/cases/snow-leopard-field-guide/cover.png"
+    "cover": "/cases/snow-leopard-field-guide/cover.webp"
   },
   {
     "slug": "akari-character-sheet",
@@ -567,13 +630,13 @@
       }
     ],
     "baseline": {
-      "id": "t0",
-      "producer": "历史基线 T0",
+      "id": "claude",
+      "producer": "Claude",
       "kind": "image",
       "artifact": "/cases/akari-character-sheet/baseline.png",
       "preview": "/cases/akari-character-sheet/baseline.png"
     },
-    "cover": "/cases/akari-character-sheet/cover.png"
+    "cover": "/cases/akari-character-sheet/cover.webp"
   },
   {
     "slug": "iceberg-model-card",
@@ -609,13 +672,13 @@
       }
     ],
     "baseline": {
-      "id": "t0",
-      "producer": "历史基线 T0",
+      "id": "claude",
+      "producer": "Claude",
       "kind": "image",
       "artifact": "/cases/iceberg-model-card/baseline.png",
       "preview": "/cases/iceberg-model-card/baseline.png"
     },
-    "cover": "/cases/iceberg-model-card/cover.png"
+    "cover": "/cases/iceberg-model-card/cover.webp"
   },
   {
     "slug": "svg-apple-watch",
@@ -647,8 +710,8 @@
       }
     ],
     "baseline": {
-      "id": "theirs",
-      "producer": "对照案例",
+      "id": "claude",
+      "producer": "Claude",
       "kind": "svg",
       "artifact": "/cases/svg-apple-watch/baseline.svg",
       "preview": "/cases/svg-apple-watch/baseline.svg"

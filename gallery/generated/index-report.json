@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-27T05:00:35.853095+00:00",
+  "generatedAt": "2026-07-28T16:21:32.827356+00:00",
   "caseCount": 20,
   "resultCount": 23,
   "preservedCases": [],
@@ -16,6 +16,11 @@
       "source": "gallery/content/sources/web/robot-hero-selector/app"
     },
     {
+      "case": "robot-hero-selector",
+      "role": "baseline",
+      "source": "gallery/content/sources/claude/robot-hero-selector.png"
+    },
+    {
       "case": "animation-studio-loop",
       "role": "cover",
       "source": "gallery/content/sources/web/animation-studio-loop/cover.png"
@@ -24,6 +29,11 @@
       "case": "animation-studio-loop",
       "role": "result:v2",
       "source": "gallery/content/sources/web/animation-studio-loop/app"
+    },
+    {
+      "case": "animation-studio-loop",
+      "role": "baseline",
+      "source": "gallery/content/sources/claude/animation-studio-loop.png"
     },
     {
       "case": "microscopic-life-atlas",
@@ -36,6 +46,11 @@
       "source": "gallery/content/sources/web/microscopic-life-atlas/app"
     },
     {
+      "case": "microscopic-life-atlas",
+      "role": "baseline",
+      "source": "gallery/content/sources/claude/microscopic-life-atlas.png"
+    },
+    {
       "case": "spotify-music-interface",
       "role": "cover",
       "source": "gallery/content/sources/web/spotify-music-interface/cover.png"
@@ -44,6 +59,11 @@
       "case": "spotify-music-interface",
       "role": "result:v1",
       "source": "gallery/content/sources/web/spotify-music-interface/app"
+    },
+    {
+      "case": "spotify-music-interface",
+      "role": "baseline",
+      "source": "gallery/content/sources/claude/spotify-music-interface.png"
     },
     {
       "case": "minecraft-encyclopedia",
@@ -56,6 +76,11 @@
       "source": "gallery/content/sources/web/minecraft-encyclopedia/app"
     },
     {
+      "case": "minecraft-encyclopedia",
+      "role": "baseline",
+      "source": "gallery/content/sources/claude/minecraft-encyclopedia.png"
+    },
+    {
       "case": "pizza-restaurant-site",
       "role": "cover",
       "source": "gallery/content/sources/web/pizza-restaurant-site/cover.png"
@@ -64,6 +89,11 @@
       "case": "pizza-restaurant-site",
       "role": "result:v1",
       "source": "gallery/content/sources/web/pizza-restaurant-site/app"
+    },
+    {
+      "case": "pizza-restaurant-site",
+      "role": "baseline",
+      "source": "gallery/content/sources/claude/pizza-restaurant-site.png"
     },
     {
       "case": "poster-shanchuan-tea-launch",
@@ -83,7 +113,7 @@
     {
       "case": "poster-shanchuan-tea-launch",
       "role": "baseline",
-      "source": "gallery/content/sources/poster/poster-shanchuan-tea-launch/t0.png"
+      "source": "gallery/content/sources/claude/poster-shanchuan-tea-launch.png"
     },
     {
       "case": "poster-vogue-quiet-power",
@@ -103,7 +133,7 @@
     {
       "case": "poster-vogue-quiet-power",
       "role": "baseline",
-      "source": "gallery/content/sources/poster/poster-vogue-quiet-power/t0.png"
+      "source": "gallery/content/sources/claude/poster-vogue-quiet-power.png"
     },
     {
       "case": "poster-chongqing-rain-night",
@@ -123,7 +153,7 @@
     {
       "case": "poster-chongqing-rain-night",
       "role": "baseline",
-      "source": "gallery/content/sources/poster/poster-chongqing-rain-night/t0.png"
+      "source": "gallery/content/sources/claude/poster-chongqing-rain-night.png"
     },
     {
       "case": "oneiro-agent-architecture",
@@ -136,6 +166,11 @@
       "source": "gallery/content/sources/slide/oneiro-agent-architecture/figure.png"
     },
     {
+      "case": "oneiro-agent-architecture",
+      "role": "baseline",
+      "source": "gallery/content/sources/claude/oneiro-agent-architecture.png"
+    },
+    {
       "case": "urban-mobility-keynote",
       "role": "cover",
       "source": "gallery/content/sources/slide/urban-mobility-keynote/figure.png"
@@ -146,6 +181,11 @@
       "source": "gallery/content/sources/slide/urban-mobility-keynote/figure.png"
     },
     {
+      "case": "urban-mobility-keynote",
+      "role": "baseline",
+      "source": "gallery/content/sources/claude/urban-mobility-keynote.png"
+    },
+    {
       "case": "salt-lake-restoration",
       "role": "cover",
       "source": "gallery/content/sources/slide/salt-lake-restoration/figure.png"
@@ -154,6 +194,11 @@
       "case": "salt-lake-restoration",
       "role": "result:figure",
       "source": "gallery/content/sources/slide/salt-lake-restoration/figure.png"
+    },
+    {
+      "case": "salt-lake-restoration",
+      "role": "baseline",
+      "source": "gallery/content/sources/claude/salt-lake-restoration.png"
     },
     {
       "case": "qinghua-porcelain-atlas",
@@ -168,7 +213,7 @@
     {
       "case": "qinghua-porcelain-atlas",
       "role": "baseline",
-      "source": "gallery/content/sources/infographic/qinghua-porcelain-atlas/baseline.png"
+      "source": "gallery/content/sources/claude/qinghua-porcelain-atlas.png"
     },
     {
       "case": "snow-leopard-field-guide",
@@ -183,7 +228,7 @@
     {
       "case": "snow-leopard-field-guide",
       "role": "baseline",
-      "source": "gallery/content/sources/infographic/snow-leopard-field-guide/baseline.png"
+      "source": "gallery/content/sources/claude/snow-leopard-field-guide.png"
     },
     {
       "case": "akari-character-sheet",
@@ -198,7 +243,7 @@
     {
       "case": "akari-character-sheet",
       "role": "baseline",
-      "source": "gallery/content/sources/infographic/akari-character-sheet/baseline.png"
+      "source": "gallery/content/sources/claude/akari-character-sheet.png"
     },
     {
       "case": "iceberg-model-card",
@@ -213,7 +258,7 @@
     {
       "case": "iceberg-model-card",
       "role": "baseline",
-      "source": "gallery/content/sources/infographic/iceberg-model-card/baseline.png"
+      "source": "gallery/content/sources/claude/iceberg-model-card.png"
     },
     {
       "case": "svg-apple-watch",
@@ -228,7 +273,7 @@
     {
       "case": "svg-apple-watch",
       "role": "baseline",
-      "source": "gallery/content/sources/svg/svg-apple-watch/theirs.svg"
+      "source": "gallery/content/sources/claude/svg-apple-watch.svg"
     },
     {
       "case": "svg-instax-mini",

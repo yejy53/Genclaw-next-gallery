@@ -105,6 +105,9 @@ export default async function CasePage({
             <section className="wb-panel wb-baseline">
               <div className="wb-panel-head">
                 <h2>{t.codingAgent}</h2>
+                {baseline && (
+                  <span className="wb-panel-tag">{baseline.producer}</span>
+                )}
               </div>
               {baseline ? (
                 <div className="wb-baseline-body">

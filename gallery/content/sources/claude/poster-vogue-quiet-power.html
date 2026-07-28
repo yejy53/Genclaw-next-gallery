@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOGUE — The Quiet Power Issue · November 2026 · Paris Edition</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    padding: 24px;
+  }
+
+  /* ---- 3:4 COVER FRAME ---- */
+  .cover {
+    position: relative;
+    width: min(90vw, 66.75vh);
+    aspect-ratio: 3 / 4;
+    background: #8f9092;
+    overflow: hidden;
+    box-shadow: 0 30px 90px rgba(0,0,0,.7);
+    --unit: min(90vw, 66.75vh);
+  }
+
+  /* ---- CONCRETE-GRAY SEAMLESS BACKDROP ---- */
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(120% 90% at 30% 18%, #b9bcbe 0%, #9c9fa1 34%, #86888a 62%, #6f7173 100%);
+  }
+  /* cool daylight shaft from upper left */
+  .light-shaft {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(118deg,
+        rgba(214,224,231,.55) 0%,
+        rgba(200,212,220,.20) 22%,
+        rgba(120,124,128,0) 46%);
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(130% 110% at 42% 40%, transparent 46%, rgba(0,0,0,.28) 100%);
+    pointer-events: none;
+  }
+
+  /* ================= THE MODEL (CSS/SVG portrait) ================= */
+  .model {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-46%);
+    width: 84%;
+    height: 92%;
+    filter: drop-shadow(-14px 10px 26px rgba(0,0,0,.35));
+  }
+  .model svg { width: 100%; height: 100%; display: block; }
+
+  /* shallow depth of field — very slight blur on backdrop edges handled by gradient */
+
+  /* fine film grain overlay */
+  .grain {
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: .12;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  /* ================= TYPOGRAPHY ================= */
+
+  /* Huge white serif masthead */
+  .masthead {
+    position: absolute;
+    top: 3.2%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    color: #ffffff;
+    font-size: calc(var(--unit) * 0.265);
+    letter-spacing: calc(var(--unit) * 0.004);
+    line-height: .9;
+    text-shadow: 0 2px 10px rgba(0,0,0,.18);
+    z-index: 5;
+  }
+
+  /* top-left tiny caps */
+  .issue-line {
+    position: absolute;
+    top: 2.4%;
+    left: 4%;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: calc(var(--unit) * 0.0165);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    z-index: 6;
+    text-shadow: 0 1px 3px rgba(0,0,0,.3);
+  }
+
+  /* centered bold sans issue title */
+  .issue-title {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: calc(var(--unit) * 0.036);
+    letter-spacing: .30em;
+    text-transform: uppercase;
+    z-index: 5;
+    text-shadow: 0 2px 8px rgba(0,0,0,.35);
+  }
+
+  /* right-side cover-line stack */
+  .coverlines {
+    position: absolute;
+    top: 40%;
+    right: 4%;
+    width: 44%;
+    text-align: right;
+    z-index: 6;
+    color: #ffffff;
+  }
+  .coverlines .cl {
+    margin-bottom: calc(var(--unit) * 0.028);
+    text-shadow: 0 1px 6px rgba(0,0,0,.4);
+  }
+  .coverlines .cl .lead {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: calc(var(--unit) * 0.0235);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    line-height: 1.15;
+    display: block;
+  }
+  .coverlines .cl .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: calc(var(--unit) * 0.023);
+    letter-spacing: .01em;
+    line-height: 1.2;
+    display: block;
+    margin-top: calc(var(--unit) * 0.003);
+    color: #f2f2f2;
+  }
+
+  /* bottom-left barcode */
+  .barcode {
+    position: absolute;
+    bottom: 3%;
+    left: 4%;
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: calc(var(--unit) * 0.004);
+    background: rgba(255,255,255,.92);
+    padding: calc(var(--unit) * 0.008) calc(var(--unit) * 0.010) calc(var(--unit) * 0.005);
+    border-radius: 2px;
+  }
+  .barcode .bars {
+    height: calc(var(--unit) * 0.05);
+    width: calc(var(--unit) * 0.12);
+    background: repeating-linear-gradient(90deg,
+      #111 0 1.5px, transparent 1.5px 3px,
+      #111 3px 4px, transparent 4px 7px,
+      #111 7px 9px, transparent 9px 11px,
+      #111 11px 12px, transparent 12px 15px);
+  }
+  .barcode .code {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: calc(var(--unit) * 0.014);
+    letter-spacing: .18em;
+    color: #111;
+  }
+</style>
+</head>
+<body>
+  <div class="cover">
+    <!-- Backdrop layers -->
+    <div class="backdrop"></div>
+
+    <!-- ===== THE MODEL ===== -->
+    <div class="model" aria-label="Portrait of a tall medium-dark-skinned woman in a sculptural ivory wool coat">
+      <svg viewBox="0 0 600 760" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- warm skin gradient with soft single-source key + deep cheek shadow -->
+          <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"  stop-color="#a9744f"/>
+            <stop offset="42%" stop-color="#8f5c3c"/>
+            <stop offset="78%" stop-color="#6e4429"/>
+            <stop offset="100%" stop-color="#5a361f"/>
+          </linearGradient>
+          <radialGradient id="cheekKey" cx="38%" cy="34%" r="55%">
+            <stop offset="0%" stop-color="#c78e63" stop-opacity=".9"/>
+            <stop offset="60%" stop-color="#c78e63" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="cheekShadow" cx="72%" cy="60%" r="40%">
+            <stop offset="0%" stop-color="#3d2414" stop-opacity=".55"/>
+            <stop offset="100%" stop-color="#3d2414" stop-opacity="0"/>
+          </radialGradient>
+          <!-- ivory wool coat -->
+          <linearGradient id="coat" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"  stop-color="#f4efe4"/>
+            <stop offset="50%" stop-color="#e6dfd0"/>
+            <stop offset="100%" stop-color="#ccc4b2"/>
+          </linearGradient>
+          <linearGradient id="coatShadow" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"  stop-color="#d8d0be"/>
+            <stop offset="100%" stop-color="#b3aa96"/>
+          </linearGradient>
+          <!-- deep aubergine silk slip -->
+          <linearGradient id="silk" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"  stop-color="#4a2338"/>
+            <stop offset="55%" stop-color="#341527"/>
+            <stop offset="100%" stop-color="#24101c"/>
+          </linearGradient>
+          <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#221812"/>
+            <stop offset="100%" stop-color="#0d0a08"/>
+          </linearGradient>
+        </defs>
+
+        <!-- NECK -->
+        <path d="M262 300 q-8 70 -20 108 q60 34 122 0 q-16 -44 -22 -108 z" fill="url(#skin)"/>
+        <path d="M262 300 q-8 70 -20 108 q30 16 60 18 q-8 -66 -6 -128 z" fill="#5a361f" opacity=".4"/>
+
+        <!-- AUBERGINE SILK SLIP (deep neckline) -->
+        <path d="M196 430 q104 78 210 0 l70 40 q6 150 4 300 l-360 0 q-2 -150 6 -300 z" fill="url(#silk)"/>
+        <path d="M300 452 q-30 40 -34 118 q34 14 68 0 q-6 -78 -34 -118z" fill="#1c0c16" opacity=".7"/>
+        <!-- silk sheen -->
+        <path d="M232 470 q40 40 30 300 l-24 0 q-8 -160 -6 -300z" fill="#6a3450" opacity=".35"/>
+
+        <!-- IVORY WOOL COAT — sculptural high collar + shoulders -->
+        <!-- body of coat -->
+        <path d="M120 470 q60 -66 96 -30 q-40 130 -30 330 l-160 0 q0 -190 94 -300z" fill="url(#coat)"/>
+        <path d="M480 470 q-60 -66 -96 -30 q40 130 30 330 l160 0 q0 -190 -94 -300z" fill="url(#coat)"/>
+        <!-- coat inner shadow under collar -->
+        <path d="M186 452 q114 86 228 0 l-14 40 q-100 66 -200 0z" fill="url(#coatShadow)"/>
+
+        <!-- SCULPTURAL HIGH COLLAR (stands up around neck) -->
+        <path d="M236 300 q-70 30 -60 150 q30 26 54 8 q-14 -96 30 -150z" fill="url(#coat)"/>
+        <path d="M364 300 q70 30 60 150 q-30 26 -54 8 q14 -96 -30 -150z" fill="url(#coat)"/>
+        <path d="M236 300 q-70 30 -60 150 q14 12 26 6 q-8 -92 40 -150z" fill="url(#coatShadow)" opacity=".8"/>
+        <path d="M364 300 q40 22 52 70 q-6 -70 -52 -70z" fill="#fff" opacity=".35"/>
+
+        <!-- HEAD -->
+        <!-- hair back (sleek low chignon volume) -->
+        <path d="M214 150 q86 -108 172 0 q30 70 6 150 q-10 26 -34 30 l-116 0 q-24 -4 -34 -30 q-24 -80 6 -150z" fill="url(#hair)"/>
+
+        <!-- FACE -->
+        <path d="M232 150 q68 -60 136 0 q26 60 8 130 q-14 66 -76 78 q-62 -12 -76 -78 q-18 -70 8 -130z" fill="url(#skin)"/>
+        <ellipse cx="300" cy="200" rx="90" ry="118" fill="url(#cheekKey)"/>
+        <ellipse cx="356" cy="238" rx="60" ry="72" fill="url(#cheekShadow)"/>
+
+        <!-- eyebrows -->
+        <path d="M250 196 q26 -12 50 -4" stroke="#2c1a10" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M312 192 q26 -8 46 4" stroke="#2c1a10" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+        <!-- eyes — piercing gaze -->
+        <g>
+          <path d="M252 220 q22 -14 44 -2 q-20 16 -44 2z" fill="#fff"/>
+          <circle cx="274" cy="219" r="9" fill="#2a1608"/>
+          <circle cx="274" cy="219" r="4" fill="#000"/>
+          <circle cx="271" cy="216" r="2" fill="#fff"/>
+          <path d="M252 220 q22 -14 44 -2" stroke="#1c0f08" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </g>
+        <g>
+          <path d="M312 218 q22 -12 44 0 q-22 14 -44 0z" fill="#fff"/>
+          <circle cx="334" cy="218" r="9" fill="#2a1608"/>
+          <circle cx="334" cy="218" r="4" fill="#000"/>
+          <circle cx="331" cy="215" r="2" fill="#fff"/>
+          <path d="M312 218 q22 -12 44 0" stroke="#1c0f08" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <!-- nose with soft shadow -->
+        <path d="M300 226 q-10 40 -18 56 q10 12 30 6" stroke="#5a361f" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+
+        <!-- glossy plum lips -->
+        <path d="M276 306 q24 -14 48 0 q-24 22 -48 0z" fill="#5c2338"/>
+        <path d="M276 306 q24 12 48 0 q-24 26 -48 0z" fill="#712a44"/>
+        <path d="M288 305 q12 -6 24 0 q-12 4 -24 0z" fill="#a04a68" opacity=".7"/>
+
+        <!-- SLEEK LOW CHIGNON + one loose strand -->
+        <path d="M214 150 q86 -70 172 0 q-86 -30 -172 0z" fill="#0d0a08"/>
+        <ellipse cx="300" cy="360" rx="42" ry="30" fill="url(#hair)"/> <!-- low chignon at nape -->
+        <path d="M236 250 q-18 60 -6 150" stroke="#1a120c" stroke-width="4" fill="none" opacity=".8"/> <!-- loose strand -->
+
+        <!-- SILVER SPIRAL EARRING -->
+        <g transform="translate(238 268)" fill="none" stroke="#dfe3e6" stroke-width="3.4" stroke-linecap="round">
+          <path d="M0 0 q18 2 16 20 q-2 16 -18 14 q-14 -2 -12 -16 q2 -12 14 -10 q10 2 8 12"/>
+          <circle cx="14" cy="30" r="1.6" fill="#dfe3e6" stroke="none"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Light + atmosphere over model & backdrop -->
+    <div class="light-shaft"></div>
+    <div class="vignette"></div>
+
+    <!-- ===== TYPOGRAPHY ===== -->
+    <div class="issue-line">NOVEMBER 2026 · PARIS EDITION · €9.00</div>
+
+    <h1 class="masthead">VOGUE</h1>
+
+    <div class="issue-title">THE QUIET POWER ISSUE</div>
+
+    <div class="coverlines">
+      <div class="cl">
+        <span class="lead">The New Minimalists</span>
+        <span class="sub">a 40-page portfolio</span>
+      </div>
+      <div class="cl">
+        <span class="lead">How AI Tools Are<br>Rewriting the Atelier</span>
+      </div>
+      <div class="cl">
+        <span class="lead">Martin Margiela's<br>Unrevealed Archive</span>
+      </div>
+      <div class="cl">
+        <span class="lead">Skin · Investment</span>
+        <span class="sub">where the money goes next</span>
+      </div>
+    </div>
+
+    <div class="barcode">
+      <div class="bars"></div>
+      <div class="code">VG1126</div>
+    </div>
+
+    <!-- Film grain on top of everything -->
+    <div class="grain"></div>
+  </div>
+</body>
+</html>

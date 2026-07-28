@@ -12,11 +12,44 @@ from __future__ import annotations
 
 import copy
 import json
+import os
+import platform
 import re
 import shutil
+import subprocess
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+_REEXEC_FLAG = "GALLERY_INDEX_NATIVE_ARCH"
+
+
+def reexec_under_native_arch() -> None:
+    """Re-launch natively when started from a translated (Rosetta) process.
+
+    node ships as x86_64 on some machines, so `npm run index` hands this script
+    an x86_64 interpreter that cannot load arm64 wheels. Pillow then fails to
+    import and covers would silently ship at full resolution.
+    """
+    if sys.platform != "darwin" or os.environ.get(_REEXEC_FLAG):
+        return
+    if platform.machine() != "x86_64":
+        return
+    try:
+        arm_capable = subprocess.run(
+            ["sysctl", "-n", "hw.optional.arm64"],
+            capture_output=True, text=True, timeout=5,
+        ).stdout.strip() == "1"
+    except Exception:
+        return
+    if not arm_capable:
+        return
+    os.execvpe(
+        "arch",
+        ["arch", "-arm64", sys.executable, *sys.argv],
+        {**os.environ, _REEXEC_FLAG: "1"},
+    )
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -71,6 +104,41 @@ def publish(source_value: str, destination: Path) -> str:
     destination.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(source, destination)
     return source.relative_to(ROOT).as_posix()
+
+
+# Covers are the only assets every visitor downloads, and the curated sources
+# are print-resolution: left as-is the home page pulls tens of megabytes to
+# fill cards a few hundred pixels wide. Full-resolution files stay reachable as
+# the result artifacts.
+COVER_MAX_EDGE = 1200
+COVER_QUALITY = 80
+
+
+def publish_cover(source_value: str, case_dir: Path) -> tuple[str, str]:
+    """Publish a cover, downscaled to WebP when it is a raster image."""
+    source = resolve_curated_source(source_value)
+    origin = source.relative_to(ROOT).as_posix()
+
+    if source.suffix.lower() == ".svg":
+        destination = case_dir / "cover.svg"
+        shutil.copy2(source, destination)
+        return "cover.svg", origin
+
+    try:
+        from PIL import Image
+    except ImportError:
+        destination = case_dir / f"cover{source.suffix.lower()}"
+        shutil.copy2(source, destination)
+        print("  ! Pillow missing; cover copied at full resolution")
+        return destination.name, origin
+
+    with Image.open(source) as img:
+        img = img.convert("RGB")
+        if max(img.size) > COVER_MAX_EDGE:
+            img.thumbnail((COVER_MAX_EDGE, COVER_MAX_EDGE), Image.LANCZOS)
+        destination = case_dir / "cover.webp"
+        img.save(destination, "WEBP", quality=COVER_QUALITY, method=6)
+    return "cover.webp", origin
 
 
 def validate_case(item: dict[str, Any]) -> None:
@@ -162,9 +230,7 @@ def build() -> None:
             shutil.rmtree(case_dir)
         case_dir.mkdir(parents=True)
 
-        cover_source = resolve_curated_source(sources["cover"])
-        cover_name = f"cover{cover_source.suffix.lower()}"
-        copied_from = publish(sources["cover"], case_dir / cover_name)
+        cover_name, copied_from = publish_cover(sources["cover"], case_dir)
         item["cover"] = f"/cases/{slug}/{cover_name}"
         copied_sources.append(
             {"case": slug, "role": "cover", "source": copied_from}
@@ -281,4 +347,5 @@ def build() -> None:
 
 
 if __name__ == "__main__":
+    reexec_under_native_arch()
     build()

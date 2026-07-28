@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>重新想象城市出行 · 2035 展望</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;500;700;900&family=Noto+Sans+SC:wght@200;300;400;500&family=Space+Grotesk:wght@400;500;600&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;background:#04070c;display:flex;align-items:center;justify-content:center;overflow:hidden;font-family:'Noto Sans SC',sans-serif}
+
+  /* 16:9 stage */
+  .cover{
+    position:relative;
+    width:min(96vw,170.6vh);
+    aspect-ratio:16/9;
+    overflow:hidden;
+    background:
+      radial-gradient(140% 120% at 78% 12%, #10314a 0%, #0a1c30 34%, #060d18 66%, #04070c 100%);
+    box-shadow:0 40px 130px rgba(0,0,0,.75);
+    --u:min(96vw,170.6vh);
+    color:#eaf1f6;
+    cursor:default;
+  }
+
+  /* deep twilight glow, upper-right horizon */
+  .cover::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(60% 50% at 82% 8%, rgba(255,176,102,.28), transparent 70%),
+      radial-gradient(80% 70% at 90% 20%, rgba(84,200,214,.16), transparent 72%);
+    mix-blend-mode:screen;
+  }
+
+  /* ===== THE CITY AS RIVERS OF LIGHT (core motif) ===== */
+  .cityscape{position:absolute;inset:0;z-index:1}
+  .cityscape svg{width:100%;height:100%;display:block}
+
+  .stream{
+    fill:none;
+    stroke-linecap:round;
+    filter:drop-shadow(0 0 6px currentColor);
+    stroke-dasharray:8 260;
+    animation:flow linear infinite;
+  }
+  @keyframes flow{to{stroke-dashoffset:-268}}
+
+  /* moving light "vehicles" pulses */
+  .pulse{animation:flow linear infinite;stroke-linecap:round;fill:none}
+
+  /* faint isometric ground grid */
+  .grid-line{stroke:rgba(120,180,210,.10);stroke-width:1}
+
+  /* film grain */
+  .grain{
+    position:absolute;inset:-50%;width:200%;height:200%;z-index:6;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity:.06;mix-blend-mode:overlay;
+  }
+  /* soft top & bottom cinematic falloff */
+  .vignette{position:absolute;inset:0;z-index:5;pointer-events:none;
+    background:linear-gradient(180deg,rgba(4,7,12,.55) 0%,transparent 22%,transparent 66%,rgba(4,7,12,.85) 100%);}
+
+  /* ===== TYPOGRAPHY — asymmetric, left-anchored ===== */
+  .type{position:absolute;z-index:7;left:calc(var(--u)*.062);top:50%;transform:translateY(-50%);max-width:60%}
+
+  .kicker{
+    display:flex;align-items:center;gap:calc(var(--u)*.012);
+    font-family:'Space Grotesk',sans-serif;
+    font-size:calc(var(--u)*.0118);letter-spacing:.42em;text-transform:uppercase;
+    color:#7fd6e0;margin-bottom:calc(var(--u)*.028);
+  }
+  .kicker .rule{width:calc(var(--u)*.055);height:1px;background:linear-gradient(90deg,#7fd6e0,transparent)}
+  .kicker .yr{color:#ffb066}
+
+  .title{
+    font-family:'Noto Serif SC',serif;font-weight:900;
+    font-size:calc(var(--u)*.072);line-height:1.04;letter-spacing:.01em;
+    color:#f6fbff;
+    text-shadow:0 2px 40px rgba(60,140,180,.35);
+  }
+  .title .accent{
+    position:relative;
+    background:linear-gradient(100deg,#ffd9a8 0%,#ffb066 34%,#69dbe6 78%,#8ff0ff 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  /* thin luminous underline sweeping the accent word */
+  .title .accent::after{
+    content:"";position:absolute;left:0;bottom:calc(var(--u)*-.006);
+    width:100%;height:2px;
+    background:linear-gradient(90deg,#ffb066,#69dbe6);
+    box-shadow:0 0 12px rgba(120,220,230,.8);
+    transform-origin:left;animation:sweep 3.4s ease-in-out infinite;
+  }
+  @keyframes sweep{0%,100%{transform:scaleX(.15);opacity:.5}50%{transform:scaleX(1);opacity:1}}
+
+  .subtitle{
+    margin-top:calc(var(--u)*.03);
+    font-family:'Noto Sans SC',sans-serif;font-weight:200;
+    font-size:calc(var(--u)*.024);letter-spacing:.28em;
+    color:#aecad6;
+  }
+  .subtitle b{color:#ffb066;font-weight:400}
+
+  /* speaker block, lower-left, quiet authority */
+  .speaker{
+    position:absolute;z-index:7;left:calc(var(--u)*.062);bottom:calc(var(--u)*.072);
+    display:flex;align-items:center;gap:calc(var(--u)*.016);
+  }
+  .speaker .dot{width:calc(var(--u)*.008);height:calc(var(--u)*.008);border-radius:50%;
+    background:#69dbe6;box-shadow:0 0 12px #69dbe6;flex:0 0 auto}
+  .speaker .who .role{font-family:'Space Grotesk';font-size:calc(var(--u)*.0105);letter-spacing:.3em;
+    text-transform:uppercase;color:#6f8ea0}
+  .speaker .who .name{font-family:'Noto Serif SC';font-weight:500;
+    font-size:calc(var(--u)*.026);letter-spacing:.14em;color:#f2f8fb;margin-top:.15em}
+
+  /* right-edge vertical meta */
+  .vmeta{
+    position:absolute;z-index:7;right:calc(var(--u)*.04);top:50%;
+    transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;
+    font-family:'Space Grotesk';font-size:calc(var(--u)*.0105);letter-spacing:.36em;
+    color:#4f7183;text-transform:uppercase;
+  }
+
+  /* corner ticks — framing */
+  .tick{position:absolute;z-index:7;width:calc(var(--u)*.022);height:calc(var(--u)*.022);border:1px solid rgba(150,200,220,.35)}
+  .tick.tl{top:calc(var(--u)*.045);left:calc(var(--u)*.038);border-right:0;border-bottom:0}
+  .tick.br{bottom:calc(var(--u)*.045);right:calc(var(--u)*.038);border-left:0;border-top:0}
+</style>
+</head>
+<body>
+<div class="cover">
+
+  <!-- ==== city rendered as flowing light ==== -->
+  <div class="cityscape">
+    <svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="c1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#54c8d6"/><stop offset="1" stop-color="#8ff0ff"/></linearGradient>
+        <linearGradient id="c2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb066"/><stop offset="1" stop-color="#ffd9a8"/></linearGradient>
+        <linearGradient id="c3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7a8cff"/><stop offset="1" stop-color="#b7c4ff"/></linearGradient>
+      </defs>
+
+      <!-- faint receding ground grid (perspective toward horizon upper-right) -->
+      <g class="grid-line" opacity=".7">
+        <path d="M-100 900 L780 300"/><path d="M120 900 L900 300"/><path d="M360 900 L1030 300"/>
+        <path d="M620 900 L1170 300"/><path d="M900 900 L1320 300"/><path d="M1220 900 L1470 300"/>
+        <path d="M1560 900 L1620 300"/>
+        <path d="M780 300 Q900 460 1600 560" opacity=".5"/>
+        <path d="M700 420 Q900 560 1600 660" opacity=".5"/>
+        <path d="M600 560 Q900 700 1600 780" opacity=".5"/>
+      </g>
+
+      <!-- RIVERS OF LIGHT — the streets, curving toward a luminous horizon -->
+      <!-- teal arterials -->
+      <g class="stream" stroke="url(#c1)" style="color:#69dbe6">
+        <path style="animation-duration:5.5s" d="M-60 760 C 300 700, 520 560, 900 470 S 1300 380, 1680 360"/>
+      </g>
+      <g class="stream" stroke="url(#c1)" style="color:#69dbe6">
+        <path style="animation-duration:7s;animation-delay:-2s" d="M-60 900 C 360 820, 640 640, 980 520 S 1360 420, 1680 410"/>
+      </g>
+      <!-- amber arterials -->
+      <g class="stream" stroke="url(#c2)" style="color:#ffb066">
+        <path style="animation-duration:6s;animation-delay:-1s" d="M120 900 C 420 760, 700 600, 1000 500 S 1400 430, 1700 440"/>
+      </g>
+      <g class="stream" stroke="url(#c2)" style="color:#ffb066">
+        <path style="animation-duration:8s;animation-delay:-3s" d="M-40 640 C 280 600, 560 500, 880 440 S 1320 360, 1700 350"/>
+      </g>
+      <!-- violet secondary -->
+      <g class="stream" stroke="url(#c3)" style="color:#8f9dff">
+        <path style="animation-duration:9s;animation-delay:-1.5s" d="M-60 500 C 260 500, 520 460, 820 420 S 1300 350, 1700 345"/>
+      </g>
+      <!-- cross connectors (grid feel) -->
+      <g class="stream" stroke="url(#c1)" style="color:#69dbe6" opacity=".7">
+        <path style="animation-duration:6.5s;animation-delay:-2.5s" d="M540 900 C 620 720, 720 560, 820 420"/>
+      </g>
+      <g class="stream" stroke="url(#c2)" style="color:#ffb066" opacity=".7">
+        <path style="animation-duration:5.8s;animation-delay:-0.5s" d="M900 900 C 940 720, 980 560, 1000 500"/>
+      </g>
+
+      <!-- base soft glow of each artery (static, thick, low opacity) -->
+      <g fill="none" stroke-width="7" opacity=".16" stroke-linecap="round">
+        <path stroke="#69dbe6" d="M-60 760 C 300 700, 520 560, 900 470 S 1300 380, 1680 360"/>
+        <path stroke="#69dbe6" d="M-60 900 C 360 820, 640 640, 980 520 S 1360 420, 1680 410"/>
+        <path stroke="#ffb066" d="M120 900 C 420 760, 700 600, 1000 500 S 1400 430, 1700 440"/>
+        <path stroke="#ffb066" d="M-40 640 C 280 600, 560 500, 880 440 S 1320 360, 1700 350"/>
+        <path stroke="#8f9dff" d="M-60 500 C 260 500, 520 460, 820 420 S 1300 350, 1700 345"/>
+      </g>
+
+      <!-- horizon confluence: streets converge into a bright node = the reimagined future hub -->
+      <circle cx="1300" cy="360" r="150" fill="#ffcf9a" opacity=".07"/>
+      <circle cx="1300" cy="360" r="70"  fill="#ffe4c2" opacity=".12"/>
+      <circle cx="1300" cy="360" r="26"  fill="#fff2df" opacity=".5"/>
+
+      <!-- faint abstract towers rising near horizon -->
+      <g fill="none" stroke="rgba(150,210,225,.28)" stroke-width="1.4">
+        <path d="M1180 360 v-120 M1210 360 v-150 M1245 360 v-90 M1360 360 v-140 M1392 360 v-100 M1425 360 v-165"/>
+      </g>
+
+      <!-- drifting light nodes (intersections) -->
+      <g fill="#bff2ff">
+        <circle cx="900" cy="470" r="3.2" opacity=".9"/>
+        <circle cx="1000" cy="500" r="2.6" opacity=".8"/>
+        <circle cx="820" cy="420" r="2.6" opacity=".8"/>
+        <circle cx="880" cy="440" r="2.2" opacity=".7"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- cinematic overlays -->
+  <div class="vignette"></div>
+  <div class="grain"></div>
+
+  <!-- framing ticks -->
+  <span class="tick tl"></span>
+  <span class="tick br"></span>
+
+  <!-- ==== TYPE ==== -->
+  <div class="type">
+    <div class="kicker"><span class="rule"></span>Keynote · <span class="yr">城市未来</span></div>
+    <h1 class="title">重新<span class="accent">想象</span><br>城市出行</h1>
+    <div class="subtitle"><b>2035</b> 展望</div>
+  </div>
+
+  <!-- speaker -->
+  <div class="speaker">
+    <span class="dot"></span>
+    <div class="who">
+      <div class="role">Speaker · 主讲</div>
+      <div class="name">林 薇</div>
+    </div>
+  </div>
+
+  <!-- right vertical meta -->
+  <div class="vmeta">Reimagining Urban Mobility — Toward 2035</div>
+
+</div>
+</body>
+</html>

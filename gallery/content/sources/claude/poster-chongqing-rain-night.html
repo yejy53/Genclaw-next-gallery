@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山城雨夜 · 重庆 — City Campaign Poster</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Oswald:wght@300;400;500;600&display=swap');
+
+  :root{
+    --deep-1:#070b18;      /* 最深夜蓝 */
+    --deep-2:#0d1730;      /* 深蓝 */
+    --deep-3:#16264d;      /* 江蓝 */
+    --blue-glow:#2b5a9e;
+    --orange:#ff8a3d;      /* 暖橙 */
+    --orange-deep:#e2681c;
+    --neon-red:#ff3b52;    /* 湿润霓虹红 */
+    --neon-pink:#ff5f8f;
+    --fog:#9fb4d6;
+    --paper:#f3ede1;
+    --ink:#eaf0ff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:#111418;min-height:100%}
+  body{
+    display:grid;place-items:center;padding:32px;
+    font-family:"Noto Sans SC",sans-serif;
+  }
+
+  /* ---------- 3:4 画布 ---------- */
+  .poster{
+    position:relative;
+    width:min(78vh,600px);
+    aspect-ratio:3/4;
+    background:var(--deep-1);
+    overflow:hidden;
+    box-shadow:0 40px 120px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.04);
+    border-radius:2px;
+    isolation:isolate;
+  }
+
+  .scene{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+  /* ---------- 排版层 ---------- */
+  .frame{
+    position:absolute;inset:26px;
+    border:1px solid rgba(233,240,255,.18);
+    pointer-events:none;z-index:20;
+  }
+  .corner{position:absolute;width:14px;height:14px;border:1.5px solid var(--orange);z-index:21}
+  .corner.tl{top:26px;left:26px;border-right:none;border-bottom:none}
+  .corner.tr{top:26px;right:26px;border-left:none;border-bottom:none}
+  .corner.bl{bottom:26px;left:26px;border-right:none;border-top:none}
+  .corner.br{bottom:26px;right:26px;border-left:none;border-top:none}
+
+  /* 顶部信息条 */
+  .top{
+    position:absolute;top:44px;left:44px;right:44px;z-index:22;
+    display:flex;justify-content:space-between;align-items:flex-start;
+    color:var(--ink);
+  }
+  .top .kicker{
+    font-family:"Oswald",sans-serif;font-weight:400;letter-spacing:.42em;
+    font-size:10px;text-transform:uppercase;color:var(--fog);
+  }
+  .top .kicker b{color:var(--orange);font-weight:500}
+  .top .edition{
+    text-align:right;font-family:"Oswald",sans-serif;font-size:9px;letter-spacing:.3em;
+    color:rgba(159,180,214,.75);line-height:1.7;text-transform:uppercase;
+  }
+
+  /* 主标题区 —— 偏下、右侧留白克制 */
+  .title-block{
+    position:absolute;left:44px;bottom:118px;z-index:22;color:var(--ink);
+  }
+  .cn-title{
+    font-family:"Noto Serif SC",serif;font-weight:900;
+    font-size:74px;line-height:.98;letter-spacing:.02em;
+    color:#fff;
+    text-shadow:0 2px 30px rgba(255,59,82,.35);
+  }
+  .cn-title .rain{color:var(--neon-red);text-shadow:0 0 26px rgba(255,59,82,.75)}
+  .en-title{
+    display:flex;align-items:center;gap:14px;margin-top:14px;
+  }
+  .en-title .word{
+    font-family:"Oswald",sans-serif;font-weight:300;letter-spacing:.44em;
+    font-size:19px;color:var(--fog);text-transform:uppercase;padding-left:.44em;
+  }
+  .en-title .line{height:1px;flex:0 0 46px;background:linear-gradient(90deg,var(--orange),transparent)}
+  .subhead{
+    margin-top:16px;max-width:70%;
+    font-family:"Noto Serif SC",serif;font-weight:300;font-size:12.5px;line-height:2;
+    color:rgba(234,240,255,.78);letter-spacing:.06em;
+  }
+
+  /* 底部关键词标签 */
+  .tags{
+    position:absolute;left:44px;right:44px;bottom:52px;z-index:22;
+    display:flex;flex-wrap:wrap;gap:8px 8px;align-items:center;
+  }
+  .tag{
+    font-family:"Noto Sans SC",sans-serif;font-weight:400;font-size:11px;letter-spacing:.14em;
+    color:var(--ink);padding:6px 13px;border:1px solid rgba(159,180,214,.32);
+    border-radius:20px;backdrop-filter:blur(4px);background:rgba(13,23,48,.35);
+    white-space:nowrap;
+  }
+  .tag.hot{border-color:rgba(255,59,82,.55);color:#ffd0d7;background:rgba(255,59,82,.08)}
+  .tag.warm{border-color:rgba(255,138,61,.55);color:#ffe0c6;background:rgba(255,138,61,.08)}
+  .tag .no{font-family:"Oswald",sans-serif;color:var(--orange);font-weight:500;margin-right:6px;letter-spacing:0}
+
+  /* 竖排落款 */
+  .stamp{
+    position:absolute;top:150px;right:44px;z-index:22;
+    writing-mode:vertical-rl;text-orientation:upright;
+    font-family:"Noto Serif SC",serif;font-weight:500;font-size:13px;letter-spacing:.5em;
+    color:rgba(159,180,214,.6);
+  }
+  .stamp .seal{
+    writing-mode:horizontal-tb;margin-top:14px;
+    width:30px;height:30px;border:1.5px solid var(--neon-red);border-radius:3px;
+    display:grid;place-items:center;color:var(--neon-red);
+    font-weight:900;font-size:13px;letter-spacing:0;line-height:1;text-align:center;
+    box-shadow:0 0 14px rgba(255,59,82,.4);
+  }
+
+  /* 细颗粒噪点提升质感 */
+  .grain{
+    position:absolute;inset:0;z-index:15;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* 顶部/底部压暗，聚焦中心 */
+  .vignette{position:absolute;inset:0;z-index:14;pointer-events:none;
+    background:radial-gradient(120% 80% at 50% 42%, transparent 45%, rgba(7,11,24,.55) 100%),
+               linear-gradient(180deg, rgba(7,11,24,.65) 0%, transparent 22%, transparent 62%, rgba(7,11,24,.85) 100%);}
+</style>
+</head>
+<body>
+  <div class="poster">
+
+    <!-- ================= 场景插画 (SVG) ================= -->
+    <svg class="scene" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- 夜空渐变 -->
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="#0a1024"/>
+          <stop offset="42%" stop-color="#101d3e"/>
+          <stop offset="70%" stop-color="#16264d"/>
+          <stop offset="100%" stop-color="#0c1428"/>
+        </linearGradient>
+        <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ff8a3d" stop-opacity=".55"/>
+          <stop offset="45%" stop-color="#e2681c" stop-opacity=".18"/>
+          <stop offset="100%" stop-color="#e2681c" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="redglow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ff3b52" stop-opacity=".5"/>
+          <stop offset="100%" stop-color="#ff3b52" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="riverGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0d1730"/>
+          <stop offset="100%" stop-color="#060a16"/>
+        </linearGradient>
+        <linearGradient id="fogGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#9fb4d6" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#9fb4d6" stop-opacity=".42"/>
+        </linearGradient>
+        <linearGradient id="reflect" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ff3b52" stop-opacity=".55"/>
+          <stop offset="100%" stop-color="#ff3b52" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="reflectO" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ff8a3d" stop-opacity=".6"/>
+          <stop offset="100%" stop-color="#ff8a3d" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="soft"><feGaussianBlur stdDeviation="3"/></filter>
+        <filter id="softer"><feGaussianBlur stdDeviation="8"/></filter>
+      </defs>
+
+      <!-- 天空 -->
+      <rect width="600" height="800" fill="url(#sky)"/>
+      <!-- 月/光晕 -->
+      <circle cx="430" cy="150" r="150" fill="url(#halo)"/>
+      <circle cx="430" cy="150" r="26" fill="#ffd9a8" opacity=".85" filter="url(#soft)"/>
+
+      <!-- 远山剪影（层叠山城地形） -->
+      <path d="M0 300 C 90 250, 160 285, 250 262 C 340 240, 430 280, 520 255 C 560 245, 600 260, 600 260 L600 460 L0 460 Z" fill="#0e1a38" opacity=".65"/>
+      <path d="M0 340 C 120 305, 200 345, 300 320 C 400 296, 500 340, 600 315 L600 480 L0 480 Z" fill="#101d3e" opacity=".8"/>
+
+      <!-- ============ 远景楼群（层叠、带暖窗） ============ -->
+      <g id="farCity" opacity=".9"></g>
+
+      <!-- 中景红色光晕（洪崖洞暖橙核心） -->
+      <ellipse cx="300" cy="520" rx="220" ry="150" fill="url(#redglow)" opacity=".7"/>
+      <ellipse cx="300" cy="470" rx="180" ry="120" fill="url(#halo)" opacity=".55"/>
+
+      <!-- ============ 中景楼群 ============ -->
+      <g id="midCity"></g>
+
+      <!-- ============ 轻轨穿楼 ============ -->
+      <!-- 高架轨道，斜穿画面 -->
+      <g id="rail">
+        <path d="M-10 560 L 620 470" stroke="#0a1226" stroke-width="16" opacity=".9"/>
+        <path d="M-10 566 L 620 476" stroke="#1a2a52" stroke-width="3"/>
+        <path d="M-10 554 L 620 464" stroke="#243a6e" stroke-width="2" opacity=".7"/>
+        <!-- 轨道立柱 -->
+        <g fill="#0a1226">
+          <rect x="60" y="556" width="9" height="120"/>
+          <rect x="200" y="536" width="9" height="120"/>
+          <rect x="340" y="516" width="9" height="120"/>
+          <rect x="480" y="496" width="9" height="120"/>
+        </g>
+        <!-- 列车车厢（暖窗） -->
+        <g transform="translate(250,505) rotate(-8.1)">
+          <rect x="0" y="0" width="150" height="26" rx="8" fill="#12203f" stroke="#31507f" stroke-width="1.2"/>
+          <rect x="4" y="4" width="142" height="10" rx="4" fill="#0b1526" />
+          <g fill="#ffd9a0">
+            <rect x="10" y="6" width="14" height="9" rx="2"/>
+            <rect x="30" y="6" width="14" height="9" rx="2"/>
+            <rect x="50" y="6" width="14" height="9" rx="2"/>
+            <rect x="70" y="6" width="14" height="9" rx="2"/>
+            <rect x="90" y="6" width="14" height="9" rx="2"/>
+            <rect x="110" y="6" width="14" height="9" rx="2"/>
+            <rect x="130" y="6" width="12" height="9" rx="2"/>
+          </g>
+          <rect x="0" y="24" width="150" height="4" fill="#ff8a3d" opacity=".5"/>
+        </g>
+      </g>
+
+      <!-- ============ 前景高塔（层叠主体） ============ -->
+      <g id="foreCity"></g>
+
+      <!-- ============ 湿润街道 + 江水 ============ -->
+      <rect x="0" y="612" width="600" height="188" fill="url(#riverGrad)"/>
+      <!-- 街面高光（湿润反射） -->
+      <rect x="0" y="612" width="600" height="188" fill="#0b1220" opacity=".5"/>
+      <!-- 霓虹倒影 -->
+      <g id="reflections" opacity=".8"></g>
+
+      <!-- 波纹 -->
+      <g stroke="#2b4c86" stroke-width="1" opacity=".4" fill="none">
+        <path d="M30 700 q 40 -6 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0"/>
+        <path d="M0 740 q 40 -6 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0"/>
+        <path d="M20 770 q 40 -5 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0"/>
+      </g>
+
+      <!-- ============ 江雾 ============ -->
+      <ellipse cx="180" cy="620" rx="260" ry="60" fill="url(#fogGrad)" filter="url(#softer)" opacity=".7"/>
+      <ellipse cx="440" cy="640" rx="240" ry="50" fill="url(#fogGrad)" filter="url(#softer)" opacity=".6"/>
+      <rect x="0" y="600" width="600" height="70" fill="url(#fogGrad)" opacity=".35" filter="url(#soft)"/>
+
+      <!-- ============ 雨丝 ============ -->
+      <g id="rain" stroke="#aebfe0" stroke-width="1" opacity=".2"></g>
+    </svg>
+
+    <!-- 压暗 & 质感层 -->
+    <div class="vignette"></div>
+    <div class="grain"></div>
+
+    <!-- ================= 排版 ================= -->
+    <div class="frame"></div>
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+
+    <div class="top">
+      <div class="kicker">CITY&nbsp;&nbsp;TOURISM&nbsp;&nbsp;CAMPAIGN&nbsp;·&nbsp;<b>2026</b></div>
+      <div class="edition">No.&nbsp;023<br>Mountain City Series<br>雨 / 夜 / 江 / 光</div>
+    </div>
+
+    <div class="stamp">
+      重庆文旅出品
+      <div class="seal">渝</div>
+    </div>
+
+    <div class="title-block">
+      <div class="cn-title">山城<span class="rain">雨夜</span></div>
+      <div class="en-title">
+        <span class="line"></span>
+        <span class="word">Chongqing</span>
+      </div>
+      <p class="subhead">江雾漫过坡道，轻轨穿楼而过；<br>湿润的霓虹在街面上碎成一片红。</p>
+    </div>
+
+    <div class="tags">
+      <span class="tag warm"><span class="no">8D</span>城市</span>
+      <span class="tag">江雾</span>
+      <span class="tag hot">火锅</span>
+      <span class="tag">轻轨</span>
+      <span class="tag">夜景</span>
+    </div>
+  </div>
+
+<script>
+  const svgns="http://www.w3.org/2000/svg";
+  const el=(t,a)=>{const e=document.createElementNS(svgns,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+
+  // 楼宇生成器：随机高度、暖/冷窗，营造层叠山城
+  function makeCity(groupId, cfg){
+    const g=document.getElementById(groupId);
+    let x=cfg.x0;
+    while(x < cfg.x1){
+      const w=cfg.wMin+Math.random()*(cfg.wMax-cfg.wMin);
+      const h=cfg.hMin+Math.random()*(cfg.hMax-cfg.hMin);
+      const y=cfg.baseY-h;
+      // 楼体
+      g.appendChild(el("rect",{x:x.toFixed(1),y:y.toFixed(1),width:w.toFixed(1),height:(h+40).toFixed(1),
+        fill:cfg.fill,opacity:cfg.opacity}));
+      // 楼顶暖橙描边光
+      if(Math.random()<cfg.crown){
+        g.appendChild(el("rect",{x:x.toFixed(1),y:y.toFixed(1),width:w.toFixed(1),height:"2",
+          fill:Math.random()<.4?"#ff3b52":"#ff8a3d",opacity:.8}));
+      }
+      // 窗户
+      const cols=Math.max(2,Math.floor(w/8));
+      const rows=Math.floor(h/11);
+      for(let r=0;r<rows;r++){
+        for(let c=0;c<cols;c++){
+          if(Math.random()<cfg.winDensity){
+            const warm=Math.random();
+            const col = warm<0.62 ? "#ffcf8f" : warm<0.82 ? "#ff8a3d" : warm<0.92 ? "#7fb0ff" : "#ff5f7a";
+            g.appendChild(el("rect",{
+              x:(x+4+c*(w-6)/cols).toFixed(1),
+              y:(y+6+r*11).toFixed(1),
+              width:"3.2",height:"5",fill:col,opacity:(0.55+Math.random()*0.45).toFixed(2)}));
+          }
+        }
+      }
+      x+=w+cfg.gap*(0.4+Math.random());
+    }
+  }
+
+  // 远 / 中 / 前 三层楼群
+  makeCity("farCity", {x0:-20,x1:620,wMin:16,wMax:34,hMin:70,hMax:150,baseY:470,gap:6,
+    fill:"#132145",opacity:.85,winDensity:.35,crown:.15});
+  makeCity("midCity", {x0:-20,x1:620,wMin:22,wMax:46,hMin:120,hMax:250,baseY:560,gap:8,
+    fill:"#0f1c3c",opacity:.95,winDensity:.5,crown:.35});
+  makeCity("foreCity",{x0:-20,x1:620,wMin:30,wMax:64,hMin:180,hMax:340,baseY:640,gap:12,
+    fill:"#0a1428",opacity:1,winDensity:.55,crown:.45});
+
+  // 霓虹倒影：在江面复制几束竖向光
+  (function(){
+    const g=document.getElementById("reflections");
+    const spots=[[120,"url(#reflect)",30],[300,"url(#reflectO)",44],[360,"url(#reflect)",26],
+                 [210,"url(#reflectO)",22],[460,"url(#reflect)",34],[520,"url(#reflectO)",20]];
+    spots.forEach(([cx,fill,w])=>{
+      g.appendChild(el("rect",{x:(cx-w/2).toFixed(1),y:"614",width:w,height:"120",
+        fill,opacity:.7,filter:"url(#soft)"}));
+    });
+  })();
+
+  // 雨丝
+  (function(){
+    const g=document.getElementById("rain");
+    for(let i=0;i<140;i++){
+      const x=Math.random()*640-20, y=Math.random()*640, len=6+Math.random()*14;
+      g.appendChild(el("line",{x1:x.toFixed(1),y1:y.toFixed(1),
+        x2:(x-3).toFixed(1),y2:(y+len).toFixed(1)}));
+    }
+  })();
+</script>
+</body>
+</html>

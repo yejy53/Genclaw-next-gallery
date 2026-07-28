@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneiroAgent · 架构</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600&display=swap');
+
+  :root{
+    --bg-0:#070b16;
+    --bg-1:#0c1226;
+    --panel:#111a33;
+    --line:#26386b;
+    --cyan:#38e1ff;
+    --cyan-soft:#7ff0ff;
+    --violet:#8b7bff;
+    --ink:#e8eeff;
+    --sub:#8fa3cf;
+    --dim:#5b6c94;
+    /* dream palette */
+    --dream-1:#ff9ec7;
+    --dream-2:#ffd08a;
+    --dream-3:#a68bff;
+    --dream-4:#7ee8d0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;background:#05070f}
+  body{
+    display:grid;place-items:center;min-height:100vh;padding:24px;
+    font-family:"Noto Sans SC","Space Grotesk",sans-serif;color:var(--ink);
+  }
+
+  /* ---------- 16:9 舞台 ---------- */
+  .slide{
+    position:relative;width:min(96vw,1280px);aspect-ratio:16/9;
+    background:
+      radial-gradient(1100px 620px at 78% 18%, rgba(139,123,255,.14), transparent 60%),
+      radial-gradient(900px 600px at 12% 90%, rgba(56,225,255,.10), transparent 60%),
+      linear-gradient(155deg,var(--bg-1),var(--bg-0));
+    border-radius:16px;overflow:hidden;
+    box-shadow:0 40px 120px rgba(0,0,0,.7),0 0 0 1px rgba(120,150,220,.10);
+    isolation:isolate;
+  }
+  /* 背景网格 */
+  .grid-bg{position:absolute;inset:0;z-index:0;opacity:.5;
+    background-image:
+      linear-gradient(rgba(56,225,255,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(56,225,255,.05) 1px,transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(120% 90% at 50% 40%,#000 55%,transparent 100%);}
+
+  /* ---------- 顶部标题 ---------- */
+  .head{position:absolute;top:34px;left:44px;right:44px;z-index:5;display:flex;justify-content:space-between;align-items:flex-start}
+  .logo{display:flex;align-items:center;gap:14px}
+  .logo .orb{
+    width:40px;height:40px;border-radius:50%;position:relative;flex:none;
+    background:radial-gradient(circle at 35% 30%,#fff,#8b7bff 45%,#38e1ff 100%);
+    box-shadow:0 0 26px rgba(139,123,255,.7),inset 0 -3px 8px rgba(0,0,0,.3);
+    animation:pulse 5s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{box-shadow:0 0 26px rgba(139,123,255,.6)}50%{box-shadow:0 0 40px rgba(56,225,255,.75)}}
+  .logo .orb::after{content:"";position:absolute;inset:6px;border-radius:50%;border:1px solid rgba(255,255,255,.35)}
+  .logo h1{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:26px;letter-spacing:.5px}
+  .logo h1 b{color:var(--cyan)}
+  .logo .tag{font-size:12px;color:var(--sub);letter-spacing:.28em;margin-top:2px;text-transform:uppercase}
+  .head .meta{text-align:right;font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:.24em;color:var(--dim);line-height:1.9;text-transform:uppercase}
+  .head .meta b{color:var(--violet)}
+
+  /* ---------- 流程画布 ---------- */
+  .flow{
+    position:absolute;left:44px;right:44px;top:118px;bottom:70px;z-index:4;
+    display:grid;
+    grid-template-columns:1fr 1fr 1.55fr 1fr 1fr;
+    gap:18px;align-items:center;
+  }
+
+  /* 通用模块卡 */
+  .mod{
+    position:relative;height:78%;border-radius:16px;
+    background:linear-gradient(160deg,rgba(24,34,66,.92),rgba(14,20,42,.92));
+    border:1px solid rgba(70,95,160,.4);
+    padding:20px 18px;display:flex;flex-direction:column;gap:10px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 14px 34px rgba(0,0,0,.4);
+    transition:transform .3s;
+  }
+  .mod .idx{
+    font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:.2em;color:var(--cyan);
+    display:flex;align-items:center;gap:8px;
+  }
+  .mod .idx .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+  .mod .ico{font-size:30px;line-height:1;filter:drop-shadow(0 0 10px rgba(56,225,255,.4))}
+  .mod h3{font-size:19px;font-weight:600;letter-spacing:.02em}
+  .mod .en{font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:.16em;color:var(--sub);text-transform:uppercase;margin-top:-4px}
+  .mod p{font-size:12px;line-height:1.7;color:var(--sub);margin-top:auto}
+  .mod .chips{display:flex;flex-wrap:wrap;gap:5px}
+  .mod .chip{font-size:10px;color:var(--cyan-soft);border:1px solid rgba(56,225,255,.3);
+    padding:3px 8px;border-radius:12px;background:rgba(56,225,255,.06);letter-spacing:.04em}
+
+  /* 记忆库特殊：叠层书脊感 */
+  .mem-stack{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+  .mem-stack span{height:8px;border-radius:3px;background:linear-gradient(90deg,rgba(56,225,255,.5),rgba(56,225,255,.08));}
+  .mem-stack span:nth-child(2){width:88%;opacity:.8}
+  .mem-stack span:nth-child(3){width:72%;opacity:.6}
+  .mem-stack span:nth-child(4){width:80%;opacity:.5}
+
+  /* ============ 想象 / 做梦 模块（重点） ============ */
+  .dream{
+    height:96%;border-radius:20px;position:relative;overflow:hidden;
+    border:1px solid rgba(255,158,199,.4);
+    background:linear-gradient(160deg,rgba(58,40,86,.9),rgba(30,26,64,.92));
+    box-shadow:0 0 0 1px rgba(255,158,199,.15),0 22px 60px rgba(120,60,140,.4),
+               0 0 60px rgba(139,123,255,.25);
+    padding:16px 16px 14px;display:flex;flex-direction:column;gap:10px;
+    animation:dreamGlow 6s ease-in-out infinite;
+  }
+  @keyframes dreamGlow{0%,100%{box-shadow:0 0 0 1px rgba(255,158,199,.15),0 22px 60px rgba(120,60,140,.4),0 0 60px rgba(139,123,255,.22)}
+    50%{box-shadow:0 0 0 1px rgba(255,208,138,.25),0 22px 66px rgba(160,80,160,.5),0 0 80px rgba(126,232,208,.3)}}
+  .dream .idx{color:var(--dream-1)}
+  .dream .idx .dot{background:var(--dream-1);box-shadow:0 0 10px var(--dream-1)}
+  .dream .d-top{display:flex;align-items:center;gap:12px}
+  .dream .d-top .ico{font-size:26px;filter:drop-shadow(0 0 12px rgba(255,158,199,.6))}
+  .dream h3{font-size:20px;font-weight:600}
+  .dream .en{font-family:"Space Grotesk",sans-serif;font-size:10.5px;letter-spacing:.16em;color:#d7c4ff;text-transform:uppercase}
+
+  /* 脑补的"未来一帧" */
+  .frame-wrap{position:relative;flex:1;border-radius:14px;overflow:hidden;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);
+  }
+  .frame-label{
+    position:absolute;top:8px;left:8px;z-index:6;display:flex;align-items:center;gap:6px;
+    font-family:"Space Grotesk",sans-serif;font-size:9.5px;letter-spacing:.15em;color:#fff;
+    background:rgba(20,10,40,.5);backdrop-filter:blur(4px);padding:4px 9px;border-radius:20px;
+    border:1px solid rgba(255,255,255,.2);text-transform:uppercase;
+  }
+  .frame-label .rec{width:7px;height:7px;border-radius:50%;background:var(--dream-1);
+    box-shadow:0 0 8px var(--dream-1);animation:blink 1.4s ease-in-out infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+  .frame-caption{
+    position:absolute;left:8px;right:8px;bottom:8px;z-index:6;
+    font-family:"Noto Serif SC",serif;font-size:11px;line-height:1.5;color:#fff;
+    text-shadow:0 2px 10px rgba(0,0,0,.7);letter-spacing:.03em;
+  }
+  .frame-caption small{display:block;font-family:"Space Grotesk",sans-serif;
+    font-size:8.5px;letter-spacing:.18em;color:#ffd08a;text-transform:uppercase;margin-bottom:3px}
+
+  .dream .note{font-size:11px;line-height:1.6;color:#d9ccf5}
+
+  /* 梦境扫描线 */
+  .frame-wrap::after{content:"";position:absolute;inset:0;z-index:5;pointer-events:none;
+    background:linear-gradient(rgba(255,255,255,.06) 1px,transparent 2px);background-size:100% 4px;opacity:.4;
+    mix-blend-mode:overlay;}
+  /* 梦境柔光扫过 */
+  .frame-wrap::before{content:"";position:absolute;top:0;bottom:0;width:40%;z-index:6;pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);
+    animation:sweep 5s ease-in-out infinite;}
+  @keyframes sweep{0%{left:-40%}60%,100%{left:110%}}
+
+  /* ---------- 箭头 ---------- */
+  .arrow{position:absolute;z-index:6;top:50%;transform:translateY(-50%);
+    width:26px;height:26px;display:grid;place-items:center;pointer-events:none}
+  .arrow svg{width:100%;height:100%}
+  .arrow .path{stroke:var(--cyan);stroke-width:2;fill:none;filter:drop-shadow(0 0 5px rgba(56,225,255,.6))}
+  .arrow.toDream .path,.arrow.fromDream .path{stroke:var(--dream-1);filter:drop-shadow(0 0 6px rgba(255,158,199,.7))}
+
+  /* 数据流动点 */
+  @keyframes flow{from{offset-distance:0%}to{offset-distance:100%}}
+
+  /* ---------- 底部反馈回路 & 图注 ---------- */
+  .loop{position:absolute;left:44px;right:44px;bottom:30px;z-index:4;
+    display:flex;justify-content:space-between;align-items:center}
+  .loop .legend{display:flex;gap:22px;font-size:11px;color:var(--dim)}
+  .loop .legend i{font-style:normal;display:inline-flex;align-items:center;gap:7px}
+  .loop .legend .sw{width:12px;height:12px;border-radius:3px}
+  .loop .feedback{font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:.14em;color:var(--sub);
+    display:flex;align-items:center;gap:9px;text-transform:uppercase}
+  .loop .feedback .arc{color:var(--violet)}
+
+  /* 回环虚线 */
+  .loopline{position:absolute;left:44px;right:44px;bottom:56px;height:38px;z-index:3;pointer-events:none}
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="grid-bg"></div>
+
+    <!-- 顶部 -->
+    <div class="head">
+      <div class="logo">
+        <div class="orb"></div>
+        <div>
+          <h1>Oneiro<b>Agent</b></h1>
+          <div class="tag">会做梦的智能体 · Architecture</div>
+        </div>
+      </div>
+      <div class="meta">Cognitive&nbsp;Pipeline&nbsp;v3<br><b>Perceive → Imagine → Act</b><br>Fig.&nbsp;01</div>
+    </div>
+
+    <!-- 流程 -->
+    <div class="flow">
+      <!-- 1 感知输入 -->
+      <div class="mod">
+        <div class="idx"><span class="dot"></span>01</div>
+        <div class="ico">📡</div>
+        <h3>感知输入</h3>
+        <div class="en">Perception</div>
+        <div class="chips"><span class="chip">视觉</span><span class="chip">语音</span><span class="chip">传感</span></div>
+        <p>多模态信号进入,编码为统一的观测张量。</p>
+      </div>
+
+      <!-- 2 记忆库 -->
+      <div class="mod">
+        <div class="idx"><span class="dot"></span>02</div>
+        <div class="ico">🗄️</div>
+        <h3>记忆库</h3>
+        <div class="en">Memory Store</div>
+        <div class="mem-stack"><span></span><span></span><span></span><span></span></div>
+        <p>情节 / 语义 / 向量检索,为想象提供素材。</p>
+      </div>
+
+      <!-- 3 想象 / 做梦（重点） -->
+      <div class="dream">
+        <div class="d-top">
+          <div class="ico">🌙</div>
+          <div>
+            <div class="idx"><span class="dot"></span>03 · CORE</div>
+            <h3>想象 / 做梦</h3>
+            <div class="en">Imagination · Dreaming</div>
+          </div>
+        </div>
+
+        <!-- 脑补出来的未来一帧 -->
+        <div class="frame-wrap">
+          <div class="frame-label"><span class="rec"></span>Dreamed Frame · t+1</div>
+          <svg viewBox="0 0 420 240" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block">
+            <defs>
+              <linearGradient id="dsky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3a2a63"/>
+                <stop offset="40%" stop-color="#6b4b8f"/>
+                <stop offset="70%" stop-color="#c56ea0"/>
+                <stop offset="100%" stop-color="#ffb27a"/>
+              </linearGradient>
+              <radialGradient id="dsun" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fff3d6"/>
+                <stop offset="45%" stop-color="#ffd08a" stop-opacity=".9"/>
+                <stop offset="100%" stop-color="#ffd08a" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="dground" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#7ee8d0" stop-opacity=".55"/>
+                <stop offset="100%" stop-color="#2a2a5c"/>
+              </linearGradient>
+              <linearGradient id="dpath" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#fff" stop-opacity=".85"/>
+                <stop offset="100%" stop-color="#ffd08a" stop-opacity=".2"/>
+              </linearGradient>
+              <filter id="dblur"><feGaussianBlur stdDeviation="2.4"/></filter>
+              <filter id="dblur2"><feGaussianBlur stdDeviation="6"/></filter>
+            </defs>
+
+            <!-- 梦境天空 -->
+            <rect width="420" height="240" fill="url(#dsky)"/>
+            <!-- 柔光太阳 -->
+            <circle cx="250" cy="118" r="95" fill="url(#dsun)"/>
+            <circle cx="250" cy="118" r="30" fill="#fff6e0" filter="url(#dblur)"/>
+            <!-- 漂浮的岛屿/几何体（超现实） -->
+            <g filter="url(#dblur)" opacity=".9">
+              <ellipse cx="90" cy="70" rx="42" ry="12" fill="#a68bff" opacity=".6"/>
+              <ellipse cx="340" cy="55" rx="34" ry="9" fill="#ff9ec7" opacity=".6"/>
+            </g>
+            <!-- 远山 -->
+            <path d="M0 150 C 70 118,130 140,200 122 C 270 104,330 140,420 120 L420 240 L0 240 Z" fill="#5b3f82" opacity=".8"/>
+            <path d="M0 172 C 90 150,160 172,240 158 C 320 144,380 170,420 158 L420 240 L0 240 Z" fill="#7d4f8f" opacity=".85"/>
+            <!-- 倒影地面 -->
+            <rect x="0" y="170" width="420" height="70" fill="url(#dground)"/>
+            <!-- 智能体走向的发光路径 -->
+            <path d="M210 240 L232 175 L250 175 L215 240 Z" fill="url(#dpath)" opacity=".8"/>
+            <!-- 目标：一扇发光的门（想象的成功态） -->
+            <g>
+              <rect x="232" y="132" width="26" height="46" rx="4" fill="#1c1440" stroke="#ffd08a" stroke-width="1.5"/>
+              <rect x="236" y="136" width="18" height="38" rx="2" fill="#fff3d6" opacity=".9" filter="url(#dblur)"/>
+            </g>
+            <!-- 智能体身影（梦中的自己） -->
+            <g transform="translate(150,178)">
+              <ellipse cx="0" cy="30" rx="16" ry="4" fill="#000" opacity=".25"/>
+              <circle cx="0" cy="-6" r="7" fill="#7ee8d0"/>
+              <path d="M-6 2 Q0 -4 6 2 L5 26 Q0 30 -5 26 Z" fill="#a68bff"/>
+              <circle cx="0" cy="-6" r="11" fill="none" stroke="#7ee8d0" stroke-width="1" opacity=".5"/>
+            </g>
+            <!-- 漂浮光点/星尘 -->
+            <g fill="#fff">
+              <circle cx="70" cy="60" r="1.6" opacity=".9"/><circle cx="120" cy="40" r="1.2" opacity=".7"/>
+              <circle cx="300" cy="90" r="1.6" opacity=".8"/><circle cx="360" cy="120" r="1.3" opacity=".7"/>
+              <circle cx="40" cy="120" r="1.4" opacity=".7"/><circle cx="390" cy="80" r="1.5" opacity=".8"/>
+              <circle cx="180" cy="55" r="1.2" opacity=".6"/><circle cx="270" cy="45" r="1.3" opacity=".7"/>
+            </g>
+            <!-- 梦境涟漪 -->
+            <g stroke="#fff" fill="none" opacity=".25">
+              <path d="M0 200 q 60 -6 120 0 t 120 0 t 120 0 t 120 0"/>
+              <path d="M0 218 q 60 -5 120 0 t 120 0 t 120 0 t 120 0"/>
+            </g>
+            <!-- 边缘梦境虚化 -->
+            <rect width="420" height="240" fill="url(#dsun)" opacity="0"/>
+          </svg>
+          <div class="frame-caption">
+            <small>Predicted Outcome · 预测未来</small>
+            穿过黄昏的门 —— 智能体想象自己已抵达目标。
+          </div>
+        </div>
+
+        <div class="note">从记忆采样,推演多条未来轨迹,择优返回给规划器。</div>
+      </div>
+
+      <!-- 4 规划 -->
+      <div class="mod">
+        <div class="idx"><span class="dot"></span>04</div>
+        <div class="ico">🧭</div>
+        <h3>规划</h3>
+        <div class="en">Planning</div>
+        <div class="chips"><span class="chip">目标分解</span><span class="chip">评估</span></div>
+        <p>以想象出的未来为参照,搜索最优动作序列。</p>
+      </div>
+
+      <!-- 5 行动 -->
+      <div class="mod">
+        <div class="idx"><span class="dot"></span>05</div>
+        <div class="ico">⚡</div>
+        <h3>行动</h3>
+        <div class="en">Action</div>
+        <div class="chips"><span class="chip">执行</span><span class="chip">工具调用</span></div>
+        <p>在真实环境中落地,结果回流至记忆库。</p>
+      </div>
+
+      <!-- 箭头（绝对定位覆盖在 gap 上） -->
+      <div class="arrow" style="left:calc(20% - 22px)"><svg viewBox="0 0 24 24"><path class="path" d="M3 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="arrow toDream" style="left:calc(40% - 22px)"><svg viewBox="0 0 24 24"><path class="path" d="M3 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="arrow fromDream" style="left:calc(60.5% - 4px)"><svg viewBox="0 0 24 24"><path class="path" d="M3 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="arrow" style="left:calc(80.5% - 4px)"><svg viewBox="0 0 24 24"><path class="path" d="M3 12h15M13 6l6 6-6 6"/></svg></div>
+    </div>
+
+    <!-- 底部：反馈回路 + 图注 -->
+    <svg class="loopline" viewBox="0 0 1000 40" preserveAspectRatio="none">
+      <path d="M960 4 C 960 34, 900 36, 500 36 C 100 36, 40 34, 40 4"
+            fill="none" stroke="#8b7bff" stroke-width="1.4" stroke-dasharray="5 6" opacity=".55"/>
+      <path d="M40 4 l -0 0 M40 12 l 6 -8 M40 12 l -6 -8" stroke="#8b7bff" stroke-width="1.4" fill="none" opacity=".7"/>
+    </svg>
+    <div class="loop">
+      <div class="legend">
+        <i><span class="sw" style="background:var(--cyan)"></span>感知 / 认知数据流</i>
+        <i><span class="sw" style="background:var(--dream-1)"></span>想象生成的未来帧</i>
+        <i><span class="sw" style="background:var(--violet)"></span>行动 → 记忆 反馈回路</i>
+      </div>
+      <div class="feedback"><span class="arc">↺</span> Action 结果回流,持续更新记忆与梦境</div>
+    </div>
+  </div>
+</body>
+</html>

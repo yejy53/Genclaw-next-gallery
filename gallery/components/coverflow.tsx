@@ -88,7 +88,22 @@ export function Coverflow({ locale, cases }: CoverflowProps) {
   const initial = Math.max(0, cases.findIndex((item) => item.featured));
   const [active, setActive] = useState(initial);
   const [paused, setPaused] = useState(false);
+  const [onScreen, setOnScreen] = useState(false);
+  const root = useRef<HTMLDivElement>(null);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Five carousels share the page; without this every one of them keeps
+  // ticking and re-rendering while the reader is somewhere else entirely.
+  useEffect(() => {
+    const node = root.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setOnScreen(entry.isIntersecting),
+      { rootMargin: "200px 0px" }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   const go = useCallback(
     (dir: number) => setActive((prev) => (prev + dir + count) % count),
@@ -96,20 +111,20 @@ export function Coverflow({ locale, cases }: CoverflowProps) {
   );
 
   useEffect(() => {
-    if (paused || count < 2 || hasLive) return;
+    if (paused || count < 2 || hasLive || !onScreen) return;
     timer.current = setInterval(() => {
       setActive((prev) => (prev + 1) % count);
     }, 3800);
     return () => {
       if (timer.current) clearInterval(timer.current);
     };
-  }, [paused, count, hasLive]);
+  }, [paused, count, hasLive, onScreen]);
 
   const current = cases[active];
   const multiple = count > 1;
 
   return (
-    <div className={`coverflow${multiple ? "" : " is-single"}`}>
+    <div className={`coverflow${multiple ? "" : " is-single"}`} ref={root}>
       <div
         className="coverflow-stage"
         onMouseEnter={() => setPaused(true)}
