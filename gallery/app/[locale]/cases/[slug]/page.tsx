@@ -13,7 +13,8 @@ import {
 } from "@/lib/gallery";
 import { GalleryShell } from "@/components/gallery-shell";
 import { ResultStage } from "@/components/result-viewer";
-import { ArrowLeftIcon } from "@/components/icons";
+import { BaselineFrame } from "@/components/baseline-frame";
+import { ArrowLeftIcon, ExpandIcon } from "@/components/icons";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -108,16 +109,24 @@ export default async function CasePage({
                 {baseline && (
                   <span className="wb-panel-tag">{baseline.producer}</span>
                 )}
+                {baseline?.kind === "html" && (
+                  <a
+                    className="wb-panel-open"
+                    href={assetUrl(baseline.artifact)}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <ExpandIcon size={12} />
+                    {t.openPreview}
+                  </a>
+                )}
               </div>
               {baseline ? (
                 <div className="wb-baseline-body">
                   {baseline.kind === "html" ? (
-                    <iframe
-                      className="wb-baseline-frame"
+                    <BaselineFrame
                       src={assetUrl(baseline.artifact)}
                       title={baseline.producer}
-                      loading="lazy"
-                      sandbox="allow-scripts allow-same-origin"
                     />
                   ) : (
                     // eslint-disable-next-line @next/next/no-img-element

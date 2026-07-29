@@ -1593,12 +1593,33 @@ summary {
   min-height: 0;
 }
 
-.wb-baseline-frame {
+.wb-baseline-live {
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.wb-baseline-live iframe {
   background: #fff;
   border: 0;
-  flex: 1;
-  min-height: 220px;
-  width: 100%;
+  display: block;
+  transform-origin: top left;
+}
+
+.wb-panel-open {
+  align-items: center;
+  color: var(--muted);
+  display: inline-flex;
+  font-size: 8.5px;
+  font-weight: 650;
+  gap: 5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.wb-panel-open:hover {
+  color: var(--ink);
 }
 
 .wb-baseline-image {

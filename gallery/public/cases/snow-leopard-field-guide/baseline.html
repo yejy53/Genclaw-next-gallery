@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雪豹 · 高山之巅的隐士</title>
+<style>
+  :root{
+    --bg:#f4f2ee;
+    --paper:#faf9f6;
+    --ink:#1c1b19;
+    --muted:#6d6a63;
+    --hair:#c9c4ba;
+    --line:#8a857b;
+    --accent:#b7742f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:var(--bg);color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","PingFang SC","Georgia",serif;
+    -webkit-font-smoothing:antialiased;}
+  .page{max-width:1280px;margin:0 auto;padding:60px 56px 72px;}
+
+  /* ---- 顶部：标题区 ---- */
+  header{position:relative;z-index:5;max-width:430px;}
+  .kicker{font-size:12px;letter-spacing:.42em;color:var(--muted);
+    text-transform:uppercase;margin-bottom:18px;
+    font-family:"Helvetica Neue",Arial,sans-serif;}
+  h1{font-size:52px;line-height:1.05;font-weight:800;letter-spacing:.02em;}
+  h1 .en{display:block;font-size:16px;font-weight:600;letter-spacing:.24em;
+    color:var(--muted);margin-top:12px;
+    font-family:"Helvetica Neue",Arial,sans-serif;font-style:italic;}
+  .intro{margin-top:22px;font-size:15px;line-height:1.9;color:#403d38;max-width:400px;}
+  .intro .lead{color:var(--accent);font-weight:700;}
+  .meta{margin-top:20px;display:flex;gap:26px;font-family:"Helvetica Neue",Arial,sans-serif;}
+  .meta div{border-left:2px solid var(--hair);padding-left:12px;}
+  .meta .m-label{font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;}
+  .meta .m-val{font-size:15px;font-weight:700;margin-top:3px;}
+
+  /* ---- 中央：图鉴主图 ---- */
+  .plate{position:relative;margin-top:-40px;}
+  .plate svg{display:block;width:100%;height:auto;overflow:visible;}
+
+  /* 标注文字（HTML 覆盖层，便于排版） */
+  .annotation{position:absolute;font-family:"Helvetica Neue",Arial,sans-serif;
+    max-width:210px;z-index:4;}
+  .annotation .a-num{display:inline-block;width:20px;height:20px;border-radius:50%;
+    border:1.5px solid var(--ink);text-align:center;line-height:18px;
+    font-size:11px;font-weight:700;margin-bottom:7px;}
+  .annotation .a-title{font-size:14px;font-weight:800;letter-spacing:.02em;color:var(--ink);}
+  .annotation .a-desc{font-size:12px;line-height:1.65;color:var(--muted);margin-top:5px;}
+  .annotation.right{text-align:left;}
+  .annotation.left{text-align:right;}
+  .annotation.left .a-num{margin-left:auto;display:block;}
+
+  /* 各标注位置 */
+  .a-ears  {top:2%;   left:41%;}
+  .a-nose  {top:34%;  left:2%;  text-align:right;}
+  .a-fur   {top:5%;   right:3%; }
+  .a-tail  {bottom:2%;right:6%; }
+  .a-legs  {bottom:1%;left:30%; text-align:right;}
+
+  /* ---- 底部：四列 ---- */
+  .details{margin-top:56px;border-top:1px solid var(--hair);
+    padding-top:38px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;}
+  .col .c-idx{font-family:"Helvetica Neue",Arial,sans-serif;font-size:12px;
+    color:var(--accent);font-weight:700;letter-spacing:.1em;}
+  .col h3{font-size:19px;font-weight:800;margin:8px 0 4px;}
+  .col .c-en{font-size:11px;letter-spacing:.2em;color:var(--muted);
+    text-transform:uppercase;font-family:"Helvetica Neue",Arial,sans-serif;
+    margin-bottom:12px;}
+  .col p{font-size:13px;line-height:1.85;color:#4a4741;}
+  .col .divider-dot{width:26px;height:2px;background:var(--ink);margin:12px 0 14px;}
+
+  footer{margin-top:56px;text-align:center;font-size:11px;letter-spacing:.28em;
+    color:var(--muted);text-transform:uppercase;
+    font-family:"Helvetica Neue",Arial,sans-serif;}
+
+  @media (max-width:900px){
+    .page{padding:36px 24px;}
+    h1{font-size:38px;}
+    .details{grid-template-columns:repeat(2,1fr);gap:28px;}
+    .annotation{position:static;max-width:none;margin:10px 0;text-align:left!important;}
+    .annotation.left .a-num{margin-left:0;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ 标题区 ============ -->
+  <header>
+    <div class="kicker">Wildlife Field Guide · No.07</div>
+    <h1>雪豹
+      <span class="en">Panthera uncia · The Snow Leopard</span>
+    </h1>
+    <p class="intro">
+      <span class="lead">高山之巅的隐士。</span>
+      雪豹栖息于中亚与青藏高原海拔 3000–5500 米的裸岩与高山草甸地带，
+      终年出没于人迹罕至的陡峭崖壁。灰白底色缀以墨环花斑，
+      使其隐没于雪线之间，堪称高原生态系统的顶级掠食者与健康指示物种。
+    </p>
+    <div class="meta">
+      <div><div class="m-label">海拔</div><div class="m-val">3000–5500 m</div></div>
+      <div><div class="m-label">体长</div><div class="m-val">1.0–1.3 m</div></div>
+      <div><div class="m-label">保护级别</div><div class="m-val">易危 VU</div></div>
+    </div>
+  </header>
+
+  <!-- ============ 中央主图 ============ -->
+  <div class="plate">
+    <svg viewBox="0 0 1200 620" aria-label="雪豹侧面图鉴">
+      <defs>
+        <linearGradient id="furBody" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f3f1ec"/>
+          <stop offset="0.55" stop-color="#e6e2da"/>
+          <stop offset="1" stop-color="#d2ccc0"/>
+        </linearGradient>
+        <linearGradient id="furBelly" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#faf9f6"/>
+          <stop offset="1" stop-color="# eee9e0"/>
+        </linearGradient>
+        <radialGradient id="tailG" cx="0.5" cy="0.5" r="0.6">
+          <stop offset="0" stop-color="#eeeae2"/>
+          <stop offset="1" stop-color="#cfc9bc"/>
+        </radialGradient>
+      </defs>
+
+      <!-- 淡淡的落地阴影 -->
+      <ellipse cx="600" cy="560" rx="470" ry="26" fill="#c9c4ba" opacity="0.4"/>
+
+      <!-- ===== 雪豹身体 ===== -->
+      <!-- 长尾（粗壮低垂再上扬） -->
+      <path d="M905 400
+               C 1010 430 1120 420 1160 330
+               C 1180 285 1150 250 1120 268
+               C 1140 300 1090 350 1030 360
+               C 970 370 930 375 900 388 Z"
+            fill="url(#tailG)" stroke="#b3ac9d" stroke-width="2"/>
+
+      <!-- 后腿（粗壮） -->
+      <path d="M820 400 C 860 430 875 500 860 545 C 855 560 830 560 825 545
+               C 815 505 805 470 795 445 Z" fill="url(#furBody)" stroke="#c2bbac" stroke-width="1.5"/>
+      <path d="M900 405 C 930 445 935 505 922 548 C 917 562 895 562 890 548
+               C 882 508 875 470 868 448 Z" fill="url(#furBody)" stroke="#c2bbac" stroke-width="1.5"/>
+      <!-- 前腿（粗壮，大爪垫） -->
+      <path d="M470 400 C 500 460 500 510 492 548 C 488 562 466 562 462 548
+               C 456 500 452 460 448 430 Z" fill="url(#furBody)" stroke="#c2bbac" stroke-width="1.5"/>
+      <path d="M540 405 C 566 470 562 512 555 548 C 551 562 530 562 525 548
+               C 520 505 516 462 512 435 Z" fill="url(#furBody)" stroke="#c2bbac" stroke-width="1.5"/>
+      <!-- 爪垫 -->
+      <g fill="#e9e4da" stroke="#c2bbac" stroke-width="1.2">
+        <ellipse cx="477" cy="552" rx="26" ry="12"/>
+        <ellipse cx="540" cy="552" rx="26" ry="12"/>
+        <ellipse cx="843" cy="552" rx="26" ry="12"/>
+        <ellipse cx="906" cy="552" rx="26" ry="12"/>
+      </g>
+
+      <!-- 躯干（厚密皮毛，圆润） -->
+      <path d="M300 300
+               C 330 235 430 210 540 220
+               C 680 232 800 250 880 300
+               C 930 332 930 388 880 410
+               C 780 442 600 448 470 440
+               C 360 433 285 400 285 350
+               C 285 328 292 312 300 300 Z"
+            fill="url(#furBody)" stroke="#b8b1a2" stroke-width="2"/>
+      <!-- 腹部浅色 -->
+      <path d="M470 440 C 600 448 780 442 875 412 C 850 430 760 445 620 448
+               C 540 449 480 447 470 440 Z" fill="url(#furBelly)" opacity="0.9"/>
+
+      <!-- 颈—头（短圆脸） -->
+      <path d="M300 300
+               C 250 296 205 300 175 285
+               C 150 273 148 240 168 222
+               C 188 205 225 200 258 210
+               C 300 224 320 260 315 300 Z"
+            fill="url(#furBody)" stroke="#b8b1a2" stroke-width="2"/>
+
+      <!-- 头部 -->
+      <path d="M175 285
+               C 130 288 100 275 92 250
+               C 86 228 100 208 128 202
+               C 150 197 172 205 185 220
+               C 205 242 210 270 195 285 Z"
+            fill="url(#furBody)" stroke="#b8b1a2" stroke-width="2"/>
+
+      <!-- 短圆耳朵 -->
+      <path d="M150 205 C 146 178 156 162 174 164 C 188 166 190 186 180 205 Z"
+            fill="#e6e1d8" stroke="#b3ac9d" stroke-width="1.5"/>
+      <path d="M160 200 C 158 184 164 174 174 176 C 181 178 181 190 176 200 Z"
+            fill="#cfc7b8"/>
+      <path d="M118 210 C 112 184 122 168 140 170 C 154 172 156 192 146 210 Z"
+            fill="#e6e1d8" stroke="#b3ac9d" stroke-width="1.5"/>
+      <path d="M126 205 C 124 189 130 179 140 181 C 147 183 147 195 142 205 Z"
+            fill="#cfc7b8"/>
+
+      <!-- 宽大鼻腔 / 口鼻 -->
+      <path d="M92 250 C 74 250 62 258 60 270 C 58 282 70 292 88 290
+               C 100 289 108 280 106 268 Z"
+            fill="#efe9df" stroke="#b3ac9d" stroke-width="1.5"/>
+      <ellipse cx="72" cy="266" rx="9" ry="7" fill="#4a453d"/>
+      <path d="M60 278 C 66 284 78 286 88 283" fill="none" stroke="#8a857b" stroke-width="1.6" stroke-linecap="round"/>
+      <!-- 眼睛 -->
+      <ellipse cx="128" cy="242" rx="10" ry="7" fill="#8a7a2f"/>
+      <circle cx="128" cy="242" r="3.4" fill="#26221b"/>
+      <path d="M116 236 C 122 232 134 232 140 237" fill="none" stroke="#8a857b" stroke-width="1.4"/>
+      <!-- 胡须 -->
+      <g stroke="#b3ac9d" stroke-width="1" opacity="0.8">
+        <path d="M78 272 L 24 268"/>
+        <path d="M80 278 L 26 284"/>
+        <path d="M82 284 L 32 298"/>
+      </g>
+
+      <!-- 皮毛玫瑰斑（黑灰环斑，稀疏分布） -->
+      <g fill="none" stroke="#5b564d" stroke-width="2" opacity="0.72">
+        <ellipse cx="400" cy="290" rx="22" ry="16"/>
+        <ellipse cx="470" cy="320" rx="24" ry="17"/>
+        <ellipse cx="545" cy="288" rx="22" ry="16"/>
+        <ellipse cx="620" cy="322" rx="25" ry="18"/>
+        <ellipse cx="700" cy="292" rx="23" ry="16"/>
+        <ellipse cx="770" cy="330" rx="24" ry="17"/>
+        <ellipse cx="360" cy="360" rx="20" ry="14"/>
+        <ellipse cx="500" cy="385" rx="21" ry="15"/>
+        <ellipse cx="660" cy="388" rx="22" ry="15"/>
+        <ellipse cx="820" cy="360" rx="20" ry="14"/>
+        <ellipse cx="250" cy="270" rx="15" ry="11"/>
+      </g>
+      <!-- 尾巴环斑（实心点，尾部较密） -->
+      <g fill="#5b564d" opacity="0.78">
+        <ellipse cx="960" cy="392" rx="11" ry="8"/>
+        <ellipse cx="1010" cy="380" rx="10" ry="7"/>
+        <ellipse cx="1055" cy="360" rx="10" ry="7"/>
+        <ellipse cx="1095" cy="330" rx="9" ry="6"/>
+        <ellipse cx="1128" cy="300" rx="8" ry="6"/>
+      </g>
+      <!-- 头部小斑点 -->
+      <g fill="#5b564d" opacity="0.7">
+        <circle cx="150" cy="255" r="3"/>
+        <circle cx="165" cy="270" r="3"/>
+        <circle cx="175" cy="248" r="2.5"/>
+        <circle cx="112" cy="238" r="2.5"/>
+      </g>
+
+      <!-- ============ 标注连线 + 圆点 ============ -->
+      <g stroke="var(--line)" stroke-width="1.2" fill="none">
+        <!-- 1 耳朵 -->
+        <path d="M158 168 L 200 90 L 470 90"/>
+        <!-- 2 鼻腔 -->
+        <path d="M64 270 L 40 340 L 180 400"/>
+        <!-- 3 皮毛 -->
+        <path d="M700 250 L 780 150 L 980 150"/>
+        <!-- 4 尾巴 -->
+        <path d="M1120 300 L 1150 430 L 1090 500"/>
+        <!-- 5 四肢 -->
+        <path d="M508 540 L 460 580 L 360 580"/>
+      </g>
+      <g fill="#faf9f6" stroke="var(--ink)" stroke-width="2">
+        <circle cx="158" cy="168" r="5"/>
+        <circle cx="64"  cy="270" r="5"/>
+        <circle cx="700" cy="250" r="5"/>
+        <circle cx="1120" cy="300" r="5"/>
+        <circle cx="508" cy="540" r="5"/>
+      </g>
+    </svg>
+
+    <!-- ===== 标注文字（覆盖层） ===== -->
+    <div class="annotation a-ears right">
+      <span class="a-num">1</span>
+      <div class="a-title">短圆耳朵</div>
+      <div class="a-desc">耳廓小而圆，缩减暴露面积、减少热量流失，
+        帮助在严寒高原保持体温。</div>
+    </div>
+
+    <div class="annotation a-nose left">
+      <span class="a-num">2</span>
+      <div class="a-title">宽大鼻腔</div>
+      <div class="a-desc">鼻腔宽阔、鼻道深长，可在吸入前预热冰冷稀薄的
+        高原空气，缓和对肺部的刺激。</div>
+    </div>
+
+    <div class="annotation a-fur right">
+      <span class="a-num">3</span>
+      <div class="a-title">厚密皮毛</div>
+      <div class="a-desc">背部长毛达 5 cm、腹部近 12 cm，
+        灰白花斑既保暖又是雪岩间的天然伪装。</div>
+    </div>
+
+    <div class="annotation a-tail right">
+      <span class="a-num">4</span>
+      <div class="a-title">长尾</div>
+      <div class="a-desc">尾长近身长，攀岩跳跃时充当平衡杆，
+        休息时可缠绕口鼻保暖御寒。</div>
+    </div>
+
+    <div class="annotation a-legs left">
+      <span class="a-num">5</span>
+      <div class="a-title">粗壮四肢</div>
+      <div class="a-desc">前肢短健、后肢强劲，宽厚脚掌如雪鞋般防陷，
+        赋予它一跃六米的爆发力。</div>
+    </div>
+  </div>
+
+  <!-- ============ 底部四列 ============ -->
+  <section class="details">
+    <div class="col">
+      <div class="c-idx">01</div>
+      <h3>皮毛</h3>
+      <div class="c-en">Dense Fur</div>
+      <div class="divider-dot"></div>
+      <p>双层被毛由粗糙的护毛与柔软的绒毛构成，单位面积毛发密度居猫科之冠。
+        灰白底色与墨色环斑打散身体轮廓，使雪豹在裸岩与积雪间近乎隐形，
+        既是御寒的绝缘层，也是伏击猎物的伪装衣。</p>
+    </div>
+    <div class="col">
+      <div class="c-idx">02</div>
+      <h3>鼻腔</h3>
+      <div class="c-en">Nasal Cavity</div>
+      <div class="divider-dot"></div>
+      <p>宽大的鼻腔与延长的鼻道形成天然的“热交换器”，
+        让零下数十度的干冷空气在进入肺部前得到加温加湿。
+        这一构造显著降低了在低氧、低温环境中呼吸的能量消耗。</p>
+    </div>
+    <div class="col">
+      <div class="c-idx">03</div>
+      <h3>尾巴</h3>
+      <div class="c-en">Long Tail</div>
+      <div class="divider-dot"></div>
+      <p>粗壮而柔韧的长尾几乎与躯干等长，是雪豹穿行陡崖时的“平衡杆”，
+        急转与腾跃间稳定重心。尾内储存脂肪，蜷卧时又能围裹口鼻，
+        在风雪中充当一条随身的围巾。</p>
+    </div>
+    <div class="col">
+      <div class="c-idx">04</div>
+      <h3>四肢</h3>
+      <div class="c-en">Limbs & Paws</div>
+      <div class="divider-dot"></div>
+      <p>后肢格外强健，赋予其超过身长数倍的惊人弹跳。
+        宽大而多毛的脚掌像雪鞋一样分散体重、防止陷雪，
+        也隔绝了冰面的寒冷，让它在崎岖雪线间行动自如。</p>
+    </div>
+  </section>
+
+  <footer>Panthera uncia · Guardian of the High Mountains · 自然科学图鉴</footer>
+</div>
+</body>
+</html>

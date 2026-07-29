@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneiroAgent · 架构</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{
+    height:100%;
+    background:#05060c;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk','Noto Sans SC',sans-serif;
+    overflow:hidden;
+  }
+
+  /* 16:9 stage */
+  .slide{
+    position:relative;
+    width:min(96vw,170.6vh);
+    aspect-ratio:16/9;
+    background:
+      radial-gradient(120% 130% at 12% 0%, #0e1430 0%, #080a18 45%, #05060c 100%);
+    overflow:hidden;
+    box-shadow:0 40px 120px rgba(0,0,0,.7);
+    --u:min(96vw,170.6vh);
+    color:#e8ecfb;
+  }
+
+  /* faint grid */
+  .slide::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(120,150,255,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(120,150,255,.05) 1px,transparent 1px);
+    background-size:calc(var(--u)*.03) calc(var(--u)*.03);
+    mask-image:radial-gradient(120% 120% at 50% 40%,#000 40%,transparent 90%);
+  }
+
+  /* ---------- Header ---------- */
+  .header{
+    position:absolute;top:calc(var(--u)*.045);left:calc(var(--u)*.05);
+    z-index:5;
+  }
+  .badge{
+    display:inline-flex;align-items:center;gap:.5em;
+    font-size:calc(var(--u)*.0105);letter-spacing:.35em;
+    color:#7fe8ff;text-transform:uppercase;font-weight:500;
+    border:1px solid rgba(127,232,255,.3);
+    padding:.4em .9em;border-radius:2em;
+    background:rgba(127,232,255,.05);
+  }
+  .badge .dot{width:.5em;height:.5em;border-radius:50%;background:#7fe8ff;box-shadow:0 0 10px #7fe8ff;animation:pulse 2.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  h1{
+    margin-top:.5em;
+    font-size:calc(var(--u)*.036);font-weight:700;letter-spacing:-.01em;
+    background:linear-gradient(90deg,#fff 0%,#b7c7ff 60%,#c39bff 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  h1 .cn{font-family:'Noto Sans SC';font-weight:400;font-size:.5em;color:#8a93b8;-webkit-text-fill-color:#8a93b8;margin-left:.6em;letter-spacing:.05em}
+  .subtitle{
+    margin-top:.35em;font-family:'Noto Sans SC';font-weight:300;
+    font-size:calc(var(--u)*.0135);color:#9aa3c7;letter-spacing:.02em;
+  }
+
+  /* ---------- Pipeline ---------- */
+  .pipeline{
+    position:absolute;top:calc(var(--u)*.28);left:0;width:100%;
+    display:flex;align-items:stretch;justify-content:center;
+    gap:calc(var(--u)*.016);
+    padding:0 calc(var(--u)*.05);
+    z-index:4;
+  }
+
+  .stage{
+    position:relative;flex:1;
+    border-radius:calc(var(--u)*.012);
+    padding:calc(var(--u)*.02) calc(var(--u)*.018);
+    min-height:calc(var(--u)*.30);
+    display:flex;flex-direction:column;
+    background:rgba(20,26,52,.55);
+    border:1px solid rgba(120,150,255,.18);
+    backdrop-filter:blur(6px);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  }
+  .stage .idx{
+    font-size:calc(var(--u)*.011);color:#5a668f;font-weight:600;letter-spacing:.2em;
+  }
+  .stage .icon{
+    width:calc(var(--u)*.05);height:calc(var(--u)*.05);
+    margin:calc(var(--u)*.01) 0;
+  }
+  .stage h3{
+    font-size:calc(var(--u)*.0175);font-weight:600;letter-spacing:.01em;color:#eef1ff;
+  }
+  .stage h3 .cn{display:block;font-family:'Noto Sans SC';font-weight:300;font-size:.68em;color:#8a93b8;margin-top:.15em}
+  .stage p{
+    margin-top:auto;padding-top:calc(var(--u)*.012);
+    font-family:'Noto Sans SC';font-weight:300;
+    font-size:calc(var(--u)*.0108);line-height:1.55;color:#9aa3c7;
+  }
+
+  /* accent colors per stage */
+  .s-perceive{--c:#5fd6ff}
+  .s-memory{--c:#6ea8ff}
+  .s-plan{--c:#8f7bff}
+  .s-act{--c:#4be0b0}
+  .stage .icon *{stroke:var(--c)}
+  .stage .idx{color:color-mix(in srgb,var(--c) 70%,#5a668f)}
+  .stage::after{
+    content:"";position:absolute;left:0;top:0;height:100%;width:3px;
+    border-radius:3px 0 0 3px;background:var(--c);opacity:.7;
+    box-shadow:0 0 14px var(--c);
+  }
+
+  /* arrows between stages */
+  .arrow{
+    align-self:center;flex:0 0 auto;
+    width:calc(var(--u)*.03);height:calc(var(--u)*.03);
+    display:flex;align-items:center;justify-content:center;
+    color:#5a668f;
+  }
+  .arrow svg{width:100%;height:100%;overflow:visible}
+
+  /* ---------- THE DREAM MODULE (hero) ---------- */
+  .dream{
+    flex:1.55;
+    position:relative;
+    border-radius:calc(var(--u)*.014);
+    overflow:hidden;
+    border:1px solid rgba(199,155,255,.5);
+    box-shadow:
+      0 0 0 1px rgba(199,155,255,.15),
+      0 0 60px rgba(150,90,255,.35),
+      inset 0 0 40px rgba(120,60,200,.25);
+    background:#0a0716;
+    padding:0;
+  }
+  .dream .dream-head{
+    position:absolute;top:0;left:0;width:100%;z-index:6;
+    padding:calc(var(--u)*.014) calc(var(--u)*.016);
+    display:flex;justify-content:space-between;align-items:flex-start;
+    background:linear-gradient(180deg,rgba(10,7,22,.9),transparent);
+  }
+  .dream .dream-head .idx{font-size:calc(var(--u)*.011);color:#c79bff;font-weight:600;letter-spacing:.2em}
+  .dream .dream-head h3{font-size:calc(var(--u)*.019);font-weight:700;color:#fff}
+  .dream .dream-head h3 .cn{display:block;font-family:'Noto Sans SC';font-weight:300;font-size:.62em;color:#c7b3ff;margin-top:.15em}
+  .dream .live{
+    font-size:calc(var(--u)*.0095);letter-spacing:.25em;color:#ff9ecb;
+    border:1px solid rgba(255,158,203,.5);border-radius:2em;
+    padding:.35em .7em;display:inline-flex;gap:.5em;align-items:center;
+  }
+  .dream .live .dot{width:.5em;height:.5em;border-radius:50%;background:#ff6fb0;box-shadow:0 0 8px #ff6fb0;animation:pulse 1.4s infinite}
+
+  /* the hallucinated frame itself */
+  .frame{position:absolute;inset:0;}
+  .frame svg{width:100%;height:100%;display:block}
+
+  /* dreamy scanlines + glow over dream */
+  .dream .scan{
+    position:absolute;inset:0;z-index:5;pointer-events:none;
+    background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px);
+    mix-blend-mode:overlay;
+    animation:scanmove 8s linear infinite;
+  }
+  @keyframes scanmove{to{background-position:0 60px}}
+  .dream .caption{
+    position:absolute;bottom:0;left:0;width:100%;z-index:6;
+    padding:calc(var(--u)*.02) calc(var(--u)*.016) calc(var(--u)*.014);
+    background:linear-gradient(0deg,rgba(10,7,22,.95),transparent);
+    font-family:'Noto Sans SC';font-weight:300;
+    font-size:calc(var(--u)*.0108);color:#d9c9ff;line-height:1.5;
+  }
+  .dream .caption b{color:#ff9ecb;font-weight:500}
+  .dream .caption .meta{
+    display:block;margin-top:.4em;font-family:'Space Grotesk';
+    font-size:calc(var(--u)*.0088);letter-spacing:.12em;color:#9a7fd0;
+  }
+  /* soft dream aura pulsing */
+  .dream::after{
+    content:"";position:absolute;inset:-2px;z-index:1;pointer-events:none;
+    background:radial-gradient(120% 90% at 70% 30%,rgba(255,120,200,.18),transparent 60%),
+              radial-gradient(120% 90% at 20% 80%,rgba(90,120,255,.2),transparent 60%);
+    animation:aura 6s ease-in-out infinite alternate;
+  }
+  @keyframes aura{from{opacity:.6}to{opacity:1}}
+
+  /* ---------- footer / loop note ---------- */
+  .footer{
+    position:absolute;bottom:calc(var(--u)*.04);left:calc(var(--u)*.05);
+    right:calc(var(--u)*.05);z-index:5;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:calc(var(--u)*.0102);color:#5a668f;letter-spacing:.05em;
+    font-family:'Noto Sans SC';font-weight:300;
+  }
+  .footer .loop{display:flex;align-items:center;gap:.6em}
+  .footer .loop svg{width:calc(var(--u)*.018);height:calc(var(--u)*.018)}
+  .footer .tag{letter-spacing:.2em;font-family:'Space Grotesk';text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <!-- Header -->
+  <div class="header">
+    <span class="badge"><span class="dot"></span>Cognitive Architecture</span>
+    <h1>OneiroAgent<span class="cn">造梦智能体</span></h1>
+    <div class="subtitle">感知 · 记忆 · 想象 · 规划 · 行动 —— 一个会「做梦」的自主智能体</div>
+  </div>
+
+  <!-- Pipeline -->
+  <div class="pipeline">
+
+    <!-- 1 Perception -->
+    <div class="stage s-perceive">
+      <div class="idx">01 / INPUT</div>
+      <svg class="icon" viewBox="0 0 48 48" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="24" cy="24" r="6"/><circle cx="24" cy="24" r="14"/>
+        <path d="M24 4v6M24 38v6M4 24h6M38 24h6"/>
+      </svg>
+      <h3>Perception<span class="cn">感知输入</span></h3>
+      <p>视觉、语音与传感信号编码为统一向量流，标记时间戳送入系统。</p>
+    </div>
+
+    <div class="arrow"><svg viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 12h28m0 0l-8-7m8 7l-8 7"/></svg></div>
+
+    <!-- 2 Memory -->
+    <div class="stage s-memory">
+      <div class="idx">02 / STORE</div>
+      <svg class="icon" viewBox="0 0 48 48" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <ellipse cx="24" cy="12" rx="16" ry="6"/>
+        <path d="M8 12v24c0 3.3 7.2 6 16 6s16-2.7 16-6V12"/>
+        <path d="M8 24c0 3.3 7.2 6 16 6s16-2.7 16-6"/>
+      </svg>
+      <h3>Memory Bank<span class="cn">记忆库</span></h3>
+      <p>情景记忆 + 语义知识分层存储，按相关度检索，为想象提供素材。</p>
+    </div>
+
+    <div class="arrow"><svg viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 12h28m0 0l-8-7m8 7l-8 7"/></svg></div>
+
+    <!-- 3 DREAM (hero) -->
+    <div class="dream">
+      <div class="dream-head">
+        <div>
+          <div class="idx">03 / IMAGINE</div>
+          <h3>Dream Engine<span class="cn">想象 / 做梦</span></h3>
+        </div>
+        <span class="live"><span class="dot"></span>HALLUCINATING</span>
+      </div>
+
+      <!-- the hallucinated future-scene frame -->
+      <div class="frame">
+        <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2a0f4a"/>
+              <stop offset="45%" stop-color="#5a1e6e"/>
+              <stop offset="75%" stop-color="#c24b7a"/>
+              <stop offset="100%" stop-color="#ffb27a"/>
+            </linearGradient>
+            <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff2d0"/>
+              <stop offset="40%" stop-color="#ffd08a"/>
+              <stop offset="100%" stop-color="#ff9a6a" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3a1552"/>
+              <stop offset="100%" stop-color="#120726"/>
+            </linearGradient>
+            <linearGradient id="tower" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffd9ec" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#7a4bff" stop-opacity=".25"/>
+            </linearGradient>
+            <filter id="blurdream"><feGaussianBlur stdDeviation="1.1"/></filter>
+          </defs>
+
+          <!-- dream sky -->
+          <rect width="600" height="380" fill="url(#sky)"/>
+          <circle cx="380" cy="150" r="130" fill="url(#sun)"/>
+          <circle cx="380" cy="150" r="54" fill="#fff4dc" opacity=".9"/>
+
+          <!-- floating dream particles -->
+          <g fill="#fff" opacity=".8">
+            <circle cx="90" cy="70" r="1.6"/><circle cx="160" cy="120" r="1"/>
+            <circle cx="510" cy="90" r="1.4"/><circle cx="250" cy="60" r="1"/>
+            <circle cx="450" cy="200" r="1.2"/><circle cx="70" cy="180" r="1"/>
+            <circle cx="540" cy="240" r="1.3"/><circle cx="300" cy="110" r="1"/>
+          </g>
+
+          <!-- imagined future city — translucent, glitchy skyline -->
+          <g filter="url(#blurdream)" opacity=".92">
+            <rect x="70"  y="200" width="34" height="150" fill="url(#tower)"/>
+            <rect x="120" y="160" width="26" height="190" fill="url(#tower)"/>
+            <rect x="160" y="220" width="40" height="130" fill="url(#tower)"/>
+            <rect x="410" y="180" width="30" height="170" fill="url(#tower)"/>
+            <rect x="452" y="140" width="22" height="210" fill="url(#tower)"/>
+            <rect x="486" y="205" width="38" height="145" fill="url(#tower)"/>
+            <rect x="530" y="170" width="26" height="180" fill="url(#tower)"/>
+          </g>
+          <!-- glitch offset ghosts of towers -->
+          <g opacity=".25" fill="#7fe8ff">
+            <rect x="123" y="158" width="26" height="190"/>
+            <rect x="455" y="138" width="22" height="210"/>
+          </g>
+
+          <!-- reflective dream ground + horizon glow -->
+          <rect x="0" y="300" width="600" height="80" fill="url(#ground)"/>
+          <rect x="0" y="298" width="600" height="4" fill="#ffcf9a" opacity=".7"/>
+          <!-- reflections -->
+          <g opacity=".22" transform="translate(0,600) scale(1,-1)">
+            <rect x="120" y="250" width="26" height="90" fill="#ffd9ec"/>
+            <rect x="452" y="250" width="22" height="90" fill="#ffd9ec"/>
+          </g>
+
+          <!-- the agent's imagined self walking into the scene (silhouette) -->
+          <g transform="translate(300 300)" fill="#0e0620">
+            <ellipse cx="0" cy="46" rx="30" ry="7" fill="#000" opacity=".4"/>
+            <circle cx="0" cy="-30" r="9"/>
+            <path d="M-9 -20 q9 -6 18 0 l4 34 h-26 z"/>
+            <rect x="-8" y="12" width="6" height="30" rx="3"/>
+            <rect x="2" y="12" width="6" height="30" rx="3"/>
+          </g>
+          <!-- glowing path the agent imagines taking -->
+          <path d="M300 344 q-4 -60 -70 -110 q60 40 70 110 q10 -70 74 -104" stroke="#7fe8ff" stroke-width="2" fill="none" opacity=".55" stroke-dasharray="5 6"/>
+
+          <!-- wireframe overlay: this is a SIMULATION -->
+          <g stroke="#c79bff" stroke-width="1" opacity=".35" fill="none">
+            <path d="M0 260 L600 260"/><path d="M0 300 L600 300"/>
+            <path d="M300 260 L120 380"/><path d="M300 260 L480 380"/>
+            <path d="M300 260 L300 380"/><path d="M300 260 L40 380"/><path d="M300 260 L560 380"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="scan"></div>
+
+      <div class="caption">
+        脑补出的一帧未来：<b>「若此刻向左推门而出 →」</b> 智能体在潜空间里渲染出尚未发生的场景，并预演自己的下一步。
+        <span class="meta">SIMULATED FRAME  ·  t+1  ·  latent rollout #0427  ·  confidence 0.81</span>
+      </div>
+    </div>
+
+    <div class="arrow"><svg viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 12h28m0 0l-8-7m8 7l-8 7"/></svg></div>
+
+    <!-- 4 Planning -->
+    <div class="stage s-plan">
+      <div class="idx">04 / PLAN</div>
+      <svg class="icon" viewBox="0 0 48 48" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="10" cy="24" r="5"/><circle cx="38" cy="10" r="5"/><circle cx="38" cy="38" r="5"/>
+        <path d="M15 22l18-9M15 26l18 9"/>
+      </svg>
+      <h3>Planning<span class="cn">规划</span></h3>
+      <p>比较多帧想象结果，按目标与风险择优，生成可执行动作序列。</p>
+    </div>
+
+    <div class="arrow"><svg viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 12h28m0 0l-8-7m8 7l-8 7"/></svg></div>
+
+    <!-- 5 Action -->
+    <div class="stage s-act">
+      <div class="idx">05 / ACT</div>
+      <svg class="icon" viewBox="0 0 48 48" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 24l10 10 18-22"/>
+        <path d="M24 6v6M6 24h6M40 24h2"/>
+      </svg>
+      <h3>Action<span class="cn">行动</span></h3>
+      <p>驱动执行器与工具落地动作，结果回流感知，闭合认知循环。</p>
+    </div>
+
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    <div class="loop">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#5a668f" stroke-width="2" stroke-linecap="round"><path d="M4 12a8 8 0 0 1 14-5m2-2v5h-5M20 12a8 8 0 0 1-14 5m-2 2v-5h5"/></svg>
+      行动结果回流至感知与记忆 —— 想象越用越准
+    </div>
+    <div class="tag">OneiroAgent · v0.3 · Dream-in-the-loop</div>
+  </div>
+
+</div>
+</body>
+</html>

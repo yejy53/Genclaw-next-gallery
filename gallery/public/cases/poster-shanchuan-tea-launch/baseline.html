@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山川茶事 · 山柚观音 · 新品上市</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1f3a2e;       /* deep pine */
+    --green-2:#274a39;
+    --green-3:#16281f;
+    --ivory:#f3ecdc;       /* off-white / rice */
+    --ivory-2:#e9dfc8;
+    --gold:#c9a24b;
+    --gold-lt:#e6c988;
+    --gold-dk:#a9822f;
+    --ink:#22352b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#d7cdb8;display:grid;place-items:center;min-height:100vh;
+    font-family:"Noto Sans SC",sans-serif}
+  body{padding:26px}
+
+  /* ===== POSTER 3:4 ===== */
+  .poster{
+    position:relative;
+    width:600px;height:800px;         /* 3:4 */
+    background:
+      radial-gradient(140% 90% at 50% -10%, #2b503d 0%, var(--green) 42%, var(--green-3) 100%);
+    color:var(--ivory);
+    overflow:hidden;
+    box-shadow:0 30px 70px rgba(20,30,24,.45);
+    border-radius:4px;
+    isolation:isolate;
+  }
+  /* rice-paper fiber texture */
+  .poster::before{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.16' numOctaves='3' seed='7'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23p)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode:soft-light;opacity:.5;
+  }
+  /* speckle grain */
+  .poster::after{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;opacity:.6;
+  }
+  .layer{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
+    padding:34px 40px 30px}
+
+  /* gold hairline frame */
+  .frame{position:absolute;inset:16px;border:1px solid rgba(201,162,75,.45);z-index:3;pointer-events:none;border-radius:2px}
+  .frame::before,.frame::after{content:"";position:absolute;width:16px;height:16px;border:1.5px solid var(--gold);}
+  .frame::before{left:-1px;top:-1px;border-right:none;border-bottom:none}
+  .frame::after{right:-1px;bottom:-1px;border-left:none;border-top:none}
+
+  /* landscape mountains accent (top-right, subtle) */
+  .mountains{position:absolute;top:0;right:0;width:100%;height:230px;z-index:1;opacity:.9}
+
+  /* ===== HEADER ===== */
+  .head{display:flex;justify-content:space-between;align-items:flex-start}
+  .brandmark{display:flex;align-items:center;gap:10px}
+  .seal{
+    width:46px;height:46px;border:1.5px solid var(--gold);border-radius:6px;
+    display:grid;place-items:center;color:var(--gold);
+    font-family:"Noto Serif SC";font-weight:700;font-size:12px;line-height:1.05;text-align:center;
+    background:linear-gradient(160deg,rgba(201,162,75,.14),transparent);
+    letter-spacing:1px;
+  }
+  .brandtxt small{display:block;font-family:"Cormorant Garamond",serif;letter-spacing:3px;
+    font-size:11px;color:var(--gold-lt);text-transform:uppercase}
+  .brandtxt b{font-family:"Noto Serif SC";font-weight:600;font-size:15px;letter-spacing:4px;color:var(--ivory)}
+  .newtag{
+    text-align:center;font-family:"Noto Serif SC";
+    border:1px solid var(--gold);color:var(--gold-lt);
+    padding:6px 10px;border-radius:3px;font-size:12px;letter-spacing:3px;
+    writing-mode:vertical-rl;line-height:1.1;
+    background:linear-gradient(180deg,rgba(201,162,75,.12),transparent);
+  }
+
+  /* ===== TITLE BLOCK ===== */
+  .title{margin-top:20px;position:relative}
+  .series{font-family:"Noto Serif SC";font-weight:500;color:var(--gold-lt);
+    letter-spacing:8px;font-size:14px;margin-bottom:8px;padding-left:4px}
+  .hero-name{font-family:"Noto Serif SC";font-weight:900;color:var(--ivory);
+    font-size:62px;letter-spacing:6px;line-height:1;
+    text-shadow:0 2px 18px rgba(0,0,0,.35)}
+  .hero-name .g{color:var(--gold-lt);
+    background:linear-gradient(180deg,var(--gold-lt),var(--gold-dk));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .slogan{margin-top:14px;font-family:"Noto Serif SC";font-weight:400;
+    font-size:19px;letter-spacing:4px;color:var(--ivory-2)}
+  .slogan::before{content:"";display:inline-block;width:26px;height:1px;background:var(--gold);
+    vertical-align:middle;margin-right:12px}
+
+  /* ===== HERO CUP (center) ===== */
+  .heroart{position:relative;flex:1;display:flex;align-items:center;justify-content:center;margin:6px 0}
+  .heroart svg{width:250px;height:auto;filter:drop-shadow(0 20px 30px rgba(0,0,0,.4))}
+  .price-flag{
+    position:absolute;right:2px;top:50%;transform:translateY(-50%);
+    text-align:center;color:var(--green-3);
+    background:linear-gradient(150deg,var(--gold-lt),var(--gold));
+    border-radius:50%;width:96px;height:96px;display:grid;place-content:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,255,255,.35);
+    font-family:"Noto Serif SC";
+  }
+  .price-flag small{font-size:10px;letter-spacing:1px;font-weight:600}
+  .price-flag b{font-size:15px;letter-spacing:1px;display:block;margin-top:1px}
+  .price-flag .en{font-family:"Cormorant Garamond";font-size:8px;letter-spacing:1px}
+
+  .leaf-accent{position:absolute;left:-6px;bottom:20px;opacity:.9}
+
+  /* ===== PRICE ROW ===== */
+  .prices{display:flex;gap:14px;justify-content:center;margin-top:2px}
+  .price{
+    flex:1;text-align:center;padding:12px 8px;border-radius:6px;
+    background:rgba(243,236,220,.06);border:1px solid rgba(201,162,75,.35);
+    backdrop-filter:blur(2px);
+  }
+  .price .sz{font-family:"Noto Serif SC";font-size:14px;letter-spacing:3px;color:var(--gold-lt)}
+  .price .amt{font-family:"Noto Serif SC";font-weight:700;font-size:30px;color:var(--ivory);margin-top:2px}
+  .price .amt i{font-size:15px;font-style:normal;color:var(--gold-lt);margin-right:2px}
+  .price .amt em{font-size:14px;font-style:normal;letter-spacing:2px}
+
+  /* ===== MODULES ===== */
+  .modules{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .mod-title{font-family:"Noto Serif SC";font-size:13px;letter-spacing:4px;color:var(--gold-lt);
+    display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .mod-title::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(201,162,75,.5),transparent)}
+  .acts li{list-style:none;font-size:12px;letter-spacing:1px;color:var(--ivory-2);
+    padding:3px 0 3px 16px;position:relative;line-height:1.5}
+  .acts li::before{content:"◈";position:absolute;left:0;color:var(--gold);font-size:9px;top:5px}
+  .flavor{display:flex;flex-wrap:wrap;gap:6px}
+  .flavor span{font-family:"Noto Serif SC";font-size:11.5px;letter-spacing:1px;
+    padding:5px 9px;border:1px solid rgba(201,162,75,.4);border-radius:20px;color:var(--ivory);
+    background:rgba(201,162,75,.06)}
+
+  /* ===== FOOTER ===== */
+  .foot{margin-top:16px;display:flex;justify-content:space-between;align-items:flex-end;
+    border-top:1px solid rgba(201,162,75,.3);padding-top:12px}
+  .foot .when{font-size:11px;letter-spacing:1px;color:var(--ivory-2);line-height:1.7}
+  .foot .when b{font-family:"Noto Serif SC";color:var(--gold-lt);font-weight:500;letter-spacing:2px}
+  .foot .when .en{font-family:"Cormorant Garamond";letter-spacing:3px;font-size:11px;color:var(--gold);display:block;margin-top:3px}
+  .qr{display:flex;flex-direction:column;align-items:center;gap:5px}
+  .qr .code{width:58px;height:58px;background:var(--ivory);border-radius:6px;padding:5px;
+    box-shadow:0 4px 12px rgba(0,0,0,.3)}
+  .qr small{font-size:10px;letter-spacing:2px;color:var(--gold-lt);font-family:"Noto Serif SC"}
+
+  .fineprint{position:absolute;bottom:6px;left:0;right:0;text-align:center;
+    font-size:8.5px;letter-spacing:1px;color:rgba(243,236,220,.4);z-index:3}
+</style>
+</head>
+<body>
+
+<div class="poster">
+  <!-- landscape mountains -->
+  <svg class="mountains" viewBox="0 0 600 230" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="mg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c9a24b" stop-opacity=".22"/>
+        <stop offset="1" stop-color="#c9a24b" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,150 C120,60 200,120 300,70 C400,20 480,110 600,60 L600,0 L0,0 Z" fill="url(#mg)"/>
+    <path d="M330,120 C400,60 470,100 560,55" fill="none" stroke="#c9a24b" stroke-opacity=".5" stroke-width="1"/>
+    <path d="M300,150 C380,95 460,130 600,90" fill="none" stroke="#e6c988" stroke-opacity=".35" stroke-width="1"/>
+    <!-- sun disc -->
+    <circle cx="470" cy="66" r="26" fill="none" stroke="#e6c988" stroke-opacity=".55" stroke-width="1.2"/>
+  </svg>
+
+  <div class="frame"></div>
+
+  <div class="layer">
+    <!-- HEADER -->
+    <div class="head">
+      <div class="brandmark">
+        <div class="seal">山川<br>茶事</div>
+        <div class="brandtxt">
+          <b>山川茶事</b>
+          <small>Shanchuan Tea · Since</small>
+        </div>
+      </div>
+      <div class="newtag">新品上市</div>
+    </div>
+
+    <!-- TITLE -->
+    <div class="title">
+      <div class="series">冷泡系列 · COLD BREW</div>
+      <div class="hero-name">山柚<span class="g">观音</span></div>
+      <div class="slogan">一口清醒，半城入夏</div>
+    </div>
+
+    <!-- HERO ART -->
+    <div class="heroart">
+      <!-- leaves accent -->
+      <svg class="leaf-accent" width="90" height="120" viewBox="0 0 90 120">
+        <g fill="none" stroke="#c9a24b" stroke-opacity=".55" stroke-width="1.1">
+          <path d="M60,115 C40,90 30,55 55,10"/>
+          <path d="M55,40 C40,42 30,36 24,24 C40,22 50,28 55,40Z" fill="#3a5c46" fill-opacity=".6"/>
+          <path d="M52,66 C37,70 26,64 20,52 C36,50 47,55 52,66Z" fill="#3a5c46" fill-opacity=".5"/>
+          <path d="M58,90 C44,95 33,90 27,78 C43,75 53,80 58,90Z" fill="#3a5c46" fill-opacity=".45"/>
+        </g>
+      </svg>
+
+      <!-- cold-brew cup -->
+      <svg viewBox="0 0 200 300">
+        <defs>
+          <linearGradient id="teaG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f6d27a"/>
+            <stop offset="0.35" stop-color="#e6a94e"/>
+            <stop offset="1" stop-color="#b9722a"/>
+          </linearGradient>
+          <linearGradient id="foam" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fbf3df"/>
+            <stop offset="1" stop-color="#f0e2c0"/>
+          </linearGradient>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#ffffff" stop-opacity=".38"/>
+            <stop offset="0.5" stop-color="#ffffff" stop-opacity=".05"/>
+            <stop offset="1" stop-color="#ffffff" stop-opacity=".28"/>
+          </linearGradient>
+          <clipPath id="cupClip">
+            <path d="M52,70 L148,70 L138,262 Q136,278 120,278 L80,278 Q64,278 62,262 Z"/>
+          </clipPath>
+        </defs>
+
+        <!-- cup body glass -->
+        <path d="M52,70 L148,70 L138,262 Q136,278 120,278 L80,278 Q64,278 62,262 Z"
+              fill="#ffffff" fill-opacity=".07" stroke="#f3ecdc" stroke-opacity=".55" stroke-width="1.5"/>
+
+        <g clip-path="url(#cupClip)">
+          <!-- tea -->
+          <rect x="50" y="120" width="100" height="170" fill="url(#teaG)"/>
+          <!-- light cream top layer -->
+          <rect x="50" y="96" width="100" height="30" fill="url(#foam)" opacity=".92"/>
+          <path d="M50,124 Q100,116 150,124 L150,132 Q100,124 50,132Z" fill="#fbf3df" opacity=".5"/>
+
+          <!-- ice cubes -->
+          <g fill="#ffffff" fill-opacity=".55" stroke="#ffffff" stroke-opacity=".7" stroke-width="1">
+            <rect x="66" y="140" width="30" height="30" rx="5" transform="rotate(-12 81 155)"/>
+            <rect x="98" y="150" width="32" height="32" rx="5" transform="rotate(10 114 166)"/>
+            <rect x="74" y="176" width="30" height="30" rx="5" transform="rotate(16 89 191)"/>
+            <rect x="104" y="188" width="28" height="28" rx="5" transform="rotate(-8 118 202)"/>
+            <rect x="70" y="210" width="26" height="26" rx="5" transform="rotate(6 83 223)"/>
+          </g>
+
+          <!-- citrus slice -->
+          <g transform="translate(120,214)">
+            <circle r="24" fill="#f7c94a" stroke="#e6a02e" stroke-width="2"/>
+            <circle r="24" fill="#ffdd6b" fill-opacity=".4"/>
+            <g stroke="#ffe89a" stroke-width="1.4" fill="none">
+              <line x1="0" y1="0" x2="0" y2="-20"/><line x1="0" y1="0" x2="17" y2="-10"/>
+              <line x1="0" y1="0" x2="20" y2="0"/><line x1="0" y1="0" x2="17" y2="11"/>
+              <line x1="0" y1="0" x2="0" y2="20"/><line x1="0" y1="0" x2="-17" y2="11"/>
+              <line x1="0" y1="0" x2="-20" y2="0"/><line x1="0" y1="0" x2="-17" y2="-10"/>
+            </g>
+            <circle r="6" fill="#ffe89a"/>
+          </g>
+
+          <!-- bubbles -->
+          <g fill="#ffffff" fill-opacity=".5">
+            <circle cx="80" cy="250" r="3"/><circle cx="92" cy="262" r="2"/><circle cx="70" cy="238" r="2"/>
+            <circle cx="112" cy="252" r="2.5"/>
+          </g>
+        </g>
+
+        <!-- glass highlight overlay -->
+        <path d="M52,70 L148,70 L138,262 Q136,278 120,278 L80,278 Q64,278 62,262 Z"
+              fill="url(#glass)"/>
+        <path d="M64,80 L74,80 L69,260 L61,258 Z" fill="#ffffff" fill-opacity=".25"/>
+
+        <!-- gold rim -->
+        <rect x="50" y="66" width="100" height="8" rx="4" fill="url(#teaG)" opacity="0"/>
+        <path d="M50,70 L150,70" stroke="#e6c988" stroke-width="2.5"/>
+        <ellipse cx="100" cy="70" rx="49" ry="7" fill="none" stroke="#c9a24b" stroke-width="1.5"/>
+
+        <!-- gold foil flakes -->
+        <g fill="#e6c988">
+          <path d="M96,150 l4,-3 l3,4 l-4,3 z"/>
+          <path d="M118,178 l3,-2 l2,3 l-3,2 z"/>
+          <path d="M82,196 l3,-3 l3,3 l-3,3 z"/>
+          <path d="M108,224 l2.5,-2 l2,3 l-3,2 z"/>
+          <path d="M90,168 l2,-2 l2,2 l-2,2 z"/>
+        </g>
+
+        <!-- floating tea leaf -->
+        <path d="M110,58 C118,44 134,42 146,48 C136,58 120,60 110,58Z"
+              fill="#3a5c46" stroke="#c9a24b" stroke-opacity=".6" stroke-width="1"/>
+        <path d="M112,57 C122,52 134,50 144,49" fill="none" stroke="#c9a24b" stroke-opacity=".5" stroke-width=".8"/>
+      </svg>
+
+      <!-- price seal -->
+      <div class="price-flag">
+        <small>限定尝鲜价</small>
+        <b>新品尝鲜</b>
+        <span class="en">FIRST TASTE</span>
+      </div>
+    </div>
+
+    <!-- PRICES -->
+    <div class="prices">
+      <div class="price">
+        <div class="sz">中杯</div>
+        <div class="amt"><i>¥</i>16<em> 元</em></div>
+      </div>
+      <div class="price">
+        <div class="sz">大杯</div>
+        <div class="amt"><i>¥</i>19<em> 元</em></div>
+      </div>
+    </div>
+
+    <!-- MODULES -->
+    <div class="modules">
+      <div class="mod">
+        <div class="mod-title">门店活动</div>
+        <ul class="acts">
+          <li>第二杯半价</li>
+          <li>加 3 元升级轻乳版</li>
+          <li>每日前 100 名赠限定杯套</li>
+        </ul>
+      </div>
+      <div class="mod">
+        <div class="mod-title">推荐风味</div>
+        <div class="flavor">
+          <span>观音茶底</span>
+          <span>西柚果香</span>
+          <span>轻乳云顶</span>
+          <span>冰感回甘</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="foot">
+      <div class="when">
+        <b>活动时间</b><br>
+        4月20日 至 5月10日
+        <span class="en">SHANCHUAN TEA</span>
+      </div>
+      <div class="qr">
+        <div class="code">
+          <svg viewBox="0 0 100 100" width="100%" height="100%">
+            <rect width="100" height="100" fill="#f3ecdc"/>
+            <g fill="#1f3a2e">
+              <rect x="8" y="8" width="26" height="26"/><rect x="14" y="14" width="14" height="14" fill="#f3ecdc"/><rect x="18" y="18" width="6" height="6" fill="#1f3a2e"/>
+              <rect x="66" y="8" width="26" height="26"/><rect x="72" y="14" width="14" height="14" fill="#f3ecdc"/><rect x="76" y="18" width="6" height="6" fill="#1f3a2e"/>
+              <rect x="8" y="66" width="26" height="26"/><rect x="14" y="72" width="14" height="14" fill="#f3ecdc"/><rect x="18" y="76" width="6" height="6" fill="#1f3a2e"/>
+              <rect x="44" y="10" width="6" height="6"/><rect x="44" y="22" width="6" height="6"/><rect x="52" y="16" width="6" height="6"/><rect x="44" y="34" width="6" height="6"/>
+              <rect x="66" y="44" width="6" height="6"/><rect x="78" y="44" width="6" height="6"/><rect x="86" y="52" width="6" height="6"/><rect x="66" y="58" width="6" height="6"/>
+              <rect x="44" y="66" width="6" height="6"/><rect x="52" y="74" width="6" height="6"/><rect x="44" y="82" width="6" height="6"/><rect x="66" y="78" width="6" height="6"/><rect x="78" y="66" width="6" height="6"/><rect x="86" y="86" width="6" height="6"/>
+              <rect x="10" y="44" width="6" height="6"/><rect x="22" y="52" width="6" height="6"/><rect x="34" y="44" width="6" height="6"/>
+            </g>
+          </svg>
+        </div>
+        <small>扫码点单</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="fineprint">图片仅供参考，请以门店实际售卖为准</div>
+</div>
+
+</body>
+</html>

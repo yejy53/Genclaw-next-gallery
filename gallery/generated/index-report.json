@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-28T16:21:32.827356+00:00",
+  "generatedAt": "2026-07-29T10:16:15.261544+00:00",
   "caseCount": 20,
   "resultCount": 23,
   "preservedCases": [],
@@ -18,7 +18,7 @@
     {
       "case": "robot-hero-selector",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/robot-hero-selector.png"
+      "source": "gallery/content/sources/claude/robot-hero-selector.html"
     },
     {
       "case": "animation-studio-loop",
@@ -33,7 +33,7 @@
     {
       "case": "animation-studio-loop",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/animation-studio-loop.png"
+      "source": "gallery/content/sources/claude/animation-studio-loop.html"
     },
     {
       "case": "microscopic-life-atlas",
@@ -48,7 +48,7 @@
     {
       "case": "microscopic-life-atlas",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/microscopic-life-atlas.png"
+      "source": "gallery/content/sources/claude/microscopic-life-atlas.html"
     },
     {
       "case": "spotify-music-interface",
@@ -63,7 +63,7 @@
     {
       "case": "spotify-music-interface",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/spotify-music-interface.png"
+      "source": "gallery/content/sources/claude/spotify-music-interface.html"
     },
     {
       "case": "minecraft-encyclopedia",
@@ -78,7 +78,7 @@
     {
       "case": "minecraft-encyclopedia",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/minecraft-encyclopedia.png"
+      "source": "gallery/content/sources/claude/minecraft-encyclopedia.html"
     },
     {
       "case": "pizza-restaurant-site",
@@ -93,7 +93,7 @@
     {
       "case": "pizza-restaurant-site",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/pizza-restaurant-site.png"
+      "source": "gallery/content/sources/claude/pizza-restaurant-site.html"
     },
     {
       "case": "poster-shanchuan-tea-launch",
@@ -113,7 +113,7 @@
     {
       "case": "poster-shanchuan-tea-launch",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/poster-shanchuan-tea-launch.png"
+      "source": "gallery/content/sources/claude/poster-shanchuan-tea-launch.html"
     },
     {
       "case": "poster-vogue-quiet-power",
@@ -133,7 +133,7 @@
     {
       "case": "poster-vogue-quiet-power",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/poster-vogue-quiet-power.png"
+      "source": "gallery/content/sources/claude/poster-vogue-quiet-power.html"
     },
     {
       "case": "poster-chongqing-rain-night",
@@ -153,7 +153,7 @@
     {
       "case": "poster-chongqing-rain-night",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/poster-chongqing-rain-night.png"
+      "source": "gallery/content/sources/claude/poster-chongqing-rain-night.html"
     },
     {
       "case": "oneiro-agent-architecture",
@@ -168,7 +168,7 @@
     {
       "case": "oneiro-agent-architecture",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/oneiro-agent-architecture.png"
+      "source": "gallery/content/sources/claude/oneiro-agent-architecture.html"
     },
     {
       "case": "urban-mobility-keynote",
@@ -183,7 +183,7 @@
     {
       "case": "urban-mobility-keynote",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/urban-mobility-keynote.png"
+      "source": "gallery/content/sources/claude/urban-mobility-keynote.html"
     },
     {
       "case": "salt-lake-restoration",
@@ -198,7 +198,7 @@
     {
       "case": "salt-lake-restoration",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/salt-lake-restoration.png"
+      "source": "gallery/content/sources/claude/salt-lake-restoration.html"
     },
     {
       "case": "qinghua-porcelain-atlas",
@@ -213,7 +213,7 @@
     {
       "case": "qinghua-porcelain-atlas",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/qinghua-porcelain-atlas.png"
+      "source": "gallery/content/sources/claude/qinghua-porcelain-atlas.html"
     },
     {
       "case": "snow-leopard-field-guide",
@@ -228,7 +228,7 @@
     {
       "case": "snow-leopard-field-guide",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/snow-leopard-field-guide.png"
+      "source": "gallery/content/sources/claude/snow-leopard-field-guide.html"
     },
     {
       "case": "akari-character-sheet",
@@ -243,7 +243,7 @@
     {
       "case": "akari-character-sheet",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/akari-character-sheet.png"
+      "source": "gallery/content/sources/claude/akari-character-sheet.html"
     },
     {
       "case": "iceberg-model-card",
@@ -258,7 +258,7 @@
     {
       "case": "iceberg-model-card",
       "role": "baseline",
-      "source": "gallery/content/sources/claude/iceberg-model-card.png"
+      "source": "gallery/content/sources/claude/iceberg-model-card.html"
     },
     {
       "case": "svg-apple-watch",

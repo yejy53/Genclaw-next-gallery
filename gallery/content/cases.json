@@ -38,13 +38,14 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/robot-hero-selector.png"
+        "artifact": "gallery/content/sources/claude/robot-hero-selector.html",
+        "preview": "gallery/content/sources/claude/robot-hero-selector.png"
       }
     },
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     }
   },
   {
@@ -86,13 +87,14 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/animation-studio-loop.png"
+        "artifact": "gallery/content/sources/claude/animation-studio-loop.html",
+        "preview": "gallery/content/sources/claude/animation-studio-loop.png"
       }
     },
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     }
   },
   {
@@ -134,13 +136,14 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/microscopic-life-atlas.png"
+        "artifact": "gallery/content/sources/claude/microscopic-life-atlas.html",
+        "preview": "gallery/content/sources/claude/microscopic-life-atlas.png"
       }
     },
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     }
   },
   {
@@ -182,13 +185,14 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/spotify-music-interface.png"
+        "artifact": "gallery/content/sources/claude/spotify-music-interface.html",
+        "preview": "gallery/content/sources/claude/spotify-music-interface.png"
       }
     },
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     }
   },
   {
@@ -230,13 +234,14 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/minecraft-encyclopedia.png"
+        "artifact": "gallery/content/sources/claude/minecraft-encyclopedia.html",
+        "preview": "gallery/content/sources/claude/minecraft-encyclopedia.png"
       }
     },
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     }
   },
   {
@@ -278,13 +283,14 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/pizza-restaurant-site.png"
+        "artifact": "gallery/content/sources/claude/pizza-restaurant-site.html",
+        "preview": "gallery/content/sources/claude/pizza-restaurant-site.png"
       }
     },
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     }
   },
   {
@@ -326,7 +332,7 @@
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     },
     "sources": {
       "cover": "gallery/content/sources/poster/poster-shanchuan-tea-launch/v2.png",
@@ -339,7 +345,8 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/poster-shanchuan-tea-launch.png"
+        "artifact": "gallery/content/sources/claude/poster-shanchuan-tea-launch.html",
+        "preview": "gallery/content/sources/claude/poster-shanchuan-tea-launch.png"
       },
       "baselinePrevious": {
         "artifact": "gallery/content/sources/poster/poster-shanchuan-tea-launch/t0.png"
@@ -385,7 +392,7 @@
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     },
     "sources": {
       "cover": "gallery/content/sources/poster/poster-vogue-quiet-power/v2.png",
@@ -398,7 +405,8 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/poster-vogue-quiet-power.png"
+        "artifact": "gallery/content/sources/claude/poster-vogue-quiet-power.html",
+        "preview": "gallery/content/sources/claude/poster-vogue-quiet-power.png"
       },
       "baselinePrevious": {
         "artifact": "gallery/content/sources/poster/poster-vogue-quiet-power/t0.png"
@@ -444,7 +452,7 @@
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     },
     "sources": {
       "cover": "gallery/content/sources/poster/poster-chongqing-rain-night/v2.png",
@@ -457,7 +465,8 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/poster-chongqing-rain-night.png"
+        "artifact": "gallery/content/sources/claude/poster-chongqing-rain-night.html",
+        "preview": "gallery/content/sources/claude/poster-chongqing-rain-night.png"
       },
       "baselinePrevious": {
         "artifact": "gallery/content/sources/poster/poster-chongqing-rain-night/t0.png"
@@ -499,13 +508,14 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/oneiro-agent-architecture.png"
+        "artifact": "gallery/content/sources/claude/oneiro-agent-architecture.html",
+        "preview": "gallery/content/sources/claude/oneiro-agent-architecture.png"
       }
     },
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     }
   },
   {
@@ -543,13 +553,14 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/urban-mobility-keynote.png"
+        "artifact": "gallery/content/sources/claude/urban-mobility-keynote.html",
+        "preview": "gallery/content/sources/claude/urban-mobility-keynote.png"
       }
     },
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     }
   },
   {
@@ -587,13 +598,14 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/salt-lake-restoration.png"
+        "artifact": "gallery/content/sources/claude/salt-lake-restoration.html",
+        "preview": "gallery/content/sources/claude/salt-lake-restoration.png"
       }
     },
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     }
   },
   {
@@ -630,7 +642,7 @@
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     },
     "sources": {
       "cover": "gallery/content/sources/infographic/qinghua-porcelain-atlas/our.png",
@@ -640,7 +652,8 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/qinghua-porcelain-atlas.png"
+        "artifact": "gallery/content/sources/claude/qinghua-porcelain-atlas.html",
+        "preview": "gallery/content/sources/claude/qinghua-porcelain-atlas.png"
       },
       "baselinePrevious": {
         "artifact": "gallery/content/sources/infographic/qinghua-porcelain-atlas/baseline.png"
@@ -681,7 +694,7 @@
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     },
     "sources": {
       "cover": "gallery/content/sources/infographic/snow-leopard-field-guide/our.png",
@@ -691,7 +704,8 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/snow-leopard-field-guide.png"
+        "artifact": "gallery/content/sources/claude/snow-leopard-field-guide.html",
+        "preview": "gallery/content/sources/claude/snow-leopard-field-guide.png"
       },
       "baselinePrevious": {
         "artifact": "gallery/content/sources/infographic/snow-leopard-field-guide/baseline.png"
@@ -732,7 +746,7 @@
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     },
     "sources": {
       "cover": "gallery/content/sources/infographic/akari-character-sheet/our.png",
@@ -742,7 +756,8 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/akari-character-sheet.png"
+        "artifact": "gallery/content/sources/claude/akari-character-sheet.html",
+        "preview": "gallery/content/sources/claude/akari-character-sheet.png"
       },
       "baselinePrevious": {
         "artifact": "gallery/content/sources/infographic/akari-character-sheet/baseline.png"
@@ -783,7 +798,7 @@
     "baseline": {
       "id": "claude",
       "producer": "Claude",
-      "kind": "image"
+      "kind": "html"
     },
     "sources": {
       "cover": "gallery/content/sources/infographic/iceberg-model-card/our.png",
@@ -793,7 +808,8 @@
         }
       },
       "baseline": {
-        "artifact": "gallery/content/sources/claude/iceberg-model-card.png"
+        "artifact": "gallery/content/sources/claude/iceberg-model-card.html",
+        "preview": "gallery/content/sources/claude/iceberg-model-card.png"
       },
       "baselinePrevious": {
         "artifact": "gallery/content/sources/infographic/iceberg-model-card/baseline.png"

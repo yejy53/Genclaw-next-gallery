@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微观生命 · 3D 互动图鉴</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#f8f4ea;
+    --ivory-2:#fbf8f0;
+    --ink:#4a453c;
+    --ink-soft:#7a7264;
+    --sage:#9cb380;
+    --sage-d:#7f9863;
+    --lav:#c3b0e0;
+    --lav-d:#a78fce;
+    --coral:#f2a19b;
+    --coral-d:#e37f78;
+    --lake:#7cc3cf;
+    --lake-d:#5aa9b7;
+    --card:#fffdf7;
+    --shadow:0 10px 26px rgba(120,110,90,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Noto Sans SC",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--ivory);
+    /* subtle paper texture */
+    background-image:
+      radial-gradient(circle at 20% 15%, rgba(156,179,128,.06), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(195,176,224,.07), transparent 42%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    min-height:100vh;
+    padding:22px clamp(12px,3vw,34px) 34px;
+  }
+  h1,h2,h3,.hand{font-family:"ZCOOL KuaiLe","Patrick Hand",cursive}
+
+  header{text-align:center;margin-bottom:18px}
+  header h1{
+    font-size:clamp(1.8rem,4vw,2.9rem);
+    color:var(--sage-d);
+    letter-spacing:2px;
+    text-shadow:2px 2px 0 #fff, 3px 3px 0 rgba(156,179,128,.25);
+  }
+  header p{color:var(--ink-soft);margin-top:4px;font-size:.98rem}
+  .dots{margin-top:8px}
+  .dots span{display:inline-block;width:11px;height:11px;border-radius:50%;margin:0 3px}
+  .d1{background:var(--sage)}.d2{background:var(--lav)}.d3{background:var(--coral)}.d4{background:var(--lake)}
+
+  /* ---- main grid ---- */
+  .stage{
+    display:grid;
+    grid-template-columns:240px 1fr 320px;
+    gap:18px;
+    max-width:1400px;margin:0 auto;
+  }
+  .card{
+    background:var(--card);
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    border:1px solid rgba(180,170,150,.18);
+  }
+  .panel-title{
+    font-family:"ZCOOL KuaiLe",cursive;
+    font-size:1.15rem;color:var(--ink);
+    padding:16px 18px 6px;
+  }
+
+  /* ---- left: object list ---- */
+  .list{padding:8px 12px 14px;display:flex;flex-direction:column;gap:10px}
+  .obj{
+    display:flex;align-items:center;gap:12px;
+    padding:11px 13px;border-radius:16px;cursor:pointer;
+    border:2px solid transparent;background:var(--ivory-2);
+    transition:.22s;
+  }
+  .obj:hover{transform:translateX(3px)}
+  .obj .thumb{
+    width:44px;height:44px;border-radius:13px;flex-shrink:0;
+    display:grid;place-items:center;font-size:1.5rem;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.6);
+  }
+  .obj .meta b{display:block;font-family:"ZCOOL KuaiLe",cursive;font-size:1.05rem}
+  .obj .meta small{color:var(--ink-soft);font-size:.76rem}
+  .obj.active{border-color:currentColor;background:#fff}
+  .obj[data-k="plant"]{color:var(--sage-d)} .obj[data-k="plant"] .thumb{background:linear-gradient(145deg,#c7dbac,#9cb380)}
+  .obj[data-k="animal"]{color:var(--coral-d)} .obj[data-k="animal"] .thumb{background:linear-gradient(145deg,#f6c2be,#f2a19b)}
+  .obj[data-k="bacteria"]{color:var(--lake-d)} .obj[data-k="bacteria"] .thumb{background:linear-gradient(145deg,#aadde6,#7cc3cf)}
+  .obj[data-k="virus"]{color:var(--lav-d)} .obj[data-k="virus"] .thumb{background:linear-gradient(145deg,#d6c6ee,#c3b0e0)}
+
+  .hint{padding:2px 16px 16px;color:var(--ink-soft);font-size:.78rem;line-height:1.5}
+
+  /* ---- center: viewer ---- */
+  .viewer{position:relative;overflow:hidden;min-height:520px}
+  #scene{position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 50% 38%, #ffffff 0%, #f5efe1 60%, #efe7d4 100%);
+  }
+  #scene canvas{display:block;cursor:grab}
+  #scene canvas:active{cursor:grabbing}
+  .badge{
+    position:absolute;left:16px;top:14px;z-index:3;
+    background:#fffdf7cc;backdrop-filter:blur(4px);
+    padding:7px 15px;border-radius:20px;font-family:"ZCOOL KuaiLe",cursive;
+    box-shadow:var(--shadow);font-size:1.05rem;
+  }
+  .toolhint{
+    position:absolute;right:14px;bottom:12px;z-index:3;
+    color:var(--ink-soft);font-size:.75rem;background:#fffdf7aa;
+    padding:5px 11px;border-radius:14px;
+  }
+  .fade-veil{position:absolute;inset:0;background:var(--ivory-2);
+    opacity:0;pointer-events:none;transition:opacity .35s ease;z-index:2}
+  .fade-veil.on{opacity:1}
+
+  /* ---- right: info ---- */
+  .info{display:flex;flex-direction:column}
+  .chips{padding:6px 16px 12px;display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    font-size:.85rem;padding:7px 13px;border-radius:14px;cursor:pointer;
+    background:var(--ivory-2);border:2px solid transparent;transition:.18s;
+    font-family:"Noto Sans SC";
+  }
+  .chip:hover{transform:translateY(-2px)}
+  .chip.active{background:#fff;border-color:var(--sel,var(--sage));color:var(--ink)}
+  .infobody{padding:4px 18px 20px}
+  .infobody h3{font-size:1.4rem;color:var(--ink);margin-bottom:4px}
+  .infobody .role{
+    display:inline-block;font-size:.75rem;color:#fff;
+    padding:3px 11px;border-radius:12px;margin-bottom:12px;background:var(--sel,var(--sage))}
+  .block{margin-bottom:14px}
+  .block .lab{font-family:"ZCOOL KuaiLe",cursive;color:var(--sel,var(--sage-d));font-size:.98rem;margin-bottom:2px}
+  .block p{font-size:.92rem;line-height:1.62;color:#5b554b}
+  .known{background:var(--ivory-2);border-radius:14px;padding:12px 14px;font-size:.88rem;line-height:1.6;color:#5b554b}
+  .known b{color:var(--sel,var(--sage-d))}
+
+  /* ---- bottom row ---- */
+  .bottom{
+    display:grid;grid-template-columns:1fr 1.15fr;gap:18px;
+    max-width:1400px;margin:18px auto 0;
+  }
+  .scopes{display:flex;gap:16px;flex-wrap:wrap;padding:6px 18px 20px}
+  .scope{text-align:center}
+  .lens{
+    width:96px;height:96px;border-radius:50%;
+    box-shadow:0 0 0 6px #efe7d4, 0 0 0 8px #d9cfb7, var(--shadow);
+    position:relative;overflow:hidden;
+  }
+  .lens::after{content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 32% 30%, rgba(255,255,255,.55), transparent 45%)}
+  .scope small{display:block;margin-top:9px;color:var(--ink-soft);font-size:.8rem}
+  .lens.plant{background:
+     radial-gradient(circle at 30% 30%,#bcd39a 0 12px,transparent 13px),
+     radial-gradient(circle at 66% 58%,#a7c384 0 15px,transparent 16px),
+     radial-gradient(circle at 45% 75%,#cfe0b0 0 10px,transparent 11px),#8fae66}
+  .lens.animal{background:
+     radial-gradient(circle at 40% 40%,#e88f88 0 16px,transparent 17px),
+     radial-gradient(circle at 68% 66%,#f4b6b1 0 11px,transparent 12px),#f0a9a3}
+  .lens.bacteria{background:
+     repeating-linear-gradient(35deg,#7cc3cf 0 10px,#93d0da 10px 20px)}
+  .lens.virus{background:
+     radial-gradient(circle at 50% 50%,#efe7f7 0 10px,#c3b0e0 11px 20px,#a78fce 21px),#b8a4d4}
+
+  table{width:100%;border-collapse:collapse;font-size:.86rem}
+  table caption{display:none}
+  th,td{padding:9px 8px;text-align:center;border-bottom:1px dashed #e3dac6}
+  thead th{font-family:"ZCOOL KuaiLe",cursive;color:var(--ink);font-size:.95rem}
+  tbody th{text-align:left;color:var(--ink-soft);font-weight:500}
+  td .yes{color:var(--sage-d);font-weight:700}
+  td .no{color:var(--coral-d);font-weight:700}
+  .tablewrap{padding:4px 18px 18px}
+
+  footer{text-align:center;color:var(--ink-soft);font-size:.82rem;margin-top:22px}
+
+  @media(max-width:1080px){
+    .stage{grid-template-columns:1fr}
+    .viewer{order:-1;min-height:420px}
+    .bottom{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🔬 微观生命 · 3D 互动图鉴</h1>
+  <p>拖动旋转 · 滚轮缩放 · 点击结构，探索肉眼看不见的奇妙世界</p>
+  <div class="dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span></div>
+</header>
+
+<div class="stage">
+  <!-- LEFT -->
+  <aside class="card">
+    <div class="panel-title">🌿 选择研究对象</div>
+    <div class="list" id="objList">
+      <div class="obj active" data-k="plant"><div class="thumb">🌱</div><div class="meta"><b>植物细胞</b><small>细胞壁 · 液泡 · 叶绿体</small></div></div>
+      <div class="obj" data-k="animal"><div class="thumb">🐾</div><div class="meta"><b>动物细胞</b><small>细胞核 · 线粒体 · 高尔基体</small></div></div>
+      <div class="obj" data-k="bacteria"><div class="thumb">🦠</div><div class="meta"><b>细菌</b><small>细胞壁 · 鞭毛 · 遗传物质</small></div></div>
+      <div class="obj" data-k="virus"><div class="thumb">👾</div><div class="meta"><b>病毒</b><small>包膜 · 蛋白刺突 · 遗传物质</small></div></div>
+    </div>
+    <div class="hint">小提示：不同对象大小差别极大 —— 病毒比细菌小很多，而细菌又比细胞小很多哦。</div>
+  </aside>
+
+  <!-- CENTER -->
+  <section class="card viewer">
+    <div class="badge" id="badge">植物细胞</div>
+    <div id="scene"></div>
+    <div class="fade-veil" id="veil"></div>
+    <div class="toolhint">🖱️ 左键拖动旋转 · 滚轮缩放</div>
+  </section>
+
+  <!-- RIGHT -->
+  <aside class="card info">
+    <div class="panel-title">📖 结构说明</div>
+    <div class="chips" id="chips"></div>
+    <div class="infobody" id="infobody"></div>
+  </aside>
+</div>
+
+<!-- BOTTOM -->
+<div class="bottom">
+  <section class="card">
+    <div class="panel-title">🔭 显微镜下参考图</div>
+    <div class="scopes">
+      <div class="scope"><div class="lens plant"></div><small>植物细胞</small></div>
+      <div class="scope"><div class="lens animal"></div><small>动物细胞</small></div>
+      <div class="scope"><div class="lens bacteria"></div><small>细菌</small></div>
+      <div class="scope"><div class="lens virus"></div><small>病毒</small></div>
+    </div>
+  </section>
+  <section class="card">
+    <div class="panel-title">⚖️ 类型对比</div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>对比项</th><th>植物细胞</th><th>动物细胞</th><th>细菌</th><th>病毒</th></tr></thead>
+        <tbody>
+          <tr><th>真正的细胞核</th><td><span class="yes">有</span></td><td><span class="yes">有</span></td><td><span class="no">无(拟核)</span></td><td><span class="no">无</span></td></tr>
+          <tr><th>细胞壁</th><td><span class="yes">有</span></td><td><span class="no">无</span></td><td><span class="yes">有</span></td><td><span class="no">无</span></td></tr>
+          <tr><th>大致大小</th><td>10–100 µm</td><td>10–30 µm</td><td>1–5 µm</td><td>20–300 nm</td></tr>
+          <tr><th>能否独立生存</th><td><span class="yes">能</span></td><td><span class="yes">能</span></td><td><span class="yes">能</span></td><td><span class="no">需宿主</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<footer>✨ 微观生命 3D 图鉴 · 用好奇心放大世界 ✨</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+/* =========================================================
+   数据：四种对象 + 各自结构说明
+   ========================================================= */
+const PALETTE = {plant:0x7f9863, animal:0xe37f78, bacteria:0x5aa9b7, virus:0xa78fce};
+const DATA = {
+  plant:{label:"植物细胞", color:"#7f9863", overview:"典型的真核植物细胞，被坚硬的细胞壁包裹，内部有巨大的中央液泡和进行光合作用的叶绿体。",
+    structures:{
+      wall:{name:"细胞壁", role:"支撑结构", func:"由纤维素构成的坚硬外层，位于细胞膜之外。", detail:"支撑并保护细胞、维持固定形状，防止细胞吸水过多而胀破。",
+            known:"这是<b>植物细胞</b>区别于动物细胞的重要特征之一，让植物能够挺立生长。"},
+      vacuole:{name:"中央液泡", role:"储藏中心", func:"充满细胞液的大型膜结构，常占据细胞大部分空间。", detail:"储存水分、养分与色素，靠膨压让细胞和叶片保持挺立。",
+            known:"缺水时液泡收缩，细胞失去膨压，植物就会<b>蔫掉、下垂</b>。"},
+      chloroplast:{name:"叶绿体", role:"能量工厂", func:"含有绿色叶绿素的细胞器。", detail:"进行光合作用，把光能、二氧化碳和水转化为葡萄糖与氧气。",
+            known:"叶绿体让植物呈现<b>绿色</b>，也是地球氧气的重要来源。"}
+    }},
+  animal:{label:"动物细胞", color:"#e37f78", overview:"典型的真核动物细胞，没有细胞壁，外形更圆润，细胞核、线粒体和高尔基体各司其职。",
+    structures:{
+      nucleus:{name:"细胞核", role:"控制中心", func:"被核膜包裹、含有 DNA 的圆球结构。", detail:"储存遗传信息，指挥细胞的生长、代谢与繁殖。",
+            known:"细胞核就像细胞的<b>大脑</b>，几乎所有生命活动都由它下达指令。"},
+      mito:{name:"线粒体", role:"能量工厂", func:"具有双层膜、内膜折叠成嵴的细胞器。", detail:"通过呼吸作用分解养分，产生细胞可用的能量 ATP。",
+            known:"越活跃的细胞（如<b>肌肉细胞</b>）含有的线粒体越多。"},
+      golgi:{name:"高尔基体", role:"加工车间", func:"由多层扁平膜囊堆叠而成。", detail:"对蛋白质进行加工、分类、包装，再运送到需要的地方。",
+            known:"它就像细胞里的<b>邮局与打包车间</b>，负责物流分发。"}
+    }},
+  bacteria:{label:"细菌", color:"#5aa9b7", overview:"单细胞的原核生物，没有真正的细胞核，遗传物质裸露在细胞质中，常靠鞭毛游动。",
+    structures:{
+      wall:{name:"细胞壁", role:"保护外壁", func:"包裹菌体的坚韧外壁（主要成分为肽聚糖）。", detail:"保护细菌、维持形状，也是许多抗生素的作用目标。",
+            known:"根据细胞壁结构不同，可分为<b>革兰氏阳性菌与阴性菌</b>。"},
+      flagella:{name:"鞭毛", role:"运动器官", func:"细长的鞭状结构，可高速旋转。", detail:"像螺旋桨一样推动细菌向营养丰富的方向游动。",
+            known:"鞭毛让细菌能够<b>主动趋利避害</b>地移动。"},
+      dna:{name:"遗传物质", role:"信息中枢", func:"裸露的环状 DNA，聚集在拟核区域。", detail:"储存遗传信息，控制细菌的代谢与快速繁殖。",
+            known:"细菌<b>没有真正的细胞核</b>，DNA 自由地存在于细胞质中。"}
+    }},
+  virus:{label:"病毒", role:"", color:"#a78fce", overview:"极其微小、结构简单，不是完整的细胞。必须进入宿主细胞才能复制。",
+    structures:{
+      envelope:{name:"包膜", role:"外层结构", func:"部分病毒最外层的脂质膜。", detail:"帮助病毒识别并进入宿主细胞。",
+            known:"<b>肥皂和酒精</b>能破坏脂质包膜，所以勤洗手非常有效。"},
+      spike:{name:"蛋白刺突", role:"入侵钥匙", func:"从表面伸出的一根根蛋白突起。", detail:"像钥匙一样与宿主细胞表面的受体结合，从而打开入侵之门。",
+            known:"许多<b>疫苗</b>正是针对刺突蛋白，训练免疫系统提前识别病毒。"},
+      genome:{name:"遗传物质", role:"复制指令", func:"包裹在内部的 DNA 或 RNA。", detail:"携带全部遗传指令，进入宿主后指挥细胞复制出更多病毒。",
+            known:"病毒<b>不能独立繁殖</b>，必须借助宿主细胞的“工厂”才能增殖。"}
+    }}
+};
+
+/* =========================================================
+   Three.js 场景
+   ========================================================= */
+const mount = document.getElementById('scene');
+const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+mount.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+camera.position.set(0,1.5,10);
+
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.enablePan = false;
+controls.minDistance = 5;
+controls.maxDistance = 16;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.7;
+
+// lights
+scene.add(new THREE.AmbientLight(0xffffff, 0.55));
+const hemi = new THREE.HemisphereLight(0xffffff, 0xe8dcc4, 0.6); scene.add(hemi);
+const key = new THREE.DirectionalLight(0xffffff, 0.9); key.position.set(5,8,6); scene.add(key);
+const fill = new THREE.DirectionalLight(0xdfe9ff, 0.4); fill.position.set(-6,-2,-4); scene.add(fill);
+
+const root = new THREE.Group(); scene.add(root);
+
+// registries
+const groups = {};                 // organism -> THREE.Group
+const meshMap = {};                // organism -> {structureKey:[meshes]}
+function tag(mesh, org, key, baseOpacity){
+  mesh.userData = {org, key};
+  mesh.material.transparent = true;
+  mesh.material.userData = {baseOpacity: baseOpacity!==undefined?baseOpacity:mesh.material.opacity,
+                            baseEmissive: mesh.material.emissive.getHex()};
+  (meshMap[org][key] = meshMap[org][key] || []).push(mesh);
+}
+function mat(color, opts={}){
+  return new THREE.MeshStandardMaterial(Object.assign({
+    color, roughness:.62, metalness:.05, transparent:true, opacity:1,
+    emissive:0x000000
+  }, opts));
+}
+
+/* ---------- helix curve for DNA/RNA ---------- */
+class Helix extends THREE.Curve{
+  constructor(r,h,turns){super();this.r=r;this.h=h;this.t=turns;}
+  getPoint(t){const a=t*this.t*Math.PI*2;
+    return new THREE.Vector3(this.r*Math.cos(a), this.h*(t-0.5), this.r*Math.sin(a));}
+}
+class Wiggle extends THREE.Curve{ // for flagella
+  constructor(len,amp,waves,dir){super();this.len=len;this.amp=amp;this.w=waves;this.dir=dir;}
+  getPoint(t){const x=this.dir*(this.len*t);
+    return new THREE.Vector3(x, Math.sin(t*this.w*Math.PI*2)*this.amp*t, Math.cos(t*this.w*Math.PI*2)*this.amp*t*0.4);}
+}
+
+/* =========================================================
+   模型构建
+   ========================================================= */
+function buildPlant(){
+  const g = new THREE.Group(); meshMap.plant={};
+  // cell wall (rounded box)
+  const wallGeo = new THREE.BoxGeometry(4.6,4.6,4.6,4,4,4); roundBox(wallGeo,0.5);
+  const wall = new THREE.Mesh(wallGeo, mat(0x9cb380,{opacity:.22, side:THREE.DoubleSide, roughness:.4}));
+  tag(wall,'plant','wall',.22); g.add(wall);
+  const wallEdge = new THREE.Mesh(wallGeo.clone(), mat(0x7f9863,{opacity:.35, wireframe:true}));
+  wallEdge.userData={org:'plant',key:'wall'}; g.add(wallEdge);
+  // vacuole
+  const vac = new THREE.Mesh(new THREE.SphereGeometry(1.55,40,40), mat(0x7cc3cf,{opacity:.4, roughness:.25}));
+  vac.position.set(-0.4,0.1,-0.2); tag(vac,'plant','vacuole',.4); g.add(vac);
+  // chloroplasts
+  for(let i=0;i<7;i++){
+    const c=new THREE.Mesh(new THREE.SphereGeometry(0.42,24,20), mat(0x6f9c3f,{emissive:0x24400f,emissiveIntensity:.35,roughness:.5}));
+    c.scale.set(1.4,0.75,0.9);
+    const a=i/7*Math.PI*2;
+    c.position.set(Math.cos(a)*1.65, Math.sin(i*1.7)*1.4+0.3, Math.sin(a)*1.6);
+    c.rotation.set(Math.random(),a,Math.random());
+    tag(c,'plant','chloroplast',1); g.add(c);
+  }
+  return g;
+}
+
+function buildAnimal(){
+  const g=new THREE.Group(); meshMap.animal={};
+  const memGeo=new THREE.SphereGeometry(2.4,48,48);
+  const mem=new THREE.Mesh(memGeo, mat(0xf2a19b,{opacity:.2, roughness:.3}));
+  mem.userData={org:'animal',key:''}; g.add(mem);
+  const memW=new THREE.Mesh(memGeo.clone(), mat(0xe37f78,{opacity:.16,wireframe:true}));
+  memW.userData={org:'animal',key:''}; g.add(memW);
+  // nucleus
+  const nuc=new THREE.Mesh(new THREE.SphereGeometry(0.95,40,40), mat(0xc3b0e0,{roughness:.4}));
+  const nucIn=new THREE.Mesh(new THREE.SphereGeometry(0.42,24,24), mat(0x9a7fc7,{roughness:.5}));
+  nuc.add(nucIn); tag(nuc,'animal','nucleus',1); g.add(nuc);
+  // mitochondria
+  for(let i=0;i<5;i++){
+    const m=new THREE.Mesh(new THREE.CapsuleGeometry?new THREE.SphereGeometry(0.35,20,16):new THREE.SphereGeometry(0.35,20,16),
+        mat(0xef8f6a,{emissive:0x5a2412,emissiveIntensity:.3,roughness:.5}));
+    m.scale.set(1.9,0.8,0.8);
+    const a=i/5*Math.PI*2+0.6;
+    m.position.set(Math.cos(a)*1.55, Math.sin(i*2.1)*1.1, Math.sin(a)*1.5);
+    m.rotation.set(Math.random()*3,a,Math.random()*3);
+    tag(m,'animal','mito',1); g.add(m);
+  }
+  // golgi (stacked curved discs)
+  const golgi=new THREE.Group();
+  for(let i=0;i<5;i++){
+    const d=new THREE.Mesh(new THREE.TorusGeometry(0.5-i*0.05,0.06,10,30,Math.PI*1.2),
+        mat(0xf4c96a,{emissive:0x6b4d10,emissiveIntensity:.25,roughness:.45}));
+    d.position.y=i*0.16; d.rotation.x=Math.PI/2; d.rotation.z=0.2;
+    golgi.add(d); tag(d,'animal','golgi',1);
+  }
+  golgi.position.set(1.3,-0.9,0.4); golgi.rotation.z=0.3; g.add(golgi);
+  return g;
+}
+
+function buildBacteria(){
+  const g=new THREE.Group(); meshMap.bacteria={};
+  // rod body (capsule = cylinder + 2 caps)
+  const body=new THREE.Group();
+  const cyl=new THREE.Mesh(new THREE.CylinderGeometry(1,1,2.4,40,1,true), mat(0x7cc3cf,{opacity:.28,side:THREE.DoubleSide,roughness:.35}));
+  cyl.rotation.z=Math.PI/2; body.add(cyl); tag(cyl,'bacteria','wall',.28);
+  [1.2,-1.2].forEach(x=>{
+    const cap=new THREE.Mesh(new THREE.SphereGeometry(1,36,24), mat(0x7cc3cf,{opacity:.28,roughness:.35}));
+    cap.position.x=x; body.add(cap); tag(cap,'bacteria','wall',.28);
+  });
+  const shellW=new THREE.Mesh(new THREE.CylinderGeometry(1.02,1.02,2.4,24,1,true), mat(0x5aa9b7,{opacity:.25,wireframe:true}));
+  shellW.rotation.z=Math.PI/2; shellW.userData={org:'bacteria',key:'wall'}; body.add(shellW);
+  g.add(body);
+  // genetic material — tangled loop in center
+  const dnaGeo=new THREE.TubeGeometry(new Helix(0.55,0.2,3.5), 160, 0.09, 10, false);
+  const dna=new THREE.Mesh(dnaGeo, mat(0xf2a19b,{emissive:0x7a2b26,emissiveIntensity:.3,roughness:.5}));
+  dna.rotation.z=Math.PI/2; dna.scale.set(1,1.8,1); tag(dna,'bacteria','dna',1); g.add(dna);
+  // flagella from one end
+  for(let i=0;i<3;i++){
+    const fg=new THREE.TubeGeometry(new Wiggle(2.6,0.28,3,1),120,0.05,8,false);
+    const f=new THREE.Mesh(fg, mat(0x4f9aa8,{roughness:.5}));
+    f.position.x=1.2; f.rotation.x=(i-1)*0.5; f.rotation.z=(i-1)*0.25;
+    tag(f,'bacteria','flagella',1); g.add(f);
+  }
+  g.scale.setScalar(1.35);
+  return g;
+}
+
+function buildVirus(){
+  const g=new THREE.Group(); meshMap.virus={};
+  // envelope
+  const envGeo=new THREE.IcosahedronGeometry(1.7,2);
+  const env=new THREE.Mesh(envGeo, mat(0xc3b0e0,{opacity:.3, roughness:.3}));
+  tag(env,'virus','envelope',.3); g.add(env);
+  const envW=new THREE.Mesh(envGeo.clone(), mat(0xa78fce,{opacity:.25,wireframe:true}));
+  envW.userData={org:'virus',key:'envelope'}; g.add(envW);
+  // spikes on surface
+  const pos=envGeo.attributes.position; const seen=new Set();
+  for(let i=0;i<pos.count;i+=1){
+    const v=new THREE.Vector3().fromBufferAttribute(pos,i);
+    const kk=v.toArray().map(n=>n.toFixed(1)).join(',');
+    if(seen.has(kk)) continue; seen.add(kk);
+    if(seen.size>46) break;
+    const spike=new THREE.Group();
+    const stem=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.07,0.5,8), mat(0xd7a7cf,{roughness:.5}));
+    stem.position.y=0.25;
+    const head=new THREE.Mesh(new THREE.SphereGeometry(0.13,14,12), mat(0xe37f78,{emissive:0x5a2020,emissiveIntensity:.25}));
+    head.position.y=0.55;
+    spike.add(stem,head);
+    const dir=v.clone().normalize();
+    spike.position.copy(dir.clone().multiplyScalar(1.68));
+    spike.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), dir);
+    spike.traverse(m=>{if(m.isMesh) tag(m,'virus','spike',1)});
+    g.add(spike);
+  }
+  // genome (RNA helix inside)
+  const rnaGeo=new THREE.TubeGeometry(new Helix(0.55,1.8,4),200,0.08,8,false);
+  const rna=new THREE.Mesh(rnaGeo, mat(0x7cc3cf,{emissive:0x1f5560,emissiveIntensity:.4,roughness:.4}));
+  tag(rna,'virus','genome',1); g.add(rna);
+  g.scale.setScalar(1.15);
+  return g;
+}
+
+/* round the corners of a box geometry (cheap displacement) */
+function roundBox(geo,r){
+  const pos=geo.attributes.position; const v=new THREE.Vector3();
+  const half=2.3;
+  for(let i=0;i<pos.count;i++){
+    v.fromBufferAttribute(pos,i);
+    const c=v.clone().clampScalar(-(half-r),(half-r));
+    const d=v.clone().sub(c);
+    if(d.length()>0){d.setLength(r); v.copy(c).add(d);}
+    pos.setXYZ(i,v.x,v.y,v.z);
+  }
+  geo.computeVertexNormals();
+}
+
+groups.plant=buildPlant();
+groups.animal=buildAnimal();
+groups.bacteria=buildBacteria();
+groups.virus=buildVirus();
+Object.values(groups).forEach(g=>{g.visible=false; root.add(g);});
+
+/* =========================================================
+   状态 & 交互
+   ========================================================= */
+let current='plant', selected=null;
+const badge=document.getElementById('badge');
+const chipsEl=document.getElementById('chips');
+const infoEl=document.getElementById('infobody');
+const veil=document.getElementById('veil');
+
+function setEmissive(meshes, on, color){
+  meshes.forEach(m=>{
+    const u=m.material.userData;
+    if(on){ m.material.emissive.setHex(color); m.material.emissiveIntensity=0.85; }
+    else{ m.material.emissive.setHex(u.baseEmissive); m.material.emissiveIntensity=(u.baseEmissive!==0)?0.35:0; }
+  });
+}
+function clearHighlight(){
+  const map=meshMap[current];
+  Object.keys(map).forEach(k=>{ if(k) setEmissive(map[k],false); });
+}
+function selectStructure(key, focus){
+  if(!key) return;
+  clearHighlight();
+  selected=key;
+  setEmissive(meshMap[current][key], true, PALETTE[current]);
+  renderInfo();
+  // sync chips
+  [...chipsEl.children].forEach(c=>c.classList.toggle('active', c.dataset.s===key));
+}
+
+function renderChips(){
+  const d=DATA[current];
+  document.documentElement.style.setProperty('--sel', d.color);
+  chipsEl.innerHTML='';
+  Object.entries(d.structures).forEach(([k,s])=>{
+    const c=document.createElement('div');
+    c.className='chip'; c.dataset.s=k; c.textContent=s.name;
+    c.style.setProperty('--sel',d.color);
+    c.onclick=()=>selectStructure(k,true);
+    chipsEl.appendChild(c);
+  });
+}
+function renderInfo(){
+  const d=DATA[current];
+  if(!selected){
+    infoEl.innerHTML=`<h3>${d.label}</h3>
+      <span class="role" style="--sel:${d.color}">整体概览</span>
+      <div class="block"><div class="lab" style="--sel:${d.color}">这是什么</div><p>${d.overview}</p></div>
+      <div class="known"><b style="--sel:${d.color}">👆 试试：</b> 点击左侧结构名称，或直接点击 3D 模型上的部位，查看它的功能与趣味知识。</div>`;
+    return;
+  }
+  const s=d.structures[selected];
+  infoEl.innerHTML=`<h3>${s.name}</h3>
+    <span class="role" style="--sel:${d.color}">${s.role}</span>
+    <div class="block"><div class="lab" style="--sel:${d.color}">结构</div><p>${s.func}</p></div>
+    <div class="block"><div class="lab" style="--sel:${d.color}">功能</div><p>${s.detail}</p></div>
+    <div class="known" style="--sel:${d.color}"><b style="--sel:${d.color}">💡 知识小卡：</b>${s.known}</div>`;
+}
+
+/* ---- switch organism with fade + camera ease ---- */
+function switchTo(key){
+  if(key===current) return;
+  veil.classList.add('on');
+  setTimeout(()=>{
+    groups[current].visible=false;
+    current=key; selected=null;
+    groups[current].visible=true;
+    badge.textContent=DATA[key].label;
+    document.querySelectorAll('.obj').forEach(o=>o.classList.toggle('active', o.dataset.k===key));
+    renderChips(); renderInfo();
+    // gentle camera reset
+    tweenCamera(new THREE.Vector3(0,1.4,10));
+    veil.classList.remove('on');
+  },300);
+}
+let camTween=null;
+function tweenCamera(target){
+  const start=camera.position.clone(); const t0=performance.now(); const dur=650;
+  camTween=()=>{
+    const t=Math.min(1,(performance.now()-t0)/dur);
+    const e=1-Math.pow(1-t,3);
+    camera.position.lerpVectors(start,target,e);
+    if(t>=1) camTween=null;
+  };
+}
+
+/* ---- clicking 3D structures (distinguish from drag) ---- */
+const ray=new THREE.Raycaster(), mouse=new THREE.Vector2();
+let down=null;
+renderer.domElement.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY,t:performance.now()};});
+renderer.domElement.addEventListener('pointerup',e=>{
+  if(!down) return;
+  const moved=Math.hypot(e.clientX-down.x,e.clientY-down.y);
+  const dt=performance.now()-down.t; down=null;
+  if(moved>6 || dt>350) return;               // it was a drag
+  const r=renderer.domElement.getBoundingClientRect();
+  mouse.x=((e.clientX-r.left)/r.width)*2-1;
+  mouse.y=-((e.clientY-r.top)/r.height)*2+1;
+  ray.setFromCamera(mouse,camera);
+  const hits=ray.intersectObjects(groups[current].children,true);
+  for(const h of hits){
+    const k=h.object.userData && h.object.userData.key;
+    if(k){ selectStructure(k,true); break; }
+  }
+});
+
+/* ---- left list ---- */
+document.getElementById('objList').addEventListener('click',e=>{
+  const o=e.target.closest('.obj'); if(o) switchTo(o.dataset.k);
+});
+
+/* =========================================================
+   resize + loop
+   ========================================================= */
+function resize(){
+  const w=mount.clientWidth, h=mount.clientHeight;
+  renderer.setSize(w,h,false);
+  camera.aspect=w/h; camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(mount); resize();
+
+(function loop(){
+  requestAnimationFrame(loop);
+  if(camTween) camTween();
+  controls.update();
+  renderer.render(scene,camera);
+})();
+
+/* init */
+groups.plant.visible=true;
+renderChips(); renderInfo();
+</script>
+</body>
+</html>

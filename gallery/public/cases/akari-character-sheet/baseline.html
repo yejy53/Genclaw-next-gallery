@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AKARI · Character Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --coral:#ff7a8a;
+    --coral-lt:#ffd9de;
+    --coral-bg:#fff2f4;
+    --navy:#1f2745;
+    --navy-2:#2f3a63;
+    --ink:#2a3050;
+    --sub:#8a90a8;
+    --line:#eceaf2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#dfe1ea;display:grid;place-items:center;min-height:100vh;
+    font-family:"Poppins",system-ui,sans-serif;color:var(--ink)}
+  body{padding:22px}
+
+  .sheet{
+    position:relative;width:600px;height:800px;background:#fff;overflow:hidden;
+    box-shadow:0 24px 60px rgba(31,39,69,.28);border-radius:6px;
+  }
+  /* soft accent shapes */
+  .sheet::before{content:"";position:absolute;top:-120px;left:-120px;width:320px;height:320px;
+    background:radial-gradient(circle,var(--coral-bg),transparent 70%);z-index:0}
+  .sheet::after{content:"";position:absolute;bottom:-80px;right:-60px;width:260px;height:260px;
+    background:radial-gradient(circle,#eef0f8,transparent 70%);z-index:0}
+
+  /* dotted decorative corner */
+  .dots{position:absolute;top:16px;right:200px;z-index:1;
+    background-image:radial-gradient(var(--coral-lt) 1.5px,transparent 1.6px);
+    background-size:9px 9px;width:70px;height:44px;opacity:.9}
+
+  .grid{position:relative;z-index:2;display:grid;
+    grid-template-columns:150px 1fr 196px;
+    grid-template-rows:auto 1fr auto;
+    height:100%;padding:22px;gap:14px}
+
+  /* ---------- HEADER (name) spans left+center top ---------- */
+  .namebar{grid-column:1 / 3;grid-row:1;display:flex;align-items:flex-end;gap:12px}
+  .namebar .jp{font-family:"Zen Maru Gothic","Noto Sans JP";font-weight:700;
+    color:var(--coral);font-size:18px;writing-mode:vertical-rl;letter-spacing:2px;
+    border-right:2px solid var(--coral-lt);padding-right:6px;line-height:1}
+  .namebar h1{font-weight:800;font-size:52px;letter-spacing:4px;color:var(--navy);line-height:.9}
+  .namebar h1 span{color:var(--coral)}
+  .namebar .sub{font-size:10.5px;letter-spacing:2px;color:var(--sub);
+    text-transform:uppercase;margin-top:4px;font-weight:500}
+  .idtag{grid-column:3;grid-row:1;align-self:start;justify-self:end;
+    background:var(--navy);color:#fff;font-size:10px;letter-spacing:2px;font-weight:600;
+    padding:6px 12px;border-radius:20px}
+
+  /* ---------- LEFT column ---------- */
+  .left{grid-column:1;grid-row:2;display:flex;flex-direction:column;gap:12px}
+  .card-title{font-size:9.5px;letter-spacing:2.5px;font-weight:700;color:var(--coral);
+    text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+  .card-title::before{content:"";width:12px;height:2px;background:var(--coral);border-radius:2px}
+
+  .traits{display:flex;flex-direction:column;gap:7px}
+  .trait{background:var(--coral-bg);border:1px solid var(--coral-lt);border-radius:10px;
+    padding:7px 9px;display:flex;align-items:center;gap:7px}
+  .trait .ic{width:20px;height:20px;flex-shrink:0;border-radius:6px;background:var(--coral);
+    color:#fff;display:grid;place-items:center;font-size:11px}
+  .trait b{font-size:11px;font-weight:600;color:var(--navy);letter-spacing:.3px}
+  .trait small{display:block;font-size:8px;color:var(--sub);letter-spacing:.3px;font-weight:400}
+
+  .expr{display:flex;gap:8px}
+  .face{flex:1;background:#fff;border:1.5px solid var(--line);border-radius:12px;
+    padding:5px 4px 6px;text-align:center;box-shadow:0 4px 10px rgba(31,39,69,.05)}
+  .face svg{width:100%;height:auto}
+  .face span{display:block;font-size:7.5px;letter-spacing:1px;color:var(--sub);
+    text-transform:uppercase;font-weight:600;margin-top:2px}
+
+  /* ---------- CENTER character ---------- */
+  .center{grid-column:2;grid-row:2;position:relative;display:flex;
+    align-items:center;justify-content:center}
+  .stage{position:absolute;bottom:0;width:170px;height:26px;
+    background:radial-gradient(ellipse,rgba(255,122,138,.22),transparent 70%)}
+  .hero{position:relative;z-index:2;height:100%;display:flex;align-items:flex-end;justify-content:center}
+  .hero svg{height:100%;width:auto;filter:drop-shadow(0 12px 18px rgba(31,39,69,.16))}
+
+  /* ---------- RIGHT column cards ---------- */
+  .right{grid-column:3;grid-row:2;display:flex;flex-direction:column;gap:11px}
+  .card{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:12px 13px;
+    box-shadow:0 6px 16px rgba(31,39,69,.06)}
+  .card.profile{background:linear-gradient(160deg,#fff,var(--coral-bg))}
+  .agerow{display:inline-block;background:var(--navy);color:#fff;font-size:9px;font-weight:600;
+    letter-spacing:1.5px;padding:4px 9px;border-radius:14px;margin-bottom:8px}
+  .card p{font-size:10px;line-height:1.55;color:var(--ink)}
+  .card.about p{font-size:9.5px;line-height:1.6;color:#4a5170}
+
+  .pers-list{display:flex;flex-direction:column;gap:6px}
+  .prow{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .prow span{font-size:9px;color:var(--navy);font-weight:600;white-space:nowrap}
+  .meter{flex:1;height:5px;background:var(--line);border-radius:5px;overflow:hidden}
+  .meter i{display:block;height:100%;background:linear-gradient(90deg,var(--coral),#ff9fab);border-radius:5px}
+
+  /* ---------- BOTTOM outfit ---------- */
+  .outfit{grid-column:1 / 4;grid-row:3;background:var(--navy);border-radius:16px;
+    padding:12px 16px 13px;color:#fff}
+  .outfit .card-title{color:var(--coral-lt)}
+  .outfit .card-title::before{background:var(--coral-lt)}
+  .otrack{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .oitem{display:flex;gap:9px;align-items:center;background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);border-radius:11px;padding:8px 9px}
+  .oitem .num{width:22px;height:22px;flex-shrink:0;border-radius:7px;background:var(--coral);
+    color:#fff;display:grid;place-items:center;font-size:10px;font-weight:700}
+  .oitem b{font-size:10.5px;font-weight:600;letter-spacing:.3px;display:block}
+  .oitem small{font-size:8px;color:#b8bde0;letter-spacing:.2px;line-height:1.35;display:block;margin-top:1px}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="dots"></div>
+  <div class="grid">
+
+    <!-- NAME -->
+    <div class="namebar">
+      <div class="jp">あかり</div>
+      <div>
+        <h1>AK<span>A</span>RI</h1>
+        <div class="sub">Bright-Hearted Transfer Student · Ch. 01</div>
+      </div>
+    </div>
+    <div class="idtag">ID · 001</div>
+
+    <!-- LEFT -->
+    <div class="left">
+      <div>
+        <div class="card-title">Traits</div>
+        <div class="traits">
+          <div class="trait"><div class="ic">☀</div><div><b>Cheerful</b><small>Always upbeat</small></div></div>
+          <div class="trait"><div class="ic">✦</div><div><b>Curious</b><small>Loves to explore</small></div></div>
+          <div class="trait"><div class="ic">♥</div><div><b>Kind</b><small>Caring to all</small></div></div>
+          <div class="trait"><div class="ic">✎</div><div><b>Diligent</b><small>Studies hard</small></div></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card-title">Expressions</div>
+        <div class="expr">
+          <div class="face">
+            <!-- happy -->
+            <svg viewBox="0 0 60 62">
+              <path d="M9,26 C9,6 51,6 51,26 C55,40 47,52 30,54 C13,52 5,40 9,26Z" fill="#3a4266"/>
+              <path d="M11,25 C13,10 47,10 49,25 L47,30 C40,22 20,22 13,30Z" fill="#ff9fab"/>
+              <circle cx="30" cy="34" r="17" fill="#ffe6d5"/>
+              <path d="M13,32 C10,44 18,52 30,53 C42,52 50,44 47,32 C42,44 18,44 13,32Z" fill="#3a4266"/>
+              <path d="M20,33 q4,-5 8,0" fill="none" stroke="#2a3050" stroke-width="2" stroke-linecap="round"/>
+              <path d="M32,33 q4,-5 8,0" fill="none" stroke="#2a3050" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="19" cy="42" r="3" fill="#ffc0c8"/><circle cx="41" cy="42" r="3" fill="#ffc0c8"/>
+              <path d="M26,44 q4,4 8,0" fill="none" stroke="#e0607a" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>Happy</span>
+          </div>
+          <div class="face">
+            <!-- surprised -->
+            <svg viewBox="0 0 60 62">
+              <path d="M9,26 C9,6 51,6 51,26 C55,40 47,52 30,54 C13,52 5,40 9,26Z" fill="#3a4266"/>
+              <path d="M11,25 C13,10 47,10 49,25 L47,30 C40,22 20,22 13,30Z" fill="#ff9fab"/>
+              <circle cx="30" cy="34" r="17" fill="#ffe6d5"/>
+              <path d="M13,32 C10,44 18,52 30,53 C42,52 50,44 47,32 C42,44 18,44 13,32Z" fill="#3a4266"/>
+              <circle cx="24" cy="34" r="3.4" fill="#2a3050"/><circle cx="36" cy="34" r="3.4" fill="#2a3050"/>
+              <path d="M20,28 q4,-2 8,0" fill="none" stroke="#2a3050" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M32,28 q4,-2 8,0" fill="none" stroke="#2a3050" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="19" cy="42" r="3" fill="#ffc0c8"/><circle cx="41" cy="42" r="3" fill="#ffc0c8"/>
+              <ellipse cx="30" cy="46" rx="3" ry="4" fill="#e0607a"/>
+            </svg>
+            <span>Surprised</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER FULL-BODY -->
+    <div class="center">
+      <div class="stage"></div>
+      <div class="hero">
+        <svg viewBox="0 0 200 470">
+          <defs>
+            <linearGradient id="jkt" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ff8a99"/><stop offset="1" stop-color="#ff6b7d"/>
+            </linearGradient>
+          </defs>
+
+          <!-- back hair -->
+          <path d="M62,70 C40,120 44,230 66,300 C72,250 70,150 100,120 C130,150 128,250 134,300 C156,230 160,120 138,70Z" fill="#242c4d"/>
+
+          <!-- legs -->
+          <path d="M86,300 C84,340 82,378 82,404 L96,404 C98,372 100,338 100,300Z" fill="#f6ddc9"/>
+          <path d="M114,300 C116,340 118,378 118,404 L104,404 C102,372 100,338 100,300Z" fill="#f6ddc9"/>
+          <!-- socks -->
+          <path d="M80,392 L98,392 L98,414 L80,414Z" fill="#fff"/>
+          <path d="M102,392 L120,392 L120,414 L102,414Z" fill="#fff"/>
+          <!-- shoes -->
+          <path d="M76,414 L100,414 L100,428 C100,432 74,432 72,426Z" fill="#1f2745"/>
+          <path d="M100,414 L124,414 L128,426 C126,432 100,432 100,428Z" fill="#1f2745"/>
+          <rect x="76" y="420" width="24" height="4" fill="#ff7a8a"/>
+          <rect x="100" y="420" width="24" height="4" fill="#ff7a8a"/>
+
+          <!-- skirt (navy pleated) -->
+          <path d="M70,232 C70,232 60,290 62,300 L138,300 C140,290 130,232 130,232Z" fill="#1f2745"/>
+          <g stroke="#3a4266" stroke-width="1.5">
+            <line x1="82" y1="238" x2="76" y2="298"/><line x1="94" y1="240" x2="90" y2="299"/>
+            <line x1="106" y1="240" x2="110" y2="299"/><line x1="118" y1="238" x2="124" y2="298"/>
+          </g>
+
+          <!-- signature jacket (open, coral) over white shirt -->
+          <!-- white shirt torso -->
+          <path d="M78,150 C78,150 74,215 76,236 L124,236 C126,215 122,150 122,150 Z" fill="#fdfdff"/>
+          <!-- ribbon -->
+          <path d="M92,158 L100,164 L108,158 L104,172 L96,172Z" fill="#ff6b7d"/>
+          <!-- jacket left/right panels -->
+          <path d="M70,150 C66,150 60,210 62,236 L82,236 C80,205 82,165 88,156 Z" fill="url(#jkt)"/>
+          <path d="M130,150 C134,150 140,210 138,236 L118,236 C120,205 118,165 112,156 Z" fill="url(#jkt)"/>
+          <!-- collar -->
+          <path d="M84,150 L100,168 L88,158Z" fill="#ff9fab"/>
+          <path d="M116,150 L100,168 L112,158Z" fill="#ff9fab"/>
+
+          <!-- arms with jacket sleeves -->
+          <path d="M74,152 C58,165 52,215 54,246 C60,248 66,246 68,242 C66,210 72,178 82,164Z" fill="url(#jkt)"/>
+          <path d="M126,152 C142,165 148,215 146,246 C140,248 134,246 132,242 C134,210 128,178 118,164Z" fill="url(#jkt)"/>
+          <!-- hands -->
+          <circle cx="59" cy="250" r="8" fill="#f6ddc9"/>
+          <circle cx="141" cy="250" r="8" fill="#f6ddc9"/>
+
+          <!-- neck -->
+          <path d="M92,128 L108,128 L108,150 L92,150Z" fill="#f0cdb6"/>
+          <!-- head -->
+          <ellipse cx="100" cy="100" rx="34" ry="37" fill="#ffe6d5"/>
+          <!-- front hair + bangs -->
+          <path d="M64,96 C60,55 78,34 100,34 C122,34 140,55 136,96 C134,80 128,70 120,68 C124,80 122,90 122,90 C118,74 110,66 100,66 C90,66 82,74 78,90 C78,90 76,80 80,68 C72,70 66,80 64,96Z" fill="#2a3357"/>
+          <path d="M78,66 C86,58 114,58 122,66 C118,80 112,74 100,74 C88,74 82,80 78,66Z" fill="#2a3357"/>
+          <!-- side hair -->
+          <path d="M64,96 C60,130 66,160 72,180 C74,150 70,120 76,96Z" fill="#242c4d"/>
+          <path d="M136,96 C140,130 134,160 128,180 C126,150 130,120 124,96Z" fill="#242c4d"/>
+          <!-- hair clip -->
+          <rect x="118" y="70" width="12" height="4" rx="2" fill="#ff7a8a"/>
+
+          <!-- face -->
+          <path d="M84,92 q6,-5 12,0" fill="none" stroke="#2a3050" stroke-width="2" stroke-linecap="round"/>
+          <path d="M104,92 q6,-5 12,0" fill="none" stroke="#2a3050" stroke-width="2" stroke-linecap="round"/>
+          <ellipse cx="88" cy="102" rx="4" ry="5.5" fill="#2a3050"/>
+          <ellipse cx="112" cy="102" rx="4" ry="5.5" fill="#2a3050"/>
+          <circle cx="89.5" cy="100" r="1.4" fill="#fff"/>
+          <circle cx="113.5" cy="100" r="1.4" fill="#fff"/>
+          <circle cx="80" cy="112" r="4" fill="#ffc0c8"/>
+          <circle cx="120" cy="112" r="4" fill="#ffc0c8"/>
+          <path d="M95,116 q5,4 10,0" fill="none" stroke="#e0607a" stroke-width="2" stroke-linecap="round"/>
+
+          <!-- backpack strap hint -->
+          <path d="M78,150 L82,236" stroke="#1f2745" stroke-width="4" fill="none" opacity=".8"/>
+          <path d="M122,150 L118,236" stroke="#1f2745" stroke-width="4" fill="none" opacity=".8"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- RIGHT cards -->
+    <div class="right">
+      <div class="card profile">
+        <div class="card-title">Profile</div>
+        <div class="agerow">AGE 17 · STUDENT</div>
+        <p>A second-year transfer student who lights up every room she enters. Quick to smile and quicker to help. She dreams of joining the art club and making friends across the whole school.</p>
+      </div>
+
+      <div class="card about">
+        <div class="card-title">About Akari</div>
+        <p>Raised in a seaside town, Akari carries a warm, easygoing charm. She sketches in a worn notebook between classes and never turns down an adventure after school.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Personality</div>
+        <div class="pers-list">
+          <div class="prow"><span>Energy</span><div class="meter"><i style="width:92%"></i></div></div>
+          <div class="prow"><span>Kindness</span><div class="meter"><i style="width:88%"></i></div></div>
+          <div class="prow"><span>Focus</span><div class="meter"><i style="width:74%"></i></div></div>
+          <div class="prow"><span>Courage</span><div class="meter"><i style="width:80%"></i></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM OUTFIT -->
+    <div class="outfit">
+      <div class="card-title">Outfit Breakdown</div>
+      <div class="otrack">
+        <div class="oitem"><div class="num">01</div><div><b>Signature Jacket</b><small>Coral open jacket with soft collar</small></div></div>
+        <div class="oitem"><div class="num">02</div><div><b>School Uniform</b><small>White shirt, ribbon &amp; navy skirt</small></div></div>
+        <div class="oitem"><div class="num">03</div><div><b>Shoes &amp; Backpack</b><small>Navy loafers &amp; school backpack</small></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
