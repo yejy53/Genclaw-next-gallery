@@ -70,10 +70,14 @@ item: | /blog/genclaw-next/akari.jpg
 
 In results so far, the visual imaginer can still gain an edge on certain tasks—for example more design-oriented poster work. Of course, on many tasks a visual imaginer may not be needed at all; the raw strength of a Coding Agent is already enough. It is worth noting that when multimodal research closely explored "generation for understanding," pixel-generation noise often interfered on rigorous math and logic tasks; in visual code generation, by contrast, image generation may feed back into the model's structural understanding and layout decisions.
 
-Finally, as we emphasize in the [GenClaw](https://github.com/yejy53/GenClaw) discussion: in the future, the final deliverable of some multimodal content creation may not be limited to a final raster image. Editable visual artifacts produced via Visual Code generation also show strong potential for text accuracy and layered edit control, helping users continue content creation and production. The result below further shows the clear advantage of visual content generation over pure pixel image generation alone.
+## Visual Code as a New Medium for Content Creation
+
+Today, creative design and content generation with tools such as GPT-Image-2 and Seedream have already become part of creators' daily toolkit. Visual Code Generation, however, has the potential to serve as a new carrier for content creation itself. This brings us back to a point we have long emphasized in [GenClaw](https://github.com/yejy53/GenClaw): what Visual Code may change is not only whether a page looks good, but the form of the creative deliverable itself. For most multimodal creation today, the endpoint is a raster image that is already fixed once delivered. Artifacts produced by Visual Code—HTML, PPTX, and the like—are editable by nature: text can be accurate, layers can be controlled, and what users receive is not an image that can only be remade as a whole, but a draft they can continue to revise. The results below make this clearer.
 
 ```case
 mode: gallery
 aspect: 16/15
 item: | /blog/genclaw-next/shanyou-guanyin.mp4
 ```
+
+Compared with methods that emit pixels directly, such as GPT-Image-2 and Seedream 5, the visual artifacts we produce let users freely drag and rewrite the text and image assets inside them—especially important for posters, infographics, and other tasks that need repeated fine-tuning. If a particular image asset itself needs to be replaced, one can call an image model again for a local swap, without having to scrap the entire piece and start over.
