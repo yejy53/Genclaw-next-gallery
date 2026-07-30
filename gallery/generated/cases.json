@@ -409,7 +409,7 @@
       "zh": "认知智能体架构示意：感知输入、记忆库、想象/做梦模块、规划、行动五段流程，中央以一帧预测画面强调想象力驱动决策。",
       "en": "A cognitive-agent architecture diagram: perception, memory, an imagination / dreaming module, planning and action, with a predicted frame at the centre foregrounding imagination-driven decisions."
     },
-    "promptOriginal": "",
+    "promptOriginal": "做一页 16:9 的幻灯片，画一个虚构智能体 OneiroAgent 的架构：感知输入 → 记忆库 → “想象/做梦”模块 → 规划 → 行动。重点是“想象”模块里要画出它脑补出来的一帧未来场景画面，和其他模块形成对比，科技又带点梦境感。The output is an HTML.",
     "coverAspect": "landscape",
     "featured": false,
     "tags": [
@@ -434,6 +434,10 @@
       "artifact": "/cases/oneiro-agent-architecture/baseline.html",
       "preview": "/cases/oneiro-agent-architecture/baseline-preview.png"
     },
+    "prompt": {
+      "zh": "做一页 16:9 的幻灯片，画一个虚构智能体 OneiroAgent 的架构：感知输入 → 记忆库 → “想象/做梦”模块 → 规划 → 行动。重点是“想象”模块里要画出它脑补出来的一帧未来场景画面，和其他模块形成对比，科技又带点梦境感。The output is an HTML.",
+      "en": "Make a single 16:9 slide diagramming the architecture of a fictional agent, OneiroAgent: perception input → memory store → an “imagine / dream” module → planning → action. The point is that the “imagine” module should render one frame of the future scene it has conjured up, set off against the other modules — technical, with a touch of dream. The output is an HTML."
+    },
     "cover": "/cases/oneiro-agent-architecture/cover.webp"
   },
   {
@@ -447,7 +451,7 @@
       "zh": "Keynote 封面页：夜景城市与轨道交通实景铺底，左侧为中英双标题、2035 展望与演讲者信息。",
       "en": "A keynote opening slide: a night-time city and transit scene fills the frame, with a bilingual title, a 2035 outlook line and speaker credit on the left."
     },
-    "promptOriginal": "",
+    "promptOriginal": "一页主题演讲封面：标题“重新想象城市出行”，副标题“2035 展望”，讲者 林薇。要有能定调整场演讲的独特视觉气质与意象，而非通用模板封面。The output is an HTML.",
     "coverAspect": "landscape",
     "featured": true,
     "tags": [
@@ -472,6 +476,10 @@
       "artifact": "/cases/urban-mobility-keynote/baseline.html",
       "preview": "/cases/urban-mobility-keynote/baseline-preview.png"
     },
+    "prompt": {
+      "zh": "一页主题演讲封面：标题“重新想象城市出行”，副标题“2035 展望”，讲者 林薇。要有能定调整场演讲的独特视觉气质与意象，而非通用模板封面。The output is an HTML.",
+      "en": "A keynote opening slide: title “Reimagining Urban Mobility”, subtitle “A 2035 Outlook”, speaker Lin Wei. It needs a distinctive visual character and imagery that sets the tone for the whole talk, not a generic template cover. The output is an HTML."
+    },
     "cover": "/cases/urban-mobility-keynote/cover.webp"
   },
   {
@@ -485,7 +493,7 @@
       "zh": "左右对照的修复前后页：同一视角由干裂盐碱地转为湿地飞鸟，四角数据卡标注水面、盐度、鸟类与周期；数据为示意性指标。",
       "en": "A before-and-after split slide: the same vantage point shifts from cracked saline flats to a bird-filled wetland, with corner cards for water area, salinity, bird species and duration. The figures are illustrative."
     },
-    "promptOriginal": "",
+    "promptOriginal": "前后双联对比（只有两张大图）：制作一页 16:9 虚构盐湖生态修复幻灯片，左右各一幅同视角场景插画：左为干裂盐壳荒地，右为水位恢复后的浅滩鸟群，中间一条细分割线。四角放四个指标：水面 +38%、鸟类 12→94 种、盐度 -21%、周期 6 年。The output is an HTML.",
     "coverAspect": "landscape",
     "featured": false,
     "tags": [
@@ -509,6 +517,10 @@
       "kind": "html",
       "artifact": "/cases/salt-lake-restoration/baseline.html",
       "preview": "/cases/salt-lake-restoration/baseline-preview.png"
+    },
+    "prompt": {
+      "zh": "前后双联对比（只有两张大图）：制作一页 16:9 虚构盐湖生态修复幻灯片，左右各一幅同视角场景插画：左为干裂盐壳荒地，右为水位恢复后的浅滩鸟群，中间一条细分割线。四角放四个指标：水面 +38%、鸟类 12→94 种、盐度 -21%、周期 6 年。The output is an HTML.",
+      "en": "A before-and-after diptych (two large images only): make a single 16:9 slide on fictional salt-lake restoration, with an illustration of the same vantage point on each side — cracked salt crust on the left, recovered shallows with flocking birds on the right, a thin divider between them. Put four metrics in the corners: water area +38%, bird species 12→94, salinity −21%, span 6 years. The output is an HTML."
     },
     "cover": "/cases/salt-lake-restoration/cover.webp"
   },

@@ -57,9 +57,6 @@ function NavContent({
           <GalleryIcon size={15} />
           <span>{t.gallery}</span>
         </Link>
-        <Link className="nav-link" href={`/${locale}/blog`}>
-          <span>{t.research}</span>
-        </Link>
         <a
           className="nav-link nav-link-external"
           href={codeRepoUrl}

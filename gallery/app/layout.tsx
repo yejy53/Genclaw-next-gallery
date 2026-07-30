@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
-import localFont from "next/font/local";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -8,24 +7,6 @@ const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   variable: "--font-display",
-  display: "swap",
-});
-
-// Variable weights are what let the research-post layout sit at 330/450
-// instead of snapping to 300/400/500. See app/fonts/README.md for provenance.
-const misans = localFont({
-  src: "./fonts/MiSansVF.woff2",
-  weight: "100 900",
-  variable: "--font-misans",
-  display: "swap",
-});
-
-// Self-hosted so the static build does not depend on fonts.gstatic.com at
-// compile time. Used by the footnote zone and the serif "classic" variant.
-const lora = localFont({
-  src: "./fonts/LoraVF.woff2",
-  weight: "400 700",
-  variable: "--font-lora",
   display: "swap",
 });
 
@@ -50,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="zh-CN"
-      className={`${playfair.variable} ${misans.variable} ${lora.variable}`}
+      className={playfair.variable}
       data-theme="light"
       suppressHydrationWarning
     >
