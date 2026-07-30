@@ -22,11 +22,11 @@ item: | /blog/genclaw-next/pizza.mp4
 item: | /blog/genclaw-next/music-player.mp4
 ```
 
-## The Gap in Look and Feel Is Discontinuous
-
 > If you had to pick one from each pair to ship, the answer would barely need hesitation—the left side. Same prompt, same model: the only variable is whether rich visual assets are available, and the gap in look and feel is discontinuous.
 
 And this is not "slightly better looking." These are two different levels of finish. On the right, the structure is correct, the layout is fine, and the text and data are accurate—but the page can only fill space with simple geometric blocks, gradients, or emoji, and ends up looking like a half-finished product. The model knows how to write code, yet it cannot cross the gulf from "structurally correct" to "visually pleasing." Arena-style pairwise blind preference tests are now one of the main ways to measure a model's design ability. For human judges, though, the weight of **visual richness** is strikingly high: an artifact with material quality, a strong hero visual, and atmosphere almost always beats one that has layout alone, even when the latter is more orderly in structure.
+
+## Visual richness decides the impression
 
 We usually blame "AI-written pages looking bad" on aesthetic design. A more direct explanation is that HTML, SVG, and CSS are excellent at structural control and typography, but poor at hand-drawing complex visual assets. Cinematic backgrounds, 3D hero visuals, natural textures, intricate illustration—asking a model to paint these in pure code is extremely costly and usually stiff.
 
@@ -34,7 +34,7 @@ We usually blame "AI-written pages looking bad" on aesthetic design. A more dire
 
 Of course, an Agent Harness can help us obtain enough assets through search or generative models, which helps produce more aesthetically pleasing results. But if a model is not inclined, in its preferences, to fetch assets—and instead fills space with hallucinated UI or SVG placeholders—it will easily lose out on preference scores. And for non-agentic HTML generation tasks, outputs that stably cite real, usable image resources (for example, sufficiently accurate Unsplash image IDs) may also score higher. [A public analysis](https://www.designarena.ai/blog/kimi-k3s-design-secret-may-be-in-its-thinking-traces) has discussed the role of asset selection and citation in high-scoring traces; the reminder is gentle but clear: the gap in look and feel is often not only "can you write layout," but "did you put the right assets into the page."
 
-## Multimodal Content Generation for Visual Code Generation
+## Generation fills the asset gap of visual code
 
 We can of course obtain assets through means such as web search, but today we focus more on analysis and exploration based on multimodal generative tools; more detail can be found in [GenClaw-Next](TODO).
 
@@ -49,7 +49,11 @@ item: | /blog/genclaw-next/animation-studio.mp4
 item: | /blog/genclaw-next/robot-3d.mp4
 ```
 
-At the same time, we also have some reflections on multimodal content generation and Visual Code generation. In a world where Coding Agents dominate nearly every task, multimodal content-generation tools seem able to embed cleanly into visual content creation as well, helping LLMs move faster toward becoming productive generative tools.
+## Generation as visual imagination
+
+> In a world where Coding Agents dominate nearly every task, multimodal content-generation tools seem able to embed cleanly into visual content creation as well, helping LLMs move faster toward becoming productive generative tools.
+
+We also have some reflections on multimodal content generation and Visual Code generation; the details can be found in [GenClaw-Next](https://github.com/yejy53/GenClaw).
 
 > When visual code generation tries to move toward production-grade design, it hits aesthetic intuition and asset bottlenecks that are extremely hard to break through. Existing code LLMs lack global visual control: they are fluent in syntax, the DOM tree, and Flexbox layout, yet they have little two-dimensional spatial sense or visual intuition. Asking a model to write front-end code directly often yields highly templated, thin "big headline + cards + rounded shadows" kits. The model knows how to write code, but not how to write something that looks good. A second bottleneck is the assets themselves—HTML, SVG, and CSS excel at structure and layout, but asking a model to hand-draw complex visual materials in pure code (cinematic backgrounds, 3D hero visuals, natural textures, intricate illustration) is costly and stiff, so the result often falls back to geometric blocks, gradients, or emoji placeholders and reads as unfinished.
 >
@@ -61,7 +65,7 @@ At the same time, we also have some reflections on multimodal content generation
 
 ```case
 mode: gallery
-aspect: 16/10
+aspect: 3/2
 item: | /blog/genclaw-next/shanchuan-tea.jpg
 item: | /blog/genclaw-next/akari.jpg
 ```
@@ -70,14 +74,14 @@ item: | /blog/genclaw-next/akari.jpg
 
 In results so far, the visual imaginer can still gain an edge on certain tasks—for example more design-oriented poster work. Of course, on many tasks a visual imaginer may not be needed at all; the raw strength of a Coding Agent is already enough. It is worth noting that when multimodal research closely explored "generation for understanding," pixel-generation noise often interfered on rigorous math and logic tasks; in visual code generation, by contrast, image generation may feed back into the model's structural understanding and layout decisions.
 
-## Visual Code as a New Medium for Content Creation
+## Visual Code as a new medium for content creation
 
-Today, creative design and content generation with tools such as GPT-Image-2 and Seedream have already become part of creators' daily toolkit. Visual Code Generation, however, has the potential to serve as a new carrier for content creation itself. This brings us back to a point we have long emphasized in [GenClaw](https://github.com/yejy53/GenClaw): what Visual Code may change is not only whether a page looks good, but the form of the creative deliverable itself. For most multimodal creation today, the endpoint is a raster image that is already fixed once delivered. Artifacts produced by Visual Code—HTML, PPTX, and the like—are editable by nature: text can be accurate, layers can be controlled, and what users receive is not an image that can only be remade as a whole, but a draft they can continue to revise. The results below make this clearer.
+Today, creative design and content generation with tools such as GPT-Image-2 and Seedream have already become part of creators' daily toolkit, yet Visual Code Generation has the potential to serve as a new carrier for content creation. This brings us back to a point we have long emphasized in [GenClaw](https://github.com/yejy53/GenClaw): what Visual Code changes may not only be whether a page looks good, but the form of the creative deliverable itself. For most multimodal creation today, the endpoint is a raster image that is already fixed once delivered. Artifacts produced by Visual Code—HTML, PPTX, and the like—are editable by nature: text can be accurate, layers can be controlled, and what users receive is not an image that can only be remade as a whole, but a draft they can continue to revise. The results below make this clearer.
 
 ```case
 mode: gallery
-aspect: 16/15
-item: | /blog/genclaw-next/shanyou-guanyin.mp4
+aspect: 20/17
+item: | /blog/genclaw-next/poster-editing.mp4
 ```
 
 Compared with methods that emit pixels directly, such as GPT-Image-2 and Seedream 5, the visual artifacts we produce let users freely drag and rewrite the text and image assets inside them—especially important for posters, infographics, and other tasks that need repeated fine-tuning. If a particular image asset itself needs to be replaced, one can call an image model again for a local swap, without having to scrap the entire piece and start over.

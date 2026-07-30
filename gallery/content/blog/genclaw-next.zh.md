@@ -22,11 +22,11 @@ item: | /blog/genclaw-next/pizza.mp4
 item: | /blog/genclaw-next/music-player.mp4
 ```
 
-## 观感的差距是断层式的
-
 > 如果让你在每一组里挑一个拿去交付，答案几乎不需要犹豫——左边。同一条 prompt、同一个模型，唯一的变量是能不能拿到丰富的视觉素材，观感差距是断层式的。
 
 而且这不是"稍微更好看"，而是两种完成度：右边这些产物结构都是对的，布局没有错，文字和数据也准确，但它只能用简单的几何色块、渐变或 emoji 进行占位，最终看起来像是一个半成品；模型知道怎么写代码，却跨不过从"结构正确"到"视觉美观"的那道鸿沟。Arena 类型的两两盲测偏好评测，如今已经是衡量模型设计能力最主要的方式之一。但是对于人类的评估而言，**视觉丰富度**的权重高得惊人，一个质感、主视觉与氛围齐备的产物，几乎总能赢过一个只有排版的产物，哪怕后者的结构更规整。
+
+## 视觉丰富度决定感官
 
 我们通常把"AI 写出来的页面不好看"归因于审美设计，但更直接的解释是：HTML、SVG 和 CSS 极度擅长结构控制与排版，却并不擅长直接手写复杂的视觉素材。电影感背景、3D 主视觉、自然纹理、复杂插画——要求模型用纯代码把这些画出来，成本极高而且效果僵硬。
 
@@ -34,7 +34,7 @@ item: | /blog/genclaw-next/music-player.mp4
 
 当然，Agent Harness 的设计，能够让我们通过搜索或者生成模型的方式，得到足够多的素材，有助于创作出更加美观的结果。但是如果模型在偏好上就并不倾向于获取素材，而是通过幻觉的 UI 或 SVG 等占位，则很容易在得分偏好上不具优势。当然，如果是针对非 Agentic 的 HTML 生成任务，输出若能稳定引用真实可用的图片资源（例如足够准确的 Unsplash 图片 ID），也可能获得更高的分数——[有公开分析](https://www.designarena.ai/blog/kimi-k3s-design-secret-may-be-in-its-thinking-traces)从高分轨迹里讨论过素材选择与引用方式的作用，这提醒我们：观感差距往往不只是"会不会写布局"，而是"有没有把对的素材放进页面"。
 
-## 多模态内容生成 for Visual Code 生成
+## Generation fills the asset gap of visual code
 
 我们当然可以通过例如 web 搜索等形式完成素材的获取，但是我们今天更多探讨的是基于多模态生成工具的分析和探索，我们可在 [GenClaw-Next](TODO) 找到更多细节。
 
@@ -49,7 +49,13 @@ item: | /blog/genclaw-next/animation-studio.mp4
 item: | /blog/genclaw-next/robot-3d.mp4
 ```
 
-同时，我们也有一些关于多模态内容生成与 Visual Code 生成的反思。在 Coding Agent 统治所有任务的今天，似乎多模态内容生成工具也可以很好地嵌入到视觉内容生成当中，让 LLM 更快迈向生产力工具的生成。
+
+## Generation as visual imagination
+
+> 在 Coding Agent 统治所有任务的今天，似乎多模态内容生成工具也可以很好地嵌入到视觉内容生成当中，让 LLM 更快迈向生产力工具的生成。
+
+
+同时，我们也有一些关于多模态内容生成与 Visual Code 生成的反思，具体可在[GenClaw-next](https://github.com/yejy53/GenClaw)中找到
 
 > 当视觉代码生成试图向"生产级设计"迈进时，遇到了极难突破的美学直觉与素材瓶颈。现有的代码大模型极度缺乏全局视觉把控力：它们精通语法、DOM 树和 Flexbox 布局，但却没有二维的空间感和视觉直觉。直接让模型编写前端代码，往往只能产出高度模板化、干瘪的"大标题、卡片、圆角阴影"三件套。模型知道怎么写代码，却不知道怎么写才"好看"。另一重瓶颈来自素材本身——HTML、SVG 和 CSS 极度擅长结构控制与排版，但直接要求模型用纯代码手绘复杂的视觉素材（如电影感背景、3D 主视觉、自然纹理或复杂插画）成本极高且效果僵硬，最终产物往往只能用几何色块、渐变或 emoji 占位，看起来像一个半成品。
 >
@@ -61,7 +67,7 @@ item: | /blog/genclaw-next/robot-3d.mp4
 
 ```case
 mode: gallery
-aspect: 16/10
+aspect: 3/2
 item: | /blog/genclaw-next/shanchuan-tea.jpg
 item: | /blog/genclaw-next/akari.jpg
 ```
@@ -71,17 +77,15 @@ item: | /blog/genclaw-next/akari.jpg
 从结果来看，视觉想象器还是能够在一定的任务上——例如更偏设计的 poster 等任务——取得一定的优势。当然，其实在很多任务上，似乎不需要视觉想象器，Coding Agent 的强大性能就能发挥很好的作用。值得一提的是，过去多模态领域在密切探索"生成以辅助理解"（Generation for Understanding）时发现，在严谨的数理逻辑任务上，像素生成的噪声往往会产生干扰；但在视觉代码生成领域，图像生成反而有可能对代码的结构理解与布局决策起到反哺作用。
 
 
-
-
 ## Visual Code 作为内容创作的新载体
 
 目前，例如基于GPT-Image-2，Seedream等进行创意设计，内容生成已经成为了创作者的日常工具，不过Visual Code Generation有潜力作为内容创作的新载体。回到我们在 [GenClaw](https://github.com/yejy53/GenClaw) 里一直强调的一点：Visual Code 改变的可能不只是"页面好不好看"，还有内容创作的产物形态本身。今天多模态创作的终点大多是一张像素图，交付出去就已经定型；而由 Visual Code 生成的 HTML、PPTX 这类产物本身是可编辑的，文字准确、图层可控，用户拿到的不是一张只能整体重做的图，而是一份可以接着改的稿件。下面这组结果会更直观。
 
 ```case
 mode: gallery
-aspect: 16/15
-item: | /blog/genclaw-next/shanyou-guanyin.mp4
+aspect: 20/17
+item: | /blog/genclaw-next/poster-editing.mp4
 ```
 
-和 GPT-Image-2、Seedream 5 这类直接输出像素的方法相比，我们产出的视觉产物允许用户自由拖动、改写其中的文字与图像素材，在海报、信息图这类需要反复微调的任务上，这一点尤其重要。如果某块图像素材本身需要换掉，也可以再调一次图像模型做局部替换，而不必把整张作品推翻重来。
+和 GPT-Image-2、Seedream 5 这类直接输出像素的方法相比，而在GenClaw-next中，我们产出的视觉产物允许用户自由拖动、改写其中的文字与图像素材，在海报、信息图这类需要反复微调的任务上，这一点尤其重要。如果某块图像素材本身需要换掉，也可以再调一次图像模型做局部替换，而不必把整张作品推翻重来。
 
