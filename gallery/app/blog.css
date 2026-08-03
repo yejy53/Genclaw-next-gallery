@@ -279,6 +279,15 @@ body:has(.blog-runtime) {
   color: var(--blog-ink);
 }
 
+/* Title and its second line move as one unit, so the hero's flex gap applies
+   to the pair rather than pushing them apart. */
+.blog-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
 .blog-title {
   color: var(--blog-ink);
   font-family: var(--blog-title-font);
@@ -286,6 +295,18 @@ body:has(.blog-runtime) {
   font-weight: var(--blog-title-weight);
   letter-spacing: 0;
   line-height: var(--blog-title-line);
+  margin: 0;
+  text-align: center;
+}
+
+/* A two-part title reads better stacked than wrapped: the question sits on its
+   own line, lighter and smaller, so the main title keeps a single strong line. */
+.blog-title-sub {
+  color: var(--blog-ink-secondary);
+  font-family: var(--blog-title-font);
+  font-size: 21px;
+  font-weight: 330;
+  line-height: 29px;
   margin: 0;
   text-align: center;
 }
@@ -1348,6 +1369,11 @@ body:has(.blog-runtime) {
     --blog-h2-line: 31px;
     --blog-h3-size: 19px;
     --blog-h3-line: 26px;
+  }
+
+  .blog-title-sub {
+    font-size: 17px;
+    line-height: 25px;
   }
 
   .blog-main {

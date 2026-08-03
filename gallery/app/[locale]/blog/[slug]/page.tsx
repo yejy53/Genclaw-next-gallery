@@ -52,6 +52,7 @@ export default async function BlogPostPage({
               { label: post.title },
             ]}
             title={post.title}
+            titleSub={post.subtitle}
             subtitle={post.summary}
             deck={post.deck}
             note={post.fallbackLocale ? t.translationPending : null}

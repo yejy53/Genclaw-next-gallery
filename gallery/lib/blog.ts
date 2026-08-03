@@ -22,6 +22,8 @@ export type BlogPost = {
   fallbackLocale: Locale | null;
   variant: BlogVariant;
   title: string;
+  /** Second title line, set smaller so a two-part title does not wrap dense. */
+  subtitle: string | null;
   summary: string;
   /** Quieter second line under the hero lede; optional. */
   deck: string | null;
@@ -479,6 +481,7 @@ export function getBlogPost(slug: string, locale: Locale): BlogPost | null {
     fallbackLocale: file.fallbackLocale,
     variant: toVariant(data.variant),
     title: data.title ?? slug,
+    subtitle: data.subtitle ?? null,
     summary: data.summary ?? "",
     deck: data.deck ?? null,
     date: data.date ?? "",
@@ -509,6 +512,7 @@ export function getBlogIndex(locale: Locale): BlogSummary[] {
       fallbackLocale: post.fallbackLocale,
       variant: post.variant,
       title: post.title,
+      subtitle: post.subtitle,
       summary: post.summary,
       deck: post.deck,
       date: post.date,

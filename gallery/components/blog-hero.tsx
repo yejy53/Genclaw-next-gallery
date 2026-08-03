@@ -9,6 +9,7 @@ export type Crumb = {
 export function BlogHero({
   crumbs,
   title,
+  titleSub,
   subtitle,
   deck,
   ctaLabel,
@@ -21,6 +22,7 @@ export function BlogHero({
 }: {
   crumbs: Crumb[];
   title: string;
+  titleSub?: string | null;
   subtitle?: string | null;
   deck?: string | null;
   ctaLabel?: string | null;
@@ -74,7 +76,10 @@ export function BlogHero({
           </ol>
         </nav>
 
-        <h1 className="blog-title">{title}</h1>
+        <div className="blog-title-block">
+          <h1 className="blog-title">{title}</h1>
+          {titleSub && <p className="blog-title-sub">{titleSub}</p>}
+        </div>
         {subtitle && <p className="blog-subtitle">{subtitle}</p>}
 
         {hasLinks && (

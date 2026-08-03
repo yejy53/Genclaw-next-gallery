@@ -1,5 +1,6 @@
 ---
-title: Towards Rich Visual Code Generation —— Secrets to generate fascinating webs
+title: Towards Rich Visual Code Generation
+subtitle: What Makes Generated Websites Fascinating?
 summary: We spent some time on a concrete question: when a model writes a webpage, a poster, or a slide, what actually decides whether people find it "good-looking"?
 date: 2026-07-29
 kicker: Research
@@ -11,9 +12,13 @@ arxiv: https://arxiv.org/abs/2605.30248
 tags: visual code, agent, asset generation
 ---
 
-In recent years, large language models have made breakthrough progress in code generation, and visual code generation in particular has shown enormous potential. Models of the latest generation—represented by GPT-5.6 Sol, Claude Fable 5, and Kimi K3—can already generate HTML, SVG, and CSS directly to automate the construction of fully functional webpages, dynamic user interfaces (UI), and interactive data visualizations. This code-based generation path opens up a large imaginative space for automated design and front-end development. Today, capability evaluation for Visual Code Generation mainly relies on approaches such as [Design Arena](https://www.designarena.ai/leaderboard), which run pairwise blind preference tests. When users pick and score, they generally choose the result that looks better and more orderly. So our question is: how do we tell when a front-end visual artifact is more aesthetically pleasing?
+The question first came out of our own observations of Visual Code Generation evaluation. In recent years, large language models have made breakthrough progress in code generation, and visual code generation in particular has shown enormous potential. Models of the latest generation—represented by GPT-5.6 Sol, Claude Fable 5, and Kimi K3—can already generate HTML, SVG, and CSS directly to automate the construction of fully functional webpages, dynamic user interfaces (UI), and interactive data visualizations. This code-based generation path opens up a large imaginative space for automated design and front-end development.
 
-> Before making any argument, take a look at the results below—which side would you pick?
+Today, capability evaluation for Visual Code Generation mainly relies on pairwise blind preference tests such as [Design Arena](https://www.designarena.ai/leaderboard): one prompt produces two results, and users pick the one they prefer. In practice, they lean toward whichever looks better and more finished.
+
+But what exactly decides "looks better"?
+
+Before making any argument, take a look at the results below—which side would you pick?
 
 ```case
 mode: gallery
@@ -24,13 +29,21 @@ item: | /blog/genclaw-next/music-player.mp4
 
 > If you had to pick one from each pair to ship, the answer would barely need hesitation—the left side. Same prompt, same model: the only variable is whether rich visual assets are available, and the gap in look and feel is discontinuous.
 
-## Visual richness decides the impression
+## Visual richness may matter more than we assumed
 
-Looking at the two sides, the structure, layout, text, and data do not differ all that much. But the right side mostly fills space with simple geometric blocks, gradients, or emoji, and looks like a half-finished product, while the left side has rich visual assets that lift the whole impression to another level. The model knows how to write code, yet it cannot cross the gulf from "structurally correct" to "visually pleasing." We usually blame "AI-written pages looking bad" on aesthetic design, but a more direct explanation is this: HTML, SVG, and CSS are excellent at structural control and typography, yet poor at hand-drawing complex visual assets. Cinematic backgrounds, 3D hero visuals, natural textures, intricate illustration—asking a model to paint these in pure code is extremely costly and usually stiff. Arena-style pairwise blind preference tests are now one of the main ways to measure a model's design ability. For human judges, though, the weight of **visual richness** is strikingly high: an artifact with material quality, a strong hero visual, and atmosphere almost always beats one that has layout alone, even when the latter is more orderly in structure.
+Look closely at the two sides and you will find the structure, layout, text, and data barely differ. What really opens the gap is that the right side leans on simple geometric blocks, gradients, and emoji as filler, so it still reads as a half-finished product; the left side, with richer visual assets, has a complete hero image, material quality, and atmosphere.
 
-> So a large part of what decides look and feel sits in the places code cannot draw; the ability to obtain assets is already deciding the ranking.
+The model knows how to write code, but struggles to cross the gulf from "structurally correct" to "visually pleasing."
 
-Of course, an Agent Harness can help us obtain enough assets through search or generative models, which helps produce more aesthetically pleasing results. But if a model is not inclined, in its preferences, to fetch assets—and instead fills space with hallucinated UI or SVG placeholders—it will easily lose out on preference scores.
+
+We usually attribute "AI-written pages looking bad" to the model lacking taste, but a more direct explanation is this: HTML, SVG, and CSS are good at structural control and typography, yet not at hand-drawing complex visual assets. Cinematic backgrounds, 3D hero visuals, natural textures, intricate illustration—asking a model to paint these in code alone is not only expensive, it does not close the capability gap either.
+
+
+Arena-style pairwise blind tests are now one of the main ways to measure a model's design ability. For a human's first impression, the weight of **visual richness** may be higher than we assumed. A result with fairly complete material quality, hero visual, and atmosphere tends to beat one that has layout alone, even when the latter is more orderly in structure.
+
+> So a large part of what decides look and feel sits in the places code cannot draw. The ability to obtain assets has already begun to shape the final ranking in Visual Code Generation.
+
+An Agent Harness can of course let a model gather enough assets through search or generative models, and thus produce a more complete result. But if the model's behavioral preference is not to fetch assets in the first place—if it habitually reaches for hallucinated UI, abstract SVG, or color-block filler—then even with the tools mounted, it will easily fall behind in preference tests.
 
 <!-- TODO ship together with the statistics figure:
 From the statistics below, Kimi K3, Ops 4.8, and GLM 5.2 show a clearly higher
@@ -46,11 +59,16 @@ Reference: https://www.designarena.ai/blog/kimi-k3s-design-secret-may-be-in-its-
 
 ## Generation fills the asset gap of visual code
 
-We can of course obtain assets through means such as web search, but today we focus more on exploring multimodal generative tools. In the [GenClaw-Next](TODO) Harness, for tasks such as Web-Dev and poster generation, we **mount a dedicated asset-generation tool built around image generation models**, and we encourage the agent to reach for it more actively. The agent decides on its own when to call image, 3D, video, and other generative models, producing local visual assets that are hard to hand-draw in code.
+We can of course obtain assets through means such as web search, but today we want to discuss another path: using multimodal generative tools to directly fill in the visual content that Visual Code is missing.
+
+In the [GenClaw-Next](TODO) Harness, for tasks such as Web-Dev and poster generation, we **mount a dedicated asset-generation tool built around image generation models**, and we encourage the agent to reach for it more actively. The agent decides on its own when to call image, 3D, video, and other generative models, producing local visual assets that are hard to hand-draw in code.
 
 > What's missing is assets—so give it assets.
 
-We also found that this needs to be prompted explicitly. If the tools are only attached, the model often keeps its old habits—continuing to fill the page with gradients and color blocks, rarely pausing to think "this region should actually be an image asset." So we **first produce a `design.md` during the design stage**: while planning the page's features, content, and layout, the agent spells out which regions need visual assets. With that step added, the finish of the output jumps noticeably.
+But we quickly found that mounting the tool does not mean the model will actually use it. It tends to keep working the way it always has—finish the structure first, then fill the page with gradients, shadows, and color blocks. It rarely stops to think, "this region should actually be an image." So we added a step to the design stage: first produce a `design.md`. While the agent plans the page's features, content, and layout, it must also analyze which regions need a hero visual, background, illustration, texture, or other visual assets. Only once those needs are explicit does it move on to code generation and asset generation.
+
+It looks like a small change, but it actually reorders how the agent creates: first work out what the picture needs, then decide how to realize it. With that step added, the finish of the output improved noticeably. Most importantly, the agent became far more willing to call image generation models.
+
 
 
 <!-- TODO placeholder: a side-by-side result for "with vs. without the image generation tool" goes here. -->
@@ -68,11 +86,13 @@ item: | /blog/genclaw-next/robot-3d.mp4
 
 > In a world where Coding Agents dominate nearly every task, multimodal content-generation tools seem able to embed cleanly into visual content creation as well, helping LLMs move faster toward becoming productive generative tools.
 
-Adding multimodal generative tools clearly raises the visual richness of the Web-Dev output a Coding Agent produces. But we ran into another problem: today's code LLMs badly lack global visual control. They are fluent in syntax, the DOM tree, and Flexbox layout, yet they have no two-dimensional spatial sense or visual intuition. Asking a model to write front-end code directly often yields highly templated, thin "big headline + cards + rounded shadows" kits. This shows up most on tasks like posters that demand professional aesthetic design: the model knows how to write code, but not how to write something that looks good.
+Adding multimodal tools did raise the visual richness of the Web-Dev content a Coding Agent produces. But we ran into another problem: today's code models still badly lack control over the picture as a whole.
+
+They are fluent in syntax, the DOM tree, and Flexbox, yet they have no stable two-dimensional spatial sense or visual intuition. Asking a model to write front-end code directly tends to yield the highly templated "big headline, cards, rounded shadows" kit. This shows up most on tasks like posters that lean on professional design: the model knows how the code should be written, but not how the picture should look.
 
 Looking across visual generation today, research mainly follows two orthogonal paths, each with its own "lopsided" weakness. On one side is "left-brain" pure code generation—today's Coding Agent is like a system with only a left hemisphere: strong on logic and structure, yet because code is essentially a one-dimensional symbol sequence, the model lacks two-dimensional spatial sense and aesthetic prior. On the other side is "right-brain" visual content generation (e.g. diffusion models), which compresses centuries of artistic prior and can instantly produce frames with top-tier composition, light, and material quality; but it has a fatal structural blind spot—without rigorous logic, the generated raster image is inherently unreliable for text accuracy, multi-layer layout, data charts, and later editability, and cannot serve as a real engineering deliverable.
 
-Inspired by the World Action Model (WAM) strategy, we place an image generation model upstream as the Coding Agent's "visual world simulator," and treat the LLM as the later action decision-maker for Visual Code. Concretely, before writing code, the agent first calls an image model to produce a concept image, establishing aesthetic priors for composition, lighting, and color atmosphere—**imagine first, then act**.
+Inspired by the World Action Model (WAM) strategy, we place an image generation model upstream as the Coding Agent's "visual world simulator," and treat the LLM as the later action decision-maker for Visual Code. Concretely, before writing code, the agent first calls an image model to produce a concept image, establishing aesthetic priors for composition, lighting, and color atmosphere—"**imagine first, then act**."
 
 ```case
 mode: gallery
@@ -83,12 +103,16 @@ item: | /blog/genclaw-next/akari.jpg
 
 > "Aesthetics" is a prior that is extremely hard to quantify in words, yet easy to make concrete in an image. Letting the agent first "see" a possible design direction, then write real content and editable structure, is far more reliable than asking it to write blindfolded.
 
-In results so far, the visual imaginer does gain an edge on certain tasks—more design-oriented poster work, for example. It is worth noting that when multimodal research closely explored "generation for understanding," pixel-generation noise often interfered on rigorous math and logic tasks; in visual code generation, by contrast, image generation may feed back into the model's structural understanding and layout decisions.
+From the results so far, the visual imaginer does gain an edge on a subset of tasks, especially posters and other work with a stronger design character. There is an interesting contrast here. In the past, when multimodal research explored "generation for understanding," pixel-generation noise often interfered on rigorous math and logic tasks; in Visual Code Generation, by contrast, image generation may feed back into the model's structural understanding and layout decisions. In other words, the image here is not only a final asset—it can also become part of how the model thinks through a design.
 
 
 ## Visual Code as a new medium for content creation
 
-Today, creative design and content generation with tools such as GPT-Image-2 and Seedream have already become part of creators' daily toolkit, yet Visual Code Generation has the potential to serve as a new carrier for content creation. This brings us back to a point we have long emphasized in [GenClaw](https://github.com/yejy53/GenClaw): what Visual Code changes may not only be whether a page looks good, but the form of the creative deliverable itself. For most multimodal creation today, the endpoint is a raster image that is already fixed once delivered. Artifacts produced by Visual Code—HTML, PPTX, and the like—are editable by nature: text can be accurate, layers can be controlled, and what users receive is not an image that can only be remade as a whole, but a draft they can continue to revise. The results below make this clearer.
+Today, creative design and content generation with models such as GPT-Image-2 and Seedream have already become a daily workflow for many creators. But we think Visual Code Generation also has the potential to become a new medium for content creation.
+
+This brings us back to a point we have long emphasized in [GenClaw](https://github.com/yejy53/GenClaw): what Visual Code changes may not only be whether a page looks good, but the form of the creative deliverable itself. Today, most multimodal creation ends at a raster image. Once that image is delivered, its text, layers, and layout are essentially fixed. Artifacts produced by Visual Code—HTML, PPTX, and the like—are editable by nature: text is accurate, layers stay under control, and what users receive is not an image that can only be remade as a whole, but a draft they can keep revising.
+
+The results below make this clearer:
 
 ```case
 mode: gallery
@@ -96,7 +120,6 @@ aspect: 20/17
 item: | /blog/genclaw-next/poster-editing.mp4
 ```
 
-Compared with methods that emit pixels directly, such as GPT-Image-2 and Seedream 5, the visual artifacts GenClaw-Next produces let users freely drag and rewrite the text and image assets inside them—especially important for posters, infographics, and other tasks that need repeated fine-tuning. If a particular image asset itself needs to be replaced, one can call an image model again for a local swap, without having to scrap the entire piece and start over. We have also tuned for tasks like PPT, which lean even more on manual second-pass editing.
+Compared with methods that emit pixels directly, such as GPT-Image-2 and Seedream 5, the visual content GenClaw-Next produces lets users freely drag elements, rewrite text, and replace image assets. For posters, infographics, and other tasks that need repeated fine-tuning, this matters a great deal. If one image asset needs replacing, a single image-model call can swap it locally, without scrapping the whole piece and starting over. We have also made some optimizations for tasks like PPT, which lean even more on manual second-pass editing.
 
-
-Finally, on how to use it. GenClaw-Next is itself a model-agnostic, framework-agnostic agent harness—it is not tied to a particular LLM provider, nor to a particular framework. We have also packaged the same capability **as a Skill**, aimed at hosts such as Codex and Claude Code, so users can try it out directly.
+Finally, on how to use it. GenClaw-Next is itself a model-agnostic, framework-agnostic Agent Harness—not tied to a particular LLM provider, nor to a particular framework. We have also packaged the same capability **as a Skill**, aimed at hosts such as Codex and Claude Code, so anyone can try it out directly.
