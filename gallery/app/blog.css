@@ -612,17 +612,17 @@ body:has(.blog-runtime) {
   margin-bottom: 0;
 }
 
-/* An aside, not a pull quote: the source document sets these passages two
-   points smaller than the body, so they stay quieter than what surrounds them. */
+/* A pull quote, not an aside: these passages carry the argument's turning
+   points, so they sit two points above the body rather than below it. */
 .blog-runtime .markdown blockquote {
   border-left: 2px solid var(--blog-separator);
   color: var(--blog-ink-secondary);
-  padding: 2px 0 2px 20px;
+  padding: 2px 0 2px 22px;
 }
 
 .blog-runtime .markdown blockquote > p {
-  font-size: 15px;
-  line-height: 26px;
+  font-size: 19px;
+  line-height: 32px;
 }
 
 .blog-runtime .markdown blockquote > :first-child {
