@@ -45,12 +45,21 @@ Arena 类型的两两盲测如今已经是衡量模型设计能力的主要方�
 
 当然，Agent Harness 可以让模型通过搜索或生成模型获得足够多的素材，从而创作出更完整的结果。但如果模型在行为偏好上就不倾向于获取素材，而是习惯使用幻觉式 UI、抽象 SVG 或色块占位，那么即使工具已经挂载，它也很容易在偏好评测中落于下风。
 
-<!-- TODO 待补统计图后一起发：
-从下面的统计结果来看，Kimi K3 和 Ops 4.8、GLM 5.2 的图像生成模型调用倾向，明显高于 GPT 5.5、Gemini-3.5-flash 等。
+为了把这种“第一眼偏好”放大到可统计的规模，我们用 VLM 模拟普通用户来做两两盲测，prompt 很简单：
 
-占位：这里要放一张统计图 —— 各模型平均调用生图模型的次数。
+```text
+Act as an ordinary user seeing two anonymous web designs. Based on your first
+impression, choose the result you prefer based on which looks better, feels
+clearer, and is more appealing to use. Choose A or B, and use tie only when
+you genuinely have no meaningful preference.
+```
 
-当然，如果是针对非 Agentic 的 HTML 生成任务，输出若能稳定引用真实可用的图片资源（例如足够准确的 Unsplash 图片 ID），也可能获得更高的分数。
+![各模型 Arena 得分与平均生图次数](/blog/genclaw-next/elo-vs-imagecalls.png "各模型的 Arena 得分，以及它们在同一批任务中平均调用生图模型的次数")
+
+结果和素材获取倾向高度相关。排在前三的 Kimi K3、Claude Opus 4.8 和 GLM 5.2，平均每个任务会调用 5 到 8 次生图模型；而垫底的 GPT-5.5 和 DeepSeek V4 Pro preview 只有 1.1 次。当然这不是一条严格的单调关系——Gemini 3.5 Flash 生图 3.1 次，得分却低于生图 4.8 次的 MiniMax M3——但整体趋势足够明显：**愿不愿意去拿素材，已经能解释相当一部分排名差异**。
+
+<!-- TODO 待补：
+如果是针对非 Agentic 的 HTML 生成任务，输出若能稳定引用真实可用的图片资源（例如足够准确的 Unsplash 图片 ID），也可能获得更高的分数。
 参考：https://www.designarena.ai/blog/kimi-k3s-design-secret-may-be-in-its-thinking-traces
 -->
 
@@ -102,6 +111,14 @@ item: | /blog/genclaw-next/akari.jpg
 > “美学”是一种极难用文字量化、却极易被图像具象化的先验知识。让 Agent 先“看见”一个可能的设计方向，再去写真实内容和可编辑结构，比让它闭着眼睛盲写要可靠得多。
 
 从目前的结果看，视觉想象器确实能在一部分任务上取得优势，尤其是 Poster 这类设计属性更强的任务。这里还有一个很有意思的反差。过去，多模态领域在探索“生成以辅助理解”（Generation for Understanding）时发现，在严谨的数理逻辑任务中，像素生成带来的噪声往往会产生干扰；但在 Visual Code Generation 中，图像生成反而可能对代码的结构理解与布局决策起到反哺作用。换句话说，图像在这里不只是一种最终素材，也可能成为模型思考设计的中间过程。
+
+
+![有无视觉参考的对照结果](/blog/genclaw-next/imaginer-ablation.png "同一批模型在有视觉参考（实心）与无视觉参考（描边）两种设置下的 Arena 得分")
+
+在这组对照里，每一个模型的“有视觉参考”版本都排在自己的“无视觉参考”版本之前。Claude Opus 4.8、Kimi K3 和 Gemini 3.5 Flash 的差距最明显，都在 200 分以上；而 MiniMax M3 几乎持平，说明这套策略并不是对所有模型都同样有效。
+
+> 在 Poster 设计类任务上，是否使用 visual imagination 策略的 Arena PK 胜率为 63% vs 37%。
+
 
 
 ## Visual Code 作为内容创作的新载体
