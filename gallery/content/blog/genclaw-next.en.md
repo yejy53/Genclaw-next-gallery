@@ -66,11 +66,9 @@ In the [GenClaw-Next](TODO) Harness, for tasks such as Web-Dev and poster genera
 
 But we quickly found that mounting the tool does not mean the model will actually use it. It tends to keep working the way it always has—finish the structure first, then fill the page with gradients, shadows, and color blocks. It rarely stops to think, "this region should actually be an image." So we added a step to the design stage: first produce a `design.md`. While the agent plans the page's features, content, and layout, it must also analyze which regions need a hero visual, background, illustration, texture, or other visual assets. Only once those needs are explicit does it move on to code generation and asset generation.
 
-It looks like a small change, but it actually reorders how the agent creates: first work out what the picture needs, then decide how to realize it. With that step added, the finish of the output improved noticeably. Most importantly, the agent became far more willing to call image generation models.
+It looks like a small change, but it actually reorders how the agent creates: first work out what the picture needs, then decide how to realize it. With that step added, the finish of the output improved noticeably. Most importantly, the agent became far more willing to call image generation models. In the results below, models that had previously shown little interest in image tools—GPT-5.5 and DeepSeek V4 Pro preview among them—reached a higher win rate under the same prompts.
 
-
-
-<!-- TODO placeholder: a side-by-side result for "with vs. without the image generation tool" goes here. -->
+![Head-to-head outcomes before and after adding design.md](/blog/genclaw-next/design-md-ablation.png "Head-to-head outcomes on the same batch of prompts, before and after adding design.md, alongside the change in average image-generation calls")
 
 
 ```case
@@ -119,7 +117,7 @@ The results below make this clearer:
 
 ```case
 mode: gallery
-aspect: 6/5
+aspect: 9/8
 item: | /blog/genclaw-next/poster-editing.mp4
 item: | /blog/genclaw-next/dragon-year-poster.mp4
 ```

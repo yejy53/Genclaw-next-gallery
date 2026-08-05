@@ -67,11 +67,11 @@ you genuinely have no meaningful preference.
 
 但我们也很快发现：只是把工具挂上去，并不代表模型真的会用。模型往往仍会沿着过去的习惯继续工作——先把结构写完，再用渐变、阴影和色块填满版面。它很少主动停下来想：“这里其实应该有一张图。” 所以，我们在设计阶段增加了一步：先生成一份 `design.md`。Agent 在规划网页的功能、内容与布局时，也要同时分析哪些区域需要主视觉、背景、插画、纹理或其他视觉素材。等这些需求明确之后，再进入代码生成和素材生成阶段。
 
-这是一个看起来很小的变化，但它实际上改变了 Agent 的创作顺序：先想清楚画面需要什么，再决定用什么方式把它实现出来。加上这一步之后，产物的完成度有了比较明显的提升。最主要的是，Agent开始更愿意调用图像生成模型了。
+这是一个看起来很小的变化，但它实际上改变了 Agent 的创作顺序：先想清楚画面需要什么，再决定用什么方式把它实现出来。加上这一步之后，产物的完成度有了比较明显的提升。最主要的是，Agent开始更愿意调用图像生成模型了。从下方的结果来看，此前对于生图工具并不感冒的GPT-5.5，Deepseek V4 Pro Preview等模型，在相同的prompt条件下，取得了更高的胜率结果。
+
+![加 design.md 前后的配对胜负](/blog/genclaw-next/design-md-ablation.png "同一批 prompt 下，加入 design.md 前后的配对胜负，以及平均生图次数的变化")
 
 
-
-<!-- TODO 占位：这里要放一组「挂载图像生成工具 vs 不挂载」的对照结果。 -->
 
 
 ```case
@@ -122,7 +122,7 @@ item: | /blog/genclaw-next/akari.jpg
 
 ```case
 mode: gallery
-aspect: 6/5
+aspect: 9/8
 item: | /blog/genclaw-next/poster-editing.mp4
 item: | /blog/genclaw-next/dragon-year-poster.mp4
 ```
