@@ -52,7 +52,7 @@ you genuinely have no meaningful preference.
 
 > So a large part of what decides look and feel sits in the places code cannot draw. The ability to obtain assets has already begun to shape the final ranking in Visual Code Generation.
 
-The outcome tracks closely with how willing a model is to fetch assets. The top three—Kimi K3, Claude Opus 4.8, and GLM 5.2—call an image model 5 to 8 times per task on average, while GPT-5.5 and DeepSeek V4 Pro preview average only 1.1 times. An Agent Harness can of course let a model gather enough assets through search or generative models, and thus produce a more complete result. But if the model's behavioral preference is not to fetch assets in the first place—if it habitually reaches for hallucinated UI, abstract SVG, or color-block filler—then even with the tools mounted, it will easily [fall behind](https://www.designarena.ai/blog/kimi-k3s-design-secret-may-be-in-its-thinking-traces) in preference tests.
+The outcome tracks closely with how willing a model is to fetch assets. The top three—Kimi K3, Claude Opus 4.8, and GLM 5.2—call an image model 5 to 8 times per task on average, while GPT-5.5 and DeepSeek V4 Pro preview average only 1.1 times. An Agent Harness can of course let a model gather enough assets through search or generative models, and thus produce a more complete result. But if the model's behavioral preference is not to fetch assets in the first place—if it habitually reaches for hallucinated UI, abstract SVG, or color-block filler—then even with the tools mounted, it will easily fall behind in preference tests.
 
 
 

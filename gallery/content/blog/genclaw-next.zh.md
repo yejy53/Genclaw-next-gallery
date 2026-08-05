@@ -52,7 +52,7 @@ you genuinely have no meaningful preference.
 
 > 所以，观感的决定权有很大一部分落在那些代码画不出来的地方。素材获取能力，已经开始影响 Visual Code Generation 的最终排名。
 
-结果和素材获取倾向高度相关。排在前三的 Kimi K3、Claude Opus 4.8 和 GLM 5.2，平均每个任务会调用 5 到 8 次生图模型；而GPT-5.5 和 DeepSeek V4 Pro preview 平均只有 1.1 次。当然，Agent Harness 可以让模型通过搜索或生成模型获得足够多的素材，从而创作出更完整的结果。但如果模型在行为偏好上就不倾向于获取素材，而是习惯使用幻觉式 UI、抽象 SVG 或色块占位，那么即使工具已经挂载，它也很容易在偏好评测中[落于下风](https://www.designarena.ai/blog/kimi-k3s-design-secret-may-be-in-its-thinking-traces)。
+结果和素材获取倾向高度相关。排在前三的 Kimi K3、Claude Opus 4.8 和 GLM 5.2，平均每个任务会调用 5 到 8 次生图模型；而GPT-5.5 和 DeepSeek V4 Pro preview 平均只有 1.1 次。当然，Agent Harness 可以让模型通过搜索或生成模型获得足够多的素材，从而创作出更完整的结果。但如果模型在行为偏好上就不倾向于获取素材，而是习惯使用幻觉式 UI、抽象 SVG 或色块占位，那么即使工具已经挂载，它也很容易在偏好评测中落于下风。
 
 
 
