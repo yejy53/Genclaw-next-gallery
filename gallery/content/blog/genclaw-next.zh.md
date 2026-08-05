@@ -122,8 +122,9 @@ item: | /blog/genclaw-next/akari.jpg
 
 ```case
 mode: gallery
-aspect: 20/17
+aspect: 6/5
 item: | /blog/genclaw-next/poster-editing.mp4
+item: | /blog/genclaw-next/dragon-year-poster.mp4
 ```
 
 和 GPT-Image-2、Seedream 5 这类直接输出像素的方法相比，GenClaw-Next 产出的视觉内容允许用户自由拖动元素、修改文字和替换图像素材。在海报、信息图这类需要反复微调的任务中，这一点尤其重要。如果某块图像素材需要更换，也可以只调用一次图像模型做局部替换，而不必把整张作品推翻重来。我们也针对 PPT 这类更依赖人工二次编辑的任务做了一些优化。

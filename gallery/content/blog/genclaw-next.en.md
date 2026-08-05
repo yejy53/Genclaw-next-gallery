@@ -119,8 +119,9 @@ The results below make this clearer:
 
 ```case
 mode: gallery
-aspect: 20/17
+aspect: 6/5
 item: | /blog/genclaw-next/poster-editing.mp4
+item: | /blog/genclaw-next/dragon-year-poster.mp4
 ```
 
 Compared with methods that emit pixels directly, such as GPT-Image-2 and Seedream 5, the visual content GenClaw-Next produces lets users freely drag elements, rewrite text, and replace image assets. For posters, infographics, and other tasks that need repeated fine-tuning, this matters a great deal. If one image asset needs replacing, a single image-model call can swap it locally, without scrapping the whole piece and starting over. We have also made some optimizations for tasks like PPT, which lean even more on manual second-pass editing.
