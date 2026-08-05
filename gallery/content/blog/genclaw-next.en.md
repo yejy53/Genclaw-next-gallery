@@ -39,13 +39,7 @@ The model knows how to write code, but struggles to cross the gulf from "structu
 We usually attribute "AI-written pages looking bad" to the model lacking taste, but a more direct explanation is this: HTML, SVG, and CSS are good at structural control and typography, yet not at hand-drawing complex visual assets. Cinematic backgrounds, 3D hero visuals, natural textures, intricate illustration—asking a model to paint these in code alone is not only expensive, it does not close the capability gap either.
 
 
-Arena-style pairwise blind tests are now one of the main ways to measure a model's design ability. For a human's first impression, the weight of **visual richness** may be higher than we assumed. A result with fairly complete material quality, hero visual, and atmosphere tends to beat one that has layout alone, even when the latter is more orderly in structure.
-
-> So a large part of what decides look and feel sits in the places code cannot draw. The ability to obtain assets has already begun to shape the final ranking in Visual Code Generation.
-
-An Agent Harness can of course let a model gather enough assets through search or generative models, and thus produce a more complete result. But if the model's behavioral preference is not to fetch assets in the first place—if it habitually reaches for hallucinated UI, abstract SVG, or color-block filler—then even with the tools mounted, it will easily fall behind in preference tests.
-
-To scale that "first impression" up to something measurable, we use a VLM to stand in for an ordinary user in pairwise blind tests. The prompt is simple:
+Arena-style pairwise blind tests are now one of the main ways to measure a model's design ability. For a human's first impression, the weight of **visual richness** may be higher than we assumed. A result with fairly complete material quality, hero visual, and atmosphere tends to beat one that has layout alone, even when the latter is more orderly in structure. To scale that "first impression" up to something measurable, we use a VLM to stand in for an ordinary user in pairwise blind tests. The prompt is simple:
 
 ```text
 Act as an ordinary user seeing two anonymous web designs. Based on your first
@@ -56,13 +50,10 @@ you genuinely have no meaningful preference.
 
 ![Arena score against average image-generation calls per model](/blog/genclaw-next/elo-vs-imagecalls.png "Arena score for each model, alongside how often it called an image generation model across the same batch of tasks")
 
-The outcome tracks closely with how willing a model is to fetch assets. The top three—Kimi K3, Claude Opus 4.8, and GLM 5.2—call an image model 5 to 8 times per task on average, while GPT-5.5 and DeepSeek V4 Pro preview at the bottom call it only 1.1 times. It is not strictly monotonic—Gemini 3.5 Flash calls 3.1 times yet scores below MiniMax M3 at 4.8—but the overall trend is clear enough: **whether a model bothers to go get assets already explains a good share of the ranking gap**.
+> So a large part of what decides look and feel sits in the places code cannot draw. The ability to obtain assets has already begun to shape the final ranking in Visual Code Generation.
 
-<!-- TODO still to add:
-For non-agentic HTML generation tasks, outputs that stably cite real, usable
-image resources (for example, sufficiently accurate Unsplash image IDs) may also score higher.
-Reference: https://www.designarena.ai/blog/kimi-k3s-design-secret-may-be-in-its-thinking-traces
--->
+The outcome tracks closely with how willing a model is to fetch assets. The top three—Kimi K3, Claude Opus 4.8, and GLM 5.2—call an image model 5 to 8 times per task on average, while GPT-5.5 and DeepSeek V4 Pro preview average only 1.1 times. An Agent Harness can of course let a model gather enough assets through search or generative models, and thus produce a more complete result. But if the model's behavioral preference is not to fetch assets in the first place—if it habitually reaches for hallucinated UI, abstract SVG, or color-block filler—then even with the tools mounted, it will easily [fall behind](https://www.designarena.ai/blog/kimi-k3s-design-secret-may-be-in-its-thinking-traces) in preference tests.
+
 
 
 ## Generation fills the asset gap of visual code
@@ -111,14 +102,11 @@ item: | /blog/genclaw-next/akari.jpg
 
 > "Aesthetics" is a prior that is extremely hard to quantify in words, yet easy to make concrete in an image. Letting the agent first "see" a possible design direction, then write real content and editable structure, is far more reliable than asking it to write blindfolded.
 
-From the results so far, the visual imaginer does gain an edge on a subset of tasks, especially posters and other work with a stronger design character. There is an interesting contrast here. In the past, when multimodal research explored "generation for understanding," pixel-generation noise often interfered on rigorous math and logic tasks; in Visual Code Generation, by contrast, image generation may feed back into the model's structural understanding and layout decisions. In other words, the image here is not only a final asset—it can also become part of how the model thinks through a design.
-
+From the results below, the visual imaginer does gain an edge on a subset of tasks, especially posters and other work with a stronger design character. In this ablation, every model's "with visual reference" variant ranks ahead of its own "without" variant. On poster design tasks, the Arena head-to-head win rate with versus without the visual imagination strategy is 63% vs 37%.
 
 ![Results with and without a visual reference](/blog/genclaw-next/imaginer-ablation.png "Arena scores for the same models under two settings: with a visual reference (solid) and without one (outlined)")
 
-In this ablation, every model's "with visual reference" variant ranks ahead of its own "without" variant. The gap is largest for Claude Opus 4.8, Kimi K3, and Gemini 3.5 Flash—over 200 points each—while MiniMax M3 is essentially flat, which suggests the strategy does not pay off equally for every model.
-
-> On poster design tasks, the Arena head-to-head win rate with versus without the visual imagination strategy is 63% vs 37%.
+There is an interesting contrast here. In the past, when multimodal research explored "generation for understanding," pixel-generation noise often interfered on rigorous math and logic tasks; in Visual Code Generation, by contrast, image generation may feed back into the model's structural understanding and layout decisions. In other words, the image here is not only a final asset—it can also become part of how the model thinks through a design.
 
 
 ## Visual Code as a new medium for content creation

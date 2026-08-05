@@ -666,6 +666,14 @@ body:has(.blog-runtime) {
   width: 100%;
 }
 
+/* Inline figures are evidence inside the argument, not full-bleed media, so
+   they sit a step inside the prose column instead of taking the wide one. */
+.blog-runtime .markdown > figure.blog-media {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: min(100%, 660px);
+}
+
 .blog-runtime .markdown figure img,
 .blog-runtime .markdown p > img {
   border: 0.5px solid var(--blog-separator);
