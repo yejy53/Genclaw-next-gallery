@@ -71,6 +71,8 @@ you genuinely have no meaningful preference.
 
 ![加 design.md 前后的配对胜负](/blog/genclaw-next/design-md-ablation.png "同一批 prompt 下，加入 design.md 前后的配对胜负，以及平均生图次数的变化")
 
+![加 design.md 前后的 Elo 对照](/blog/genclaw-next/design-md-elo.png "同一批模型在加入 design.md（实心）与基线（描边）两种设置下的 Elo 得分")
+
 
 
 

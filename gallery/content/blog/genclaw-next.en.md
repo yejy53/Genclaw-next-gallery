@@ -70,6 +70,8 @@ It looks like a small change, but it actually reorders how the agent creates: fi
 
 ![Head-to-head outcomes before and after adding design.md](/blog/genclaw-next/design-md-ablation.png "Head-to-head outcomes on the same batch of prompts, before and after adding design.md, alongside the change in average image-generation calls")
 
+![Elo comparison before and after adding design.md](/blog/genclaw-next/design-md-elo.png "Elo scores for the same models with design.md added (solid) versus the baseline (outlined)")
+
 
 ```case
 mode: gallery
