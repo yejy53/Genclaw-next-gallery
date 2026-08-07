@@ -22,32 +22,40 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-_REEXEC_FLAG = "GALLERY_INDEX_NATIVE_ARCH"
+_REEXEC_FLAG = "GALLERY_INDEX_ARCH_RETRY"
 
 
-def reexec_under_native_arch() -> None:
-    """Re-launch natively when started from a translated (Rosetta) process.
-
-    node ships as x86_64 on some machines, so `npm run index` hands this script
-    an x86_64 interpreter that cannot load arm64 wheels. Pillow then fails to
-    import and covers would silently ship at full resolution.
-    """
-    if sys.platform != "darwin" or os.environ.get(_REEXEC_FLAG):
-        return
-    if platform.machine() != "x86_64":
-        return
+def pillow_loads() -> bool:
     try:
-        arm_capable = subprocess.run(
-            ["sysctl", "-n", "hw.optional.arm64"],
-            capture_output=True, text=True, timeout=5,
-        ).stdout.strip() == "1"
+        from PIL import Image  # noqa: F401
     except Exception:
+        return False
+    return True
+
+
+def reexec_for_pillow() -> None:
+    """Retry under the other architecture when Pillow will not load.
+
+    Covers are the one asset every visitor downloads, and Pillow is what
+    shrinks them; if it fails to import they silently ship at print
+    resolution. node is x86_64 here, so `npm run index` hands this script a
+    translated interpreter, and a working Pillow may sit on either slice
+    depending on how its image libraries were installed. Rather than pinning
+    an architecture, try the current one and flip once.
+    """
+    if pillow_loads() or sys.platform != "darwin" or os.environ.get(_REEXEC_FLAG):
         return
-    if not arm_capable:
+    other = "x86_64" if platform.machine() == "arm64" else "arm64"
+    try:
+        subprocess.run(
+            ["arch", f"-{other}", "/usr/bin/true"],
+            check=True, capture_output=True, timeout=5,
+        )
+    except Exception:
         return
     os.execvpe(
         "arch",
-        ["arch", "-arm64", sys.executable, *sys.argv],
+        ["arch", f"-{other}", sys.executable, *sys.argv],
         {**os.environ, _REEXEC_FLAG: "1"},
     )
 
@@ -145,13 +153,7 @@ def validate_case(item: dict[str, Any]) -> None:
     slug = item.get("slug")
     if not isinstance(slug, str) or not SAFE_SLUG.fullmatch(slug):
         raise ValueError(f"Invalid case slug: {slug!r}")
-    if item.get("category") not in {
-        "web",
-        "poster",
-        "slide",
-        "infographic",
-        "svg",
-    }:
+    if item.get("category") not in {"web", "poster", "infographic", "svg"}:
         raise ValueError(f"Invalid category for {slug}")
     if not item.get("results"):
         raise ValueError(f"Case must contain at least one result: {slug}")
@@ -347,5 +349,5 @@ def build() -> None:
 
 
 if __name__ == "__main__":
-    reexec_under_native_arch()
+    reexec_for_pillow()
     build()

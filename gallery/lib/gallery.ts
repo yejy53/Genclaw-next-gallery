@@ -6,13 +6,7 @@ export const codeRepoUrl = "https://github.com/yejy53/GenClaw";
 export const locales = ["zh", "en"] as const;
 export type Locale = (typeof locales)[number];
 
-export const categoryIds = [
-  "web",
-  "poster",
-  "slide",
-  "infographic",
-  "svg",
-] as const;
+export const categoryIds = ["web", "poster", "infographic", "svg"] as const;
 export type CategoryId = (typeof categoryIds)[number];
 
 export type LocalizedText = {
@@ -26,6 +20,9 @@ export type GalleryResult = {
   kind: "html" | "image" | "svg";
   preview: string;
   artifact: string;
+  // Fixed-canvas pages (a poster sheet, say) declare their own dimensions so
+  // the viewer can show the whole thing instead of scrolling a desktop window.
+  canvas?: { width: number; height: number };
   model?: string;
   parameters?: Record<string, string | number | boolean>;
   note?: LocalizedText;
@@ -113,14 +110,12 @@ export const copy = {
     categories: {
       web: "Web / HTML",
       poster: "海报",
-      slide: "PPT / Slide",
       infographic: "信息图",
       svg: "SVG",
     },
     categoryDescriptions: {
       web: "可直接交互、拖动与改变视口的网页作品。",
       poster: "强调版式、文字准确度与视觉冲击力的平面实验。",
-      slide: "面向汇报场景的 16:9 单页演示与数据叙事。",
       infographic: "将结构、流程与数据压缩成清晰的视觉信息。",
       svg: "以矢量输出的图形与图标系统，可无损缩放。",
     },
@@ -155,7 +150,7 @@ export const copy = {
     introEyebrow: "GenClaw-Next · Visual Archive",
     introTitle: "Turning prompts into interactive visual outcomes.",
     introBody:
-      "A curated archive of web, poster, slide, and infographic experiments. Each case preserves its original prompt, production method, and frozen outputs for review and comparison.",
+      "A curated archive of web, poster, infographic, and SVG experiments. Each case preserves its original prompt, production method, and frozen outputs for review and comparison.",
     enterArchive: "Enter the archive",
     featuredEyebrow: "Featured Work",
     selected: "Selected Cases",
@@ -191,14 +186,12 @@ export const copy = {
     categories: {
       web: "Web / HTML",
       poster: "Poster",
-      slide: "PPT / Slide",
       infographic: "Infographic",
       svg: "SVG",
     },
     categoryDescriptions: {
       web: "Interactive web pieces with draggable content and responsive viewport previews.",
       poster: "Graphic experiments focused on typography, hierarchy, and visual impact.",
-      slide: "16:9 presentation pages designed for concise data storytelling.",
       infographic: "Clear visual systems for structures, processes, and data.",
       svg: "Vector graphics and icon systems that scale losslessly.",
     },

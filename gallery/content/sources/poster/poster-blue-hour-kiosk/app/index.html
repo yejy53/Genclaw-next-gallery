@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>黄昏之后｜After the Glow</title>
+  <style>
+    :root {
+      --font-display: "Weibei SC", serif;
+      --font-body: "PingFang SC", sans-serif;
+      --paper: #f5f0f2;
+      --coral: #ff6678;
+      --coral-hot: #ff3f59;
+      --cyan: #8ee7ff;
+      --ink: #08295a;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1200px;
+      height: 1600px;
+      overflow: hidden;
+      background: var(--ink);
+    }
+    .poster {
+      position: relative;
+      width: 1200px;
+      height: 1600px;
+      overflow: hidden;
+      isolation: isolate;
+      background: var(--ink);
+    }
+    .poster-bg {
+      position: absolute;
+      inset: 0;
+      width: 1200px;
+      height: 1600px;
+      object-fit: cover;
+      object-position: center center;
+      z-index: 0;
+    }
+    .sky-veil {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(3, 27, 76, 0.48) 0%, rgba(7, 42, 95, 0.14) 34%, rgba(6, 39, 86, 0) 52%),
+        linear-gradient(90deg, rgba(4, 27, 73, 0.2) 0%, rgba(4, 27, 73, 0) 68%);
+      pointer-events: none;
+    }
+    .grain {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      opacity: 0.12;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.42) 0.7px, transparent 0.9px),
+        radial-gradient(circle at 80% 60%, rgba(3, 24, 67, 0.5) 0.7px, transparent 1px);
+      background-size: 7px 7px, 9px 9px;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+    .art-copy {
+      position: absolute;
+      left: 76px;
+      top: 70px;
+      width: 1048px;
+      height: 540px;
+      z-index: 5;
+      color: var(--paper);
+      font-family: var(--font-body);
+    }
+    .english-title {
+      display: block;
+      width: 520px;
+      font-family: var(--font-body);
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 46px;
+      letter-spacing: 8px;
+      color: var(--cyan);
+      white-space: nowrap;
+    }
+    .tagline {
+      display: block;
+      margin-top: 30px;
+      margin-left: 8px;
+      width: 900px;
+      font-family: var(--font-body);
+      font-size: 34px;
+      font-weight: 500;
+      line-height: 52px;
+      letter-spacing: 6px;
+      color: var(--paper);
+      white-space: nowrap;
+      text-shadow: 0 3px 12px rgba(1, 17, 49, 0.78);
+    }
+  </style>
+  
+  
+</head>
+<body style=""><main class="poster" data-canvas-width="1200" data-canvas-height="1600" style="">
+    <img class="poster-bg" src="assets/blue-hour-kiosk.png" alt="">
+    <div class="sky-veil" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="art-copy" style="inset: 70px auto auto 76px; width: 1048px; height: 540px; pointer-events: none;"></div><span class="english-title" data-layer-id="english_title" data-copy-id="english_title" style="position: absolute; inset: 70px auto auto 76px; width: 675.9px; margin: 0px; transform: none; pointer-events: auto; z-index: 5; font-size: 81.5px;">After the Glow</span><span class="tagline" data-layer-id="tagline" data-copy-id="tagline" style="position: absolute; inset: 774px auto auto 253.7px; width: 900px; margin: 0px; transform: none; pointer-events: auto; z-index: 5; font-size: 46.2px;">今晚不营业，只贩卖落日和孤独。</span>
+  </main>
+  
+
+
+</body></html>

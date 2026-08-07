@@ -5,25 +5,24 @@ import {
   assetUrl,
   copy,
   localize,
-  type CategoryId,
   type GalleryResult,
   type Locale,
 } from "@/lib/gallery";
 import { ExpandIcon, RefreshIcon } from "@/components/icons";
 
-// A single desktop format. Slides carry a fixed 16:9 canvas and are shown in
-// full ("contain"); every other live page renders at a desktop width and may
-// scroll inside its own frame ("page").
-type Viewport = { width: number; height: number };
+// A page that declares a fixed canvas (a poster sheet) is shown whole
+// ("contain"); anything else renders at a desktop width and scrolls inside its
+// own frame ("page").
+const DESKTOP = { width: 1280, height: 900 };
 
-function viewportFor(category: CategoryId): {
-  viewport: Viewport;
+function viewportFor(result: GalleryResult): {
+  viewport: { width: number; height: number };
   mode: "contain" | "page";
 } {
-  if (category === "slide") {
-    return { viewport: { width: 4096, height: 2304 }, mode: "contain" };
+  if (result.canvas) {
+    return { viewport: result.canvas, mode: "contain" };
   }
-  return { viewport: { width: 1280, height: 900 }, mode: "page" };
+  return { viewport: DESKTOP, mode: "page" };
 }
 
 function useContainerWidth<T extends HTMLElement>() {
@@ -42,17 +41,9 @@ function useContainerWidth<T extends HTMLElement>() {
   return { ref, width };
 }
 
-function HtmlResult({
-  result,
-  locale,
-  category,
-}: {
-  result: GalleryResult;
-  locale: Locale;
-  category: CategoryId;
-}) {
+function HtmlResult({ result, locale }: { result: GalleryResult; locale: Locale }) {
   const t = copy[locale];
-  const { viewport, mode } = viewportFor(category);
+  const { viewport, mode } = viewportFor(result);
   const [reloadKey, setReloadKey] = useState(0);
   const { ref, width: stageWidth } = useContainerWidth<HTMLDivElement>();
 
@@ -65,7 +56,9 @@ function HtmlResult({
     <>
       <div className="viewer-toolbar">
         <span className="viewer-static-label">
-          {mode === "contain" ? "16 : 9" : t.desktop}
+          {mode === "contain"
+            ? `${viewport.width} × ${viewport.height}`
+            : t.desktop}
         </span>
         <div className="viewer-actions">
           <button type="button" onClick={() => setReloadKey((key) => key + 1)}>
@@ -132,11 +125,9 @@ function ImageResult({
 export function ResultStage({
   results,
   locale,
-  category,
 }: {
   results: GalleryResult[];
   locale: Locale;
-  category: CategoryId;
 }) {
   const t = copy[locale];
   const [activeId, setActiveId] = useState(results[0]?.id);
@@ -160,7 +151,7 @@ export function ResultStage({
       )}
       <div className="result-panel">
         {current.kind === "html" ? (
-          <HtmlResult result={current} locale={locale} category={category} />
+          <HtmlResult result={current} locale={locale} />
         ) : (
           <ImageResult result={current} locale={locale} />
         )}

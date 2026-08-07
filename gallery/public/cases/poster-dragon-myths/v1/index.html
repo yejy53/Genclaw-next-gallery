@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>龙行万象</title>
+<style>
+:root {
+  --ink: #172A32;
+  --quiet: #62594C;
+  --ivory: #EFE4CB;
+  --cinnabar: #A7271F;
+  --display: "Weibei SC", serif;
+  --serif-cn: "Songti SC", serif;
+  --serif-en: "Baskerville", serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #26231e; }
+body { min-width: 3000px; }
+.poster {
+  position: relative;
+  width: 3000px;
+  height: 4000px;
+  overflow: hidden;
+  background: #d8c5a1;
+  isolation: isolate;
+}
+.artwork {
+  position: absolute;
+  inset: 0;
+  width: 3000px;
+  height: 4000px;
+  object-fit: cover;
+  display: block;
+}
+.wash {
+  position: absolute;
+  left: 0;
+  top: 1220px;
+  width: 1370px;
+  height: 2780px;
+  background:
+    radial-gradient(ellipse at bottom left, rgba(239,228,203,0.55) 0%, rgba(239,228,203,0.31) 42%, rgba(239,228,203,0) 76%),
+    linear-gradient(180deg, rgba(239,228,203,0) 0%, rgba(239,228,203,0.18) 46%, rgba(239,228,203,0.30) 100%);
+  filter: blur(42px);
+  transform: translate(-28px, 22px);
+}
+.paper-glaze {
+  position: absolute;
+  inset: 0;
+  width: 3000px;
+  height: 4000px;
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,0) 42%, rgba(74,45,24,0.10) 100%),
+    repeating-linear-gradient(19deg, rgba(72,52,31,0.015) 0px, rgba(72,52,31,0.015) 1px, rgba(255,255,255,0) 1px, rgba(255,255,255,0) 6px);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.title {
+  position: absolute;
+  left: 180px;
+  top: 1560px;
+  width: 320px;
+  height: 1276px;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 292px;
+  line-height: 1;
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  text-shadow: 1px 1px 0 rgba(239,228,203,0.18), -1px 0 0 rgba(23,42,50,0.26);
+}
+.title-char {
+  display: block;
+  flex: 0 0 292px;
+  width: 320px;
+  height: 292px;
+  font-size: 292px;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+.subhead {
+  position: absolute;
+  left: 575px;
+  top: 1620px;
+  width: 102px;
+  height: 910px;
+  color: rgba(98,89,76,0.85);
+  font-family: var(--serif-cn);
+  font-size: 64px;
+  line-height: 1.18;
+  letter-spacing: 16px;
+  font-weight: 600;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  white-space: nowrap;
+}
+.english-title {
+  position: absolute;
+  left: 735px;
+  top: 2250px;
+  width: 720px;
+  color: rgba(98,89,76,0.88);
+  font-family: var(--serif-en);
+  font-size: 44px;
+  line-height: 1.35;
+  letter-spacing: 9px;
+  font-weight: 500;
+}
+.english-title span { display: block; white-space: nowrap; }
+.english-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -32px;
+  width: 148px;
+  height: 3px;
+  background: rgba(98,89,76,0.6);
+}
+.seal {
+  position: absolute;
+  left: 490px;
+  top: 2570px;
+  width: 250px;
+  height: 250px;
+  transform: rotate(-2deg);
+  font-family: "PingFang SC";
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  opacity: 0.94;
+}
+.statement {
+  position: absolute;
+  left: 220px;
+  top: 3170px;
+  width: 1080px;
+  color: var(--ink);
+  font-family: var(--serif-cn);
+  font-size: 84px;
+  line-height: 1.36;
+  letter-spacing: 8px;
+  font-weight: 600;
+}
+.statement span { display: block; white-space: nowrap; }
+.statement::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -43px;
+  width: 340px;
+  height: 4px;
+  background: rgba(23,42,50,0.56);
+}
+.event-info {
+  position: absolute;
+  left: 220px;
+  top: 3475px;
+  width: 980px;
+  color: var(--quiet);
+  font-family: "PingFang SC";
+}
+.date {
+  font-family: var(--serif-en);
+  font-size: 66px;
+  line-height: 1;
+  letter-spacing: 5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.venue-cn {
+  margin-top: 35px;
+  font-family: var(--serif-cn);
+  font-size: 70px;
+  line-height: 1;
+  letter-spacing: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.venue-en {
+  margin-top: 22px;
+  font-family: var(--serif-en);
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: 5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.hours {
+  position: absolute;
+  left: 220px;
+  top: 3785px;
+  width: 790px;
+  color: var(--quiet);
+  font-family: var(--serif-en);
+  font-size: 40px;
+  line-height: 1.35;
+  letter-spacing: 6px;
+  font-weight: 500;
+}
+.hours span { display: block; white-space: nowrap; }
+.edge-rule {
+  position: absolute;
+  left: 220px;
+  bottom: 80px;
+  width: 1020px;
+  height: 2px;
+  background: rgba(98,89,76,0.42);
+}
+</style>
+</head>
+<body>
+<main class="poster" data-canvas-width="3000" data-canvas-height="4000">
+  <img class="artwork" src="assets/dragon-background-v5.png" alt="">
+  <div class="wash"></div>
+  <div class="paper-glaze"></div>
+  <div class="title" data-layer-id="headline">
+    <span class="title-char" data-copy-id="headline_dragon">龙</span>
+    <span class="title-char" data-copy-id="headline_move">行</span>
+    <span class="title-char" data-copy-id="headline_myriad">万</span>
+    <span class="title-char" data-copy-id="headline_forms">象</span>
+  </div>
+  <div class="subhead" data-layer-id="subhead" data-copy-id="subhead">东方神话幻想艺术展</div>
+  <div class="english-title" data-layer-id="english_title">
+    <span data-copy-id="english_line_1">THE AWAKENING</span>
+    <span data-copy-id="english_line_2">OF EASTERN MYTHS</span>
+  </div>
+  <img class="seal" data-layer-id="seal" src="assets/seal.png" alt="东方异想朱砂印章">
+  <div class="statement" data-layer-id="statement">
+    <span data-copy-id="statement_line_1">神龙破云而来</span>
+    <span data-copy-id="statement_line_2">千年万象随之苏醒</span>
+  </div>
+  <div class="event-info" data-layer-id="event_info">
+    <div class="date" data-copy-id="date">2026.09.18—11.08</div>
+    <div class="venue-cn" data-copy-id="venue_cn">云上美术馆</div>
+    <div class="venue-en" data-copy-id="venue_en">YUNSHANG ART MUSEUM</div>
+  </div>
+  <div class="hours" data-layer-id="hours">
+    <span data-copy-id="open_hours">OPEN 10:00—18:00</span>
+    <span data-copy-id="closed_day">MONDAY CLOSED</span>
+  </div>
+  <div class="edge-rule"></div>
+</main>
+</body>
+</html>

@@ -32,13 +32,6 @@
         "preview": "/cases/robot-hero-selector/cover.webp"
       }
     ],
-    "baseline": {
-      "id": "claude",
-      "producer": "Claude",
-      "kind": "html",
-      "artifact": "/cases/robot-hero-selector/baseline.html",
-      "preview": "/cases/robot-hero-selector/baseline-preview.png"
-    },
     "cover": "/cases/robot-hero-selector/cover.webp"
   },
   {
@@ -74,13 +67,6 @@
         "preview": "/cases/animation-studio-loop/cover.webp"
       }
     ],
-    "baseline": {
-      "id": "claude",
-      "producer": "Claude",
-      "kind": "html",
-      "artifact": "/cases/animation-studio-loop/baseline.html",
-      "preview": "/cases/animation-studio-loop/baseline-preview.png"
-    },
     "cover": "/cases/animation-studio-loop/cover.webp"
   },
   {
@@ -116,13 +102,6 @@
         "preview": "/cases/microscopic-life-atlas/cover.webp"
       }
     ],
-    "baseline": {
-      "id": "claude",
-      "producer": "Claude",
-      "kind": "html",
-      "artifact": "/cases/microscopic-life-atlas/baseline.html",
-      "preview": "/cases/microscopic-life-atlas/baseline-preview.png"
-    },
     "cover": "/cases/microscopic-life-atlas/cover.webp"
   },
   {
@@ -158,13 +137,6 @@
         "preview": "/cases/spotify-music-interface/cover.webp"
       }
     ],
-    "baseline": {
-      "id": "claude",
-      "producer": "Claude",
-      "kind": "html",
-      "artifact": "/cases/spotify-music-interface/baseline.html",
-      "preview": "/cases/spotify-music-interface/baseline-preview.png"
-    },
     "cover": "/cases/spotify-music-interface/cover.webp"
   },
   {
@@ -200,13 +172,6 @@
         "preview": "/cases/minecraft-encyclopedia/cover.webp"
       }
     ],
-    "baseline": {
-      "id": "claude",
-      "producer": "Claude",
-      "kind": "html",
-      "artifact": "/cases/minecraft-encyclopedia/baseline.html",
-      "preview": "/cases/minecraft-encyclopedia/baseline-preview.png"
-    },
     "cover": "/cases/minecraft-encyclopedia/cover.webp"
   },
   {
@@ -242,13 +207,6 @@
         "preview": "/cases/pizza-restaurant-site/cover.webp"
       }
     ],
-    "baseline": {
-      "id": "claude",
-      "producer": "Claude",
-      "kind": "html",
-      "artifact": "/cases/pizza-restaurant-site/baseline.html",
-      "preview": "/cases/pizza-restaurant-site/baseline-preview.png"
-    },
     "cover": "/cases/pizza-restaurant-site/cover.webp"
   },
   {
@@ -399,130 +357,121 @@
     "cover": "/cases/poster-chongqing-rain-night/cover.webp"
   },
   {
-    "slug": "oneiro-agent-architecture",
-    "category": "slide",
+    "slug": "poster-sky-sample-archive",
+    "category": "poster",
     "title": {
-      "zh": "OneiroAgent 架构图",
-      "en": "OneiroAgent Architecture"
+      "zh": "天空样本档案",
+      "en": "Sky Sample Archive"
     },
     "summary": {
-      "zh": "认知智能体架构示意：感知输入、记忆库、想象/做梦模块、规划、行动五段流程，中央以一帧预测画面强调想象力驱动决策。",
-      "en": "A cognitive-agent architecture diagram: perception, memory, an imagination / dreaming module, planning and action, with a predicted frame at the centre foregrounding imagination-driven decisions."
+      "zh": "把一段实拍天空当作观测样本来排版：中央是天空主图，四周环绕日期、经纬度、海拔、云层高度、风向与角度刻度，用图表语汇组织一张风景。",
+      "en": "A photographed sky treated as a specimen: the sample sits at the centre while date, coordinates, altitude, cloud height, wind direction and angle scales wrap around it, organising a landscape through the vocabulary of charts."
     },
-    "promptOriginal": "做一页 16:9 的幻灯片，画一个虚构智能体 OneiroAgent 的架构：感知输入 → 记忆库 → “想象/做梦”模块 → 规划 → 行动。重点是“想象”模块里要画出它脑补出来的一帧未来场景画面，和其他模块形成对比，科技又带点梦境感。The output is an HTML.",
-    "coverAspect": "landscape",
-    "featured": false,
-    "tags": [
-      "Slide",
-      "Architecture",
-      "16:9"
-    ],
-    "year": "2026",
-    "results": [
-      {
-        "id": "figure",
-        "producer": "GenClaw-Next · Figure",
-        "kind": "image",
-        "artifact": "/cases/oneiro-agent-architecture/figure.png",
-        "preview": "/cases/oneiro-agent-architecture/figure.png"
-      }
-    ],
-    "baseline": {
-      "id": "claude",
-      "producer": "Claude",
-      "kind": "html",
-      "artifact": "/cases/oneiro-agent-architecture/baseline.html",
-      "preview": "/cases/oneiro-agent-architecture/baseline-preview.png"
-    },
+    "promptOriginal": "做一张“天空样本档案”主题的海报，把一段实拍天空当作大气观测样本来呈现：配上日期、时间、经纬度、海拔等字段，以及云层高度、风向与角度刻度，整体像一页野外观测记录。The output is an HTML.",
     "prompt": {
-      "zh": "做一页 16:9 的幻灯片，画一个虚构智能体 OneiroAgent 的架构：感知输入 → 记忆库 → “想象/做梦”模块 → 规划 → 行动。重点是“想象”模块里要画出它脑补出来的一帧未来场景画面，和其他模块形成对比，科技又带点梦境感。The output is an HTML.",
-      "en": "Make a single 16:9 slide diagramming the architecture of a fictional agent, OneiroAgent: perception input → memory store → an “imagine / dream” module → planning → action. The point is that the “imagine” module should render one frame of the future scene it has conjured up, set off against the other modules — technical, with a touch of dream. The output is an HTML."
+      "zh": "做一张“天空样本档案”主题的海报，把一段实拍天空当作大气观测样本来呈现：配上日期、时间、经纬度、海拔等字段，以及云层高度、风向与角度刻度，整体像一页野外观测记录。The output is an HTML.",
+      "en": "Make a poster on the theme “Sky Sample Archive”, presenting a photographed sky as an atmospheric specimen: annotate it with date, time, coordinates and altitude, plus cloud height, wind direction and angle scales, so the whole reads as a page from a field record. The output is an HTML."
     },
-    "cover": "/cases/oneiro-agent-architecture/cover.webp"
-  },
-  {
-    "slug": "urban-mobility-keynote",
-    "category": "slide",
-    "title": {
-      "zh": "重新想象城市出行 · 主题页",
-      "en": "Reimagining Urban Mobility · Keynote"
-    },
-    "summary": {
-      "zh": "Keynote 封面页：夜景城市与轨道交通实景铺底，左侧为中英双标题、2035 展望与演讲者信息。",
-      "en": "A keynote opening slide: a night-time city and transit scene fills the frame, with a bilingual title, a 2035 outlook line and speaker credit on the left."
-    },
-    "promptOriginal": "一页主题演讲封面：标题“重新想象城市出行”，副标题“2035 展望”，讲者 林薇。要有能定调整场演讲的独特视觉气质与意象，而非通用模板封面。The output is an HTML.",
-    "coverAspect": "landscape",
+    "coverAspect": "portrait",
     "featured": true,
     "tags": [
-      "Slide",
-      "Keynote",
-      "16:9"
+      "Poster",
+      "HTML",
+      "Field Record"
     ],
     "year": "2026",
     "results": [
       {
-        "id": "figure",
-        "producer": "GenClaw-Next · Figure",
-        "kind": "image",
-        "artifact": "/cases/urban-mobility-keynote/figure.png",
-        "preview": "/cases/urban-mobility-keynote/figure.png"
+        "id": "v1",
+        "producer": "GenClaw-Next",
+        "kind": "html",
+        "canvas": {
+          "width": 1464,
+          "height": 1790
+        },
+        "artifact": "/cases/poster-sky-sample-archive/v1.html",
+        "preview": "/cases/poster-sky-sample-archive/v1-preview.png"
       }
     ],
-    "baseline": {
-      "id": "claude",
-      "producer": "Claude",
-      "kind": "html",
-      "artifact": "/cases/urban-mobility-keynote/baseline.html",
-      "preview": "/cases/urban-mobility-keynote/baseline-preview.png"
-    },
-    "prompt": {
-      "zh": "一页主题演讲封面：标题“重新想象城市出行”，副标题“2035 展望”，讲者 林薇。要有能定调整场演讲的独特视觉气质与意象，而非通用模板封面。The output is an HTML.",
-      "en": "A keynote opening slide: title “Reimagining Urban Mobility”, subtitle “A 2035 Outlook”, speaker Lin Wei. It needs a distinctive visual character and imagery that sets the tone for the whole talk, not a generic template cover. The output is an HTML."
-    },
-    "cover": "/cases/urban-mobility-keynote/cover.webp"
+    "cover": "/cases/poster-sky-sample-archive/cover.webp"
   },
   {
-    "slug": "salt-lake-restoration",
-    "category": "slide",
+    "slug": "poster-dragon-myths",
+    "category": "poster",
     "title": {
-      "zh": "盐湖生态修复成效对比",
-      "en": "Salt Lake Restoration · Before & After"
+      "zh": "龙行万象 · 东方神话展",
+      "en": "The Awakening of Eastern Myths"
     },
     "summary": {
-      "zh": "左右对照的修复前后页：同一视角由干裂盐碱地转为湿地飞鸟，四角数据卡标注水面、盐度、鸟类与周期；数据为示意性指标。",
-      "en": "A before-and-after split slide: the same vantage point shifts from cracked saline flats to a bird-filled wetland, with corner cards for water area, salinity, bird species and duration. The figures are illustrative."
+      "zh": "东方神话幻想艺术展主视觉：3000 × 4000 画布，水墨质感龙形主图铺满版面，左侧竖排毛笔标题与朱砂印章，下方排展期、场馆与开放时间。",
+      "en": "Key art for a fantasy exhibition of Eastern myth: on a 3000 × 4000 canvas an ink-washed dragon fills the sheet, a vertical brush title and cinnabar seal run down the left, and dates, venue and opening hours sit below."
     },
-    "promptOriginal": "前后双联对比（只有两张大图）：制作一页 16:9 虚构盐湖生态修复幻灯片，左右各一幅同视角场景插画：左为干裂盐壳荒地，右为水位恢复后的浅滩鸟群，中间一条细分割线。四角放四个指标：水面 +38%、鸟类 12→94 种、盐度 -21%、周期 6 年。The output is an HTML.",
-    "coverAspect": "landscape",
+    "promptOriginal": "做一张东方神话幻想艺术展的主视觉海报，主题“龙行万象”，神龙破云而来。竖排毛笔标题配朱砂印章，下方排展期、场馆与开放时间。The output is an HTML.",
+    "prompt": {
+      "zh": "做一张东方神话幻想艺术展的主视觉海报，主题“龙行万象”，神龙破云而来。竖排毛笔标题配朱砂印章，下方排展期、场馆与开放时间。The output is an HTML.",
+      "en": "Make key art for a fantasy exhibition of Eastern myth on the theme “The Awakening of Eastern Myths”, a dragon breaking through cloud. Set the title vertically in brush script with a cinnabar seal, and place dates, venue and opening hours below. The output is an HTML."
+    },
+    "coverAspect": "portrait",
     "featured": false,
     "tags": [
-      "Slide",
-      "Before / After",
-      "16:9"
+      "Poster",
+      "HTML",
+      "3:4"
     ],
     "year": "2026",
     "results": [
       {
-        "id": "figure",
-        "producer": "GenClaw-Next · Figure",
-        "kind": "image",
-        "artifact": "/cases/salt-lake-restoration/figure.png",
-        "preview": "/cases/salt-lake-restoration/figure.png"
+        "id": "v1",
+        "producer": "GenClaw-Next",
+        "kind": "html",
+        "canvas": {
+          "width": 3000,
+          "height": 4000
+        },
+        "artifact": "/cases/poster-dragon-myths/v1/index.html",
+        "preview": "/cases/poster-dragon-myths/v1-preview.png"
       }
     ],
-    "baseline": {
-      "id": "claude",
-      "producer": "Claude",
-      "kind": "html",
-      "artifact": "/cases/salt-lake-restoration/baseline.html",
-      "preview": "/cases/salt-lake-restoration/baseline-preview.png"
+    "cover": "/cases/poster-dragon-myths/cover.webp"
+  },
+  {
+    "slug": "poster-blue-hour-kiosk",
+    "category": "poster",
+    "title": {
+      "zh": "After the Glow · 蓝调时刻",
+      "en": "After the Glow"
     },
+    "summary": {
+      "zh": "落日之后的路边小卖部：主图占据上半版，英文标题压在画面左上，下方一行中文标语收尾，构图克制、留白大。",
+      "en": "A roadside kiosk after sundown: the photograph holds the upper half, the English title sits over its top left, and a single line of Chinese copy closes the sheet — restrained, with generous air."
+    },
+    "promptOriginal": "做一张海报，主体是暮色蓝调时刻的路边小卖部。英文主标题 After the Glow，中文标语“今晚不营业，只贩卖落日和孤独。”The output is an HTML.",
     "prompt": {
-      "zh": "前后双联对比（只有两张大图）：制作一页 16:9 虚构盐湖生态修复幻灯片，左右各一幅同视角场景插画：左为干裂盐壳荒地，右为水位恢复后的浅滩鸟群，中间一条细分割线。四角放四个指标：水面 +38%、鸟类 12→94 种、盐度 -21%、周期 6 年。The output is an HTML.",
-      "en": "A before-and-after diptych (two large images only): make a single 16:9 slide on fictional salt-lake restoration, with an illustration of the same vantage point on each side — cracked salt crust on the left, recovered shallows with flocking birds on the right, a thin divider between them. Put four metrics in the corners: water area +38%, bird species 12→94, salinity −21%, span 6 years. The output is an HTML."
+      "zh": "做一张海报，主体是暮色蓝调时刻的路边小卖部。英文主标题 After the Glow，中文标语“今晚不营业，只贩卖落日和孤独。”The output is an HTML.",
+      "en": "Make a poster whose subject is a roadside kiosk in the blue hour after sundown. English headline “After the Glow”, with the Chinese line “今晚不营业，只贩卖落日和孤独。” below. The output is an HTML."
     },
-    "cover": "/cases/salt-lake-restoration/cover.webp"
+    "coverAspect": "portrait",
+    "featured": false,
+    "tags": [
+      "Poster",
+      "HTML",
+      "3:4"
+    ],
+    "year": "2026",
+    "results": [
+      {
+        "id": "v1",
+        "producer": "GenClaw-Next",
+        "kind": "html",
+        "canvas": {
+          "width": 1200,
+          "height": 1600
+        },
+        "artifact": "/cases/poster-blue-hour-kiosk/v1/index.html",
+        "preview": "/cases/poster-blue-hour-kiosk/v1-preview.png"
+      }
+    ],
+    "cover": "/cases/poster-blue-hour-kiosk/cover.webp"
   },
   {
     "slug": "qinghua-porcelain-atlas",
@@ -535,11 +484,7 @@
       "zh": "纵向博物馆图鉴：中央高清瓷瓶，左侧四处编号注释以 SVG 细线连接，右侧圆形局部放大，中式回纹边框。",
       "en": "A vertical museum-catalogue atlas: a hi-res vase at center, four SVG-linked numbered annotations on the left, circular detail insets on the right, and a Chinese fret border."
     },
-    "promptOriginal": "请实现一个“景德镇青花瓷瓶釉色与纹饰图谱”信息图网页，采用纵向博物馆图鉴布局。\n顶部居中显示中文主标题和传统装饰分隔线，中央展示完整的青花瓷瓶高清抠图。左侧设置四个编号注释，介绍钴蓝釉色、缠枝莲纹、龙纹和底款，并通过 SVG 细线与圆点连接到瓷瓶对应位置。右侧排列四个圆形局部放大图，展示相关纹饰和釉色细节；底部使用传统边框呈现文物总结。\n视觉采用象牙白宣纸背景、深青花蓝配色、中式回纹边框和典雅宋体，呈现高端博物馆展览图录的清晰与文化感。不添加复杂交互或动画。",
-    "prompt": {
-      "zh": "请实现一个“景德镇青花瓷瓶釉色与纹饰图谱”信息图网页，采用纵向博物馆图鉴布局。\n顶部居中显示中文主标题和传统装饰分隔线，中央展示完整的青花瓷瓶高清抠图。左侧设置四个编号注释，介绍钴蓝釉色、缠枝莲纹、龙纹和底款，并通过 SVG 细线与圆点连接到瓷瓶对应位置。右侧排列四个圆形局部放大图，展示相关纹饰和釉色细节；底部使用传统边框呈现文物总结。\n视觉采用象牙白宣纸背景、深青花蓝配色、中式回纹边框和典雅宋体，呈现高端博物馆展览图录的清晰与文化感。不添加复杂交互或动画。",
-      "en": "Build a vertical, museum-catalogue infographic of a Jingdezhen blue-and-white porcelain vase: a centered hi-res vase, four numbered annotations on the left (cobalt glaze, interlocking lotus scroll, dragon motif, base mark) linked by thin SVG lines and dots, and four circular detail insets on the right, with a summary framed by a Chinese fret border. Use an ivory paper background, deep porcelain-blue palette, and elegant serif type; no complex interaction or animation."
-    },
+    "promptOriginal": "",
     "coverAspect": "portrait",
     "featured": false,
     "tags": [
@@ -557,13 +502,6 @@
         "preview": "/cases/qinghua-porcelain-atlas/v2.png"
       }
     ],
-    "baseline": {
-      "id": "claude",
-      "producer": "Claude",
-      "kind": "html",
-      "artifact": "/cases/qinghua-porcelain-atlas/baseline.html",
-      "preview": "/cases/qinghua-porcelain-atlas/baseline-preview.png"
-    },
     "cover": "/cases/qinghua-porcelain-atlas/cover.webp"
   },
   {
@@ -577,11 +515,7 @@
       "zh": "横向自然科学图鉴：中央雪豹抠图，SVG 连线标注短耳、宽鼻、厚毛、长尾与四肢，底部四列说明。",
       "en": "A horizontal nature-guide layout: a snow leopard at center with SVG callouts for ears, nose, fur, tail and limbs, plus a four-column footer."
     },
-    "promptOriginal": "请实现一个“雪豹——高山之巅的隐士”野生动物科普信息图网页，采用横向自然科学图鉴布局。\n页面中央展示完整的雪豹侧面高清抠图；左上角显示中文标题、英文名称和栖息地介绍。通过简洁的 SVG 连线和定位圆点，标注雪豹的短圆耳朵、宽大鼻腔、厚密皮毛、长尾和粗壮四肢，并用一句话说明这些特征如何帮助它适应高原环境。页面底部使用四列内容，补充介绍皮毛、鼻腔、尾巴和四肢的作用。\n采用纯白或暖灰背景、黑灰文字和大量留白，呈现冷静、专业的自然纪录片与科学杂志风格。",
-    "prompt": {
-      "zh": "请实现一个“雪豹——高山之巅的隐士”野生动物科普信息图网页，采用横向自然科学图鉴布局。\n页面中央展示完整的雪豹侧面高清抠图；左上角显示中文标题、英文名称和栖息地介绍。通过简洁的 SVG 连线和定位圆点，标注雪豹的短圆耳朵、宽大鼻腔、厚密皮毛、长尾和粗壮四肢，并用一句话说明这些特征如何帮助它适应高原环境。页面底部使用四列内容，补充介绍皮毛、鼻腔、尾巴和四肢的作用。\n采用纯白或暖灰背景、黑灰文字和大量留白，呈现冷静、专业的自然纪录片与科学杂志风格。",
-      "en": "Build a horizontal nature-guide infographic of a snow leopard: a centered side-profile cutout, a Chinese title, English name and habitat note at the upper left, SVG callouts for its short round ears, wide nasal cavity, thick fur, long tail and sturdy limbs explaining how each adapts it to the plateau, and a four-column footer. Use a white or warm-grey background, black-grey text and generous whitespace for a calm, science-magazine tone."
-    },
+    "promptOriginal": "",
     "coverAspect": "landscape",
     "featured": false,
     "tags": [
@@ -599,13 +533,6 @@
         "preview": "/cases/snow-leopard-field-guide/v2.png"
       }
     ],
-    "baseline": {
-      "id": "claude",
-      "producer": "Claude",
-      "kind": "html",
-      "artifact": "/cases/snow-leopard-field-guide/baseline.html",
-      "preview": "/cases/snow-leopard-field-guide/baseline-preview.png"
-    },
     "cover": "/cases/snow-leopard-field-guide/cover.webp"
   },
   {
@@ -619,11 +546,7 @@
       "zh": "3:4 日系角色设定：中央全身角色，左侧性格与表情，右上 PROFILE 卡，底部三组服装拆解。",
       "en": "A 3:4 anime character sheet: a full-body figure centered, traits and expressions at left, a PROFILE card upper-right, and a three-item outfit breakdown."
     },
-    "promptOriginal": "Create a compact 3:4 vertical Japanese anime character sheet with a white background and coral-pink and deep-navy palette. Keep one full-body girl in the center; retain “AKARI”, “あかり”, the subtitle, four personality traits and two “EXPRESSIONS” portraits on the left. Fill the upper-right with a “PROFILE” card containing “AGE 17 · STUDENT” and a short three-line character introduction, followed by the “ABOUT AKARI” and “PERSONALITY” cards below. At the bottom, show only three grouped items under “OUTFIT BREAKDOWN”: “signature jacket”, “school uniform” and “shoes & backpack”. Keep the layout information-rich, compact and readable; do not include DETAILS, COLOR PALETTE, extra accessories, duplicate characters, gibberish text or watermarks.",
-    "prompt": {
-      "zh": "制作一张紧凑的 3:4 竖版日系动漫角色设定图，白色背景配珊瑚粉与深藏青。中央保留一个全身女孩；左侧保留“AKARI”“あかり”、副标题、四个性格特征和两张“EXPRESSIONS”表情图。右上角为“PROFILE”卡片，含“AGE 17 · STUDENT”和三行角色简介，下方接“ABOUT AKARI”和“PERSONALITY”卡片。底部“OUTFIT BREAKDOWN”只列三组：签名夹克、校服、鞋与背包。版面信息丰富、紧凑、可读；不要 DETAILS、COLOR PALETTE、多余配饰、重复角色、乱码或水印。",
-      "en": "Create a compact 3:4 vertical Japanese anime character sheet with a white background and coral-pink and deep-navy palette. Keep one full-body girl in the center; retain “AKARI”, “あかり”, the subtitle, four personality traits and two “EXPRESSIONS” portraits on the left. Fill the upper-right with a “PROFILE” card containing “AGE 17 · STUDENT” and a short three-line character introduction, followed by the “ABOUT AKARI” and “PERSONALITY” cards below. At the bottom, show only three grouped items under “OUTFIT BREAKDOWN”: “signature jacket”, “school uniform” and “shoes & backpack”. Keep the layout information-rich, compact and readable; do not include DETAILS, COLOR PALETTE, extra accessories, duplicate characters, gibberish text or watermarks."
-    },
+    "promptOriginal": "",
     "coverAspect": "portrait",
     "featured": true,
     "tags": [
@@ -641,13 +564,6 @@
         "preview": "/cases/akari-character-sheet/v2.png"
       }
     ],
-    "baseline": {
-      "id": "claude",
-      "producer": "Claude",
-      "kind": "html",
-      "artifact": "/cases/akari-character-sheet/baseline.html",
-      "preview": "/cases/akari-character-sheet/baseline-preview.png"
-    },
     "cover": "/cases/akari-character-sheet/cover.webp"
   },
   {
@@ -661,11 +577,7 @@
       "zh": "系统思考冰山模型：事件、模式与趋势、结构、心智模式四层由浅入深嵌套。",
       "en": "The systems-thinking Iceberg Model: Events, Patterns & Trends, Structure, and Mental Models nested from surface to depth."
     },
-    "promptOriginal": "Create a visual knowledge card illustrating the four layers of the Iceberg Model in systems thinking: Events, Patterns & Trends, Structure, and Mental Models. Present them as nested layers moving from the surface to the deepest level, with Events containing Patterns & Trends, Patterns & Trends containing Structure, and Structure containing Mental Models.",
-    "prompt": {
-      "zh": "制作一张“系统思考·冰山模型”知识卡，展示四个层级：事件（Events）、模式与趋势（Patterns & Trends）、结构（Structure）、心智模式（Mental Models）。以由浅入深的嵌套层级呈现：事件包含模式与趋势，模式与趋势包含结构，结构包含心智模式。",
-      "en": "Create a visual knowledge card illustrating the four layers of the Iceberg Model in systems thinking: Events, Patterns & Trends, Structure, and Mental Models. Present them as nested layers moving from the surface to the deepest level, with Events containing Patterns & Trends, Patterns & Trends containing Structure, and Structure containing Mental Models."
-    },
+    "promptOriginal": "",
     "coverAspect": "square",
     "featured": false,
     "tags": [
@@ -683,13 +595,6 @@
         "preview": "/cases/iceberg-model-card/v2.png"
       }
     ],
-    "baseline": {
-      "id": "claude",
-      "producer": "Claude",
-      "kind": "html",
-      "artifact": "/cases/iceberg-model-card/baseline.html",
-      "preview": "/cases/iceberg-model-card/baseline-preview.png"
-    },
     "cover": "/cases/iceberg-model-card/cover.webp"
   },
   {
@@ -703,7 +608,7 @@
       "zh": "矢量智能手表：深色表体与侧边旋钮，表盘上有时间、日期、天气、三环活动进度与心率波形。",
       "en": "A vector smartwatch: a dark case with a side crown, its face carrying the time, date, weather, three activity rings and a heart-rate trace."
     },
-    "promptOriginal": "生成一张 Apple Watch 智能手表的 SVG 插画。",
+    "promptOriginal": "",
     "coverAspect": "square",
     "featured": false,
     "tags": [
@@ -721,17 +626,6 @@
         "preview": "/cases/svg-apple-watch/ours.svg"
       }
     ],
-    "baseline": {
-      "id": "claude",
-      "producer": "Claude",
-      "kind": "svg",
-      "artifact": "/cases/svg-apple-watch/baseline.svg",
-      "preview": "/cases/svg-apple-watch/baseline.svg"
-    },
-    "prompt": {
-      "zh": "生成一张 Apple Watch 智能手表的 SVG 插画。",
-      "en": "Generate an SVG illustration of an Apple Watch."
-    },
     "cover": "/cases/svg-apple-watch/cover.svg"
   },
   {
@@ -745,7 +639,7 @@
       "zh": "矢量拍立得相机：浅蓝机身配同心圆镜筒，取景窗、闪光灯与快门齐备，镜圈标注焦段与对焦范围。",
       "en": "A vector instant camera: a pale-blue body with a concentric lens barrel, viewfinder, flash and shutter, the lens ring labelled with focal length and focus range."
     },
-    "promptOriginal": "生成一张 instax mini 12 拍立得相机的 SVG 插画。",
+    "promptOriginal": "",
     "coverAspect": "square",
     "featured": true,
     "tags": [
@@ -763,17 +657,6 @@
         "preview": "/cases/svg-instax-mini/ours.svg"
       }
     ],
-    "baseline": {
-      "id": "theirs",
-      "producer": "对照案例",
-      "kind": "svg",
-      "artifact": "/cases/svg-instax-mini/baseline.svg",
-      "preview": "/cases/svg-instax-mini/baseline.svg"
-    },
-    "prompt": {
-      "zh": "生成一张 instax mini 12 拍立得相机的 SVG 插画。",
-      "en": "Generate an SVG illustration of an instax mini 12 instant camera."
-    },
     "cover": "/cases/svg-instax-mini/cover.svg"
   },
   {
@@ -787,7 +670,7 @@
       "zh": "矢量掌上游戏机：横向机身两侧为可拆手柄，摇杆、按键与肩键完整，屏幕与外壳以高光表现材质。",
       "en": "A vector handheld console: detachable controllers flank the landscape body, with complete sticks, buttons and shoulder keys, and highlights giving the screen and shell their material."
     },
-    "promptOriginal": "生成一张 Switch 2 掌上游戏机的 SVG 插画。",
+    "promptOriginal": "",
     "coverAspect": "landscape",
     "featured": false,
     "tags": [
@@ -805,17 +688,6 @@
         "preview": "/cases/svg-switch2/ours.svg"
       }
     ],
-    "baseline": {
-      "id": "theirs",
-      "producer": "对照案例",
-      "kind": "svg",
-      "artifact": "/cases/svg-switch2/baseline.svg",
-      "preview": "/cases/svg-switch2/baseline.svg"
-    },
-    "prompt": {
-      "zh": "生成一张 Switch 2 掌上游戏机的 SVG 插画。",
-      "en": "Generate an SVG illustration of a Switch 2 handheld console."
-    },
     "cover": "/cases/svg-switch2/cover.svg"
   },
   {
@@ -829,11 +701,7 @@
       "zh": "矢量折扇：展开的扇面绘远山、红日与松枝，分层纸面配深色扇骨与金色边缘。",
       "en": "A vector folding fan: the open leaf carries distant mountains, a red sun and pine boughs across layered panels, with dark ribs and a gold rim."
     },
-    "promptOriginal": "生成一张折扇的 SVG 插画。",
-    "prompt": {
-      "zh": "生成一张折扇的 SVG 插画。",
-      "en": "Generate an SVG illustration of a folding fan."
-    },
+    "promptOriginal": "",
     "coverAspect": "landscape",
     "featured": false,
     "tags": [
@@ -851,13 +719,6 @@
         "preview": "/cases/svg-folding-fan/ours.svg"
       }
     ],
-    "baseline": {
-      "id": "theirs",
-      "producer": "对照案例",
-      "kind": "svg",
-      "artifact": "/cases/svg-folding-fan/baseline.svg",
-      "preview": "/cases/svg-folding-fan/baseline.svg"
-    },
     "cover": "/cases/svg-folding-fan/cover.svg"
   }
 ]

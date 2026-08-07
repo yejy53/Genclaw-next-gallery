@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-30T07:00:22.829755+00:00",
+  "generatedAt": "2026-08-07T08:24:17.398412+00:00",
   "caseCount": 20,
   "resultCount": 23,
   "preservedCases": [],
@@ -16,11 +16,6 @@
       "source": "gallery/content/sources/web/robot-hero-selector/app"
     },
     {
-      "case": "robot-hero-selector",
-      "role": "baseline",
-      "source": "gallery/content/sources/claude/robot-hero-selector.html"
-    },
-    {
       "case": "animation-studio-loop",
       "role": "cover",
       "source": "gallery/content/sources/web/animation-studio-loop/cover.png"
@@ -29,11 +24,6 @@
       "case": "animation-studio-loop",
       "role": "result:v2",
       "source": "gallery/content/sources/web/animation-studio-loop/app"
-    },
-    {
-      "case": "animation-studio-loop",
-      "role": "baseline",
-      "source": "gallery/content/sources/claude/animation-studio-loop.html"
     },
     {
       "case": "microscopic-life-atlas",
@@ -46,11 +36,6 @@
       "source": "gallery/content/sources/web/microscopic-life-atlas/app"
     },
     {
-      "case": "microscopic-life-atlas",
-      "role": "baseline",
-      "source": "gallery/content/sources/claude/microscopic-life-atlas.html"
-    },
-    {
       "case": "spotify-music-interface",
       "role": "cover",
       "source": "gallery/content/sources/web/spotify-music-interface/cover.png"
@@ -59,11 +44,6 @@
       "case": "spotify-music-interface",
       "role": "result:v1",
       "source": "gallery/content/sources/web/spotify-music-interface/app"
-    },
-    {
-      "case": "spotify-music-interface",
-      "role": "baseline",
-      "source": "gallery/content/sources/claude/spotify-music-interface.html"
     },
     {
       "case": "minecraft-encyclopedia",
@@ -76,11 +56,6 @@
       "source": "gallery/content/sources/web/minecraft-encyclopedia/app"
     },
     {
-      "case": "minecraft-encyclopedia",
-      "role": "baseline",
-      "source": "gallery/content/sources/claude/minecraft-encyclopedia.html"
-    },
-    {
       "case": "pizza-restaurant-site",
       "role": "cover",
       "source": "gallery/content/sources/web/pizza-restaurant-site/cover.png"
@@ -89,11 +64,6 @@
       "case": "pizza-restaurant-site",
       "role": "result:v1",
       "source": "gallery/content/sources/web/pizza-restaurant-site/app"
-    },
-    {
-      "case": "pizza-restaurant-site",
-      "role": "baseline",
-      "source": "gallery/content/sources/claude/pizza-restaurant-site.html"
     },
     {
       "case": "poster-shanchuan-tea-launch",
@@ -156,49 +126,34 @@
       "source": "gallery/content/sources/claude/poster-chongqing-rain-night.html"
     },
     {
-      "case": "oneiro-agent-architecture",
+      "case": "poster-sky-sample-archive",
       "role": "cover",
-      "source": "gallery/content/sources/slide/oneiro-agent-architecture/figure.png"
+      "source": "gallery/content/sources/poster/poster-sky-sample-archive/cover.png"
     },
     {
-      "case": "oneiro-agent-architecture",
-      "role": "result:figure",
-      "source": "gallery/content/sources/slide/oneiro-agent-architecture/figure.png"
+      "case": "poster-sky-sample-archive",
+      "role": "result:v1",
+      "source": "gallery/content/sources/poster/poster-sky-sample-archive/poster.html"
     },
     {
-      "case": "oneiro-agent-architecture",
-      "role": "baseline",
-      "source": "gallery/content/sources/claude/oneiro-agent-architecture.html"
-    },
-    {
-      "case": "urban-mobility-keynote",
+      "case": "poster-dragon-myths",
       "role": "cover",
-      "source": "gallery/content/sources/slide/urban-mobility-keynote/figure.png"
+      "source": "gallery/content/sources/poster/poster-dragon-myths/cover.png"
     },
     {
-      "case": "urban-mobility-keynote",
-      "role": "result:figure",
-      "source": "gallery/content/sources/slide/urban-mobility-keynote/figure.png"
+      "case": "poster-dragon-myths",
+      "role": "result:v1",
+      "source": "gallery/content/sources/poster/poster-dragon-myths/app"
     },
     {
-      "case": "urban-mobility-keynote",
-      "role": "baseline",
-      "source": "gallery/content/sources/claude/urban-mobility-keynote.html"
-    },
-    {
-      "case": "salt-lake-restoration",
+      "case": "poster-blue-hour-kiosk",
       "role": "cover",
-      "source": "gallery/content/sources/slide/salt-lake-restoration/figure.png"
+      "source": "gallery/content/sources/poster/poster-blue-hour-kiosk/cover.png"
     },
     {
-      "case": "salt-lake-restoration",
-      "role": "result:figure",
-      "source": "gallery/content/sources/slide/salt-lake-restoration/figure.png"
-    },
-    {
-      "case": "salt-lake-restoration",
-      "role": "baseline",
-      "source": "gallery/content/sources/claude/salt-lake-restoration.html"
+      "case": "poster-blue-hour-kiosk",
+      "role": "result:v1",
+      "source": "gallery/content/sources/poster/poster-blue-hour-kiosk/app"
     },
     {
       "case": "qinghua-porcelain-atlas",
@@ -211,11 +166,6 @@
       "source": "gallery/content/sources/infographic/qinghua-porcelain-atlas/our.png"
     },
     {
-      "case": "qinghua-porcelain-atlas",
-      "role": "baseline",
-      "source": "gallery/content/sources/claude/qinghua-porcelain-atlas.html"
-    },
-    {
       "case": "snow-leopard-field-guide",
       "role": "cover",
       "source": "gallery/content/sources/infographic/snow-leopard-field-guide/our.png"
@@ -224,11 +174,6 @@
       "case": "snow-leopard-field-guide",
       "role": "result:v2",
       "source": "gallery/content/sources/infographic/snow-leopard-field-guide/our.png"
-    },
-    {
-      "case": "snow-leopard-field-guide",
-      "role": "baseline",
-      "source": "gallery/content/sources/claude/snow-leopard-field-guide.html"
     },
     {
       "case": "akari-character-sheet",
@@ -241,11 +186,6 @@
       "source": "gallery/content/sources/infographic/akari-character-sheet/our.png"
     },
     {
-      "case": "akari-character-sheet",
-      "role": "baseline",
-      "source": "gallery/content/sources/claude/akari-character-sheet.html"
-    },
-    {
       "case": "iceberg-model-card",
       "role": "cover",
       "source": "gallery/content/sources/infographic/iceberg-model-card/our.png"
@@ -256,11 +196,6 @@
       "source": "gallery/content/sources/infographic/iceberg-model-card/our.png"
     },
     {
-      "case": "iceberg-model-card",
-      "role": "baseline",
-      "source": "gallery/content/sources/claude/iceberg-model-card.html"
-    },
-    {
       "case": "svg-apple-watch",
       "role": "cover",
       "source": "gallery/content/sources/svg/svg-apple-watch/ours.svg"
@@ -269,11 +204,6 @@
       "case": "svg-apple-watch",
       "role": "result:ours",
       "source": "gallery/content/sources/svg/svg-apple-watch/ours.svg"
-    },
-    {
-      "case": "svg-apple-watch",
-      "role": "baseline",
-      "source": "gallery/content/sources/claude/svg-apple-watch.svg"
     },
     {
       "case": "svg-instax-mini",
@@ -286,11 +216,6 @@
       "source": "gallery/content/sources/svg/svg-instax-mini/ours.svg"
     },
     {
-      "case": "svg-instax-mini",
-      "role": "baseline",
-      "source": "gallery/content/sources/svg/svg-instax-mini/theirs.svg"
-    },
-    {
       "case": "svg-switch2",
       "role": "cover",
       "source": "gallery/content/sources/svg/svg-switch2/ours.svg"
@@ -301,11 +226,6 @@
       "source": "gallery/content/sources/svg/svg-switch2/ours.svg"
     },
     {
-      "case": "svg-switch2",
-      "role": "baseline",
-      "source": "gallery/content/sources/svg/svg-switch2/theirs.svg"
-    },
-    {
       "case": "svg-folding-fan",
       "role": "cover",
       "source": "gallery/content/sources/svg/svg-folding-fan/ours.svg"
@@ -314,11 +234,6 @@
       "case": "svg-folding-fan",
       "role": "result:ours",
       "source": "gallery/content/sources/svg/svg-folding-fan/ours.svg"
-    },
-    {
-      "case": "svg-folding-fan",
-      "role": "baseline",
-      "source": "gallery/content/sources/svg/svg-folding-fan/theirs.svg"
     }
   ],
   "notes": [

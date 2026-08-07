@@ -87,28 +87,6 @@ export function PosterIcon({ size = 16, className }: IconProps) {
   );
 }
 
-export function SlideIcon({ size = 16, className }: IconProps) {
-  return (
-    <svg {...base(size, className)}>
-      <rect
-        height="12"
-        rx="2"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        width="17"
-        x="3.5"
-        y="5"
-      />
-      <path
-        d="M12 17v3M9 20h6"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeWidth="1.4"
-      />
-    </svg>
-  );
-}
-
 export function InfographicIcon({ size = 16, className }: IconProps) {
   return (
     <svg {...base(size, className)}>
@@ -155,7 +133,7 @@ export function VectorIcon({ size = 16, className }: IconProps) {
 }
 
 export function categoryIcon(
-  id: "web" | "poster" | "slide" | "infographic" | "svg",
+  id: "web" | "poster" | "infographic" | "svg",
   size = 15
 ) {
   switch (id) {
@@ -163,8 +141,6 @@ export function categoryIcon(
       return <WebIcon size={size} />;
     case "poster":
       return <PosterIcon size={size} />;
-    case "slide":
-      return <SlideIcon size={size} />;
     case "infographic":
       return <InfographicIcon size={size} />;
     case "svg":

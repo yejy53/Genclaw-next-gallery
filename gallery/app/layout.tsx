@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s · GenClaw-Next",
   },
   description:
-    "A curated archive of web, poster, slide, and infographic experiments.",
+    "A curated archive of web, poster, infographic, and SVG experiments.",
 };
 
 // Runs before first paint so a stored dark choice never flashes light first.

@@ -13,7 +13,6 @@
   --sidebar: 244px;
   --accent-web: #c9f24e;
   --accent-poster: #ff7a59;
-  --accent-slide: #8f90ff;
   --accent-infographic: #4fc9b0;
   --accent-svg: #ff6fa5;
   --font-serif: var(--font-display), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
@@ -66,7 +65,6 @@
   --line-strong: rgba(26, 27, 30, 0.17);
   --accent-web: #6d8c00;
   --accent-poster: #d2531f;
-  --accent-slide: #5a5bdc;
   --accent-infographic: #10826b;
   --accent-svg: #d33a76;
   --shadow-soft: 0 30px 68px rgba(38, 34, 26, 0.13);
@@ -276,9 +274,6 @@ summary {
 .nav-dot-poster {
   background: var(--accent-poster);
 }
-.nav-dot-slide {
-  background: var(--accent-slide);
-}
 .nav-dot-infographic {
   background: var(--accent-infographic);
 }
@@ -417,9 +412,6 @@ summary {
 }
 .nav-glyph-poster {
   color: var(--accent-poster);
-}
-.nav-glyph-slide {
-  color: var(--accent-slide);
 }
 .nav-glyph-svg {
   color: var(--accent-svg);
@@ -1144,9 +1136,6 @@ summary {
 .category-showcase-poster .category-glow {
   background: var(--accent-poster);
 }
-.category-showcase-slide .category-glow {
-  background: var(--accent-slide);
-}
 .category-showcase-infographic .category-glow {
   background: var(--accent-infographic);
 }
@@ -1260,9 +1249,6 @@ summary {
 }
 .archive-hero-poster::after {
   background: var(--accent-poster);
-}
-.archive-hero-slide::after {
-  background: var(--accent-slide);
 }
 .archive-hero-infographic::after {
   background: var(--accent-infographic);
@@ -1462,6 +1448,13 @@ summary {
   padding: 0 clamp(24px, 6vw, 64px);
 }
 
+/* Cases with neither a prompt nor a baseline give the result the full width
+   rather than parking an empty column beside it. */
+.workbench-solo {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 1080px;
+}
+
 .wb-main {
   min-width: 0;
 }
@@ -1471,6 +1464,11 @@ summary {
   flex-direction: column;
   gap: 20px;
   min-width: 0;
+}
+
+/* Prompt alone: hug the text instead of stretching to the result's height. */
+.wb-side-compact {
+  align-self: start;
 }
 
 .wb-panel,
@@ -1579,9 +1577,8 @@ summary {
   white-space: pre-line;
 }
 
-.tag-list-left {
-  justify-content: flex-start;
-  margin-top: 20px;
+.tag-list-center {
+  margin-top: 22px;
 }
 
 /* Coding-agent baseline panel */
